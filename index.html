@@ -1,0 +1,1327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Her Essence Restored (H.E.R.)</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Times New Roman', Times, serif;
+    }
+
+    body {
+      background: linear-gradient(90deg, #fff8fa 0%, #d6aeb7 50%, #a06a7b 100%);
+      color: #222;
+    }
+
+    header {
+      background: #fff8fa;
+      border-bottom: 2px solid #e9e3e6;
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem 2rem;
+    }
+
+    .logo {
+      color: #a06a7b;
+      display: flex;
+      align-items: center;
+      font-size: 1.8rem;
+      font-weight: bold;
+    }
+    .logo img {
+      height: 40px;
+      margin-right: 10px;
+      border-radius: 6px;
+    }
+
+    nav a {
+      margin: 0 1rem;
+      color: #a06a7b;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      color: #d6aeb7;
+    }
+
+    /* --- HERO SECTION --- */
+    .hero {
+      background: #fff8fa;
+      text-align: center;
+      padding: 3rem 1rem 2rem 1rem;
+      border-bottom: 2px solid #e9e3e6;
+    }
+    .hero h1 {
+      color: #a06a7b;
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+    }
+    .hero p {
+      color: #555;
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+    .hero .cta-btn {
+      background: #a06a7b;
+      color: #fff8fa;
+      border: none;
+      border-radius: 6px;
+      padding: 0.8rem 2rem;
+      font-size: 1.1rem;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.2s;
+    }
+    .hero .cta-btn:hover { background: #d6aeb7; color: #a06a7b; }
+
+    /* --- COUNTDOWN BANNER --- */
+    .countdown-banner {
+      background: #a06a7b;
+      color: #fff8fa;
+      text-align: center;
+      font-size: 1.1rem;
+      padding: 0.7rem 0;
+      letter-spacing: 0.5px;
+    }
+
+    /* --- TESTIMONIALS --- */
+    .testimonials {
+      background: #fff8fa;
+      max-width: 900px;
+      margin: 2rem auto;
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(160,106,123,0.07);
+      padding: 2rem 1rem;
+    }
+    .testimonials h2 {
+      color: #a06a7b;
+      text-align: center;
+      margin-bottom: 1.2rem;
+      font-size: 1.7rem;
+    }
+    .testimonial-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      justify-content: center;
+    }
+    .testimonial {
+      background: #fff;
+      border: 1px solid #e9e3e6;
+      border-radius: 8px;
+      padding: 1rem;
+      max-width: 320px;
+      min-width: 220px;
+      box-shadow: 0 2px 8px rgba(160,106,123,0.06);
+      color: #555;
+      font-size: 1rem;
+      position: relative;
+    }
+    .testimonial::before {
+      content: "“";
+      color: #a06a7b;
+      font-size: 2.5rem;
+      position: absolute;
+      left: 10px;
+      top: -10px;
+      opacity: 0.2;
+    }
+    .testimonial .author {
+      margin-top: 0.8rem;
+      color: #a06a7b;
+      font-weight: bold;
+      font-size: 1rem;
+      text-align: right;
+    }
+
+    /* --- OPT-IN --- */
+    .opt-in {
+      background: #d6aeb7;
+      color: #fff8fa;
+      max-width: 500px;
+      margin: 2rem auto 0 auto;
+      border-radius: 12px;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      box-shadow: 0 2px 12px rgba(160,106,123,0.10);
+    }
+    .opt-in h3 { margin-bottom: 0.7rem; color: #fff8fa; }
+    .opt-in form { display: flex; flex-direction: column; gap: 1rem; align-items: center; }
+    .opt-in input[type="email"], .opt-in input[type="tel"] {
+      padding: 0.7rem;
+      width: 80%;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+    .opt-in button {
+      background: #a06a7b;
+      color: #fff8fa;
+      border: none;
+      border-radius: 5px;
+      padding: 0.7rem 2rem;
+      font-size: 1.1rem;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.2s;
+    }
+    .opt-in button:hover { background: #fff8fa; color: #a06a7b; }
+
+    /* --- RESPONSIVE --- */
+    @media (max-width: 700px) {
+      .header-container { flex-direction: column; gap: 1rem; }
+      .testimonials { padding: 1rem 0.2rem; }
+      .testimonial-list { flex-direction: column; display: flex; }
+      .opt-in { padding: 1rem 0.5rem; }
+      .footer-content { flex-direction: column; }
+    }
+
+    .shop {
+      padding: 2rem;
+    }
+
+    .filters {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .filters button {
+      padding: 0.5rem 1rem;
+      border: none;
+      background: #a06a7b;
+      color: #fff8fa;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    .filters button:hover,
+    .filters button.active {
+      background: #d6aeb7;
+      color: #a06a7b;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .product {
+      background: #fff8fa;
+      border: 1px solid #e9e3e6;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(109,35,43,0.05);
+      transition: transform 0.3s;
+    }
+
+    .product:hover {
+      transform: scale(1.03);
+    }
+
+    .product img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 6px;
+    }
+
+    .product h4 {
+      margin: 0.5rem 0 0.3rem;
+      color: #a06a7b;
+      text-align: center; /* Center the item name */
+    }
+
+    .product-description {
+      font-size: 0.95rem;
+      color: #555;
+      text-align: center;
+      margin-bottom: 0.7rem;
+      padding: 0 0.5rem;
+    }
+
+    footer {
+      background: #a06a7b;
+      color: #fff8fa;
+      padding: 2rem;
+      margin-top: 3rem;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .footer-col {
+      flex: 1;
+      min-width: 200px;
+      margin: 1rem;
+    }
+
+    .footer-col h4 {
+      margin-bottom: 1rem;
+      color: #d6aeb7;
+    }
+
+    .footer-col a {
+      display: block;
+      margin: 0.3rem 0;
+      color: #d6aeb7;
+      text-decoration: none;
+    }
+
+    .footer-col a:hover {
+      color: #fff8fa;
+    }
+
+    .newsletter input {
+      padding: 0.5rem;
+      width: 70%;
+      margin-right: 0.5rem;
+      border: none;
+      border-radius: 5px;
+    }
+
+    .newsletter button {
+      padding: 0.5rem 1rem;
+      border: none;
+      background: #d6aeb7;
+      color: #a06a7b;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .newsletter button:hover {
+      background: #a06a7b;
+      color: #fff8fa;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      color: #d6aeb7;
+    }
+
+    #backToTop {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      background: #a06a7b;
+      color: #fff8fa;
+      border: none;
+      border-radius: 50%;
+      width: 48px;
+      height: 48px;
+      font-size: 2rem;
+      box-shadow: 0 2px 8px rgba(109,35,43,0.15);
+      cursor: pointer;
+      display: none;
+      z-index: 1000;
+      transition: background 0.2s, color 0.2s;
+    }
+    #backToTop:hover {
+      background: #d6aeb7;
+      color: #a06a7b;
+    }
+    @media (max-width: 700px) {
+      #backToTop {
+        bottom: 16px;
+        right: 16px;
+        width: 40px;
+        height: 40px;
+        font-size: 1.5rem;
+      }
+    }
+
+    .trending-now-banner {
+      background: #a06a7b;
+      color: #fff8fa;
+      text-align: center;
+      padding: 1rem 0;
+      font-size: 1.2rem;
+      letter-spacing: 0.5px;
+      margin-bottom: 0;
+    }
+
+    .referral-block {
+      background: #fff8fa;
+      border: 2px dashed #a06a7b;
+      color: #a06a7b;
+      text-align: center;
+      margin: 1.5rem auto 0 auto;
+      max-width: 700px;
+      border-radius: 12px;
+      padding: 1.2rem 1rem;
+      font-size: 1.1rem;
+      box-shadow: 0 2px 12px rgba(160,106,123,0.07);
+    }
+
+    .referral-btn {
+      background: #a06a7b;
+      color: #fff8fa;
+      border: none;
+      border-radius: 5px;
+      padding: 0.5rem 1.2rem;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    .referral-btn:hover {
+      background: #d6aeb7;
+      color: #a06a7b;
+    }
+
+    /* Social share buttons */
+.share-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 0.7rem;
+}
+.share-buttons button {
+  background: #fff8fa;
+  border: 1px solid #a06a7b;
+  color: #a06a7b;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.share-buttons button:hover {
+  background: #a06a7b;
+  color: #fff8fa;
+}
+
+.carousel {
+  width: 100%;
+  max-width: 1000px; /* Larger carousel for big images */
+  margin: 2rem auto 0 auto;
+  position: relative;
+  overflow: visible;
+}
+.carousel-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 420px; /* Ensures enough height for tall images */
+  overflow: hidden;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(160,106,123,0.10);
+  background: #fff8fa;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.carousel-images {
+  display: flex;
+  transition: transform 0.6s cubic-bezier(.77,0,.18,1);
+  will-change: transform;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 420px; /* Fixed height for all images to fit nicely */
+}
+.carousel-slide {
+  min-width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+.carousel-img {
+  display: block;
+  max-width: 100%;
+  max-height: 400px;
+  width: auto;
+  height: auto;
+  margin: 0 auto;
+  border-radius: 16px;
+  background: #f3e8ec;
+  object-fit: contain;
+}
+.carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  padding: 0;
+  z-index: 2;
+  cursor: pointer;
+  transition: filter 0.2s;
+}
+.carousel-arrow.left { left: 8px; }
+.carousel-arrow.right { right: 8px; }
+.carousel-arrow span {
+  width: 44px;
+  height: 44px;
+  background: #fff8fa;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(160,106,123,0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.carousel-arrow:hover span {
+  background: #d6aeb7;
+}
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.7rem;
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  width: 100%;
+  z-index: 2;
+}
+.carousel-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #d6aeb7;
+  border: 2px solid #fff8fa;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+.carousel-dot.active {
+  background: #a06a7b;
+  border-color: #d6aeb7;
+  transform: scale(1.2);
+}
+.carousel-overlay-left,
+.carousel-overlay-right {
+  position: absolute;
+  top: 0;
+  width: 48%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  pointer-events: none;
+}
+.carousel-overlay-left {
+  left: 0;
+  justify-content: flex-start;
+}
+.carousel-overlay-right {
+  right: 0;
+  justify-content: flex-end;
+}
+.carousel-overlay-left span {
+  background: rgba(160,106,123,0.7);
+  color: #fff8fa;
+  padding: 0.4rem 0.8rem;
+  border-radius: 0 12px 12px 0;
+  font-size: 1.1rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+.carousel-overlay-right span {
+  background: rgba(214,174,183,0.8);
+  color: #a06a7b;
+  padding: 0.4rem 0.8rem;
+  border-radius: 12px 0 0 12px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+.carousel-caption {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  pointer-events: none;
+}
+.carousel-caption span {
+  background: rgba(255,248,250,0.92);
+  color: #a06a7b;
+  padding: 0.3rem 0.8rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+}
+@media (max-width: 1100px) {
+  .carousel { max-width: 100%; }
+  .carousel-wrapper, .carousel-images { min-height: 260px; height: 260px; }
+  .carousel-img { max-height: 240px; }
+}
+@media (max-width: 700px) {
+  .carousel-wrapper, .carousel-images { min-height: 140px; height: 140px; }
+  .carousel-img { max-height: 120px; }
+  .carousel-arrow span { width: 28px; height: 28px; }
+  .carousel-overlay-left span,
+  .carousel-overlay-right span { font-size: 0.9rem; padding: 0.2rem 0.5rem; }
+  .carousel-caption span { font-size: 0.85rem; }
+}
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="header-container">
+      <div class="logo">
+        <img src="logo.jpg" alt="Her Essence Restored Logo" style="height:40px;vertical-align:middle;margin-right:10px;">
+        Her Essence Restored (H.E.R.)
+      </div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <select id="languageSelector" onchange="changeLanguage(this.value)">
+        <option value="en">English</option>
+        <option value="pt">Português</option>
+        <option value="af">Afrikaans</option>
+      </select>
+    </div>
+  </header>
+
+  <!-- Trending Now Banner and Referral Block will be injected here by JS -->
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <h1>Feel Restored in Every Stitch.</h1>
+    <p>Discover the new <b>Vintage Grace Collection</b> — where timeless elegance meets modern modesty.</p>
+    <button class="cta-btn" onclick="window.location.href='#productGrid'">Shop Now</button>
+    <div style="margin-top:1.2rem;color:#a06a7b;font-size:1.1rem;">
+      <em>“Elegance never goes out of fashion.”</em>
+    </div>
+  </section>
+
+  <!-- COUNTDOWN BANNER -->
+  <div class="countdown-banner">
+    <span>Get <b>15% Off</b> Your First Order – Ends In: <span id="countdown"></span></span>
+  </div>
+
+  <!-- Carousel -->
+  <section class="carousel">
+    <div class="carousel-wrapper">
+      <button class="carousel-arrow left" aria-label="Previous">
+        <span>
+          <svg width="20" height="15" viewBox="0 0 24 24" fill="none"><path d="M15 18l-6-6 6-6" stroke="#a06a7b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+      </button>
+      <div class="carousel-images">
+        <!-- Transformation Reel Slide with Overlay Text -->
+        <div class="carousel-slide">
+          <img src="https://i.imgur.com/4Qy6QyF.jpg" alt="Before and After Her Essence Restored Transformation" class="carousel-img">
+          <div class="carousel-overlay-left">
+            <span>Before Modesty</span>
+          </div>
+          <div class="carousel-overlay-right">
+            <span>After Her Essence Restored</span>
+          </div>
+          <div class="carousel-caption">
+            <span>Tap to shop the transformation</span>
+          </div>
+        </div>
+        <div class="carousel-slide">
+          <img src="https://i.imgur.com/hWycJBl.jpeg" alt="Her Essence Restored Logo" class="carousel-img">
+        </div>
+        <div class="carousel-slide">
+          <img src="https://i.pinimg.com/736x/fa/b0/04/fab0048557cd7823baa2e090dfecf675.jpg" alt="Vintage Carousel with Fashion Model" class="carousel-img">
+        </div>
+        <div class="carousel-slide">
+          <img src="https://img.freepik.com/free-photo/young-woman-riding-carousel-horse_23-2148321234.jpg" alt="Elegant Woman on Carousel Horse" class="carousel-img">
+        </div>
+        <div class="carousel-slide">
+          <img src="https://img.freepik.com/free-photo/attractive-stylish-blonde-woman-jeans-oversize-jacket-walking-against-wall-street_285396-8031.jpg" alt="Chic Lady in Front of Carousel" class="carousel-img">
+        </div>
+      </div>
+      <button class="carousel-arrow right" aria-label="Next">
+        <span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="#a06a7b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+      </button>
+      <div class="carousel-dots"></div>
+    </div>
+  </section>  
+
+  <!-- Shop Section (Featured Collection) -->
+  <section class="shop">
+    <h2 style="margin-bottom: 1rem;">Shop Our Collections</h2>
+    <div class="filters">
+      <button onclick="filterProducts('all')">All</button>
+      <button onclick="filterProducts('vintage')">Vintage</button>
+      <button onclick="filterProducts('modern')">Modern</button>
+      <button onclick="filterProducts('african')">African</button>
+      <button onclick="filterProducts('wigs')">Wigs</button>
+    </div>
+    <div class="product-grid" id="productGrid">
+      <!-- Vintage -->
+      <div class="product" data-category="vintage">
+        <img src="https://i.pinimg.com/originals/6f/aa/61/6faa61ce8e5c45c2051cb04a32fc216c.jpg" alt="Vintage Dress">
+        <h4>Classic Vintage Dress</h4>
+        <div class="product-description">A timeless 1950s-inspired dress with elegant lines and a flattering silhouette, perfect for any occasion.</div>
+        <div class="share-buttons">
+          <button onclick="shareProduct(this)" title="Share on WhatsApp">
+            <!-- WhatsApp SVG -->
+            <svg width="20" height="20" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#25D366"/><path d="M23.5 18.5c-.3-.2-1.7-.8-2-1s-.5-.2-.7.1c-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.2-.4-2.3-1.3-.9-.8-1.5-1.7-1.7-2-.2-.3 0-.5.1-.7.1-.1.2-.3.3-.5.1-.2.1-.4 0-.6s-.7-1.7-.9-2.3c-.2-.6-.4-.5-.7-.5h-.6c-.2 0-.5.1-.7.3-.2.2-.8.8-.8 2 0 1.2.8 2.4 1 2.7.2.3 1.6 2.5 3.9 3.4 2.3.9 2.3.6 2.7.6.4 0 1.3-.5 1.5-1 .2-.5.2-.9.1-1.1z" fill="#fff"/></svg>
+          </button>
+          <button onclick="shareProduct(this, 'facebook')" title="Share on Facebook">
+            <!-- Facebook SVG -->
+            <svg width="20" height="20" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#1877F3"/><path d="M21 16h-3v8h-3v-8h-2v-3h2v-2c0-1.1.9-2 2-2h3v3h-3v1h3v3z" fill="#fff"/></svg>
+          </button>
+          <button onclick="shareProduct(this, 'twitter')" title="Share on Twitter">
+            <!-- Twitter SVG -->
+            <svg width="20" height="20" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#1DA1F2"/><path d="M24 12.3c-.5.2-1 .4-1.5.4.5-.3.9-.8 1.1-1.3-.5.3-1 .5-1.6.6-.5-.5-1.2-.8-2-.8-1.5 0-2.7 1.2-2.7 2.7 0 .2 0 .4.1.6-2.2-.1-4.1-1.2-5.4-2.8-.2.4-.3.8-.3 1.2 0 .9.5 1.7 1.2 2.2-.4 0-.8-.1-1.1-.3v.1c0 1.3.9 2.3 2.1 2.6-.2.1-.4.1-.7.1-.2 0-.3 0-.5-.1.3 1 1.3 1.7 2.4 1.7-1 .8-2.2 1.3-3.5 1.3-.2 0-.4 0-.6-.1 1.2.8 2.6 1.3 4.1 1.3 4.9 0 7.6-4 7.6-7.6v-.3c.5-.4.9-.8 1.2-1.3z" fill="#fff"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="product" data-category="vintage">
+        <img src="https://i.pinimg.com/originals/76/14/57/7614577f92cfb1463e09d77db4dbf222.jpg" alt="Vintage Hat">
+        <h4>Vintage Hat</h4>
+        <div class="product-description">A chic, wide-brimmed hat that adds a touch of retro glamour to any outfit.</div>
+        <div class="share-buttons">
+          <button onclick="shareProduct(this)" title="Share on WhatsApp">
+            <!-- WhatsApp SVG -->
+            <svg width="20" height="20" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#25D366"/><path d="M23.5 18.5c-.3-.2-1.7-.8-2-1s-.5-.2-.7.1c-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.2-.4-2.3-1.3-.9-.8-1.5-1.7-1.7-2-.2-.3 0-.5.1-.7.1-.1.2-.3.3-.5.1-.2.1-.4 0-.6s-.7-1.7-.9-2.3c-.2-.6-.4-.5-.7-.5h-.6c-.2 0-.5.1-.7.3-.2.2-.8.8-.8 2 0 1.2.8 2.4 1 2.7.2.3 1.6 2.5 3.9 3.4 2.3.9 2.3.6 2.7.6.4 0 1.3-.5 1.5-1 .2-.5.2-.9.1-1.1z" fill="#fff"/></svg>
+          </button>
+          <button onclick="shareProduct(this, 'facebook')" title="Share on Facebook">
+            <!-- Facebook SVG -->
+            <svg width="20" height="20" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#1877F3"/><path d="M21 16h-3v8h-3v-8h-2v-3h2v-2c0-1.1.9-2 2-2h3v3h-3v1h3v3z" fill="#fff"/></svg>
+          </button>
+          <button onclick="shareProduct(this, 'twitter')" title="Share on Twitter">
+            <!-- Twitter SVG -->
+            <svg width="20" height="20" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#1DA1F2"/><path d="M24 12.3c-.5.2-1 .4-1.5.4.5-.3.9-.8 1.1-1.3-.5.3-1 .5-1.6.6-.5-.5-1.2-.8-2-.8-1.5 0-2.7 1.2-2.7 2.7 0 .2 0 .4.1.6-2.2-.1-4.1-1.2-5.4-2.8-.2.4-.3.8-.3 1.2 0 .9.5 1.7 1.2 2.2-.4 0-.8-.1-1.1-.3v.1c0 1.3.9 2.3 2.1 2.6-.2.1-.4.1-.7.1-.2 0-.3 0-.5-.1.3 1 1.3 1.7 2.4 1.7-1 .8-2.2 1.3-3.5 1.3-.2 0-.4 0-.6-.1 1.2.8 2.6 1.3 4.1 1.3 4.9 0 7.6-4 7.6-7.6v-.3c.5-.4.9-.8 1.2-1.3z" fill="#fff"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="product" data-category="vintage">
+        <img src="https://i.pinimg.com/originals/3a/1c/3c/3a1c3c8447c340efcb5413659f637ac0.jpg" alt="Vintage Trench Coat">
+        <h4>Vintage Trench Coat</h4>
+        <div class="product-description">Classic trench coat with a tailored fit and double-breasted buttons, ideal for cool evenings.</div>
+        <div class="share-buttons">
+          <button onclick="shareProduct(this)" title="Share on WhatsApp">
+            <!-- WhatsApp SVG -->
+            <svg width="20" height="20" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#25D366"/><path d="M23.5 18.5c-.3-.2-1.7-.8-2-1s-.5-.2-.7.1c-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.2-.4-2.3-1.3-.9-.8-1.5-1.7-1.7-2-.2-.3 0-.5.1-.7.1-.1.2-.3.3-.5.1-.2.1-.4 0-.6s-.7-1.7-.9-2.3c-.2-.6-.4-.5-.7-.5h-.6c-.2 0-.5.1-.7.3-.2.2-.8.8-.8 2 0 1.2.8 2.4 1 2.7.2.3 1.6 2.5 3.9 3.4 2.3.9 2.3.6 2.7.6.4 0 1.3-.5 1.5-1 .2-.5.2-.9.1-1.1z" fill="#fff"/></svg>
+          </button>
+          <button onclick="shareProduct(this, 'facebook')" title="Share on Facebook">
+            <!-- Facebook SVG -->
+            <svg width="20" height="20" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#1877F3"/><path d="M21 16h-3v8h-3v-8h-2v-3h2v-2c0-1.1.9-2 2-2h3v3h-3v1h3v3z" fill="#fff"/></svg>
+          </button>
+          <button onclick="shareProduct(this, 'twitter')" title="Share on Twitter">
+            <!-- Twitter SVG -->
+            <svg width="20" height="20" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#1DA1F2"/><path d="M24 12.3c-.5.2-1 .4-1.5.4.5-.3.9-.8 1.1-1.3-.5.3-1 .5-1.6.6-.5-.5-1.2-.8-2-.8-1.5 0-2.7 1.2-2.7 2.7 0 .2 0 .4.1.6-2.2-.1-4.1-1.2-5.4-2.8-.2.4-.3.8-.3 1.2 0 .9.5 1.7 1.2 2.2-.4 0-.8-.1-1.1-.3v.1c0 1.3.9 2.3 2.1 2.6-.2.1-.4.1-.7.1-.2 0-.3 0-.5-.1.3 1 1.3 1.7 2.4 1.7-1 .8-2.2 1.3-3.5 1.3-.2 0-.4 0-.6-.1 1.2.8 2.6 1.3 4.1 1.3 4.9 0 7.6-4 7.6-7.6v-.3c.5-.4.9-.8 1.2-1.3z" fill="#fff"/></svg>
+          </button>
+        </div>
+      </div>
+    
+      <!-- Modern -->
+      <div class="product" data-category="modern">
+        <img src="https://img.freepik.com/free-photo/fashion-portrait-young-elegant-woman_1328-2702.jpg" alt="Modern Blazer">
+        <h4>Modern Blazer</h4>
+        <div class="product-description">A sleek, structured blazer in a contemporary cut, perfect for work or a night out.</div>
+        <div class="share-buttons">
+          <button onclick="shareProduct(this)" title="Share on WhatsApp">
+            <!-- WhatsApp SVG -->
+            <svg width="20" height="20" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#25D366"/><path d="M23.5 18.5c-.3-.2-1.7-.8-2-1s-.5-.2-.7.1c-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.2-.4-2.3-1.3-.9-.8-1.5-1.7-1.7-2-.2-.3 0-.5.1-.7.1-.1.2-.3.3-.5.1-.2.1-.4 0-.6s-.7-1.7-.9-2.3c-.2-.6-.4-.5-.7-.5h-.6c-.2 0-.5.1-.7.3-.2.2-.8.8-.8 2 0 1.2.8 2.4 1 2.7.2.3 1.6 2.5 3.9 3.4 2.3.9 2.3.6 2.7.6.4 0 1.3-.5 1.5-1 .2-.5.2-.9.1-1.1z" fill="#fff"/></svg>
+          </button>
+          <button onclick="shareProduct(this, 'facebook')" title="Share on Facebook">
+            <!-- Facebook SVG -->
+            <svg width="20" height="20" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#1877F3"/><path d="M21 16h-3v8h-3v-8h-2v-3h2v-2c0-1.1.9-2 2-2h3v3h-3v1h3v3z" fill="#fff"/></svg>
+          </button>
+          <button onclick="shareProduct(this, 'twitter')" title="Share on Twitter">
+            <!-- Twitter SVG -->
+            <svg width="20" height="20" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#1DA1F2"/><path d="M24 12.3c-.5.2-1 .4-1.5.4.5-.3.9-.8 1.1-1.3-.5.3-1 .5-1.6.6-.5-.5-1.2-.8-2-.8-1.5 0-2.7 1.2-2.7 2.7 0 .2 0 .4.1.6-2.2-.1-4.1-1.2-5.4-2.8-.2.4-.3.8-.3 1.2 0 .9.5 1.7 1.2 2.2-.4 0-.8-.1-1.1-.3v.1c0 1.3.9 2.3 2.1 2.6-.2.1-.4.1-.7.1-.2 0-.3 0-.5-.1.3 1 1.3 1.7 2.4 1.7-1 .8-2.2 1.3-3.5 1.3-.2 0-.4 0-.6-.1 1.2.8 2.6 1.3 4.1 1.3 4.9 0 7.6-4 7.6-7.6v-.3c.5-.4.9-.8 1.2-1.3z" fill="#fff"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="product" data-category="modern">
+        <img src="https://img.freepik.com/free-photo/pair-trendy-sneakers_23-2149439237.jpg" alt="Modern Sneakers">
+        <h4>Modern Sneakers</h4>
+        <div class="product-description">Trendy, comfortable sneakers designed for all-day wear and effortless style.</div>
+        <div class="share-buttons">
+          <button onclick="shareProduct(this)" title="Share on WhatsApp">
+            <!-- WhatsApp SVG -->
+            <svg width="20" height="20" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#25D366"/><path d="M23.5 18.5c-.3-.2-1.7-.8-2-1s-.5-.2-.7.1c-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.2-.4-2.3-1.3-.9-.8-1.5-1.7-1.7-2-.2-.3 0-.5.1-.7.1-.1.2-.3.3-.5.1-.2.1-.4 0-.6s-.7-1.7-.9-2.3c-.2-.6-.4-.5-.7-.5h-.6c-.2 0-.5.1-.7.3-.2.2-.8.8-.8 2 0 1.2.8 2.4 1 2.7.2.3 1.6 2.5 3.9 3.4 2.3.9 2.3.6 2.7.6.4 0 1.3-.5 1.5-1 .2-.5.2-.9.1-1.1z" fill="#fff"/></svg>
+          </button>
+          <button onclick="shareProduct(this, 'facebook')" title="Share on Facebook">
+            <!-- Facebook SVG -->
+            <svg width="20" height="20" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#1877F3"/><path d="M21 16h-3v8h-3v-8h-2v-3h2v-2c0-1.1.9-2 2-2h3v3h-3v1h3v3z" fill="#fff"/></svg>
+          </button>
+          <button onclick="shareProduct(this, 'twitter')" title="Share on Twitter">
+            <!-- Twitter SVG -->
+            <svg width="20" height="20" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#1DA1F2"/><path d="M24 12.3c-.5.2-1 .4-1.5.4.5-.3.9-.8 1.1-1.3-.5.3-1 .5-1.6.6-.5-.5-1.2-.8-2-.8-1.5 0-2.7 1.2-2.7 2.7 0 .2 0 .4.1.6-2.2-.1-4.1-1.2-5.4-2.8-.2.4-.3.8-.3 1.2 0 .9.5 1.7 1.2 2.2-.4 0-.8-.1-1.1-.3v.1c0 1.3.9 2.3 2.1 2.6-.2.1-.4.1-.7.1-.2 0-.3 0-.5-.1.3 1 1.3 1.7 2.4 1.7-1 .8-2.2 1.3-3.5 1.3-.2 0-.4 0-.6-.1 1.2.8 2.6 1.3 4.1 1.3 4.9 0 7.6-4 7.6-7.6v-.3c.5-.4.9-.8 1.2-1.3z" fill="#fff"/></svg>
+          </button>
+        </div>
+      </div>
+    
+      <!-- African -->
+      <div class="product" data-category="african">
+        <img src="https://i.pinimg.com/originals/c1/b2/60/c1b26073812fd829d7a0ad7cf5b6e8bb.jpg" alt="African Print Wrap">
+        <h4>African Print Wrap</h4>
+        <div class="product-description">Vibrant, authentic African print wrap that can be styled in multiple ways.</div>
+        <div class="share-buttons">
+          <button onclick="shareProduct(this)" title="Share on WhatsApp">
+            <!-- WhatsApp SVG -->
+            <svg width="20" height="20" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#25D366"/><path d="M23.5 18.5c-.3-.2-1.7-.8-2-1s-.5-.2-.7.1c-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.2-.4-2.3-1.3-.9-.8-1.5-1.7-1.7-2-.2-.3 0-.5.1-.7.1-.1.2-.3.3-.5.1-.2.1-.4 0-.6s-.7-1.7-.9-2.3c-.2-.6-.4-.5-.7-.5h-.6c-.2 0-.5.1-.7.3-.2.2-.8.8-.8 2 0 1.2.8 2.4 1 2.7.2.3 1.6 2.5 3.9 3.4 2.3.9 2.3.6 2.7.6.4 0 1.3-.5 1.5-1 .2-.5.2-.9.1-1.1z" fill="#fff"/></svg>
+          </button>
+          <button onclick="shareProduct(this, 'facebook')" title="Share on Facebook">
+            <!-- Facebook SVG -->
+            <svg width="20" height="20" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#1877F3"/><path d="M21 16h-3v8h-3v-8h-2v-3h2v-2c0-1.1.9-2 2-2h3v3h-3v1h3v3z" fill="#fff"/></svg>
+          </button>
+          <button onclick="shareProduct(this, 'twitter')" title="Share on Twitter">
+            <!-- Twitter SVG -->
+            <svg width="20" height="20" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#1DA1F2"/><path d="M24 12.3c-.5.2-1 .4-1.5.4.5-.3.9-.8 1.1-1.3-.5.3-1 .5-1.6.6-.5-.5-1.2-.8-2-.8-1.5 0-2.7 1.2-2.7 2.7 0 .2 0 .4.1.6-2.2-.1-4.1-1.2-5.4-2.8-.2.4-.3.8-.3 1.2 0 .9.5 1.7 1.2 2.2-.4 0-.8-.1-1.1-.3v.1c0 1.3.9 2.3 2.1 2.6-.2.1-.4.1-.7.1-.2 0-.3 0-.5-.1.3 1 1.3 1.7 2.4 1.7-1 .8-2.2 1.3-3.5 1.3-.2 0-.4 0-.6-.1 1.2.8 2.6 1.3 4.1 1.3 4.9 0 7.6-4 7.6-7.6v-.3c.5-.4.9-.8 1.2-1.3z" fill="#fff"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="product" data-category="african">
+        <img src="https://i.pinimg.com/originals/9d/90/90/9d9090d52897f0ab2e3ce8e6e8c8b38c.jpg" alt="African Beaded Necklace">
+        <h4>Beaded Necklace</h4>
+        <div class="product-description">Handcrafted necklace featuring colorful beads and traditional African patterns.</div>
+        <div class="share-buttons">
+          <button onclick="shareProduct(this)" title="Share on WhatsApp">
+            <!-- WhatsApp SVG -->
+            <svg width="20" height="20" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#25D366"/><path d="M23.5 18.5c-.3-.2-1.7-.8-2-1s-.5-.2-.7.1c-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.2-.4-2.3-1.3-.9-.8-1.5-1.7-1.7-2-.2-.3 0-.5.1-.7.1-.1.2-.3.3-.5.1-.2.1-.4 0-.6s-.7-1.7-.9-2.3c-.2-.6-.4-.5-.7-.5h-.6c-.2 0-.5.1-.7.3-.2.2-.8.8-.8 2 0 1.2.8 2.4 1 2.7.2.3 1.6 2.5 3.9 3.4 2.3.9 2.3.6 2.7.6.4 0 1.3-.5 1.5-1 .2-.5.2-.9.1-1.1z" fill="#fff"/></svg>
+          </button>
+          <button onclick="shareProduct(this, 'facebook')" title="Share on Facebook">
+            <!-- Facebook SVG -->
+            <svg width="20" height="20" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#1877F3"/><path d="M21 16h-3v8h-3v-8h-2v-3h2v-2c0-1.1.9-2 2-2h3v3h-3v1h3v3z" fill="#fff"/></svg>
+          </button>
+          <button onclick="shareProduct(this, 'twitter')" title="Share on Twitter">
+            <!-- Twitter SVG -->
+            <svg width="20" height="20" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#1DA1F2"/><path d="M24 12.3c-.5.2-1 .4-1.5.4.5-.3.9-.8 1.1-1.3-.5.3-1 .5-1.6.6-.5-.5-1.2-.8-2-.8-1.5 0-2.7 1.2-2.7 2.7 0 .2 0 .4.1.6-2.2-.1-4.1-1.2-5.4-2.8-.2.4-.3.8-.3 1.2 0 .9.5 1.7 1.2 2.2-.4 0-.8-.1-1.1-.3v.1c0 1.3.9 2.3 2.1 2.6-.2.1-.4.1-.7.1-.2 0-.3 0-.5-.1.3 1 1.3 1.7 2.4 1.7-1 .8-2.2 1.3-3.5 1.3-.2 0-.4 0-.6-.1 1.2.8 2.6 1.3 4.1 1.3 4.9 0 7.6-4 7.6-7.6v-.3c.5-.4.9-.8 1.2-1.3z" fill="#fff"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="product" data-category="african">
+        <img src="https://i.pinimg.com/originals/c4/ba/b3/c4bab388fe0aa742c34ef8c1745a3d66.jpg" alt="African Print Dress">
+        <h4>Bold Print Dress</h4>
+        <div class="product-description">A bold, statement dress with eye-catching African prints and a flattering fit.</div>
+        <div class="share-buttons">
+          <button onclick="shareProduct(this)" title="Share on WhatsApp">
+            <!-- WhatsApp SVG -->
+            <svg width="20" height="20" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#25D366"/><path d="M23.5 18.5c-.3-.2-1.7-.8-2-1s-.5-.2-.7.1c-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.2-.4-2.3-1.3-.9-.8-1.5-1.7-1.7-2-.2-.3 0-.5.1-.7.1-.1.2-.3.3-.5.1-.2.1-.4 0-.6s-.7-1.7-.9-2.3c-.2-.6-.4-.5-.7-.5h-.6c-.2 0-.5.1-.7.3-.2.2-.8.8-.8 2 0 1.2.8 2.4 1 2.7.2.3 1.6 2.5 3.9 3.4 2.3.9 2.3.6 2.7.6.4 0 1.3-.5 1.5-1 .2-.5.2-.9.1-1.1z" fill="#fff"/></svg>
+          </button>
+          <button onclick="shareProduct(this, 'facebook')" title="Share on Facebook">
+            <!-- Facebook SVG -->
+            <svg width="20" height="20" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#1877F3"/><path d="M21 16h-3v8h-3v-8h-2v-3h2v-2c0-1.1.9-2 2-2h3v3h-3v1h3v3z" fill="#fff"/></svg>
+          </button>
+          <button onclick="shareProduct(this, 'twitter')" title="Share on Twitter">
+            <!-- Twitter SVG -->
+            <svg width="20" height="20" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#1DA1F2"/><path d="M24 12.3c-.5.2-1 .4-1.5.4.5-.3.9-.8 1.1-1.3-.5.3-1 .5-1.6.6-.5-.5-1.2-.8-2-.8-1.5 0-2.7 1.2-2.7 2.7 0 .2 0 .4.1.6-2.2-.1-4.1-1.2-5.4-2.8-.2.4-.3.8-.3 1.2 0 .9.5 1.7 1.2 2.2-.4 0-.8-.1-1.1-.3v.1c0 1.3.9 2.3 2.1 2.6-.2.1-.4.1-.7.1-.2 0-.3 0-.5-.1.3 1 1.3 1.7 2.4 1.7-1 .8-2.2 1.3-3.5 1.3-.2 0-.4 0-.6-.1 1.2.8 2.6 1.3 4.1 1.3 4.9 0 7.6-4 7.6-7.6v-.3c.5-.4.9-.8 1.2-1.3z" fill="#fff"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Wigs -->
+      <div class="product" data-category="wigs">
+        <img src="https://example.com/wig1.jpg" alt="Curly Wig">
+        <h4>Curly Wig</h4>
+        <div class="product-description">Natural-looking curly wig for a voluminous, bouncy hairstyle with minimal effort.</div>
+        <div class="share-buttons">
+          <button onclick="shareProduct(this)" title="Share on WhatsApp">
+            <!-- WhatsApp SVG -->
+            <svg width="20" height="20" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#25D366"/><path d="M23.5 18.5c-.3-.2-1.7-.8-2-1s-.5-.2-.7.1c-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.2-.4-2.3-1.3-.9-.8-1.5-1.7-1.7-2-.2-.3 0-.5.1-.7.1-.1.2-.3.3-.5.1-.2.1-.4 0-.6s-.7-1.7-.9-2.3c-.2-.6-.4-.5-.7-.5h-.6c-.2 0-.5.1-.7.3-.2.2-.8.8-.8 2 0 1.2.8 2.4 1 2.7.2.3 1.6 2.5 3.9 3.4 2.3.9 2.3.6 2.7.6.4 0 1.3-.5 1.5-1 .2-.5.2-.9.1-1.1z" fill="#fff"/></svg>
+          </button>
+          <button onclick="shareProduct(this, 'facebook')" title="Share on Facebook">
+            <!-- Facebook SVG -->
+            <svg width="20" height="20" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#1877F3"/><path d="M21 16h-3v8h-3v-8h-2v-3h2v-2c0-1.1.9-2 2-2h3v3h-3v1h3v3z" fill="#fff"/></svg>
+          </button>
+          <button onclick="shareProduct(this, 'twitter')" title="Share on Twitter">
+            <!-- Twitter SVG -->
+            <svg width="20" height="20" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#1DA1F2"/><path d="M24 12.3c-.5.2-1 .4-1.5.4.5-.3.9-.8 1.1-1.3-.5.3-1 .5-1.6.6-.5-.5-1.2-.8-2-.8-1.5 0-2.7 1.2-2.7 2.7 0 .2 0 .4.1.6-2.2-.1-4.1-1.2-5.4-2.8-.2.4-.3.8-.3 1.2 0 .9.5 1.7 1.2 2.2-.4 0-.8-.1-1.1-.3v.1c0 1.3.9 2.3 2.1 2.6-.2.1-.4.1-.7.1-.2 0-.3 0-.5-.1.3 1 1.3 1.7 2.4 1.7-1 .8-2.2 1.3-3.5 1.3-.2 0-.4 0-.6-.1 1.2.8 2.6 1.3 4.1 1.3 4.9 0 7.6-4 7.6-7.6v-.3c.5-.4.9-.8 1.2-1.3z" fill="#fff"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="product" data-category="wigs">
+        <img src="https://example.com/wig2.jpg" alt="Straight Wig">
+        <h4>Straight Wig</h4>
+        <div class="product-description">Sleek, straight wig that offers a polished and sophisticated look for any event.</div>
+        <div class="share-buttons">
+          <button onclick="shareProduct(this)" title="Share on WhatsApp">
+            <!-- WhatsApp SVG -->
+            <svg width="20" height="20" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#25D366"/><path d="M23.5 18.5c-.3-.2-1.7-.8-2-1s-.5-.2-.7.1c-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.2-.4-2.3-1.3-.9-.8-1.5-1.7-1.7-2-.2-.3 0-.5.1-.7.1-.1.2-.3.3-.5.1-.2.1-.4 0-.6s-.7-1.7-.9-2.3c-.2-.6-.4-.5-.7-.5h-.6c-.2 0-.5.1-.7.3-.2.2-.8.8-.8 2 0 1.2.8 2.4 1 2.7.2.3 1.6 2.5 3.9 3.4 2.3.9 2.3.6 2.7.6.4 0 1.3-.5 1.5-1 .2-.5.2-.9.1-1.1z" fill="#fff"/></svg>
+          </button>
+          <button onclick="shareProduct(this, 'facebook')" title="Share on Facebook">
+            <!-- Facebook SVG -->
+            <svg width="20" height="20" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#1877F3"/><path d="M21 16h-3v8h-3v-8h-2v-3h2v-2c0-1.1.9-2 2-2h3v3h-3v1h3v3z" fill="#fff"/></svg>
+          </button>
+          <button onclick="shareProduct(this, 'twitter')" title="Share on Twitter">
+            <!-- Twitter SVG -->
+            <svg width="20" height="20" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#1DA1F2"/><path d="M24 12.3c-.5.2-1 .4-1.5.4.5-.3.9-.8 1.1-1.3-.5.3-1 .5-1.6.6-.5-.5-1.2-.8-2-.8-1.5 0-2.7 1.2-2.7 2.7 0 .2 0 .4.1.6-2.2-.1-4.1-1.2-5.4-2.8-.2.4-.3.8-.3 1.2 0 .9.5 1.7 1.2 2.2-.4 0-.8-.1-1.1-.3v.1c0 1.3.9 2.3 2.1 2.6-.2.1-.4.1-.7.1-.2 0-.3 0-.5-.1.3 1 1.3 1.7 2.4 1.7-1 .8-2.2 1.3-3.5 1.3-.2 0-.4 0-.6-.1 1.2.8 2.6 1.3 4.1 1.3 4.9 0 7.6-4 7.6-7.6v-.3c.5-.4.9-.8 1.2-1.3z" fill="#fff"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="product" data-category="wigs">
+        <img src="https://example.com/wig3.jpg" alt="Braided Wig">
+        <h4>Braided Wig</h4>
+        <div class="product-description">Beautifully braided wig for a protective style that’s both stylish and easy to wear.</div>
+        <div class="share-buttons">
+          <button onclick="shareProduct(this)" title="Share on WhatsApp">
+            <!-- WhatsApp SVG -->
+            <svg width="20" height="20" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#25D366"/><path d="M23.5 18.5c-.3-.2-1.7-.8-2-1s-.5-.2-.7.1c-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.2-.4-2.3-1.3-.9-.8-1.5-1.7-1.7-2-.2-.3 0-.5.1-.7.1-.1.2-.3.3-.5.1-.2.1-.4 0-.6s-.7-1.7-.9-2.3c-.2-.6-.4-.5-.7-.5h-.6c-.2 0-.5.1-.7.3-.2.2-.8.8-.8 2 0 1.2.8 2.4 1 2.7.2.3 1.6 2.5 3.9 3.4 2.3.9 2.3.6 2.7.6.4 0 1.3-.5 1.5-1 .2-.5.2-.9.1-1.1z" fill="#fff"/></svg>
+          </button>
+          <button onclick="shareProduct(this, 'facebook')" title="Share on Facebook">
+            <!-- Facebook SVG -->
+            <svg width="20" height="20" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#1877F3"/><path d="M21 16h-3v8h-3v-8h-2v-3h2v-2c0-1.1.9-2 2-2h3v3h-3v1h3v3z" fill="#fff"/></svg>
+          </button>
+          <button onclick="shareProduct(this, 'twitter')" title="Share on Twitter">
+            <!-- Twitter SVG -->
+            <svg width="20" height="20" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#1DA1F2"/><path d="M24 12.3c-.5.2-1 .4-1.5.4.5-.3.9-.8 1.1-1.3-.5.3-1 .5-1.6.6-.5-.5-1.2-.8-2-.8-1.5 0-2.7 1.2-2.7 2.7 0 .2 0 .4.1.6-2.2-.1-4.1-1.2-5.4-2.8-.2.4-.3.8-.3 1.2 0 .9.5 1.7 1.2 2.2-.4 0-.8-.1-1.1-.3v.1c0 1.3.9 2.3 2.1 2.6-.2.1-.4.1-.7.1-.2 0-.3 0-.5-.1.3 1 1.3 1.7 2.4 1.7-1 .8-2.2 1.3-3.5 1.3-.2 0-.4 0-.6-.1 1.2.8 2.6 1.3 4.1 1.3 4.9 0 7.6-4 7.6-7.6v-.3c.5-.4.9-.8 1.2-1.3z" fill="#fff"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials">
+    <h2>What Our Customers Say</h2>
+    <div class="testimonial-list">
+      <div class="testimonial">
+        “I felt so elegant and confident in my new dress. The quality is amazing!”
+        <div class="author">– Zanele M.</div>
+      </div>
+      <div class="testimonial">
+        “The Vintage Grace Collection is a dream come true for modest fashion lovers.”
+        <div class="author">– Thandi N.</div>
+      </div>
+      <div class="testimonial">
+        “Fast shipping and beautiful packaging. I’ll definitely shop again!”
+        <div class="author">– Lerato P.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EMAIL/SMS OPT-IN -->
+  <section class="opt-in">
+    <h3>Get 15% Off Your First Order</h3>
+    <form id="optInForm">
+      <input type="email" placeholder="Your email" required>
+
+      <input type="tel" placeholder="Your phone (optional)">
+      <button type="submit">Sign Up</button>
+    </form>
+    <div id="optInMsg" style="margin-top:1rem;color:#fff8fa;font-size:1rem;"></div>
+  </section>
+
+  <!-- Customer Spotlight Section -->
+  <section class="style-gallery" style="max-width:900px;margin:2rem auto;">
+    <h2 style="text-align:center;color:#a06a7b;margin-bottom:1rem;">Customer Spotlight</h2>
+    <div style="display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;">
+      <img src="https://i.imgur.com/yourcustomer1.jpg" alt="Customer 1" style="width:160px;height:160px;object-fit:cover;border-radius:12px;">
+      <img src="https://i.imgur.com/yourcustomer2.jpg" alt="Customer 2" style="width:160px;height:160px;object-fit:cover;border-radius:12px;">
+      <img src="https://i.imgur.com/yourcustomer3.jpg" alt="Customer 3" style="width:160px;height:160px;object-fit:cover;border-radius:12px;">
+    </div>
+    <p style="text-align:center;margin-top:1rem;color:#555;">Tag us on Instagram <b>@her_essence_restored</b> to be featured!</p>
+  </section>
+
+  <!-- Welcome Popup -->
+  <div id="welcomePopup" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(160,106,123,0.15);z-index:2000;justify-content:center;align-items:center;">
+    <div style="background:#fff8fa;padding:2rem 1.5rem;border-radius:12px;box-shadow:0 2px 12px rgba(160,106,123,0.15);max-width:350px;text-align:center;">
+      <h3 style="color:#a06a7b;">Welcome to Her Essence Restored!</h3>
+      <p style="margin:1rem 0;">Enjoy R100 off your first order. Explore our collections and get inspired!</p>
+      <button onclick="closeWelcomePopup()" style="background:#a06a7b;color:#fff8fa;border:none;border-radius:5px;padding:0.5rem 1.2rem;cursor:pointer;">Close</button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-col">
+        <h4>About Us</h4>
+        <p>Her Essence Restored (H.E.R.) brings timeless elegance to modern fashion. Discover curated styles from across the decades.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Follow Us</h4>
+        <a href="https://www.instagram.com/her_essence_restored?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank">Instagram</a>
+        <a href="https://www.facebook.com" target="_blank">Facebook</a>
+        <a href="https://www.pinterest.com" target="_blank">Pinterest</a>
+        <a href="https://www.tiktok.com" target="_blank">TikTok</a>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <a href="refer.html">Refer a Friend</a>
+        <a href="style-guide.html">Style Guide</a>
+        <a href="Privacy & Data Policy.html">Privacy & Data Policy</a>
+      </div>
+      <div class="footer-col newsletter">
+        <h4>Newsletter</h4>
+        <p>Sign up for exclusive updates:</p>
+        <input type="email" placeholder="Your email" />
+        <button>Subscribe</button>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2025 Her Essence Restored (H.E.R.). All rights reserved.
+    </div>
+  </footer>
+
+  <button id="backToTop" aria-label="Back to top">&#8679;</button>
+
+  <!-- SCRIPTS -->
+  <script>
+    // Countdown Timer (15% Off)
+    function startCountdown(durationMinutes = 60) {
+      const end = Date.now() + durationMinutes * 60 * 1000;
+      function update() {
+        const now = Date.now();
+        let diff = Math.max(0, end - now);
+        const mins = Math.floor(diff / 60000);
+        const secs = Math.floor((diff % 60000) / 1000);
+        document.getElementById('countdown').textContent =
+
+          (mins < 10 ? '0' : '') + mins + ':' + (secs < 10 ? '0' : '') + secs;
+        if (diff > 0) setTimeout(update, 1000);
+        else document.querySelector('.countdown-banner').textContent = "Offer expired. But new styles are always arriving!";
+      }
+      update();
+    }
+    startCountdown(60);
+
+    // Opt-in form
+    document.getElementById('optInForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      document.getElementById('optInMsg').textContent = "Thank you for signing up! Your 15% off code is: WELCOME15";
+      this.reset();
+    });
+
+    // Back to Top button logic
+    window.addEventListener('scroll', () => {
+      backToTop.style.display = window.scrollY > 300 ? 'block' : 'none';
+    });
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Carousel logic (single, clean version)
+    document.addEventListener('DOMContentLoaded', function() {
+      const slides = document.querySelectorAll('.carousel-slide');
+      const imagesContainer = document.querySelector('.carousel-images');
+      const leftBtn = document.querySelector('.carousel-arrow.left');
+      const rightBtn = document.querySelector('.carousel-arrow.right');
+      const dotsContainer = document.querySelector('.carousel-dots');
+      let current = 0;
+      let interval;
+
+      // Create dots
+      function createDots() {
+        dotsContainer.innerHTML = '';
+        slides.forEach((_, idx) => {
+          const dot = document.createElement('span');
+          dot.className = 'carousel-dot' + (idx === 0 ? ' active' : '');
+          dot.addEventListener('click', () => goToSlide(idx));
+          dotsContainer.appendChild(dot);
+        });
+      }
+      createDots();
+      const getDots = () => dotsContainer.querySelectorAll('.carousel-dot');
+
+      function updateCarousel() {
+        imagesContainer.style.transform = `translateX(-${current * 100}%)`;
+        getDots().forEach((dot, idx) => {
+          dot.classList.toggle('active', idx === current);
+        });
+      }
+
+      function goToSlide(idx) {
+        current = idx;
+        updateCarousel();
+        resetInterval();
+      }
+
+      function nextSlide() {
+        current = (current + 1) % slides.length;
+        updateCarousel();
+      }
+
+      function prevSlide() {
+        current = (current - 1 + slides.length) % slides.length;
+        updateCarousel();
+      }
+
+      rightBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        nextSlide();
+        resetInterval();
+      });
+      leftBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        prevSlide();
+        resetInterval();
+      });
+
+      function resetInterval() {
+        clearInterval(interval);
+        interval = setInterval(nextSlide, 5000);
+      }
+
+      // Swipe support for mobile
+      let startX = 0;
+      imagesContainer.addEventListener('touchstart', e => {
+        startX = e.touches[0].clientX;
+      });
+      imagesContainer.addEventListener('touchend', e => {
+        let endX = e.changedTouches[0].clientX;
+        if (endX - startX > 50) prevSlide();
+        else if (startX - endX > 50) nextSlide();
+        resetInterval();
+      });
+
+      // Auto-slide
+      interval = setInterval(nextSlide, 5000);
+
+      // Pause on hover
+      imagesContainer.addEventListener('mouseenter', () => clearInterval(interval));
+      imagesContainer.addEventListener('mouseleave', resetInterval);
+
+      updateCarousel();
+    });
+
+    // Opt-in form
+    document.getElementById('optInForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      document.getElementById('optInMsg').textContent = "Thank you for signing up! Your 15% off code is: WELCOME15";
+      this.reset();
+    });
+
+    // Back to Top button logic
+    const backToTop = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      backToTop.style.display = window.scrollY > 300 ? 'block' : 'none';
+    });
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Trending Now Banner and Referral Block
+    function renderTrendingNow(targetSelector, options = {}) {
+      const {
+        text = '“What South Africa Is Wearing This Week”',
+        icon = '💃',
+        bgColor = '#a06a7b',
+        textColor = '#fff8fa',
+        fontSize = '1.2rem',
+        customClass = ''
+      } = options;
+
+      const trending = document.createElement('div');
+      trending.className = `trending-now-banner ${customClass}`;
+      trending.style.background = bgColor;
+      trending.style.color = textColor;
+      trending.style.fontSize = fontSize;
+      trending.innerHTML = `${icon} <strong>Trending Now:</strong> ${text}`;
+      document.querySelector(targetSelector).after(trending);
+    }
+    function renderReferralBlock(targetSelector, options = {}) {
+      const {
+        title = 'Invite Friends & Get R100 Off Together!',
+        icon = '👯',
+        description = '',
+        buttonText = 'Invite Now',
+        onClick = null,
+        bgColor = '#fff8fa',
+        borderColor = '#a06a7b',
+        textColor = '#a06a7b',
+        customClass = ''
+      } = options;
+
+      const referral = document.createElement('div');
+      referral.className = `referral-block ${customClass}`;
+      referral.style.background = bgColor;
+      referral.style.border = `2px dashed ${borderColor}`;
+      referral.style.color = textColor;
+
+      referral.innerHTML = `
+        ${icon} <strong>${title}</strong>
+        ${description ? `<div style="margin-top:0.5rem;">${description}</div>` : ''}
+        <div style="margin-top: 0.5rem;">
+          <button id="inviteFriendsBtn" class="referral-btn">${buttonText}</button>
+        </div>
+      `;
+      document.querySelector(targetSelector).after(referral);
+
+      document.getElementById('inviteFriendsBtn').onclick = function() {
+        if (typeof onClick === 'function') {
+          onClick();
+        } else if (navigator.share) {
+          navigator.share({
+            title: 'Her Essence Restored',
+            text: 'Join me at Her Essence Restored and get R100 off!',
+            url: window.location.href
+          }).catch(() => {});
+        } else {
+          alert('Share this link with your friends to get R100 off:\n' + window.location.href);
+        }
+      };
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+      renderTrendingNow('header', {
+        text: '“What Namibia Is Wearing This Week”',
+        icon: '💃',
+        bgColor: '#a06a7b',
+        textColor: '#fff8fa',
+        fontSize: '1.2rem'
+      });
+      renderReferralBlock('.trending-now-banner', {
+        title: 'Invite Friends & Get R100 Off Together!',
+        icon: '👯',
+        description: 'Share your unique link and both you and your friend get R100 off your next order.',
+        buttonText: 'Invite Now',
+        onClick: function() {
+          alert('Custom referral action! (Replace with your logic)');
+        }
+      });
+    });
+
+    // Product filter
+    function filterProducts(category) {
+      const products = document.querySelectorAll('.product');
+      products.forEach(product => {
+        if (category === 'all' || product.dataset.category === category) {
+          product.style.display = 'block';
+        } else {
+          product.style.display = 'none';
+        }
+      });
+    }
+
+    // Product share
+    function shareProduct(btn, platform) {
+      const product = btn.closest('.product');
+      const title = product.querySelector('h4').textContent;
+      const url = window.location.href + '#' + encodeURIComponent(title.replace(/\s+/g, '-'));
+      const text = `Check out this product: ${title} at Her Essence Restored!`;
+
+      if (!platform && navigator.share) {
+        navigator.share({ title, text, url });
+        return;
+      }
+      let shareUrl = '';
+      if (platform === 'facebook') {
+        shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
+      } else if (platform === 'twitter') {
+        shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
+      } else {
+        // WhatsApp
+        shareUrl = `https://wa.me/?text=${encodeURIComponent(text + ' ' + url)}`;
+      }
+      window.open(shareUrl, '_blank');
+    }
+
+    // Welcome popup
+    function closeWelcomePopup() {
+      document.getElementById('welcomePopup').style.display = 'none';
+      localStorage.setItem('herEssenceWelcome', '1');
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+      if (!localStorage.getItem('herEssenceWelcome')) {
+        document.getElementById('welcomePopup').style.display = 'flex';
+      }
+    });
+
+    // Language selector
+    const translations = {
+      en: {
+        home: "Home",
+        products: "Products",
+        about: "About",
+        contact: "Contact",
+        shopCollections: "Shop Our Collections",
+        all: "All",
+        vintage: "Vintage",
+        modern: "Modern",
+        african: "Afrikaner",
+        wigs: "Wigs",
+        aboutUs: "About Us",
+        followUs: "Follow Us",
+        newsletter: "Newsletter",
+        signUp: "Sign up for exclusive updates:",
+        subscribe: "Subscribe",
+        footer: "&copy; 2025 Her Essence Restored (H.E.R.). All rights reserved."
+      },
+      pt: {
+        home: "Início",
+        products: "Produtos",
+        about: "Sobre",
+        contact: "Contato",
+        shopCollections: "Compre Nossas Coleções",
+        all: "Todos",
+        vintage: "Vintage",
+        modern: "Moderno",
+        african: "Africano",
+        wigs: "Perucas",
+        aboutUs: "Sobre Nós",
+        followUs: "Siga-nos",
+        newsletter: "Boletim Informativo",
+        signUp: "Inscreva-se para atualizações exclusivas:",
+        subscribe: "Inscrever-se",
+        footer: "&copy; 2025 Her Essence Restored (H.E.R.). Todos os direitos reservados."
+      },
+      af: {
+        home: "Tuis",
+        products: "Produkte",
+        about: "Oor",
+        contact: "Kontak",
+        shopCollections: "Koop Ons Versamelings",
+        all: "Alle",
+        vintage: "Vintage",
+        modern: "Modern",
+        african: "Afrikaans",
+        wigs: "Pruike",
+        aboutUs: "Oor Ons",
+        followUs: "Volg Ons",
+        newsletter: "Nuusbrief",
+        signUp: "Teken in vir eksklusiewe opdaterings:",
+        subscribe: "Inskryf",
+        footer: "&copy; 2025 Her Essence Restored (H.E.R.). Alle regte voorbehou."
+      }
+    };
+    function changeLanguage(language) {
+      localStorage.setItem('selectedLanguage', language);
+      document.querySelector('nav a[href="index.html"]').textContent = translations[language].home;
+      document.querySelector('nav a[href="products.html"]').textContent = translations[language].products;
+      document.querySelector('nav a[href="about.html"]').textContent = translations[language].about;
+      document.querySelector('nav a[href="contact.html"]').textContent = translations[language].contact;
+      document.querySelector('.shop h2').textContent = translations[language].shopCollections;
+      document.querySelector('.filters button:nth-child(1)').textContent = translations[language].all;
+      document.querySelector('.filters button:nth-child(2)').textContent = translations[language].vintage;
+      document.querySelector('.filters button:nth-child(3)').textContent = translations[language].modern;
+      document.querySelector('.filters button:nth-child(4)').textContent = translations[language].african;
+      document.querySelector('.filters button:nth-child(5)').textContent = translations[language].wigs;
+      document.querySelector('.footer-col h4').textContent = translations[language].aboutUs;
+      document.querySelector('.footer-col.newsletter h4').textContent = translations[language].newsletter;
+      document.querySelector('.footer-col.newsletter p').textContent = translations[language].signUp;
+      document.querySelector('.footer-col.newsletter button').textContent = translations[language].subscribe;
+      document.querySelector('.footer-bottom').innerHTML = translations[language].footer;
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+      const savedLang = localStorage.getItem('selectedLanguage') || 'en';
+      document.getElementById('languageSelector').value = savedLang;
+      changeLanguage(savedLang);
+    });
+  </script>
+  <!-- Tawk.to Live Chat Widget -->
+  <script type="text/javascript">
+  var Tawk_API=Tawk_API||{},Tawk_LoadStart=new Date();
+  (function(){
+  var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+  s1.async=true;
+  s1.src='https://embed.tawk.to/your_property_id/1hxxxxxxx';
+  s1.charset='UTF-8';
+  s1.setAttribute('crossorigin','*');
+  s0.parentNode.insertBefore(s1,s0);
+  })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout - Her Essence Restored (H.E.R.)</title>
+  <style>
+    :root {
+      --primary: #b76e79;      /* Mauve/Pink */
+      --primary-dark: #a05c68; /* Darker Mauve */
+      --accent: #e7cba9;       /* Soft Gold */
+      --background: #fdf7f1;   /* Light Cream */
+      --text: #333;
+      --white: #fff;
+    }
+
+    body {
+      font-family: 'Times New Roman', Times, serif;
+      background-color: var(--background);
+      color: var(--text);
+      padding: 2rem;
+    }
+
+    .checkout-container {
+      max-width: 500px;
+      margin: 0 auto;
+      background: var(--white);
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(183, 110, 121, 0.08);
+      position: relative;
+    }
+
+    .logo {
+      display: block;
+      margin: 0 auto 1.5rem auto;
+      max-width: 180px;
+      height: auto;
+    }
+
+    .back-to-cart {
+      background-color: var(--accent);
+      color: var(--primary-dark);
+      border: none;
+      border-radius: 5px;
+      padding: 0.7rem 1.2rem;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: bold;
+      transition: background 0.2s;
+      position: fixed;
+      top: 2rem;
+      left: 2rem;
+      z-index: 1100;
+    }
+    .back-to-cart:hover {
+      background-color: var(--primary);
+      color: var(--white);
+    }
+
+    .checkout-total {
+      text-align: center;
+      font-size: 1.3rem;
+      font-weight: bold;
+      margin: 2rem 0 2rem 0;
+      color: var(--primary-dark);
+    }
+
+    .billing-form {
+      margin-top: 1rem;
+    }
+
+    .billing-form label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+      color: var(--primary-dark);
+    }
+
+    .billing-form input {
+      width: 100%;
+      padding: 0.8rem;
+      margin-bottom: 1rem;
+      border: 1px solid var(--accent);
+      border-radius: 5px;
+      background: #fff8f6;
+    }
+
+    .proceed-payment {
+      display: block;
+      margin: 2rem auto 0 auto;
+      background-color: var(--primary);
+      color: var(--white);
+      padding: 0.8rem 2.5rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1.1rem;
+      text-align: center;
+      font-weight: bold;
+      transition: background 0.2s;
+    }
+
+    .proceed-payment:hover {
+      background-color: var(--primary-dark);
+    }
+
+    .back-to-top-arrow {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: var(--primary);
+      color: var(--white);
+      border: none;
+      border-radius: 50%;
+      width: 48px;
+      height: 48px;
+      font-size: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(183, 110, 121, 0.15);
+      z-index: 1000;
+      transition: background 0.2s, color 0.2s;
+    }
+    .back-to-top-arrow:hover {
+      background: var(--accent);
+      color: var(--primary-dark);
+    }
+
+    .signup-prompt {
+      margin: 1.5rem 0;
+      text-align: center;
+      background: #fff8f6;
+      border: 1px solid var(--accent);
+      border-radius: 6px;
+      padding: 1rem;
+    }
+
+    #referralModal {
+      display:none;
+      position:fixed;
+      top:0;
+      left:0;
+      width:100vw;
+      height:100vh;
+      background:rgba(0,0,0,0.35);
+      z-index:2000;
+      align-items:center;
+      justify-content:center;
+    }
+
+    #referralModal > div {
+      background:#fff;
+      border-radius:10px;
+      padding:2rem;
+      max-width:350px;
+      text-align:center;
+      box-shadow:0 4px 24px rgba(0,0,0,0.12);
+    }
+  </style>
+  <script src="https://js.stripe.com/v3/"></script>
+</head>
+<body>
+  <!-- Move Back to Cart button outside the container and fix its position -->
+  <button class="back-to-cart" onclick="goBackToCart()">Back to Cart</button>
+  <div class="checkout-container">
+    <img src="logo.jpg" alt="Her Essence Restored Logo" class="logo">
+    <h2 style="text-align:center;">Checkout</h2>
+    <div class="checkout-total" id="checkoutTotal">Total: $0.00</div>
+
+    <form class="billing-form" id="billingForm">
+      <h3>Billing Information</h3>
+      <label for="fullName">Full Name</label>
+      <input type="text" id="fullName" name="fullName" required>
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="address">Address</label>
+      <input type="text" id="address" name="address" required>
+
+      <label for="city">City</label>
+      <input type="text" id="city" name="city" required>
+
+      <label for="zipCode">Zip Code</label>
+      <input type="text" id="zipCode" name="zipCode" required>
+
+      <label for="country">Country</label>
+      <input type="text" id="country" name="country" required>
+    </form>
+
+    <!-- Payment Methods Section -->
+    <div style="margin: 1.5rem 0;">
+      <h3 style="margin-bottom: 0.7rem; color: var(--primary-dark);">Choose Payment Method</h3>
+      <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+        <label style="display: flex; align-items: center; gap: 0.5rem;">
+          <input type="radio" name="paymentMethod" value="card" checked onchange="updatePaymentDetails()">
+          <img src="https://img.icons8.com/color/32/000000/bank-card-back-side.png" alt="Card" style="height: 24px;"> Credit/Debit Card
+        </label>
+        <label style="display: flex; align-items: center; gap: 0.5rem;">
+          <input type="radio" name="paymentMethod" value="paypal" onchange="updatePaymentDetails()">
+          <img src="https://img.icons8.com/color/32/000000/paypal.png" alt="PayPal" style="height: 24px;"> PayPal
+        </label>
+        <label style="display: flex; align-items: center; gap: 0.5rem;">
+          <input type="radio" name="paymentMethod" value="mobile" onchange="updatePaymentDetails()">
+          <img src="https://img.icons8.com/color/32/000000/phone.png" alt="Mobile Money" style="height: 24px;"> Mobile Money
+        </label>
+      </div>
+    </div>
+
+    <!-- Payment Details Section -->
+    <div id="paymentDetails" style="margin-bottom: 1.5rem;"></div>
+
+    <!-- Add this after the billing form, before the Proceed to Payment button -->
+    <div class="signup-prompt">
+      <strong>Want exclusive offers?</strong><br>
+      <span>Sign up for our newsletter and get special discounts!</span>
+      <form id="newsletterSignup" style="margin-top: 0.7rem; display: flex; gap: 0.5rem; justify-content: center;">
+        <input type="email" id="newsletterEmail" placeholder="Your email" required style="padding: 0.5rem; border-radius: 4px; border: 1px solid var(--accent);">
+        <button type="submit" style="background: var(--primary); color: var(--white); border: none; border-radius: 4px; padding: 0.5rem 1rem; cursor: pointer;">Sign Up</button>
+      </form>
+      <div id="newsletterMsg" style="margin-top: 0.5rem; color: var(--primary-dark); font-size: 0.95rem;"></div>
+    </div>
+
+    <button class="proceed-payment" onclick="processPayment()">Proceed to Payment</button>
+  </div>
+
+  <button class="back-to-top-arrow" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to Top">&#9650;</button>
+
+  <!-- Add this modal for referral prompt after purchase, at the end of <body> -->
+  <div id="referralModal">
+    <div>
+      <h3>Thank you for your purchase!</h3>
+      <p>Love your experience? Share with friends and get rewards!</p>
+      <input type="text" id="referralLink" readonly style="width:90%; margin:0.5rem 0; padding:0.5rem; border:1px solid var(--accent); border-radius:4px;" value="https://heressencerestored.com/?ref=YOURCODE">
+      <button onclick="copyReferral()" style="background:var(--primary); color:#fff; border:none; border-radius:4px; padding:0.5rem 1.2rem; cursor:pointer;">Copy Link</button>
+      <div id="copyMsg" style="margin-top:0.5rem; color:var(--primary-dark); font-size:0.95rem;"></div>
+      <div style="margin-top:1rem;">
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https://heressencerestored.com" target="_blank" style="margin:0 0.5rem;">Share on Facebook</a>
+        <a href="https://twitter.com/intent/tweet?url=https://heressencerestored.com" target="_blank" style="margin:0 0.5rem;">Share on X</a>
+      </div>
+      <button onclick="document.getElementById('referralModal').style.display='none'" style="margin-top:1.2rem; background:var(--accent); color:var(--primary-dark); border:none; border-radius:4px; padding:0.5rem 1.2rem; cursor:pointer;">Close</button>
+    </div>
+  </div>
+
+  <script>
+    const checkoutTotal = document.getElementById('checkoutTotal');
+
+    // Retrieve cart data from localStorage
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const exchangeRates = {
+      AOA: 800,
+      NAD: 18,
+      ZAR: 18
+    };
+
+    const selectedCurrency = localStorage.getItem('selectedCurrency') || 'NAD';
+
+    function renderCheckoutTotal() {
+      let total = 0;
+      if (cart.length === 0) {
+        checkoutTotal.textContent = 'Total: $0.00';
+        return;
+      }
+      const products = JSON.parse(localStorage.getItem('productsData')) || [];
+      cart.forEach(item => {
+        const product = products.find(p => p.id === item.id);
+        if (!product) return;
+        const priceInSelectedCurrency = (product.price * exchangeRates[selectedCurrency]);
+        total += priceInSelectedCurrency * item.quantity;
+      });
+      checkoutTotal.textContent = `Total: ${total.toFixed(2)} ${selectedCurrency}`;
+    }
+
+    function goBackToCart() {
+      window.location.href = 'cart.html';
+    }
+
+    function copyReferral() {
+      const input = document.getElementById('referralLink');
+      input.select();
+      input.setSelectionRange(0, 99999);
+      document.execCommand('copy');
+      document.getElementById('copyMsg').textContent = 'Referral link copied!';
+    }
+
+    // Show referral modal after successful payment (simulate for demo)
+    function showReferralModal() {
+      document.getElementById('referralModal').style.display = 'flex';
+    }
+
+    function updatePaymentDetails() {
+      const method = document.querySelector('input[name="paymentMethod"]:checked').value;
+      const detailsDiv = document.getElementById('paymentDetails');
+      if (method === 'card') {
+        detailsDiv.innerHTML = `
+          <div class="billing-form" style="margin-top:0;">
+            <label for="cardNumber">Card Number</label>
+            <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" required>
+            <label for="cardExpiry">Expiry Date</label>
+            <input type="text" id="cardExpiry" placeholder="MM/YY" required>
+            <label for="cardCVC">CVC</label>
+            <input type="text" id="cardCVC" placeholder="123" required>
+          </div>
+        `;
+      } else if (method === 'paypal') {
+        detailsDiv.innerHTML = `
+          <div style="background:#f6fafd; border:1px solid #e7cba9; border-radius:6px; padding:1rem;">
+            You will be redirected to PayPal to complete your purchase.
+          </div>
+        `;
+      } else if (method === 'mobile') {
+        detailsDiv.innerHTML = `
+          <div class="billing-form" style="margin-top:0;">
+            <label for="mobileNumber">Mobile Number</label>
+            <input type="text" id="mobileNumber" placeholder="+264 81 123 4567" required>
+            <label for="provider">Provider</label>
+            <input type="text" id="provider" placeholder="e.g. MTC, TN Mobile" required>
+          </div>
+        `;
+      }
+    }
+
+    // Initialize on load
+    updatePaymentDetails();
+
+    // Modify processPayment to show referral modal after payment (simulate for demo)
+    async function processPayment() {
+      const billingForm = document.getElementById('billingForm');
+      if (!billingForm.checkValidity()) {
+        alert('Please fill out all billing information.');
+        return;
+      }
+
+      // Get selected payment method
+      const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked').value;
+
+      // Collect billing information
+      const billingInfo = {
+        fullName: document.getElementById('fullName').value,
+        email: document.getElementById('email').value,
+        address: document.getElementById('address').value,
+        city: document.getElementById('city').value,
+        zipCode: document.getElementById('zipCode').value,
+        country: document.getElementById('country').value,
+      };
+
+      // Collect payment details
+      let paymentDetails = {};
+      if (paymentMethod === 'card') {
+        paymentDetails = {
+          cardNumber: document.getElementById('cardNumber').value,
+          cardExpiry: document.getElementById('cardExpiry').value,
+          cardCVC: document.getElementById('cardCVC').value,
+        };
+        if (!paymentDetails.cardNumber || !paymentDetails.cardExpiry || !paymentDetails.cardCVC) {
+          alert('Please fill out all card details.');
+          return;
+        }
+      } else if (paymentMethod === 'mobile') {
+        paymentDetails = {
+          mobileNumber: document.getElementById('mobileNumber').value,
+          provider: document.getElementById('provider').value,
+        };
+        if (!paymentDetails.mobileNumber || !paymentDetails.provider) {
+          alert('Please fill out all mobile money details.');
+          return;
+        }
+      }
+
+      // Collect cart details
+      const cartDetails = {
+        items: cart,
+        total: checkoutTotal.textContent,
+        currency: selectedCurrency,
+      };
+
+      try {
+        const response = await fetch('http://localhost:3000/create-checkout-session', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ billingInfo, cartDetails, paymentMethod, paymentDetails }),
+        });
+
+        const session = await response.json();
+
+        if (session.error) {
+          alert('Error creating payment session: ' + session.error);
+          return;
+        }
+
+        // Redirect or show modal based on payment method
+        if (paymentMethod === 'paypal' && session.paypalUrl) {
+          window.location.href = session.paypalUrl;
+        } else if (paymentMethod === 'mobile' && session.mobileMoneyUrl) {
+          window.location.href = session.mobileMoneyUrl;
+        } else if (paymentMethod === 'card' && session.success) {
+          showReferralModal();
+        } else {
+          // Fallback for demo
+          setTimeout(showReferralModal, 1000);
+        }
+      } catch (error) {
+        console.error('Error processing payment:', error);
+        alert('An error occurred while processing your payment.');
+      }
+    }
+
+    // Newsletter signup handler (demo only)
+    document.getElementById('newsletterSignup').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const email = document.getElementById('newsletterEmail').value;
+      // Here you would send email to your backend or newsletter service
+      document.getElementById('newsletterMsg').textContent = 'Thank you for signing up!';
+      document.getElementById('newsletterEmail').value = '';
+    });
+
+    renderCheckoutTotal();
+  </script>
+
+  <!-- Add Tawk.to live chat widget before </body> -->
+  <script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+      var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+      s1.async=true;
+      s1.src='https://embed.tawk.to/64f0c1e2b2d3e13950e9e8b1/1h8g9kq7k'; // Replace with your Tawk.to property ID
+      s1.charset='UTF-8';
+      s1.setAttribute('crossorigin','*');
+      s0.parentNode.insertBefore(s1,s0);
+    })();
+  </script>
+</body>
+</html>

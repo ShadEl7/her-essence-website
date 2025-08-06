@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Us - Her Essence Restored (H.E.R.)</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Times New Roman', Times, serif;
+    }
+
+    body {
+      background: linear-gradient(90deg, #f7ede6 0%, #6d232b 50%, #b76e79 100%);
+      color: #222;
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: #fff;
+      border-bottom: 1px solid #b76e79;
+      padding: 1.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      height: 50px;
+      margin-right: 1rem;
+    }
+
+    .logo span {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #b76e79;
+    }
+
+    nav a {
+      margin: 0 1rem;
+      text-decoration: none;
+      color: #6d232b;
+      font-weight: 500;
+    }
+
+    .lang-switch {
+      margin: 1rem 2rem;
+      text-align: right;
+    }
+
+    select {
+      padding: 0.5rem;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .contact-section {
+      max-width: 800px;
+      margin: 3rem auto;
+      padding: 2rem;
+      background-color: #fff;
+      border: 2px solid #b76e79;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.05);
+    }
+
+    .contact-section h1 {
+      text-align: center;
+      color: #6d232b;
+      margin-bottom: 2rem;
+    }
+
+    form label {
+      display: block;
+      margin-bottom: 0.5rem;
+      margin-top: 1.2rem;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    textarea {
+      width: 100%;
+      padding: 0.8rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    textarea {
+      min-height: 150px;
+    }
+
+    button {
+      margin-top: 1.5rem;
+      background-color: #b76e79;
+      color: #fff;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .map-container {
+      margin-top: 3rem;
+    }
+
+    iframe {
+      width: 100%;
+      border: none;
+      height: 300px;
+      border-radius: 10px;
+    }
+
+    .contact-details {
+      margin-top: 2rem;
+      font-size: 1rem;
+      color: #444;
+    }
+
+    .contact-details p {
+      margin-bottom: 0.5rem;
+    }
+
+    footer {
+      background: linear-gradient(90deg, #6d232b 0%, #b76e79 100%);
+      color: #fff;
+      padding: 2rem;
+      margin-top: 4rem;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .footer-col {
+      flex: 1;
+      min-width: 200px;
+      margin: 1rem;
+    }
+
+    .footer-col h4 {
+      margin-bottom: 1rem;
+    }
+
+    .footer-col a {
+      display: block;
+      margin: 0.3rem 0;
+      color: #f7ede6;
+      text-decoration: none;
+    }
+
+    .newsletter input {
+      padding: 0.5rem;
+      width: 70%;
+      margin-right: 0.5rem;
+      border: none;
+      border-radius: 5px;
+    }
+
+    .newsletter button {
+      padding: 0.5rem 1rem;
+      border: none;
+      background: #b76e79;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      color: #f7ede6;
+    }
+
+    .whatsapp-link {
+      margin-top: 1rem;
+      display: inline-block;
+      background-color: #6d232b;
+      color: white;
+      padding: 0.6rem 1rem;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    /* Back to Top Button */
+    /* Removed incomplete #backToTop:hover rule */
+
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <img src="logo.jpg" alt="Her Essence Restored (H.E.R.) Logo" />
+      <span>Her Essence Restored (H.E.R.)</span>
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="products.html">Products</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      
+    </nav>
+  </header>
+
+  <!-- Language Switcher -->
+  <div class="lang-switch">
+    <label for="language">Language:</label>
+    <select id="language" onchange="changeLanguage()">
+      <option value="en">English</option>
+      <option value="pt">Português</option>
+    </select>
+  </div>
+
+  <!-- Contact Section -->
+  <section class="contact-section">
+    <h1 data-lang="en">Contact Us</h1>
+    <h1 data-lang="pt" style="display:none;">Fale Conosco</h1>
+
+    <!-- Contact Form via Formspree -->
+    <form action="https://formspree.io/f/mnqekvow" method="POST" id="contactForm">
+      <label data-lang="en">Your Name</label>
+      <label data-lang="pt" style="display:none;">Seu Nome</label>
+      <input type="text" name="name" required />
+
+      <label data-lang="en">Your Email</label>
+      <label data-lang="pt" style="display:none;">Seu Email</label>
+      <input type="email" name="email" required />
+
+      <label data-lang="en">Your Message</label>
+      <label data-lang="pt" style="display:none;">Sua Mensagem</label>
+      <textarea name="message" required></textarea>
+
+      <button type="submit" data-lang="en">Send Message</button>
+      <button type="submit" data-lang="pt" style="display:none;">Enviar Mensagem</button>
+    </form>
+
+    <!-- Thank You Popup -->
+    <div id="thankYouPopup" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.4); z-index:9999; align-items:center; justify-content:center;">
+      <div style="background:#fff; padding:2rem 3rem; border-radius:10px; box-shadow:0 2px 16px rgba(0,0,0,0.18); text-align:center;">
+        <h2 style="color:#b76e79;" data-lang="en">Thank you! Your message has been sent.</h2>
+        <h2 style="color:#b76e79; display:none;" data-lang="pt">Obrigado! Sua mensagem foi enviada.</h2>
+        <button onclick="document.getElementById('thankYouPopup').style.display='none';" style="margin-top:1.5rem; background:#b76e79; color:#fff; border:none; padding:0.7rem 1.5rem; border-radius:5px; cursor:pointer;">OK</button>
+      </div>
+    </div>
+
+    <!-- Contact Details -->
+    <div class="contact-details">
+      <p><strong>Phone:</strong> +264 81 234 5678</p>
+      <p><strong>Email:</strong> info@heressencerestored.com</p>
+      <a href="https://wa.me/264812345678" class="whatsapp-link" target="_blank">Chat with us on WhatsApp</a>
+    </div>
+
+    <!-- Google Map -->
+    <div class="map-container">
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3780.7377521642835!2d17.070512614800213!3d-22.559722085180225!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1c0c5868e13b8ab3%3A0x2a21a5b1ea2212d1!2sWindhoek%2C%20Namibia!5e0!3m2!1sen!2sna!4v1641000000000!5m2!1sen!2sna" 
+        allowfullscreen="" loading="lazy"></iframe>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-col">
+        <h4>About Us</h4>
+        <p>Her Essence Restored (H.E.R.) brings timeless elegance to all.</p>
+      </div>
+      <div class="footer-col">
+  <h4>Follow Us</h4>
+  <a href="https://www.instagram.com/her_essence_restored?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7.75 2h8.5A5.25 5.25 0 0121.5 7.25v8.5A5.25 5.25 0 0116.25 21H7.75A5.25 5.25 0 012.5 15.75v-8.5A5.25 5.25 0 017.75 2z" />
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16.5 7.5h.008v.008H16.5V7.5zM12 8.75a3.25 3.25 0 100 6.5 3.25 3.25 0 000-6.5z" />
+    </svg>
+    Instagram
+  </a>
+  <a href="https://www.facebook.com" target="_blank">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3.5l.5-4H14V7a1 1 0 011-1h3V2z" />
+    </svg>
+    Facebook
+  </a>
+  <a href="https://www.pinterest.com" target="_blank">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.29 20.251c.7-1.2.94-2.1 1.4-3.8.3 1.2 2.1 2.2 3.8 2.2 3.3 0 5.5-2.4 5.5-5.4 0-2.9-2.4-5.2-5.4-5.2-3.8 0-5.7 2.7-5.7 5.6 0 1.4.7 3.1 1.8 3.6.2.1.3 0 .4-.1.1-.1.3-.4.3-.5.1-.2.1-.3 0-.5-.2-.4-.4-.9-.4-1.5 0-2.1 1.6-4.1 4.3-4.1 2.3 0 3.9 1.5 3.9 3.7 0 2.4-1.3 4.2-3.2 4.2-.9 0-1.6-.7-1.4-1.6.3-1.2.8-2.5.8-3.4 0-.8-.4-1.5-1.3-1.5-1 0-1.8 1-1.8 2.4 0 .9.3 1.5.3 1.5l-1.2 5.1c-.2.8-.3 1.7-.3 2.5" />
+    </svg>
+    Pinterest
+  </a>
+  <a href="https://www.tiktok.com" target="_blank">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19a4 4 0 100-8 4 4 0 000 8zM16 3v5.5a4.5 4.5 0 01-4.5 4.5H9" />
+    </svg>
+    TikTok
+  </a>
+</div>
+      <div class="footer-col newsletter">
+        <h4>Newsletter</h4>
+        <p>Sign up for exclusive fashion updates:</p>
+        <input type="email" placeholder="Your email" />
+        <button>Subscribe</button>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2025 Her Essence Restored (H.E.R.). Designed with pride.
+    </div>
+  </footer>
+
+  <!-- Language Script -->
+  <script>
+    function changeLanguage() {
+      const selectedLang = document.getElementById("language").value;
+      document.querySelectorAll('[data-lang]').forEach(el => {
+        el.style.display = el.getAttribute('data-lang') === selectedLang ? 'block' : 'none';
+      });
+    }
+    document.addEventListener("DOMContentLoaded", changeLanguage);
+
+    // Back to Top button logic (updated for new button)
+    window.addEventListener('scroll', function() {
+      const btn = document.getElementById('backToTopNew');
+      if (window.scrollY > 300) {
+        btn.style.display = 'block';
+      } else {
+        btn.style.display = 'none';
+      }
+    });
+    document.getElementById('backToTopNew').onclick = function() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
+    // AJAX Form Submission for Thank You Popup
+    document.addEventListener("DOMContentLoaded", function() {
+      const form = document.getElementById('contactForm');
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const formData = new FormData(form);
+
+        fetch(form.action, {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'Accept': 'application/json'
+          }
+        })
+        .then(response => {
+          if (response.ok) {
+            form.reset();
+            document.getElementById('file-list').innerHTML = '';
+            document.getElementById('thankYouPopup').style.display = 'flex';
+            changeLanguage(); // update popup language if needed
+          } else {
+            alert('There was a problem sending your message. Please try again.');
+          }
+        })
+        .catch(() => {
+          alert('There was a problem sending your message. Please try again.');
+        });
+      });
+    });
+  </script>
+
+  <!-- Remove the old Back to Top button -->
+  <!-- <button id="backToTop" title="Back to Top">&#8679;</button> -->
+
+  <!-- Add new Back to Top button styled with website palette -->
+  <button id="backToTopNew" title="Back to Top" aria-label="Back to Top" style="display:none;">
+    <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+      <circle cx="16" cy="16" r="16" fill="#b76e79"/>
+      <path d="M16 22V10M16 10l-6 6M16 10l6 6" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+
+  <style>
+    #backToTopNew {
+      display: none;
+      position: fixed;
+      bottom: 40px;
+      right: 40px;
+      z-index: 99;
+      background: transparent;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      padding: 0;
+      border-radius: 50%;
+      box-shadow: 0 2px 8px rgba(109,35,43,0.18);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    #backToTopNew svg {
+      display: block;
+    }
+    #backToTopNew:hover {
+      transform: scale(1.1);
+      box-shadow: 0 4px 16px rgba(183,110,121,0.25);
+      filter: brightness(1.08);
+    }
+  </style>
+
+  <script>
+    // Wait for DOM to be ready before attaching event listeners
+    document.addEventListener("DOMContentLoaded", function() {
+      const btn = document.getElementById('backToTopNew');
+      // Show/hide button on scroll
+      window.addEventListener('scroll', function() {
+        if (window.scrollY > 300) {
+          btn.style.display = 'block';
+        } else {
+          btn.style.display = 'none';
+        }
+      });
+      // Scroll to top on click
+      btn.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+  </script>
+</body>
+</html>
+

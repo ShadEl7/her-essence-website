@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Her Essence Restored (H.E.R.) - Products</title>
+  <style>
+    :root {
+      --burgundy: #7a3f4b;         /* Deep burgundy */
+      --rose-pink: #d6b3c6;        /* Soft rose pink from logo */
+      --cream: #fff6fa;            /* Light pink/white from logo */
+      --white: #ffffff;            /* Pure white */
+      --black: #222222;            /* Black for text */
+      --accent-pink: #d6b3c6;      /* Use rose pink as accent */
+      --beige: #f3e3e8;            /* Soft beige-pink for backgrounds */
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Times New Roman', Times, serif; }
+
+    body { background-color: var(--cream); color: var(--burgundy); }
+
+    header {
+      background: linear-gradient(90deg, var(--cream) 0%, var(--burgundy) 50%, var(--beige) 100%);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--beige);
+    }
+
+    .logo { font-size: 1.8rem; font-weight: bold; color: var(--burgundy); }
+
+    nav a {
+      margin: 0 1rem;
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1rem; /* Reduced from 1.1rem */
+      padding: 0.4rem 1rem;
+      border-radius: 6px;
+      transition: 
+        color 0.2s, 
+        background 0.2s, 
+        box-shadow 0.2s;
+    }
+    nav a:hover, nav a:focus {
+      color: var(--white);
+      background: var(--accent-pink);
+      box-shadow: 0 2px 8px rgba(214,179,198,0.15);
+      outline: none;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      padding: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .product-card {
+      background: var(--white);
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(110,35,43,0.08);
+      border: 1px solid var(--beige);
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 350px;
+      object-fit: cover;
+      border-radius: 10px;
+      background: var(--cream);
+    }
+
+    .product-info {
+      padding: 1rem 0;
+    }
+
+    .product-info h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      color: var(--burgundy);
+    }
+
+    .price {
+      color: var(--accent-pink);
+      font-size: 1.1rem;
+      font-weight: bold;
+    }
+
+    select, input[type="number"] {
+      padding: 0.4rem;
+      margin-top: 0.5rem;
+      width: 100%;
+      border-radius: 5px;
+      border: 1px solid var(--accent-pink);
+      background: var(--cream);
+      color: var(--burgundy);
+    }
+
+    button {
+      margin-top: 0.8rem;
+      background-color: var(--burgundy);
+      color: var(--white);
+      padding: 0.6rem;
+      border: none;
+      width: 100%;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.2s;
+    }
+    button:hover {
+      background: var(--rose-pink);
+      color: var(--burgundy);
+    }
+
+    footer {
+      background: linear-gradient(90deg, var(--burgundy) 0%, var(--beige) 100%);
+      color: var(--white);
+      padding: 2rem;
+      margin-top: 3rem;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .footer-col {
+      flex: 1;
+      min-width: 200px;
+      margin: 1rem;
+    }
+
+    .footer-col h4 { margin-bottom: 1rem; color: var(--accent-pink); }
+
+    .footer-col a {
+      display: block;
+      margin: 0.3rem 0;
+      color: var(--beige);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-col a:hover { color: var(--accent-pink); }
+
+    .newsletter input {
+      padding: 0.5rem;
+      width: 70%;
+      margin-right: 0.5rem;
+      border: none;
+      border-radius: 5px;
+      background: var(--cream);
+      color: var(--burgundy);
+    }
+
+    .newsletter button {
+      padding: 0.5rem 1rem;
+      border: none;
+      background: var(--accent-pink);
+      color: var(--burgundy);
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .newsletter button:hover {
+      background: var(--burgundy);
+      color: var(--white);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      color: var(--beige);
+    }
+
+    .pagination {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5rem;
+      margin: 2rem 0;
+    }
+
+    .pagination button {
+      background: var(--cream);
+      border: 2px solid var(--accent-pink);
+      color: var(--burgundy);
+      padding: 0.6rem 1.2rem;
+      margin: 0 0.1rem;
+      border-radius: 50px;
+      cursor: pointer;
+      font-size: 1.05rem;
+      font-weight: 500;
+      box-shadow: 0 2px 8px rgba(214,179,198,0.10);
+      transition: 
+        background 0.2s, 
+        color 0.2s, 
+        border-color 0.2s, 
+        transform 0.15s;
+      outline: none;
+      position: relative;
+    }
+
+    .pagination button:not(:disabled):hover,
+    .pagination button.active {
+      background: var(--accent-pink);
+      color: var(--burgundy);
+      border-color: var(--burgundy);
+      transform: translateY(-2px) scale(1.07);
+      z-index: 1;
+    }
+
+    .pagination button:disabled {
+      background: var(--beige);
+      color: var(--white);
+      border-color: var(--beige);
+      cursor: not-allowed;
+      opacity: 0.7;
+    }
+
+    .pagination button.page-ellipsis {
+      background: transparent;
+      border: none;
+      color: var(--burgundy);
+      cursor: default;
+      font-size: 1.2rem;
+      padding: 0 0.5rem;
+      box-shadow: none;
+      pointer-events: none;
+    }
+
+    /* Back to Top Button - perfectly center arrow */
+    #backToTop {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      z-index: 100;
+      background: var(--burgundy);
+      color: var(--white);
+      border: none;
+      border-radius: 50%;
+      width: 48px;
+      height: 48px;
+      font-size: 2rem;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(110,35,43,0.18);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s, background 0.2s, color 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+    }
+    #backToTop:hover {
+      background: var(--accent-pink);
+      color: var(--burgundy);
+    }
+    #backToTop.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* Modal Styles */
+.modal {
+  display: none; 
+  position: fixed; 
+  z-index: 2000; 
+  left: 0; top: 0; width: 100%; height: 100%;
+  overflow: auto; 
+  background: rgba(0,0,0,0.35);
+}
+.modal-content {
+  background: var(--white);
+  margin: 5% auto; padding: 2rem 2rem 1.5rem 2rem;
+  border-radius: 12px; max-width: 400px; position: relative;
+  box-shadow: 0 4px 24px rgba(110,35,43,0.12);
+  color: var(--burgundy);
+}
+.modal-content h3 { margin-bottom: 1rem; color: var(--accent-pink);}
+.modal-content label { display:block; margin:0.7rem 0 0.2rem;}
+.modal-content input, .modal-content textarea {
+  width: 100%; padding: 0.5rem; border-radius: 5px; border: 1px solid var(--accent-pink);
+  background: var(--cream); color: var(--burgundy); margin-bottom: 0.5rem;
+}
+.modal-content button[type="submit"] {
+  background: var(--burgundy); color: var(--white); border: none; border-radius: 5px;
+  padding: 0.6rem 1.2rem; cursor: pointer; font-size: 1rem; width: 100%;
+  margin-top: 0.5rem;
+}
+.modal-content button[type="submit"]:hover {
+  background: var(--accent-pink); color: var(--burgundy);
+}
+.close {
+  position: absolute; top: 12px; right: 18px; font-size: 2rem; color: var(--accent-pink);
+  cursor: pointer; font-weight: bold;
+}
+.close:hover { color: var(--burgundy); }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <img src="logo.jpg" alt="Her Essence Restored (H.E.R.) Logo" style="height:48px; vertical-align:middle;">
+    <span>Her Essence Restored (H.E.R.)</span>
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="products.html">Products</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="cart.html">Cart</a>
+    </nav>
+  </header>
+
+  <!-- Product Grid -->
+  <section class="product-grid" id="productGrid"></section>
+  <div class="pagination" id="pagination" style="text-align:center; margin-bottom:2rem;"></div>
+
+  <!-- Customer Reviews & Photos Section -->
+  <section id="reviews" style="background: var(--beige); padding: 2.5rem 0; margin: 2rem 0;">
+    <div style="max-width: 1100px; margin: 0 auto;">
+      <h2 style="color: var(--burgundy); text-align: center; margin-bottom: 1.5rem;">Customer Reviews &amp; Photos</h2>
+      <div id="reviewGrid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem;">
+        <!-- Example reviews, you can add more or make dynamic later -->
+        <div style="background: var(--white); border-radius: 10px; box-shadow: 0 2px 8px rgba(110,35,43,0.08); padding: 1.2rem;">
+          <div style="display: flex; align-items: center; gap: 1rem;">
+            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Customer" style="width:56px; height:56px; border-radius:50%; object-fit:cover;">
+            <div>
+              <strong style="color: var(--burgundy);">Maria K.</strong>
+              <div style="color: gold; font-size: 1.1rem;">★★★★★</div>
+            </div>
+          </div>
+          <p style="margin: 1rem 0 0.5rem;">Absolutely love my Classic Vintage Dress! The fit is perfect and the fabric feels luxurious. Will definitely order again.</p>
+          <img src="https://via.placeholder.com/320x180?text=Maria's+Dress" alt="Customer Photo" style="width:100%; border-radius:8px; margin-top:0.5rem;">
+        </div>
+        <div style="background: var(--white); border-radius: 10px; box-shadow: 0 2px 8px rgba(110,35,43,0.08); padding: 1.2rem;">
+          <div style="display: flex; align-items: center; gap: 1rem;">
+            <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Customer" style="width:56px; height:56px; border-radius:50%; object-fit:cover;">
+            <div>
+              <strong style="color: var(--burgundy);">Lydia S.</strong>
+              <div style="color: gold; font-size: 1.1rem;">★★★★★</div>
+            </div>
+          </div>
+          <p style="margin: 1rem 0 0.5rem;">The Braided Wig is stunning and looks so natural. Shipping was fast and customer service was amazing!</p>
+          <img src="https://via.placeholder.com/320x180?text=Lydia's+Wig" alt="Customer Photo" style="width:100%; border-radius:8px; margin-top:0.5rem;">
+        </div>
+        <div style="background: var(--white); border-radius: 10px; box-shadow: 0 2px 8px rgba(110,35,43,0.08); padding: 1.2rem;">
+          <div style="display: flex; align-items: center; gap: 1rem;">
+            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Customer" style="width:56px; height:56px; border-radius:50%; object-fit:cover;">
+            <div>
+              <strong style="color: var(--burgundy);">James T.</strong>
+              <div style="color: gold; font-size: 1.1rem;">★★★★☆</div>
+            </div>
+          </div>
+          <p style="margin: 1rem 0 0.5rem;">Bought the Fedora Hat for my wife—she loved it! Great quality, just wish there were more color options.</p>
+          <img src="https://via.placeholder.com/320x180?text=James+Fedora" alt="Customer Photo" style="width:100%; border-radius:8px; margin-top:0.5rem;">
+        </div>
+      </div>
+      <div style="text-align:center; margin-top:2rem;">
+        <button id="openReviewModal"
+          style="background: var(--accent-pink); color: var(--burgundy); padding: 0.3rem 0.8rem; border-radius: 5px; font-weight: 500; border: none; cursor: pointer; font-size: 0.95rem; transition: background 0.2s; min-width: unset; width: auto; display: inline-block;">
+          Share Your Review
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Order Section (place after pagination, before footer) -->
+  <section style="text-align:center; margin: 2rem 0;">
+    <h2>Place a Custom Order</h2>
+    <p>Want something special or have a bulk request? Let us know!</p>
+    <button id="openOrderModal" style="max-width:220px;">Order Now</button>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-col">
+        <h4>About Us</h4>
+        <p>Her Essence Restored (H.E.R.) brings timeless elegance to modern fashion. Discover curated styles from across the decades.</p>
+      </div>
+      <div class="footer-col">
+  <h4>Follow Us</h4>
+  <a href="https://www.instagram.com/her_essence_restored?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7.75 2h8.5A5.25 5.25 0 0121.5 7.25v8.5A5.25 5.25 0 0116.25 21H7.75A5.25 5.25 0 012.5 15.75v-8.5A5.25 5.25 0 017.75 2z" />
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16.5 7.5h.008v.008H16.5V7.5zM12 8.75a3.25 3.25 0 100 6.5 3.25 3.25 0 000-6.5z" />
+    </svg>
+    Instagram
+  </a>
+  <a href="https://www.facebook.com" target="_blank">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3.5l.5-4H14V7a1 1 0 011-1h3V2z" />
+    </svg>
+    Facebook
+  </a>
+  <a href="https://www.pinterest.com" target="_blank">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.29 20.251c.7-1.2.94-2.1 1.4-3.8.3 1.2 2.1 2.2 3.8 2.2 3.3 0 5.5-2.4 5.5-5.4 0-2.9-2.4-5.2-5.4-5.2-3.8 0-5.7 2.7-5.7 5.6 0 1.4.7 3.1 1.8 3.6.2.1.3 0 .4-.1.1-.1.3-.4.3-.5.1-.2.1-.3 0-.5-.2-.4-.4-.9-.4-1.5 0-2.1 1.6-4.1 4.3-4.1 2.3 0 3.9 1.5 3.9 3.7 0 2.4-1.3 4.2-3.2 4.2-.9 0-1.6-.7-1.4-1.6.3-1.2.8-2.5.8-3.4 0-.8-.4-1.5-1.3-1.5-1 0-1.8 1-1.8 2.4 0 .9.3 1.5.3 1.5l-1.2 5.1c-.2.8-.3 1.7-.3 2.5" />
+    </svg>
+    Pinterest
+  </a>
+  <a href="https://www.tiktok.com" target="_blank">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19a4 4 0 100-8 4 4 0 000 8zM16 3v5.5a4.5 4.5 0 01-4.5 4.5H9" />
+    </svg>
+    TikTok
+  </a>
+</div>
+      <div class="footer-col newsletter">
+        <h4>Newsletter</h4>
+        <p>Sign up for exclusive updates:</p>
+        <input type="email" placeholder="Your email" />
+        <button>Subscribe</button>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2025 Her Essence Restored (H.E.R.). All rights reserved.
+    </div>
+  </footer>
+
+  <button id="backToTop" title="Back to Top">&#8679;</button>
+
+  <!-- Order Modal (place at end of body, before scripts) -->
+<div id="orderModal" class="modal">
+  <div class="modal-content">
+    <span class="close" id="closeOrderModal">&times;</span>
+    <h3>Order Form</h3>
+    <form id="orderForm">
+      <label for="orderName">Name:</label>
+      <input type="text" id="orderName" name="orderName" required />
+
+      <label for="orderEmail">Email:</label>
+      <input type="email" id="orderEmail" name="orderEmail" required />
+
+      <label for="contactMethod">Preferred Method of Contact:</label>
+      <select id="contactMethod" name="contactMethod" required>
+        <option value="Email">Email</option>
+        <option value="Phone">Phone</option>
+      </select>
+
+      <div id="phoneField" style="display:none;">
+        <label for="orderPhone">Phone Number:</label>
+        <input type="tel" id="orderPhone" name="orderPhone" pattern="^[0-9+\s()-]{7,}$" placeholder="e.g. +264 81 234 5678" />
+      </div>
+
+      <label for="orderProduct">Preferred Product(s):</label>
+      <input type="text" id="orderProduct" name="orderProduct" placeholder="e.g. Classic Vintage Dress, 2x Braided Wig" required />
+
+      <label for="orderNotes">Order Notes:</label>
+      <textarea id="orderNotes" name="orderNotes" rows="3" placeholder="Any special requests or details?"></textarea>
+
+      <button type="submit" style="margin-top:1rem;">Submit Order</button>
+    </form>
+    <div id="orderSuccess" style="display:none; color:var(--accent-pink); margin-top:1rem;">
+      Thank you! Your order has been received and we will contact you via your preferred method.
+    </div>
+  </div>
+</div>
+
+  <!-- Review Modal (place before closing </body>) -->
+<div id="reviewModal" class="modal">
+  <div class="modal-content">
+    <span class="close" id="closeReviewModal">&times;</span>
+    <h3>Share Your Review</h3>
+    <form id="reviewForm">
+      <label for="reviewName">Name:</label>
+      <input type="text" id="reviewName" name="reviewName" required />
+
+      <label for="reviewEmail">Email:</label>
+      <input type="email" id="reviewEmail" name="reviewEmail" required />
+
+      <label for="reviewStars">Your Rating:</label>
+      <div id="starRating" style="font-size:1.5rem; margin-bottom:0.7rem;">
+        <span class="star" data-value="1">&#9734;</span>
+        <span class="star" data-value="2">&#9734;</span>
+        <span class="star" data-value="3">&#9734;</span>
+        <span class="star" data-value="4">&#9734;</span>
+        <span class="star" data-value="5">&#9734;</span>
+        <input type="hidden" id="reviewStars" name="reviewStars" value="0" required />
+      </div>
+
+      <label for="reviewText">Your Review:</label>
+      <textarea id="reviewText" name="reviewText" rows="3" required></textarea>
+
+      <label for="reviewPhoto">Photo (optional):</label>
+      <input type="file" id="reviewPhoto" name="reviewPhoto" accept="image/*" />
+
+      <button type="submit" style="margin-top:1rem;">Submit Review</button>
+    </form>
+    <div id="reviewSuccess" style="display:none; color:var(--accent-pink); margin-top:1rem;">
+      Thank you! Your review has been submitted.
+    </div>
+  </div>
+</div>
+
+  <script>
+    const products = [
+      {
+        id: 1,
+        name: "Classic Vintage Dress",
+        price: 79.99,
+        image: "https://via.placeholder.com/400x500?text=Vintage+Dress",
+        stock: 10
+      },
+      {
+        id: 2,
+        name: "Retro Polka Skirt",
+        price: 49.99,
+        image: "https://via.placeholder.com/400x500?text=Polka+Skirt",
+        stock: 0
+      },
+      {
+        id: 3,
+        name: "Modern Chic Gown",
+        price: 99.99,
+        image: "https://via.placeholder.com/400x500?text=Chic+Gown",
+        stock: 5
+      },
+      {
+        id: 4,
+        name: "African Kente Wrap",
+        price: 59.99,
+        image: "https://via.placeholder.com/400x500?text=Kente+Wrap",
+        stock: 8
+      },
+      {
+        id: 5,
+        name: "Elegant Vintage Coat",
+        price: 120.00,
+        image: "https://via.placeholder.com/400x500?text=Vintage+Coat",
+        stock: 3
+      },
+      {
+        id: 6,
+        name: "Curly Lace Front Wig",
+        price: 150.00,
+        image: "https://via.placeholder.com/400x500?text=Curly+Wig",
+        stock: 7
+      },
+      {
+        id: 7,
+        name: "Straight Human Hair Wig",
+        price: 200.00,
+        image: "https://via.placeholder.com/400x500?text=Straight+Wig",
+        stock: 2
+      },
+      {
+        id: 8,
+        name: "Short Bob Wig",
+        price: 120.00,
+        image: "https://via.placeholder.com/400x500?text=Bob+Wig",
+        stock: 0
+      },
+      {
+        id: 9,
+        name: "Braided Wig",
+        price: 180.00,
+        image: "https://via.placeholder.com/400x500?text=Braided+Wig",
+        stock: 4
+      },
+      {
+        id: 10,
+        name: "Boho Maxi Dress",
+        price: 89.99,
+        image: "https://via.placeholder.com/400x500?text=Boho+Maxi+Dress",
+        stock: 6
+      },
+      {
+        id: 11,
+        name: "Denim Jacket",
+        price: 69.99,
+        image: "https://via.placeholder.com/400x500?text=Denim+Jacket",
+        stock: 5
+      },
+      {
+        id: 12,
+        name: "Silk Scarf",
+        price: 29.99,
+        image: "https://via.placeholder.com/400x500?text=Silk+Scarf",
+        stock: 10
+      },
+      {
+        id: 13,
+        name: "Patterned Palazzo Pants",
+        price: 54.99,
+        image: "https://via.placeholder.com/400x500?text=Palazzo+Pants",
+        stock: 8
+      },
+      {
+        id: 14,
+        name: "Embroidered Kimono",
+        price: 99.99,
+        image: "https://via.placeholder.com/400x500?text=Kimono",
+        stock: 3
+      },
+      {
+        id: 15,
+        name: "Statement Earrings",
+        price: 19.99,
+        image: "https://via.placeholder.com/400x500?text=Earrings",
+        stock: 15
+      },
+      {
+        id: 16,
+        name: "Classic Fedora Hat",
+        price: 39.99,
+        image: "https://via.placeholder.com/400x500?text=Fedora+Hat",
+        stock: 0
+      },
+      {
+        id: 17,
+        name: "Chunky Knit Sweater",
+        price: 59.99,
+        image: "https://via.placeholder.com/400x500?text=Knit+Sweater",
+        stock: 4
+      },
+      {
+        id: 18,
+        name: "Pleated Midi Skirt",
+        price: 44.99,
+        image: "https://via.placeholder.com/400x500?text=Midi+Skirt",
+        stock: 7
+      }
+    ];
+
+    // Only keep NAD exchange rate
+    const NAD_RATE = 18; // 1 USD = 18 NAD
+
+    const productGrid = document.getElementById("productGrid");
+    const pagination = document.getElementById("pagination");
+
+    // Pagination settings
+    const totalPages = 3;
+    const productsPerPage = 6;
+    let currentPage = 1;
+
+    function renderProducts(page = currentPage) {
+      currentPage = page;
+      productGrid.innerHTML = "";
+
+      // Calculate start/end index for current page
+      const startIdx = (page - 1) * productsPerPage;
+      const endIdx = Math.min(startIdx + productsPerPage, products.length);
+
+      products.slice(startIdx, endIdx).forEach(product => {
+        const card = document.createElement("div");
+        card.className = "product-card";
+        let price = `${(product.price * NAD_RATE).toFixed(2)} NAD`;
+        card.innerHTML = `
+          <img src="${product.image}" alt="${product.name}" />
+          <div class="product-info">
+            <h3>${product.name}</h3>
+            <div class="price">Price: ${price}</div>
+            <label>Size:</label>
+            <select id="size-${product.id}">
+              <option value="S">S</option>
+              <option value="M">M</option>
+              <option value="L">L</option>
+              <option value="XL">XL</option>
+            </select>
+            <label>Color:</label>
+            <select id="color-${product.id}">
+              <option value="Red">Red</option>
+              <option value="Black">Black</option>
+              <option value="Blue">Blue</option>
+              <option value="White">White</option>
+            </select>
+            <label>Quantity:</label>
+            <input type="number" id="qty-${product.id}" min="1" value="1"/>
+            <button onclick="addToCart(${product.id})" ${product.stock === 0 ? 'disabled style="opacity:0.5;cursor:not-allowed;"' : ''}>
+              ${product.stock === 0 ? 'Out of Stock' : 'Add to Cart'}
+            </button>
+          </div>
+        `;
+        productGrid.appendChild(card);
+      });
+
+      renderPagination();
+    }
+
+    function renderPagination() {
+      let html = '';
+      html += `<button onclick="goToPage(${currentPage - 1})" ${currentPage === 1 ? 'disabled' : ''} aria-label="Previous Page">&laquo;</button>`;
+
+      for (let i = 1; i <= totalPages; i++) {
+        if (
+          i === 1 ||
+          i === totalPages ||
+          Math.abs(i - currentPage) <= 1
+        ) {
+          html += `<button onclick="goToPage(${i})" class="${i === currentPage ? 'active' : ''}" ${i === currentPage ? 'aria-current="page"' : ''}>${i}</button>`;
+        } else if (
+          (i === currentPage - 2 && currentPage > 3) ||
+          (i === currentPage + 2 && currentPage < totalPages - 2)
+        ) {
+          html += `<button class="page-ellipsis" disabled>…</button>`;
+        }
+      }
+
+      html += `<button onclick="goToPage(${currentPage + 1})" ${currentPage === totalPages ? 'disabled' : ''} aria-label="Next Page">&raquo;</button>`;
+      pagination.innerHTML = html;
+    }
+
+    function goToPage(page) {
+      if (page < 1 || page > totalPages) return;
+      renderProducts(page);
+      window.scrollTo({ top: productGrid.offsetTop - 20, behavior: 'smooth' });
+    }
+
+    // Initial render
+    renderProducts();
+  </script>
+
+  <script>
+    function addToCart(productId) {
+      const product = products.find(p => p.id === productId);
+      if (product) {
+        // Get selected options
+        const size = document.getElementById(`size-${product.id}`).value;
+        const color = document.getElementById(`color-${product.id}`).value;
+        const qty = parseInt(document.getElementById(`qty-${product.id}`).value, 10) || 1;
+        const priceNAD = (product.price * NAD_RATE).toFixed(2);
+
+        // Prepare cart item with all details
+        const cartItem = {
+          id: product.id,
+          name: product.name,
+          image: product.image,
+          size,
+          color,
+          qty,
+          priceNAD: parseFloat(priceNAD),
+          
+          stock: product.stock
+        };
+
+        // Retrieve existing cart or initialize
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+        // Check if same item (id, size, color) exists
+        const existingIndex = cart.findIndex(item =>
+          item.id === cartItem.id &&
+          item.size === cartItem.size &&
+          item.color === cartItem.color
+        );
+        if (existingIndex > -1) {
+          // Update quantity
+          cart[existingIndex].qty += cartItem.qty;
+        } else {
+          cart.push(cartItem);
+        }
+
+        localStorage.setItem("cart", JSON.stringify(cart));
+
+        alert(`${product.name} (${size}, ${color}, Qty: ${qty}) has been added to your cart.`);
+      } else {
+        alert("Product not found.");
+      }
+    }
+  </script>
+
+  <script>
+  // Show/hide Back to Top button
+  const backToTopBtn = document.getElementById("backToTop");
+  window.addEventListener("scroll", function() {
+    if (window.scrollY > 300) {
+      backToTopBtn.classList.add("show");
+    } else {
+      backToTopBtn.classList.remove("show");
+    }
+  });
+  backToTopBtn.addEventListener("click", function() {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+</script>
+
+<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script>
+  (function(){
+    emailjs.init("AldNcIkwOxxOsCVGU"); // Replace with your EmailJS public key
+  })();
+</script>
+
+<script>
+  // Show/hide phone field based on contact method
+  const contactMethod = document.getElementById('contactMethod');
+  const phoneField = document.getElementById('phoneField');
+  contactMethod.addEventListener('change', function() {
+    if (this.value === 'Phone') {
+      phoneField.style.display = 'block';
+      document.getElementById('orderPhone').required = true;
+    } else {
+      phoneField.style.display = 'none';
+      document.getElementById('orderPhone').required = false;
+    }
+  });
+
+  // Modal logic with EmailJS integration
+  const orderModal = document.getElementById('orderModal');
+  const openOrderModalBtn = document.getElementById('openOrderModal');
+  const closeOrderModalBtn = document.getElementById('closeOrderModal');
+  const orderForm = document.getElementById('orderForm');
+  const orderSuccess = document.getElementById('orderSuccess');
+
+  openOrderModalBtn.onclick = function() {
+    orderModal.style.display = "block";
+    orderForm.style.display = "block";
+    orderSuccess.style.display = "none";
+  }
+  closeOrderModalBtn.onclick = function() {
+    orderModal.style.display = "none";
+  }
+  window.onclick = function(event) {
+    if (event.target == orderModal) {
+      orderModal.style.display = "none";
+    }
+  }
+    orderForm.onsubmit = function(e) {
+  e.preventDefault();
+  emailjs.sendForm("service_3y925xa","template_vaozzff", orderForm)
+    .then(function() {
+      orderForm.style.display = "none";
+      orderSuccess.style.display = "block";
+      setTimeout(() => {
+        orderModal.style.display = "none";
+        orderForm.reset();
+      }, 2000);
+    }, function(error) {
+      alert('Failed to send order: ' + JSON.stringify(error));
+    });
+}
+  </script>
+
+  <script>
+  // Star rating logic
+  const starRating = document.getElementById('starRating');
+  const stars = starRating.querySelectorAll('.star');
+  const reviewStarsInput = document.getElementById('reviewStars');
+  let selectedStars = 0;
+
+  stars.forEach(star => {
+    star.addEventListener('mouseover', function() {
+      highlightStars(this.dataset.value);
+    });
+    star.addEventListener('mouseout', function() {
+      highlightStars(selectedStars);
+    });
+    star.addEventListener('click', function() {
+      selectedStars = this.dataset.value;
+      reviewStarsInput.value = selectedStars;
+      highlightStars(selectedStars);
+    });
+  });
+
+  function highlightStars(count) {
+    stars.forEach(star => {
+      star.innerHTML = star.dataset.value <= count ? '&#9733;' : '&#9734;';
+      star.style.color = star.dataset.value <= count ? 'gold' : '#bbb';
+      star.style.cursor = 'pointer';
+    });
+  }
+  highlightStars(0);
+
+  // Review Modal logic
+  const reviewModal = document.getElementById('reviewModal');
+  const openReviewModalBtn = document.getElementById('openReviewModal');
+  const closeReviewModalBtn = document.getElementById('closeReviewModal');
+  const reviewForm = document.getElementById('reviewForm');
+  const reviewSuccess = document.getElementById('reviewSuccess');
+  const reviewGrid = document.getElementById('reviewGrid');
+
+  // Load reviews from localStorage
+  function loadReviews() {
+    const reviews = JSON.parse(localStorage.getItem('reviews') || '[]');
+    reviewGrid.innerHTML = '';
+    reviews.forEach(review => {
+      const reviewDiv = document.createElement('div');
+      reviewDiv.style.background = 'var(--white)';
+      reviewDiv.style.borderRadius = '10px';
+      reviewDiv.style.boxShadow = '0 2px 8px rgba(110,35,43,0.08)';
+      reviewDiv.style.padding = '1.2rem';
+
+      // Stars
+      let starsHtml = '';
+      for (let i = 1; i <= 5; i++) {
+        starsHtml += `<span style="color:gold; font-size:1.1rem;">${i <= review.stars ? '&#9733;' : '&#9734;'}</span>`;
+      }
+
+      // Photo
+      let photoHtml = '';
+      if (review.photo) {
+        photoHtml = `<img src="${review.photo}" alt="Customer Photo" style="width:100%; border-radius:8px; margin-top:0.5rem;">`;
+      }
+
+      reviewDiv.innerHTML = `
+        <div style="display: flex; align-items: center; gap: 1rem;">
+          <img src="https://randomuser.me/api/portraits/lego/${Math.floor(Math.random()*10)}.jpg" alt="Customer" style="width:56px; height:56px; border-radius:50%; object-fit:cover;">
+          <div>
+            <strong style="color: var(--burgundy);">${review.name}</strong>
+            <div>${starsHtml}</div>
+          </div>
+        </div>
+        <p style="margin: 1rem 0 0.5rem;">${review.text}</p>
+        ${photoHtml}
+      `;
+      reviewGrid.appendChild(reviewDiv);
+    });
+    // Optionally, append your static reviews after dynamic ones
+  }
+  loadReviews();
+
+  openReviewModalBtn.onclick = function() {
+    reviewModal.style.display = "block";
+    reviewForm.style.display = "block";
+    reviewSuccess.style.display = "none";
+  }
+  closeReviewModalBtn.onclick = function() {
+    reviewModal.style.display = "none";
+  }
+  window.addEventListener('click', function(event) {
+    if (event.target == reviewModal) {
+      reviewModal.style.display = "none";
+    }
+  });
+
+  reviewForm.onsubmit = function(e) {
+    e.preventDefault();
+    // Validate stars
+    if (parseInt(reviewStarsInput.value, 10) < 1) {
+      alert('Please select a star rating.');
+      return;
+    }
+    // Get form values
+    const name = document.getElementById('reviewName').value;
+    const email = document.getElementById('reviewEmail').value;
+    const stars = parseInt(reviewStarsInput.value, 10);
+    const text = document.getElementById('reviewText').value;
+    const photoInput = document.getElementById('reviewPhoto');
+    let photoData = "";
+
+    // Handle photo upload (as DataURL)
+    if (photoInput.files && photoInput.files[0]) {
+      const reader = new FileReader();
+      reader.onload = function(evt) {
+        photoData = evt.target.result;
+        saveReview({ name, email, stars, text, photo: photoData });
+      };
+      reader.readAsDataURL(photoInput.files[0]);
+    } else {
+      saveReview({ name, email, stars, text, photo: "" });
+    }
+  };
+
+  function saveReview(review) {
+    // Save to localStorage
+    const reviews = JSON.parse(localStorage.getItem('reviews') || '[]');
+    reviews.unshift(review); // Add new review to the top
+    localStorage.setItem('reviews', JSON.stringify(reviews));
+    loadReviews();
+    reviewForm.style.display = "none";
+    reviewSuccess.style.display = "block";
+    setTimeout(() => {
+      reviewModal.style.display = "none";
+      reviewForm.reset();
+      highlightStars(0);
+      reviewForm.style.display = "block";
+      reviewSuccess.style.display = "none";
+    }, 2000);
+  }
+</script>
+
+  <!-- Live Chat Widget (Tawk.to example, you can use your own provider) -->
+  <script type="text/javascript">
+  var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+  (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/65e5c2e98d261e1b5f6b3b7a/1hoqkqj6b'; // Replace with your Tawk.to property ID
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+  })();
+  </script>
+</body>
+</html>

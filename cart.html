@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cart - Her Essence Restored (H.E.R.)</title>
+  <style>
+    :root {
+      --her-blush: #e6bfc7;
+      --her-mauve: #b98a97;
+      --her-dark: #7a2c35;
+      --her-light: #f5e7e3;
+      --her-accent: #c7a08a;
+      --her-white: #fff;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Times New Roman', Times, serif; }
+    body { background: linear-gradient(90deg, var(--her-light) 0%, var(--her-dark) 50%, var(--her-accent) 100%); color: var(--her-dark); padding: 5rem 2rem 2rem 2rem; }
+    header { background: rgba(255,255,255,0.95); border-bottom: 1px solid var(--her-accent); width: 100%; position: fixed; top: 0; left: 0; box-sizing: border-box; z-index: 10; padding: 0.5rem 2rem; }
+    .logo { display: flex; align-items: center; justify-content: space-between; }
+    .logo-left { display: flex; align-items: center; }
+    .logo img { width: 50px; height: 50px; margin-right: 0.5rem; }
+    .logo span { font-size: 1.8rem; font-weight: bold; color: var(--her-dark); }
+    nav { display: flex; align-items: center; margin-left: 2rem; }
+    nav a { margin: 0 1rem; color: var(--her-dark); text-decoration: none; font-weight: 500; }
+    .cart-container { max-width: 1000px; margin: 2rem auto; padding: 1rem; background: rgba(255,255,255,0.98); border-radius: 8px; box-shadow: 0 2px 10px rgba(122,44,53,0.07); }
+    .cart-container h2 { margin-bottom: 1rem; color: var(--her-dark); }
+    .cart-item { border-bottom: 1px solid var(--her-accent); }
+    .cart-item img { width: 100px; height: 120px; object-fit: cover; margin-right: 1rem; }
+    .cart-item h3 { margin: 0; }
+    .cart-item p { margin: 0.5rem 0; }
+    .item-details { flex: 2; display: flex; align-items: center; }
+    .item-info { display: flex; flex-direction: column; }
+    .item-info h4 { margin-bottom: 0.5rem; }
+    .item-info p { font-size: 0.9rem; color: #555; }
+    .item-actions { display: flex; align-items: center; gap: 1rem; }
+    .item-actions select, .item-actions input { padding: 0.3rem; border: 1px solid #ccc; border-radius: 4px; }
+    .item-actions button, .checkout-btn, .newsletter button { background-color: var(--her-dark); color: var(--her-white); }
+    .item-actions button:hover, .checkout-btn:hover, .newsletter button:hover { background-color: var(--her-mauve); }
+    .checkout-btn { background-color: var(--her-dark); }
+    .checkout-btn:hover { background-color: var(--her-mauve); }
+    .cart-total { text-align: right; margin-top: 1rem; font-size: 1.2rem; font-weight: bold; }
+    .checkout-btn { margin-top: 1rem; background-color: var(--her-dark); color: white; padding: 0.8rem 1.5rem; border: none; border-radius: 5px; cursor: pointer; font-size: 1rem; }
+    .checkout-btn:hover { background-color: var(--her-mauve); }
+    footer {
+      background: var(--her-light);
+      color: var(--her-dark);
+      border-top: 1px solid var(--her-accent);
+      padding-top: 2rem;
+      margin-top: 3rem;
+    }
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      background: none;
+    }
+    .footer-col {
+      flex: 1;
+      min-width: 200px;
+      margin: 1rem;
+    }
+    .footer-col h4 {
+      margin-bottom: 1rem;
+      color: var(--her-dark);
+    }
+    .footer-col a {
+      color: var(--her-mauve);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .footer-col a:hover {
+      color: var(--her-dark);
+    }
+    .newsletter input {
+      padding: 0.5rem;
+      width: 70%;
+      margin-right: 0.5rem;
+      border: 1px solid var(--her-accent);
+      border-radius: 5px;
+      background: var(--her-white);
+      color: var(--her-dark);
+    }
+    .newsletter button {
+      padding: 0.5rem 1rem;
+      border: none;
+      background: var(--her-mauve);
+      color: var(--her-white);
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .newsletter button:hover {
+      background: var(--her-dark);
+      color: var(--her-white);
+    }
+    .footer-bottom {
+      color: var(--her-accent);
+      text-align: center;
+      margin-top: 1.5rem;
+      font-size: 0.95rem;
+    }
+    #backToTop { display: none; position: fixed; bottom: 2rem; right: 2rem; z-index: 100; background: linear-gradient(90deg, var(--her-dark) 0%, var(--her-accent) 100%); color: var(--her-white); border: none; border-radius: 50%; width: 48px; height: 48px; font-size: 2rem; cursor: pointer; box-shadow: 0 2px 8px rgba(122,44,53,0.15); transition: background 0.3s, box-shadow 0.3s; }
+    #backToTop:hover { background: linear-gradient(90deg, var(--her-mauve) 0%, var(--her-light) 100%); color: var(--her-dark); }
+    /* Custom button colors for Clear Cart and Undo */
+    #clearCartButton { background: var(--her-mauve); }
+    #undoButton { background: var(--her-accent); color: var(--her-dark); }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <div class="logo-left">
+        <img src="logo.jpg" alt="H.E.R. Logo">
+        <span>Her Essence Restored (H.E.R.)</span>
+      </div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        
+      </nav>
+    </div>
+  </header>
+
+  <!-- Cart Section -->
+  <section class="cart-container">
+    <h2>Your Shopping Cart</h2>
+    <div id="cartItems"></div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Image</th>
+          <th>Name</th>
+          <th>Size</th>
+          <th>Color</th>
+          <th>Qty</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody id="cartTableBody"></tbody>
+    </table>
+    <div style="text-align:right;margin-top:1rem;">
+      <strong>Total: <span id="cartTotal">0.00</span></strong>
+    </div>
+    <button id="checkoutButton" class="checkout-btn">Proceed to Checkout</button>
+    <button id="clearCartButton" class="checkout-btn" style="margin-left:1rem;">Clear Cart</button>
+    <button id="undoButton" class="checkout-btn" style="margin-left:1rem;">Undo</button>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-col">
+        <h4>About Us</h4>
+        <p>Her Essence Restored (H.E.R.) brings timeless elegance to modern fashion. Discover curated styles from across the decades.</p>
+      </div>
+      <div class="footer-col">
+  <h4>Follow Us</h4>
+  <a href="https://www.instagram.com/her_essence_restored?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7.75 2h8.5A5.25 5.25 0 0121.5 7.25v8.5A5.25 5.25 0 0116.25 21H7.75A5.25 5.25 0 012.5 15.75v-8.5A5.25 5.25 0 017.75 2z" />
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16.5 7.5h.008v.008H16.5V7.5zM12 8.75a3.25 3.25 0 100 6.5 3.25 3.25 0 000-6.5z" />
+    </svg>
+    Instagram
+  </a>
+  <a href="https://www.facebook.com" target="_blank">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3.5l.5-4H14V7a1 1 0 011-1h3V2z" />
+    </svg>
+    Facebook
+  </a>
+  <a href="https://www.pinterest.com" target="_blank">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.29 20.251c.7-1.2.94-2.1 1.4-3.8.3 1.2 2.1 2.2 3.8 2.2 3.3 0 5.5-2.4 5.5-5.4 0-2.9-2.4-5.2-5.4-5.2-3.8 0-5.7 2.7-5.7 5.6 0 1.4.7 3.1 1.8 3.6.2.1.3 0 .4-.1.1-.1.3-.4.3-.5.1-.2.1-.3 0-.5-.2-.4-.4-.9-.4-1.5 0-2.1 1.6-4.1 4.3-4.1 2.3 0 3.9 1.5 3.9 3.7 0 2.4-1.3 4.2-3.2 4.2-.9 0-1.6-.7-1.4-1.6.3-1.2.8-2.5.8-3.4 0-.8-.4-1.5-1.3-1.5-1 0-1.8 1-1.8 2.4 0 .9.3 1.5.3 1.5l-1.2 5.1c-.2.8-.3 1.7-.3 2.5" />
+    </svg>
+    Pinterest
+  </a>
+  <a href="https://www.tiktok.com" target="_blank">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19a4 4 0 100-8 4 4 0 000 8zM16 3v5.5a4.5 4.5 0 01-4.5 4.5H9" />
+    </svg>
+    TikTok
+  </a>
+  <a href="returns.html">Returns Policy</a>
+</div>
+      <div class="footer-col newsletter">
+        <h4>Newsletter</h4>
+        <p>Sign up for exclusive updates:</p>
+        <input type="email" placeholder="Your email" />
+        <button>Subscribe</button>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2025 Her Essence Restored (H.E.R.). All rights reserved.
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button id="backToTop" title="Back to Top">&#8679;</button>
+
+  <!-- JavaScript -->
+  <script>
+/* --- Cart Page Logic --- */
+let lastCartBackup = null;
+
+function getCart() {
+  return JSON.parse(localStorage.getItem("cart")) || [];
+}
+function setCart(cart) {
+  localStorage.setItem("cart", JSON.stringify(cart));
+}
+
+function renderCartTable() {
+  const cart = getCart();
+  const cartTable = document.getElementById("cartTableBody");
+  const cartTotal = document.getElementById("cartTotal");
+  cartTable.innerHTML = "";
+  let total = 0;
+
+  if (cart.length === 0) {
+    cartTable.innerHTML = `<tr><td colspan="6" style="text-align:center;">Your cart is empty.</td></tr>`;
+    cartTotal.textContent = "0.00 NAD";
+    return;
+  }
+
+  cart.forEach(item => {
+    const row = document.createElement("tr");
+    row.innerHTML = `
+      <td><img src="${item.image}" alt="${item.name}" style="width:60px;height:80px;object-fit:cover;border-radius:6px;"></td>
+      <td>${item.name}</td>
+      <td>${item.size}</td>
+      <td>${item.color}</td>
+      <td>${item.qty}</td>
+      <td>${(item.priceNAD * item.qty).toFixed(2)} NAD</td>
+    `;
+    cartTable.appendChild(row);
+    total += item.priceNAD * item.qty;
+  });
+
+  cartTotal.textContent = total.toFixed(2) + " NAD";
+}
+
+function showMsg(msg, color = "#a05c68") {
+  // No promo code, so no discountMsg element
+  alert(msg);
+}
+
+function clearCart() {
+  const cart = getCart();
+  if (cart.length === 0) return;
+  lastCartBackup = cart;
+  localStorage.setItem("lastCartBackup", JSON.stringify(cart));
+  setCart([]);
+  renderCartTable();
+  showMsg("Cart cleared. You can undo.", "orange");
+}
+
+function undoCart() {
+  let backup = lastCartBackup || JSON.parse(localStorage.getItem("lastCartBackup"));
+  if (!backup || backup.length === 0) {
+    showMsg("Nothing to undo.", "red");
+    return;
+  }
+  setCart(backup);
+  renderCartTable();
+  showMsg("Cart restored.", "green");
+}
+
+function proceedCheckout() {
+  const cart = getCart();
+  if (cart.length === 0) {
+    alert("Your cart is empty.");
+    return;
+  }
+  let total = 0;
+  cart.forEach(item => total += item.priceNAD * item.qty);
+  alert(
+    "Thank you for shopping with H.E.R.!\n\n" +
+    "Items: " + cart.length +
+    "\nTotal: N$" + total.toFixed(2) +
+    "\n\n(This is a demo. No payment processed.)"
+  );
+  setCart([]);
+  renderCartTable();
+}
+
+// Back to Top button logic
+window.addEventListener("scroll", function() {
+  document.getElementById("backToTop").style.display =
+    window.scrollY > 200 ? "block" : "none";
+});
+document.getElementById("backToTop").onclick = function() {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+};
+
+// Event listeners
+document.addEventListener("DOMContentLoaded", function() {
+  renderCartTable();
+  document.getElementById("clearCartButton").onclick = clearCart;
+  document.getElementById("undoButton").onclick = undoCart;
+  document.getElementById("checkoutButton").onclick = proceedCheckout;
+});
+  </script>
+</body>
+</html>

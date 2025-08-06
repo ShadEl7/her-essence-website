@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us - Her Essence Restored (H.E.R.)</title>
+  <style>
+    /* General Styling */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Times New Roman', Times, serif;
+    }
+
+    :root {
+      --primary: #6e232d;         /* Deep burgundy (keep for accents) */
+      --background: #fff;         /* White background as in logo */
+      --accent: #d6aab4;          /* Soft blush pink from the wings */
+      --mauve: #b98a98;           /* Muted mauve for subtle backgrounds */
+      --text: #222;               /* Black for main text (matches logo text) */
+      --footer-text: #fff;        /* White for footer text */
+      --footer-link: #d6aab4;     /* Blush pink for links */
+      --footer-bottom: #f5e7e0;   /* Light beige for footer bottom */
+    }
+
+    body {
+      background: var(--background);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* Header Styling */
+    header {
+      background: #f5e7e0;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #eee;
+    }
+    .logo {
+      font-size: 2rem;
+      font-weight: bold;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+    }
+    .logo span {
+      margin-left: 0.5rem;
+    }
+    nav a {
+      margin: 0 1rem;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav a:hover {
+      color: var(--primary);
+    }
+    .language-selector select,
+    .language-selector button {
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    /* About Section Styling */
+    .about-section {
+      padding: 3rem 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .about-section h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: var(--primary);
+      text-align: center;
+    }
+    .about-section p {
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+      text-align: justify;
+    }
+
+    /* Section-Specific Styling */
+    #about-section .content {
+      margin-bottom: 3rem;
+      padding: 2rem;
+      background: var(--accent);
+      border-left: 5px solid var(--primary);
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    }
+    #about-section .content h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: var(--primary);
+    }
+
+    /* Footer Styling */
+    footer {
+      background: var(--primary); /* Deep burgundy */
+      color: var(--footer-text);
+      padding: 2rem;
+      margin-top: 3rem;
+    }
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+    .footer-col {
+      flex: 1;
+      min-width: 200px;
+      margin: 1rem;
+    }
+    .footer-col h4 {
+      margin-bottom: 1rem;
+      color: var(--primary);
+    }
+    .footer-col a {
+      display: block;
+      margin: 0.3rem 0;
+      color: var(--footer-link);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-col a:hover {
+      color: var(--primary);
+    }
+    .newsletter input {
+      padding: 0.5rem;
+      width: 70%;
+      margin-right: 0.5rem;
+      border: none;
+      border-radius: 5px;
+    }
+    .newsletter button {
+      padding: 0.5rem 1rem;
+      border: none;
+      background: var(--primary);
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .newsletter button:hover {
+      background: #a05a65;
+    }
+    .footer-bottom {
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      color: var(--footer-bottom);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .about-section {
+        padding: 2rem 1rem;
+      }
+      .footer-content {
+        flex-direction: column;
+        align-items: center;
+      }
+      .footer-col {
+        margin: 1rem 0;
+      }
+    }
+
+    .section-divider {
+      background: var(--accent);
+      opacity: 0.3;
+    }
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+      letter-spacing: 1px;
+    }
+    .section-subtitle {
+      color: var(--primary);
+      margin-top: 2rem;
+      margin-bottom: 0.5rem;
+      font-size: 1.5rem;
+      letter-spacing: 0.5px;
+    }
+    blockquote {
+      background: #fff8fa;
+      border-left: 5px solid var(--primary);
+      margin: 1.5rem 0;
+      padding: 1rem 1.5rem;
+      font-style: italic;
+      color: #6e232d;
+      border-radius: 8px;
+      font-size: 1.1rem;
+    }
+
+    #back-to-top {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      z-index: 100;
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      outline: none;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      font-size: 2rem;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(110,35,45,0.15);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s, background 0.2s;
+    }
+    #back-to-top:hover {
+      background: var(--accent);
+      color: var(--primary);
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo" id="logo-en">
+    <img src="logo.jpg" alt="H.E.R. Logo" style="height: 40px;" />
+    <span>Her Essence Restored (H.E.R.)</span>
+  </div>
+  <div class="logo" id="logo-pt" style="display:none;">
+    <img src="logo.jpg" alt="H.E.R. Logo" style="height: 40px;" />
+    <span>Her Essence Restored (H.E.R.)</span>
+  </div>
+  <nav id="nav-en">
+    <a href="index.html">Home</a>
+    <a href="products.html">Products</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    
+  </nav>
+  <nav id="nav-pt" style="display:none;">
+    <a href="index.html">Início</a>
+    <a href="products.html">Produtos</a>
+    <a href="about.html">Sobre</a>
+    <a href="contact.html">Contato</a>
+    
+  </nav>
+  <div class="language-selector">
+    <select id="language-dropdown" onchange="changeLanguage(this.value)">
+      <option value="en">English</option>
+      <option value="pt">Português</option>
+    </select>
+  </div>
+</header>
+
+<section class="about-section" id="about-section">
+  <!-- English Content -->
+  <div class="content" id="content-en">
+    <h1 class="section-title">About Us</h1>
+    <div class="section-divider"></div>
+    <p>
+      Born from a deep desire to honor God and restore the beauty of true feminity, Her Essence Restored (H.E.R.) was created to inspire women to embrace modesty, confidence, and purpose.
+      In a world that often distorts the meaning of womanhood, H.E.R exists to bring it back to its essence - soft, strong, and sacred.
+      Each piece is thoughtfully designed to reflect grace and dignity, proving that modesty is not about hiding - it's about revealing who you truly are without compromise.
+      Whether it's a flowing dress, a timeless silhouette, or a soft everyday piece, our clothing is made for the woman who walks in faith, lives with intention, and dresses with meaning.
+      <br><br>
+      <em>This is more than fashion. This is restoration. This is H.E.R.</em>
+    </p>
+
+    <div class="section-divider"></div>
+    <h2 class="section-subtitle">Inspiration</h2>
+    <p>
+      To bring back feminity, modesty. In the 50's to the 90's, women did not have to show skin to be sexy. Feminity was not about showing skin, it was about being classy, elegant and romantic.
+      But nowadays women do not believe that they can look elegant and classy without showing skin.
+      What happened to our bodies being a temple? A Temple is sacred, and everything that is sacred is not to be shown to the world, but to glorify God.
+    </p>
+    <blockquote>
+      <b>1 Corinthians 6:19-20</b><br>
+      What? know ye not that your body is the temple of the Holy Ghost which is in you, which ye have of God, and ye are not your own? For ye are bought with a price: therefore glorify God in your body, and in your spirit, which are God's.
+    </blockquote>
+
+    <div class="section-divider"></div>
+    <h2 class="section-subtitle">Goal</h2>
+    <p>
+      To sell modest clothing and encourage a Godly dressing influence. To show that Godly is not boring. To take women back to how it used and should be.
+    </p>
+
+    <div class="section-divider"></div>
+    <h2 class="section-subtitle">Vision</h2>
+    <p>
+      A page that females will be hooked on. We envision romantic, vintage, cottage and elegant.
+    </p>
+
+    <div class="section-divider"></div>
+    <h2 class="section-subtitle">Original Designs</h2>
+    <p>
+      Every H.E.R. piece is an original design, crafted with care and intention. Our collections blend traditional African elements with modern silhouettes, ensuring each garment is both meaningful and stylish. We use quality fabrics and thoughtful details to create clothing that tells a story—your story.
+    </p>
+  </div>
+  <!-- Portuguese Content -->
+  <div class="content" id="content-pt" style="display:none;">
+    <h1 class="section-title">Sobre Nós</h1>
+    <div class="section-divider"></div>
+    <p>
+      Nascida de um profundo desejo de honrar a Deus e restaurar a beleza da verdadeira feminilidade, a Her Essence Restored (H.E.R.) foi criada para inspirar mulheres a abraçar a modéstia, a confiança e o propósito.
+      Em um mundo que frequentemente distorce o significado da feminilidade, a H.E.R. existe para resgatar sua essência — suave, forte e sagrada.
+      Cada peça é cuidadosamente desenhada para refletir graça e dignidade, provando que modéstia não é esconder — é revelar quem você realmente é, sem comprometer seus valores.
+      Seja um vestido fluido, uma silhueta atemporal ou uma peça confortável para o dia a dia, nossas roupas são feitas para a mulher que caminha em fé, vive com intenção e se veste com significado.
+      <br><br>
+      <em>Isso é mais do que moda. Isso é restauração. Isso é H.E.R.</em>
+    </p>
+
+    <div class="section-divider"></div>
+    <h2 class="section-subtitle">Inspiração</h2>
+    <p>
+      Trazer de volta a feminilidade e a modéstia. Dos anos 50 aos 90, as mulheres não precisavam mostrar pele para serem sensuais. Feminilidade não era sobre mostrar o corpo, mas sobre ser clássica, elegante e romântica.
+      Hoje, muitas mulheres não acreditam que podem ser elegantes e sofisticadas sem mostrar pele.
+      O que aconteceu com nossos corpos sendo um templo? Um templo é sagrado, e tudo que é sagrado não deve ser exposto ao mundo, mas usado para glorificar a Deus.
+    </p>
+    <blockquote>
+      <b>1 Coríntios 6:19-20</b><br>
+      Ou não sabeis que o vosso corpo é o templo do Espírito Santo, que habita em vós, proveniente de Deus, e que não sois de vós mesmos? Porque fostes comprados por preço; glorificai, pois, a Deus no vosso corpo, e no vosso espírito, os quais pertencem a Deus.
+    </blockquote>
+
+    <div class="section-divider"></div>
+    <h2 class="section-subtitle">Objetivo</h2>
+    <p>
+      Vender roupas modestas e incentivar uma influência de vestimenta piedosa. Mostrar que ser de Deus não é ser sem graça. Levar a mulher de volta ao que era e deve ser.
+    </p>
+
+    <div class="section-divider"></div>
+    <h2 class="section-subtitle">Visão</h2>
+    <p>
+      Uma página que vai encantar as mulheres. Enxergamos o romântico, o vintage, o cottage e o elegante.
+    </p>
+
+    <div class="section-divider"></div>
+    <h2 class="section-subtitle">Designs Originais</h2>
+    <p>
+      Cada peça H.E.R. é um design original, criado com cuidado e intenção. Nossas coleções unem elementos tradicionais africanos com silhuetas modernas, garantindo que cada roupa seja significativa e estilosa. Usamos tecidos de qualidade e detalhes pensados para criar roupas que contam uma história—a sua história.
+    </p>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-content" id="footer-en">
+    <div class="footer-col">
+      <h4>About Us</h4>
+      <p>Her Essence Restored (H.E.R.) blends modesty with modern flair for today's empowered woman.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Follow Us</h4>
+      <a href="https://www.instagram.com/her_essence_restored?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="social-link">
+        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" style="vertical-align:middle;margin-right:8px;"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.334 3.608 1.308.974.974 1.246 2.242 1.308 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.334 2.633-1.308 3.608-.974.974-2.242 1.246-3.608 1.308-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.334-3.608-1.308-.974-.974-1.246-2.242-1.308-3.608C2.175 15.647 2.163 15.267 2.163 12s.012-3.584.07-4.85c.062-1.366.334-2.633 1.308-3.608C4.515 2.567 5.783 2.295 7.15 2.233 8.416 2.175 8.796 2.163 12 2.163zm0-2.163C8.741 0 8.332.013 7.052.072 5.771.131 4.659.385 3.678 1.366c-.981.981-1.235 2.093-1.294 3.374C2.013 5.668 2 6.077 2 9.333v5.334c0 3.256.013 3.665.072 4.946.059 1.281.313 2.393 1.294 3.374.981.981 2.093 1.235 3.374 1.294C8.332 23.987 8.741 24 12 24s3.668-.013 4.948-.072c1.281-.059 2.393-.313 3.374-1.294.981-.981 1.235-2.093 1.294-3.374.059-1.281.072-1.69.072-4.946V9.333c0-3.256-.013-3.665-.072-4.946-.059-1.281-.313-2.393-1.294-3.374-.981-.981-2.093-1.235-3.374-1.294C15.668.013 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a3.999 3.999 0 1 1 0-7.998 3.999 3.999 0 0 1 0 7.998zm6.406-11.845a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88z"/></svg>
+        Instagram
+      </a>
+      <a href="https://www.facebook.com" target="_blank" class="social-link">
+        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" style="vertical-align:middle;margin-right:8px;"><path d="M22.675 0h-21.35C.595 0 0 .592 0 1.326v21.348C0 23.408.595 24 1.325 24h11.495v-9.294H9.691v-3.622h3.129V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.797.143v3.24l-1.918.001c-1.504 0-1.797.715-1.797 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116C23.406 24 24 23.408 24 22.674V1.326C24 .592 23.406 0 22.675 0"/></svg>
+        Facebook
+      </a>
+      <a href="https://www.pinterest.com" target="_blank" class="social-link">
+        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" style="vertical-align:middle;margin-right:8px;"><path d="M12.004 0C5.373 0 0 5.373 0 12.004c0 5.084 3.163 9.396 7.633 11.09-.106-.943-.202-2.393.042-3.425.221-.956 1.423-6.098 1.423-6.098s-.362-.724-.362-1.793c0-1.68.974-2.936 2.186-2.936 1.03 0 1.527.773 1.527 1.7 0 1.036-.659 2.584-.998 4.025-.284 1.204.602 2.187 1.785 2.187 2.142 0 3.789-2.257 3.789-5.513 0-2.885-2.075-4.899-5.04-4.899-3.438 0-5.454 2.578-5.454 5.242 0 1.036.398 2.149.895 2.751.099.12.113.225.083.346-.09.354-.292 1.124-.332 1.281-.05.202-.162.245-.375.148-1.398-.648-2.27-2.68-2.27-4.314 0-3.516 2.557-6.75 7.372-6.75 3.87 0 6.882 2.757 6.882 6.44 0 3.849-2.427 6.943-5.797 6.943-1.159 0-2.249-.627-2.623-1.336l-.713 2.713c-.216.826-.641 1.86-.954 2.491.719.222 1.478.342 2.271.342 6.631 0 12.004-5.373 12.004-12.004C24.008 5.373 18.635 0 12.004 0"/></svg>
+        Pinterest
+      </a>
+      <a href="https://www.tiktok.com" target="_blank" class="social-link">
+        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" style="vertical-align:middle;margin-right:8px;"><path d="M12.75 2.001v13.25a2.25 2.25 0 1 1-2.25-2.25h.75v-2.25h-.75a4.5 4.5 0 1 0 4.5 4.5V7.501c.75.375 1.5.75 2.25.75V6.001c-.75 0-1.5-.375-2.25-.75V2.001h-2.25z"/></svg>
+        TikTok
+      </a>
+    </div>
+    <div class="footer-col newsletter">
+      <h4>Newsletter</h4>
+      <p>Sign up for style drops and special offers:</p>
+      <input type="email" placeholder="Your email" />
+      <button>Subscribe</button>
+    </div>
+  </div>
+  <div class="footer-content" id="footer-pt" style="display:none;">
+    <div class="footer-col">
+      <h4>Sobre Nós</h4>
+      <p>Her Essence Restored (H.E.R.) combina a modéstia com um toque moderno para a mulher empoderada de hoje.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Siga-nos</h4>
+      <a href="https://www.instagram.com" target="_blank" class="social-link">
+        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" style="vertical-align:middle;margin-right:8px;"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.334 3.608 1.308.974.974 1.246 2.242 1.308 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.334 2.633-1.308 3.608-.974.974-2.242 1.246-3.608 1.308-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.334-3.608-1.308-.974-.974-1.246-2.242-1.308-3.608C2.175 15.647 2.163 15.267 2.163 12s.012-3.584.07-4.85c.062-1.366.334-2.633 1.308-3.608C4.515 2.567 5.783 2.295 7.15 2.233 8.416 2.175 8.796 2.163 12 2.163zm0-2.163C8.741 0 8.332.013 7.052.072 5.771.131 4.659.385 3.678 1.366c-.981.981-1.235 2.093-1.294 3.374C2.013 5.668 2 6.077 2 9.333v5.334c0 3.256.013 3.665.072 4.946.059 1.281.313 2.393 1.294 3.374.981.981 2.093 1.235 3.374 1.294C8.332 23.987 8.741 24 12 24s3.668-.013 4.948-.072c1.281-.059 2.393-.313 3.374-1.294.981-.981 1.235-2.093 1.294-3.374.059-1.281.072-1.69.072-4.946V9.333c0-3.256-.013-3.665-.072-4.946-.059-1.281-.313-2.393-1.294-3.374-.981-.981-2.093-1.235-3.374-1.294C15.668.013 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a3.999 3.999 0 1 1 0-7.998 3.999 3.999 0 0 1 0 7.998zm6.406-11.845a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88z"/></svg>
+        Instagram
+      </a>
+      <a href="https://www.facebook.com" target="_blank" class="social-link">
+        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" style="vertical-align:middle;margin-right:8px;"><path d="M22.675 0h-21.35C.595 0 0 .592 0 1.326v21.348C0 23.408.595 24 1.325 24h11.495v-9.294H9.691v-3.622h3.129V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.797.143v3.24l-1.918.001c-1.504 0-1.797.715-1.797 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116C23.406 24 24 23.408 24 22.674V1.326C24 .592 23.406 0 22.675 0"/></svg>
+        Facebook
+      </a>
+      <a href="https://www.pinterest.com" target="_blank" class="social-link">
+        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" style="vertical-align:middle;margin-right:8px;"><path d="M12.004 0C5.373 0 0 5.373 0 12.004c0 5.084 3.163 9.396 7.633 11.09-.106-.943-.202-2.393.042-3.425.221-.956 1.423-6.098 1.423-6.098s-.362-.724-.362-1.793c0-1.68.974-2.936 2.186-2.936 1.03 0 1.527.773 1.527 1.7 0 1.036-.659 2.584-.998 4.025-.284 1.204.602 2.187 1.785 2.187 2.142 0 3.789-2.257 3.789-5.513 0-2.885-2.075-4.899-5.04-4.899-3.438 0-5.454 2.578-5.454 5.242 0 1.036.398 2.149.895 2.751.099.12.113.225.083.346-.09.354-.292 1.124-.332 1.281-.05.202-.162.245-.375.148-1.398-.648-2.27-2.68-2.27-4.314 0-3.516 2.557-6.75 7.372-6.75 3.87 0 6.882 2.757 6.882 6.44 0 3.849-2.427 6.943-5.797 6.943-1.159 0-2.249-.627-2.623-1.336l-.713 2.713c-.216.826-.641 1.86-.954 2.491.719.222 1.478.342 2.271.342 6.631 0 12.004-5.373 12.004-12.004C24.008 5.373 18.635 0 12.004 0"/></svg>
+        Pinterest
+      </a>
+      <a href="https://www.tiktok.com" target="_blank" class="social-link">
+        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" style="vertical-align:middle;margin-right:8px;"><path d="M12.75 2.001v13.25a2.25 2.25 0 1 1-2.25-2.25h.75v-2.25h-.75a4.5 4.5 0 1 0 4.5 4.5V7.501c.75.375 1.5.75 2.25.75V6.001c-.75 0-1.5-.375-2.25-.75V2.001h-2.25z"/></svg>
+        TikTok
+      </a>
+    </div>
+    <div class="footer-col newsletter">
+      <h4>Newsletter</h4>
+      <p>Inscreva-se para receber novidades e ofertas especiais:</p>
+      <input type="email" placeholder="Seu email" />
+      <button>Inscrever-se</button>
+    </div>
+  </div>
+  <div class="footer-bottom" id="footer-bottom-en">
+    &copy; 2025 Her Essence Restored (H.E.R.). All rights reserved.
+  </div>
+  <div class="footer-bottom" id="footer-bottom-pt" style="display:none;">
+    &copy; 2025 Her Essence Restored (H.E.R.). Todos os direitos reservados.
+  </div>
+</footer>
+
+<button id="back-to-top" title="Back to Top">&#8679;</button>
+
+<script>
+  function changeLanguage(lang) {
+    // Header logo
+    document.getElementById('logo-en').style.display = lang === 'en' ? 'flex' : 'none';
+    document.getElementById('logo-pt').style.display = lang === 'pt' ? 'flex' : 'none';
+    // Navigation
+    document.getElementById('nav-en').style.display = lang === 'en' ? 'flex' : 'none';
+    document.getElementById('nav-pt').style.display = lang === 'pt' ? 'flex' : 'none';
+    // Main content
+    document.getElementById('content-en').style.display = lang === 'en' ? 'block' : 'none';
+    document.getElementById('content-pt').style.display = lang === 'pt' ? 'block' : 'none';
+    // Footer
+    document.getElementById('footer-en').style.display = lang === 'en' ? 'flex' : 'none';
+    document.getElementById('footer-pt').style.display = lang === 'pt' ? 'flex' : 'none';
+    document.getElementById('footer-bottom-en').style.display = lang === 'en' ? 'block' : 'none';
+    document.getElementById('footer-bottom-pt').style.display = lang === 'pt' ? 'block' : 'none';
+  }
+  document.addEventListener('DOMContentLoaded', function() {
+    changeLanguage(document.getElementById('language-dropdown').value);
+  });
+  // Show/hide button on scroll
+  window.addEventListener('scroll', function() {
+    const btn = document.getElementById('back-to-top');
+    if (window.scrollY > 300) {
+      btn.style.opacity = '1';
+      btn.style.pointerEvents = 'auto';
+    } else {
+      btn.style.opacity = '0';
+      btn.style.pointerEvents = 'none';
+    }
+  });
+  // Scroll to top on click
+  document.getElementById('back-to-top').onclick = function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+</script>
+<style>
+  .social-link svg {
+    transition: transform 0.2s, color 0.2s;
+  }
+  .social-link:hover svg {
+    transform: scale(1.2);
+    color: var(--primary);
+  }
+</style>
+
+</body>
+</html>

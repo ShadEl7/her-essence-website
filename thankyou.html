@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Thank You - Vintage Vogue</title>
+  <style>
+    body {
+      background-color: #fffaf4;
+      font-family: 'Times New Roman', Times, serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+      text-align: center;
+      color: #333;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      color: #b76e79;
+    }
+
+    p {
+      margin-top: 1rem;
+      font-size: 1.1rem;
+    }
+
+    a {
+      display: inline-block;
+      margin-top: 2rem;
+      padding: 0.8rem 1.5rem;
+      background-color: #b76e79;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+
+    a:hover {
+      background-color: #a55e6a;
+    }
+  </style>
+</head>
+<body>
+  <h1>Thank You!</h1>
+  <p>Your message has been received. We’ll get back to you shortly.</p>
+  <a href="index.html">Back to Home</a>
+
+  <!-- Referral Modal -->
+  <div id="referralModal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.4); justify-content:center; align-items:center; z-index:1000;">
+    <div style="background:#fffaf4; padding:2rem 2.5rem; border-radius:10px; box-shadow:0 2px 16px rgba(0,0,0,0.15); text-align:center; max-width:90vw;">
+      <h2 style="color:#b76e79;">Refer a Friend!</h2>
+      <p>Share Vintage Vogue with your friends and both of you get 10% off your next order.</p>
+      <input type="text" id="referralLink" value="https://vintagevogue.com/referral?code=YOURCODE" readonly style="width:80%; padding:0.5rem; margin:1rem 0; border:1px solid #ccc; border-radius:5px;"/>
+      <button onclick="copyReferral()" style="background:#b76e79; color:#fff; border:none; padding:0.6rem 1.2rem; border-radius:5px; cursor:pointer;">Copy Link</button>
+      <br><br>
+      <button onclick="closeModal()" style="background:#a55e6a; color:#fff; border:none; padding:0.5rem 1rem; border-radius:5px; cursor:pointer;">Close</button>
+      <div id="copyMsg" style="color:green; margin-top:0.5rem; display:none;">Copied!</div>
+    </div>
+  </div>
+
+  <script>
+    // Show modal after 2 seconds
+    window.onload = function() {
+      setTimeout(function() {
+        document.getElementById('referralModal').style.display = 'flex';
+      }, 2000);
+    };
+
+    function closeModal() {
+      document.getElementById('referralModal').style.display = 'none';
+    }
+
+    function copyReferral() {
+      var copyText = document.getElementById("referralLink");
+      copyText.select();
+      copyText.setSelectionRange(0, 99999); // For mobile devices
+      document.execCommand("copy");
+      document.getElementById('copyMsg').style.display = 'block';
+      setTimeout(function() {
+        document.getElementById('copyMsg').style.display = 'none';
+      }, 1500);
+    }
+  </script>
+</body>
+</html>
