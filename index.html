@@ -179,101 +179,145 @@ nav a:hover {
 }
 
 .carousel {
-  background: var(--white);
-  border-radius: 12px;
-  box-shadow: 0 2px 12px rgba(128,0,32,0.07);
-  margin-bottom: 2rem;
-}
-.carousel-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  max-width: 900px;
+  max-width: 1200px;
   margin: 2rem auto;
-  overflow: hidden;
-  width: 100%;
-  height: 320px; /* Ensure fixed height for all slides */
-}
-.carousel-images {
-  display: flex;
-  transition: transform 0.5s;
-  width: 100%;
-  height: 100%;
-  will-change: transform;
-}
-.carousel-slide {
-  min-width: 100%;
-  height: 100%;
-  box-sizing: border-box;
+  padding: 0 1rem;
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
-.carousel-img {
+
+.carousel-container {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(128,0,32,0.15);
+  background: var(--white);
+}
+
+.carousel-track {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.carousel-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transform: translateX(100%);
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.carousel-slide.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.carousel-slide.prev {
+  transform: translateX(-100%);
+}
+
+.carousel-slide img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(128,0,32,0.07);
   display: block;
 }
-.carousel-arrow {
-  background: none;
-  border: none;
-  cursor: pointer;
-  z-index: 2;
-  padding: 0.5rem;
-  border-radius: 50%;
-  transition: background 0.2s;
-}
-.carousel-arrow:hover {
-  background: var(--soft-burgundy);
-}
-.carousel-dots {
-  display: flex;
-  justify-content: center;
-  gap: 0.5rem;
-  margin-top: 1rem;
-}
-.carousel-dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: var(--burgundy);
-  opacity: 0.5;
-  cursor: pointer;
-  border: 2px solid var(--white);
-  transition: opacity 0.2s;
-}
-.carousel-dot.active {
-  opacity: 1;
-  background: var(--black);
-  border-color: var(--burgundy);
-}
-.carousel-overlay-left span,
-.carousel-overlay-right span {
-  background: rgba(128,0,32,0.7);
-  color: var(--white);
-  padding: 0.3rem 0.7rem;
-  border-radius: 5px;
-  font-size: 1rem;
+
+.carousel-content {
   position: absolute;
-  top: 20px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(128,0,32,0.9));
+  color: white;
+  padding: 2rem;
+  transform: translateY(100%);
+  transition: transform 0.4s ease;
 }
-.carousel-overlay-left span { left: 20px; }
-.carousel-overlay-right span { right: 20px; }
-.carousel-caption span {
-  background: rgba(255,255,255,0.92);
+
+.carousel-slide:hover .carousel-content {
+  transform: translateY(0);
+}
+
+.carousel-content h3 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem 0;
+  color: white;
+}
+
+.carousel-content p {
+  font-size: 1.1rem;
+  margin: 0;
+  opacity: 0.9;
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.9);
+  border: 2px solid var(--burgundy);
   color: var(--burgundy);
-  padding: 0.3rem 0.7rem;
-  border-radius: 5px;
-  font-size: 1rem;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.5rem;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-btn:hover {
+  background: var(--burgundy);
+  color: white;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-btn.prev {
+  left: 20px;
+}
+
+.carousel-btn.next {
+  right: 20px;
+}
+
+.carousel-indicators {
   position: absolute;
   bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 10;
+}
+
+.indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid white;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.indicator.active {
+  background: white;
+  transform: scale(1.2);
+}
+
+.indicator:hover {
+  background: rgba(255, 255, 255, 0.7);
 }
 
 .shop {
@@ -572,11 +616,28 @@ footer {
     padding-left: 1rem;
     padding-right: 1rem;
   }
-  .carousel-wrapper {
-    height: 200px;
+  .carousel-container {
+    height: 400px;
   }
-  .carousel-img {
-    height: 200px;
+  .carousel-content {
+    padding: 1.5rem;
+  }
+  .carousel-content h3 {
+    font-size: 1.4rem;
+  }
+  .carousel-content p {
+    font-size: 1rem;
+  }
+  .carousel-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+  .carousel-btn.prev {
+    left: 15px;
+  }
+  .carousel-btn.next {
+    right: 15px;
   }
   .product-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -615,11 +676,32 @@ footer {
   .menu-toggle {
     display: block;
   }
-  .carousel-wrapper {
-    height: 140px;
+  .carousel-container {
+    height: 300px;
   }
-  .carousel-img {
-    height: 140px;
+  .carousel-content {
+    padding: 1rem;
+  }
+  .carousel-content h3 {
+    font-size: 1.2rem;
+  }
+  .carousel-content p {
+    font-size: 0.9rem;
+  }
+  .carousel-btn {
+    width: 35px;
+    height: 35px;
+    font-size: 1rem;
+  }
+  .carousel-btn.prev {
+    left: 10px;
+  }
+  .carousel-btn.next {
+    right: 10px;
+  }
+  .indicator {
+    width: 10px;
+    height: 10px;
   }
   .product-grid {
     grid-template-columns: 1fr;
@@ -660,7 +742,7 @@ footer {
   <header>
     <div class="header-container">
       <div class="logo">
-        <img src="logo.jpg" alt="Her Essence Restored Logo" style="height:40px;vertical-align:middle;margin-right:10px;">
+        <img src="../logo.jpg" alt="Her Essence Restored Logo" style="height:40px;vertical-align:middle;margin-right:10px;">
         Her Essence Restored (H.E.R.)
       </div>
       <button id="menuToggle" class="menu-toggle" aria-label="Open menu">&#9776;</button>
@@ -674,7 +756,7 @@ footer {
       <select id="languageSelector" onchange="changeLanguage(this.value)">
         <option value="en">English</option>
         <option value="pt">Português</option>
-        <option value="af">Afrikaans</option>
+        
       </select>
     </div>
   </header>
@@ -698,66 +780,66 @@ footer {
 
   <!-- Carousel -->
   <section class="carousel">
-  <div class="carousel-wrapper">
-    <button class="carousel-arrow left" aria-label="Previous">
-      <span>
-        <svg width="20" height="15" viewBox="0 0 24 24" fill="none"><path d="M15 18l-6-6 6-6" stroke="#a06a7b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </span>
-    </button>
-    <div class="carousel-images">
-      <!-- Transformation Reel Slide with Overlay Text -->
-      <div class="carousel-slide" onclick="window.location.href='#productGrid'" style="cursor:pointer;">
-        <img src="https://i.imgur.com/4Qy6QyF.jpg" alt="Before and After Her Essence Restored Transformation" class="carousel-img">
-        <div class="carousel-overlay-left">
-          <span>Before Modesty</span>
+    <div class="carousel-container">
+      <div class="carousel-track">
+        <div class="carousel-slide active">
+          <img src="clothes-3987460_1280.jpg" alt="Spring Collection 2025" loading="eager">
+          <div class="carousel-content">
+            <h3>Spring Collection 2025</h3>
+            <p>Fresh Styles for the New Season</p>
+          </div>
         </div>
-        <div class="carousel-overlay-right">
-          <span>After Her Essence Restored</span>
+        <div class="carousel-slide">
+          <img src="790e1b8dcca81f5b3bf90959d2775fc9.jpg" alt="Wedding Gowns Collection" loading="lazy">
+          <div class="carousel-content">
+            <h3>Wedding Dreams</h3>
+            <p>Your Special Day Perfected</p>
+          </div>
         </div>
-        <div class="carousel-caption">
-          <span>Tap to shop the transformation</span>
+        <div class="carousel-slide">
+          <img src="70ba0b5c322938f55d1f49de5bef73d8.jpg" alt="Elegant Evening Wear" loading="lazy">
+          <div class="carousel-content">
+            <h3>Evening Elegance</h3>
+            <p>Grace for Every Occasion</p>
+          </div>
+        </div>
+        <div class="carousel-slide">
+          <img src="il_1080xN.5718129227_tfvm.jpg" alt="ActiveWear Collection" loading="lazy">
+          <div class="carousel-content">
+            <h3>Active Lifestyle</h3>
+            <p>Move with Confidence</p>
+          </div>
         </div>
       </div>
-      <div class="carousel-slide">
-        <img src="https://i.imgur.com/hWycJBl.jpeg" alt="Her Essence Restored Logo" class="carousel-img">
-      </div>
-      <div class="carousel-slide">
-        <img src="https://i.pinimg.com/736x/fa/4b/7c/fa4b7c7c6e3e2e9b7e2e7e9b7e2e7e9b.jpg" alt="Vintage Grace Collection" class="carousel-img">
-      </div>
-      <div class="carousel-slide">
-        <img src="https://img.freepik.com/free-photo/young-woman-riding-carousel-horse_23-2148321234.jpg" alt="Elegant Woman on Carousel Horse" class="carousel-img">
-      </div>
-      <div class="carousel-slide">
-        <img src="https://img.freepik.com/free-photo/attractive-stylish-blonde-woman-jeans-oversize-jacket-walking-against-wall-street_285396-8031.jpg" alt="Chic Lady in Front of Carousel" class="carousel-img">
+      <button class="carousel-btn prev" aria-label="Previous slide">‹</button>
+      <button class="carousel-btn next" aria-label="Next slide">›</button>
+      <div class="carousel-indicators">
+        <button class="indicator active" data-slide="0"></button>
+        <button class="indicator" data-slide="1"></button>
+        <button class="indicator" data-slide="2"></button>
+        <button class="indicator" data-slide="3"></button>
       </div>
     </div>
-    <button class="carousel-arrow right" aria-label="Next">
-      <span>
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="#a06a7b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </span>
-    </button>
-  </div>
-  <div class="carousel-dots"></div>
-</section>  
+  </section>  
 
   <!-- Shop Section (Featured Collection) -->
   <section class="shop" aria-labelledby="shopCollectionsHeading">
   <header>
     <h2 id="shopCollectionsHeading">Shop Our Collections</h2>
     <div class="filters" style="justify-content:center; margin-top:1rem;">
-      <button type="button" onclick="filterProducts('all')">All</button>
-      <button type="button" onclick="filterProducts('vintage')">Vintage</button>
-      <button type="button" onclick="filterProducts('modern')">Modern</button>
-      <button type="button" onclick="filterProducts('african')">African</button>
+      <button type="button" class="active" onclick="filterProducts('all')">All</button>
+      <button type="button" onclick="filterProducts('dresses')">Dresses</button>
+      <button type="button" onclick="filterProducts('wedding gowns')">Wedding Gowns</button>
+      <button type="button" onclick="filterProducts('activewear')">ActiveWear</button>
       
     </div>
   </header>
   <div class="product-grid" id="productGrid">
     <!-- Product Card 1 -->
-    <article class="product" data-category="vintage" tabindex="0" aria-label="Vintage Hat">
-      <img src="https://i.pinimg.com/originals/76/14/57/7614577f92cfb1463e09d77db4dbf222.jpg" alt="Vintage Hat">
-      <h4>Vintage Hat</h4>
-      <p class="product-description">A chic, wide-brimmed hat that adds a touch of retro glamour to any outfit.</p>
+    <article class="product" data-category="wedding gowns" tabindex="0" aria-label="Wedding Gowns">
+      <img src="790e1b8dcca81f5b3bf90959d2775fc9.jpg" alt="Wedding Gowns">
+      <h4>Wedding Gowns</h4>
+      <p class="product-description">Crafted with luxurious fabrics, intricate detailing, and perfect tailoring to make every bride feel radiant.</p>
       <div class="share-buttons" aria-label="Share product">
         <a href="https://www.facebook.com/sharer/sharer.php?u=https://heressencerestored.com/products/vintage-hat" target="_blank" title="Share on Facebook" aria-label="Share on Facebook">
           <img src="https://cdn-icons-png.flaticon.com/24/733/733547.png" alt="Facebook" />
@@ -771,9 +853,9 @@ footer {
       </div>
     </article>
     <!-- Product Card 2 -->
-    <article class="product" data-category="modern" tabindex="0" aria-label="Modern Dress">
-      <img src="https://img.freepik.com/free-photo/modern-dress.jpg" alt="Modern Dress">
-      <h4>Modern Dress</h4>
+    <article class="product" data-category="dresses" tabindex="0" aria-label="Modern Dress">
+      <img src="70ba0b5c322938f55d1f49de5bef73d8.jpg" alt="Modern Dress">
+      <h4>Dresses</h4>
       <p class="product-description">Elegant modern dress with a modest silhouette and premium fabric.</p>
       <div class="share-buttons" aria-label="Share product">
         <a href="https://www.facebook.com/sharer/sharer.php?u=https://heressencerestored.com/products/modern-dress" target="_blank" title="Share on Facebook" aria-label="Share on Facebook">
@@ -788,10 +870,10 @@ footer {
       </div>
     </article>
     <!-- Product Card 3 -->
-    <article class="product" data-category="african" tabindex="0" aria-label="African Print Skirt">
-      <img src="https://img.freepik.com/free-photo/african-print-skirt.jpg" alt="African Print Skirt">
-      <h4>African Print Skirt</h4>
-      <p class="product-description">Vibrant African print skirt, perfect for any occasion.</p>
+    <article class="product" data-category="activewear" tabindex="0" aria-label="Active Wear">
+      <img src="il_1080xN.5718129227_tfvm.jpg" alt="Active Wear">
+      <h4>ActiveWear</h4>
+      <p class="product-description">Whether in the gym, on a run, or in daily life.</p>
       <div class="share-buttons" aria-label="Share product">
         <a href="https://www.facebook.com/sharer/sharer.php?u=https://heressencerestored.com/products/african-print-skirt" target="_blank" title="Share on Facebook" aria-label="Share on Facebook">
           <img src="https://cdn-icons-png.flaticon.com/24/733/733547.png" alt="Facebook" />
@@ -847,9 +929,9 @@ footer {
   <section class="style-gallery" style="max-width:900px;margin:2rem auto;">
     <h2 style="text-align:center;color:#a06a7b;margin-bottom:1rem;">Customer Spotlight</h2>
     <div style="display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;">
-      <img src="https://i.imgur.com/yourcustomer1.jpg" alt="Customer 1" style="width:160px;height:160px;object-fit:cover;border-radius:12px;">
-      <img src="https://i.imgur.com/yourcustomer2.jpg" alt="Customer 2" style="width:160px;height:160px;object-fit:cover;border-radius:12px;">
-      <img src="https://i.imgur.com/yourcustomer3.jpg" alt="Customer 3" style="width:160px;height:160px;object-fit:cover;border-radius:12px;">
+      <img src="790e1b8dcca81f5b3bf90959d2775fc9.jpg" alt="Customer 1" style="width:160px;height:160px;object-fit:cover;border-radius:12px;">
+      <img src="70ba0b5c322938f55d1f49de5bef73d8.jpg" alt="Customer 2" style="width:160px;height:160px;object-fit:cover;border-radius:12px;">
+      <img src="il_1080xN.5718129227_tfvm.jpg" alt="Customer 3" style="width:160px;height:160px;object-fit:cover;border-radius:12px;">
     </div>
     <p style="text-align:center;margin-top:1rem;color:#555;">Tag us on Instagram <b>@her_essence_restored</b> to be featured!</p>
   </section>
@@ -962,88 +1044,124 @@ footer {
   });
   toggleBackToTop(); // Initial check
 
-  // Carousel logic (single, clean version)
+  // New Perfect Carousel Implementation
   document.addEventListener('DOMContentLoaded', function() {
-    const slides = document.querySelectorAll('.carousel-slide');
-    const imagesContainer = document.querySelector('.carousel-images');
-    const leftBtn = document.querySelector('.carousel-arrow.left');
-    const rightBtn = document.querySelector('.carousel-arrow.right');
-    const dotsContainer = document.querySelector('.carousel-dots');
-    let current = 0;
-    let interval;
+    const carousel = {
+      track: document.querySelector('.carousel-track'),
+      slides: document.querySelectorAll('.carousel-slide'),
+      prevBtn: document.querySelector('.carousel-btn.prev'),
+      nextBtn: document.querySelector('.carousel-btn.next'),
+      indicators: document.querySelectorAll('.indicator'),
+      currentSlide: 0,
+      isAnimating: false,
+      autoSlideInterval: null,
+      autoSlideDelay: 5000,
 
-    // Create dots
-    function createDots() {
-      dotsContainer.innerHTML = '';
-      slides.forEach((_, idx) => {
-        const dot = document.createElement('span');
-        dot.className = 'carousel-dot' + (idx === 0 ? ' active' : '');
-        dot.addEventListener('click', () => goToSlide(idx));
-        dotsContainer.appendChild(dot);
-      });
-    }
-    createDots();
-    const getDots = () => dotsContainer.querySelectorAll('.carousel-dot');
+      init() {
+        this.bindEvents();
+        this.startAutoSlide();
+        this.updateIndicators();
+      },
 
-    function updateCarousel() {
-      imagesContainer.style.transform = `translateX(-${current * 100}%)`;
-      getDots().forEach((dot, idx) => {
-        dot.classList.toggle('active', idx === current);
-      });
-    }
+      bindEvents() {
+        this.prevBtn.addEventListener('click', () => this.prevSlide());
+        this.nextBtn.addEventListener('click', () => this.nextSlide());
+        
+        this.indicators.forEach((indicator, index) => {
+          indicator.addEventListener('click', () => this.goToSlide(index));
+        });
 
-    function goToSlide(idx) {
-      current = idx;
-      updateCarousel();
-      resetInterval();
-    }
+        // Touch/swipe support
+        let startX = 0;
+        let endX = 0;
+        
+        this.track.addEventListener('touchstart', (e) => {
+          startX = e.touches[0].clientX;
+          this.stopAutoSlide();
+        });
+        
+        this.track.addEventListener('touchend', (e) => {
+          endX = e.changedTouches[0].clientX;
+          const diff = startX - endX;
+          
+          if (Math.abs(diff) > 50) {
+            if (diff > 0) {
+              this.nextSlide();
+            } else {
+              this.prevSlide();
+            }
+          }
+          this.startAutoSlide();
+        });
 
-    function nextSlide() {
-      current = (current + 1) % slides.length;
-      updateCarousel();
-    }
+        // Pause on hover
+        this.track.addEventListener('mouseenter', () => this.stopAutoSlide());
+        this.track.addEventListener('mouseleave', () => this.startAutoSlide());
 
-    function prevSlide() {
-      current = (current - 1 + slides.length) % slides.length;
-      updateCarousel();
-    }
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'ArrowLeft') this.prevSlide();
+          if (e.key === 'ArrowRight') this.nextSlide();
+        });
+      },
 
-    rightBtn.addEventListener('click', function(e) {
-      e.preventDefault();
-      nextSlide();
-      resetInterval();
-    });
-    leftBtn.addEventListener('click', function(e) {
-      e.preventDefault();
-      prevSlide();
-      resetInterval();
-    });
+      goToSlide(index) {
+        if (this.isAnimating || index === this.currentSlide) return;
+        
+        this.isAnimating = true;
+        
+        // Remove all classes first
+        this.slides.forEach(slide => {
+          slide.classList.remove('active', 'prev');
+        });
+        
+        // Set current slide as previous if moving forward, or set new slide position
+        if (index > this.currentSlide) {
+          this.slides[this.currentSlide].classList.add('prev');
+        }
+        
+        this.currentSlide = index;
+        this.slides[this.currentSlide].classList.add('active');
+        this.updateIndicators();
+        
+        setTimeout(() => {
+          this.isAnimating = false;
+        }, 600);
+      },
 
-    function resetInterval() {
-      clearInterval(interval);
-      interval = setInterval(nextSlide, 5000);
-    }
+      nextSlide() {
+        const nextIndex = (this.currentSlide + 1) % this.slides.length;
+        this.goToSlide(nextIndex);
+      },
 
-    // Swipe support for mobile
-    let startX = 0;
-    imagesContainer.addEventListener('touchstart', e => {
-      startX = e.touches[0].clientX;
-    });
-    imagesContainer.addEventListener('touchend', e => {
-      let endX = e.changedTouches[0].clientX;
-      if (endX - startX > 50) prevSlide();
-      else if (startX - endX > 50) nextSlide();
-      resetInterval();
-    });
+      prevSlide() {
+        const prevIndex = (this.currentSlide - 1 + this.slides.length) % this.slides.length;
+        this.goToSlide(prevIndex);
+      },
 
-    // Auto-slide
-    interval = setInterval(nextSlide, 5000);
+      updateIndicators() {
+        this.indicators.forEach((indicator, index) => {
+          indicator.classList.toggle('active', index === this.currentSlide);
+        });
+      },
 
-    // Pause on hover
-    imagesContainer.addEventListener('mouseenter', () => clearInterval(interval));
-    imagesContainer.addEventListener('mouseleave', resetInterval);
+      startAutoSlide() {
+        this.stopAutoSlide();
+        this.autoSlideInterval = setInterval(() => {
+          this.nextSlide();
+        }, this.autoSlideDelay);
+      },
 
-    updateCarousel();
+      stopAutoSlide() {
+        if (this.autoSlideInterval) {
+          clearInterval(this.autoSlideInterval);
+          this.autoSlideInterval = null;
+        }
+      }
+    };
+
+    // Initialize carousel
+    carousel.init();
 
     // Trending Now Banner and Referral Block
     function renderTrendingNow(targetSelector, options = {}) {
@@ -1157,10 +1275,9 @@ footer {
       contact: "Contact",
       shopCollections: "Shop Our Collections",
       all: "All",
-      vintage: "Vintage",
-      modern: "Modern",
-      african: "Afrikaner",
-      wigs: "Wigs",
+      dresses: "Dresses",
+      weddingGowns: "Wedding Gowns",
+      activewear: "ActiveWear",
       aboutUs: "About Us",
       followUs: "Follow Us",
       newsletter: "Newsletter",
@@ -1175,10 +1292,9 @@ footer {
       contact: "Contato",
       shopCollections: "Compre Nossas Coleções",
       all: "Todos",
-      vintage: "Vintage",
-      modern: "Moderno",
-      african: "Africano",
-      wigs: "Perucas",
+      dresses: "Vestidos",
+      weddingGowns: "Vestidos de Noiva",
+      activewear: "Roupas Esportivas",
       aboutUs: "Sobre Nós",
       followUs: "Siga-nos",
       newsletter: "Boletim Informativo",
@@ -1193,10 +1309,9 @@ footer {
       contact: "Kontak",
       shopCollections: "Koop Ons Versamelings",
       all: "Alle",
-      vintage: "Vintage",
-      modern: "Modern",
-      african: "Afrikaans",
-      wigs: "Pruike",
+      dresses: "Rokke",
+      weddingGowns: "Troukledrag",
+      activewear: "Sportklere",
       aboutUs: "Oor Ons",
       followUs: "Volg Ons",
       newsletter: "Nuusbrief",
@@ -1213,10 +1328,9 @@ footer {
     document.querySelector('nav a[href="contact.html"]').textContent = translations[language].contact;
     document.querySelector('.shop h2').textContent = translations[language].shopCollections;
     document.querySelector('.filters button:nth-child(1)').textContent = translations[language].all;
-    document.querySelector('.filters button:nth-child(2)').textContent = translations[language].vintage;
-    document.querySelector('.filters button:nth-child(3)').textContent = translations[language].modern;
-    document.querySelector('.filters button:nth-child(4)').textContent = translations[language].african;
-    document.querySelector('.filters button:nth-child(5)').textContent = translations[language].wigs;
+    document.querySelector('.filters button:nth-child(2)').textContent = translations[language].dresses;
+    document.querySelector('.filters button:nth-child(3)').textContent = translations[language].weddingGowns;
+    document.querySelector('.filters button:nth-child(4)').textContent = translations[language].activewear;
     // Update all footer headings
     document.querySelectorAll('.footer-col h4')[0].textContent = translations[language].followUs;
     document.querySelectorAll('.footer-col h4')[1].textContent = "Quick Links";
@@ -1239,6 +1353,29 @@ footer {
   document.querySelectorAll('#mainNav a').forEach(a => {
     a.onclick = () => document.getElementById('mainNav').classList.remove('open');
   });
+
+  // Product filtering function
+  function filterProducts(category) {
+    const products = document.querySelectorAll('.product');
+    const filterButtons = document.querySelectorAll('.filters button');
+    
+    // Update active button
+    filterButtons.forEach(btn => btn.classList.remove('active'));
+    event.target.classList.add('active');
+    
+    // Filter products
+    products.forEach(product => {
+      const productCategory = product.getAttribute('data-category');
+      if (category === 'all' || productCategory === category) {
+        product.style.display = 'flex';
+      } else {
+        product.style.display = 'none';
+      }
+    });
+  }
+
+  // Make filterProducts globally available
+  window.filterProducts = filterProducts;
 </script>
   <!-- Tawk.to Live Chat Widget -->
   <script type="text/javascript">
