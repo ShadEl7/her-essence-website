@@ -4,59 +4,770 @@
   <meta charset="UTF-8" />
   <title>Refer a Friend – Her Essence Restored</title>
   <style>
-    body { background: #fff8fa; color: #a06a7b; font-family: 'Times New Roman', Times, serif; }
-    .refer-container { max-width: 600px; margin: 2rem auto; background: #fff; border-radius: 12px; box-shadow: 0 2px 12px rgba(160,106,123,0.07); padding: 2rem; }
-    .refer-title { font-size: 2rem; margin-bottom: 1rem; }
-    .refer-steps { margin: 1.5rem 0; }
-    .refer-steps li { margin-bottom: 1rem; }
-    .referral-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; margin-bottom: 1rem; }
-    .referral-link-input { flex: 1 1 200px; padding: 0.5rem; border: 1px solid #e3c6ce; border-radius: 5px; font-size: 1rem; background: #fff8fa; color: #a06a7b; }
-    .referral-btn { background: #a06a7b; color: #fff8fa; border: none; border-radius: 5px; padding: 0.7rem 1.5rem; cursor: pointer; font-size: 1.1rem; transition: background 0.2s, color 0.2s; }
-    .referral-btn:hover, .referral-btn:focus { background: #d6aeb7; color: #a06a7b; outline: none; }
-    .referral-msg { margin-left: 1rem; color: #4caf50; font-size: 0.98rem; display: none; }
-    .refer-how { background: #fff8fa; border-left: 4px solid #a06a7b; padding: 1rem; margin-bottom: 1.5rem; border-radius: 8px; }
-    .refer-faq { margin-top: 2rem; }
-    .refer-faq h3 { font-size: 1.2rem; margin-bottom: 0.5rem; color: #a06a7b; }
-    .refer-faq dt { font-weight: bold; margin-top: 1rem; }
-    .refer-faq dd { margin-left: 1rem; margin-bottom: 0.5rem; }
-    .refer-terms { margin-top: 2rem; font-size: 0.95rem; color: #555; }
-    .refer-social { margin: 1.5rem 0; display: flex; gap: 0.7rem; }
-    .refer-social-btn {
-      background: #fff;
-      border: none;
-      border-radius: 50%;
-      width: 44px;
-      height: 44px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 2px 8px rgba(160,106,123,0.10);
-      font-size: 1.6rem;
-      cursor: pointer;
-      transition: box-shadow 0.2s, transform 0.2s;
-      position: relative;
-      overflow: hidden;
-    }
-    .refer-social-btn:hover, .refer-social-btn:focus {
-      box-shadow: 0 4px 16px rgba(160,106,123,0.18);
-      transform: translateY(-2px) scale(1.08);
-      outline: none;
-    }
-    .refer-social-btn svg {
-      width: 24px;
-      height: 24px;
-      display: block;
-    }
-    .refer-testimonial { background: #f9e6ee; border-radius: 8px; padding: 1rem; margin-top: 2rem; font-style: italic; color: #7d4e5b; }
-    @media (max-width: 600px) {
-      .refer-container { padding: 1rem; }
-      .referral-actions { flex-direction: column; align-items: stretch; gap: 0.5rem; }
-      .referral-msg { margin-left: 0; margin-top: 0.5rem; }
-      .refer-social { justify-content: flex-start; }
-    }
+:root {
+  --burgundy: #800020;
+  --black: #111;
+  --white: #fff;
+  --soft-burgundy: #a06a7b;
+  --light-bg: #fff8fa;
+  --primary: #800020;
+  --footer-text: #fff;
+  --accent: #fff;
+  --footer-bottom: #800020;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "STIX Math", "Cambria Math", serif;
+  font-style: italic;
+}
+body {
+  background: linear-gradient(90deg, var(--white) 0%, var(--burgundy) 100%);
+  color: var(--black);
+  font-size: 1.08rem;
+  line-height: 1.6;
+}
+header {
+  background: var(--white);
+  border-bottom: 2px solid var(--burgundy);
+  box-shadow: 0 2px 8px rgba(128,0,32,0.04);
+}
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.2rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--burgundy);
+  display: flex;
+  align-items: center;
+  letter-spacing: 1px;
+}
+nav {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+nav a {
+  color: var(--burgundy);
+  font-weight: 500;
+  text-decoration: none;
+  padding: 0.3rem 0.7rem;
+  border-radius: 4px;
+  transition: background 0.2s, color 0.2s;
+}
+nav a:hover {
+  background: var(--burgundy);
+  color: var(--white);
+}
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  margin-left: 1rem;
+  cursor: pointer;
+  color: var(--burgundy);
+}
+#languageSelector {
+  margin-left: 1rem;
+  padding: 0.3rem 0.7rem;
+  border: 1px solid var(--burgundy);
+  border-radius: 5px;
+  background: var(--white);
+  color: var(--burgundy);
+  font-size: 1rem;
+}
+.trending-now-banner {
+  background: var(--soft-burgundy);
+  color: var(--white);
+  text-align: center;
+  font-size: 1.15rem;
+  padding: 0.7rem 0;
+  margin-bottom: 0;
+  letter-spacing: 0.5px;
+}
+.referral-block {
+  background: var(--light-bg);
+  border: 2px dashed var(--burgundy);
+  color: var(--burgundy);
+  text-align: center;
+  margin-bottom: 1.2rem;
+  padding: 1rem 0.5rem;
+  border-radius: 8px;
+}
+.referral-btn {
+  background: var(--burgundy);
+  color: var(--white);
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem 1.2rem;
+  cursor: pointer;
+  font-weight: 500;
+  margin-top: 0.5rem;
+}
+.referral-btn:hover {
+  background: var(--black);
+}
+.hero {
+  padding: 3rem 2rem 2rem 2rem;
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto;
+  background: var(--white);
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(128,0,32,0.07);
+}
+.hero h1 {
+  color: var(--burgundy);
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+.hero .cta-btn {
+  background: var(--burgundy);
+  color: var(--white);
+  border: none;
+  border-radius: 5px;
+  padding: 0.8rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  transition: background 0.2s;
+}
+.hero .cta-btn:hover {
+  background: var(--black);
+  color: var(--white);
+}
+.countdown-banner {
+  text-align: center;
+  padding: 0.7rem 1rem;
+  font-size: 1.1rem;
+  background: var(--burgundy);
+  color: var(--white);
+  margin-bottom: 1.5rem;
+  border-radius: 8px;
+  max-width: 900px;
+  margin: 1rem auto 1.5rem auto;
+}
+.carousel {
+  background: var(--white);
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(128,0,32,0.07);
+  margin-bottom: 2rem;
+}
+.carousel-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  max-width: 900px;
+  margin: 2rem auto;
+  overflow: hidden;
+}
+.carousel-images {
+  display: flex;
+  transition: transform 0.5s;
+  width: 100%;
+}
+.carousel-slide {
+  min-width: 100%;
+  box-sizing: border-box;
+  position: relative;
+}
+.carousel-img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(128,0,32,0.07);
+}
+.carousel-arrow {
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 2;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: background 0.2s;
+}
+.carousel-arrow:hover {
+  background: var(--soft-burgundy);
+}
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+.carousel-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--burgundy);
+  opacity: 0.5;
+  cursor: pointer;
+  border: 2px solid var(--white);
+  transition: opacity 0.2s;
+}
+.carousel-dot.active {
+  opacity: 1;
+  background: var(--black);
+  border-color: var(--burgundy);
+}
+.carousel-overlay-left span,
+.carousel-overlay-right span {
+  background: rgba(128,0,32,0.7);
+  color: var(--white);
+  padding: 0.3rem 0.7rem;
+  border-radius: 5px;
+  font-size: 1rem;
+  position: absolute;
+  top: 20px;
+}
+.carousel-overlay-left span { left: 20px; }
+.carousel-overlay-right span { right: 20px; }
+.carousel-caption span {
+  background: rgba(255,255,255,0.92);
+  color: var(--burgundy);
+  padding: 0.3rem 0.7rem;
+  border-radius: 5px;
+  font-size: 1rem;
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.shop {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 2rem;
+}
+.shop h2 {
+  color: var(--burgundy);
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+.filters {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+.filters button {
+  background: var(--burgundy);
+  color: var(--white);
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem 1.2rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.filters button:hover,
+.filters button.active {
+  background: var(--black);
+  color: var(--white);
+}
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+.product {
+  padding: 1.2rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 12px rgba(128,0,32,0.07);
+  background: var(--white);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid var(--soft-burgundy);
+  transition: box-shadow 0.2s;
+}
+.product:hover {
+  box-shadow: 0 4px 16px rgba(128,0,32,0.13);
+}
+.product h4 {
+  color: var(--burgundy);
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin: 0.7rem 0 0.3rem 0;
+  text-align: center;
+}
+.product-description {
+  color: var(--black);
+  font-size: 1rem;
+  text-align: center;
+  margin-bottom: 0.7rem;
+}
+.product img {
+  width: 100%;
+  max-width: 220px;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+.share-buttons {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.7rem;
+}
+.share-buttons button {
+  background: var(--white);
+  border: 1px solid var(--burgundy);
+  color: var(--burgundy);
+  border-radius: 5px;
+  padding: 0.3rem 0.7rem;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.share-buttons button:hover {
+  background: var(--burgundy);
+  color: var(--white);
+}
+.testimonials {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 2rem;
+  border-radius: 12px;
+  background: var(--white);
+  box-shadow: 0 2px 12px rgba(128,0,32,0.07);
+}
+.testimonials h2 {
+  color: var(--burgundy);
+  font-size: 1.4rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 1.2rem;
+}
+.testimonial-list {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.testimonial {
+  flex: 1 1 220px;
+  padding: 1rem;
+  border-radius: 8px;
+  background: var(--light-bg);
+  border: 1px solid var(--soft-burgundy);
+  font-size: 1rem;
+  color: var(--black);
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 8px rgba(128,0,32,0.04);
+}
+.testimonial .author {
+  color: var(--burgundy);
+  font-weight: 600;
+  margin-top: 0.5rem;
+  font-size: 0.98rem;
+}
+.opt-in {
+  max-width: 500px;
+  margin: 2rem auto;
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+  background: var(--burgundy);
+  color: var(--white);
+  box-shadow: 0 2px 12px rgba(128,0,32,0.07);
+}
+.opt-in h3 { color: var(--white); }
+.opt-in input, .opt-in button {
+  margin: 0.5rem 0;
+  padding: 0.7rem;
+  border-radius: 5px;
+  border: none;
+  width: 90%;
+  max-width: 350px;
+  font-size: 1rem;
+}
+.opt-in input {
+  background: var(--white);
+  color: var(--burgundy);
+  border: 1px solid var(--soft-burgundy);
+}
+.opt-in button {
+  background: var(--black);
+  color: var(--white);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.opt-in button:hover {
+  background: var(--white);
+  color: var(--burgundy);
+}
+.style-gallery {
+  padding: 2rem 1rem;
+  background: var(--white);
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(128,0,32,0.07);
+}
+.style-gallery img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(128,0,32,0.07);
+}
+
+/* Refer Page Specific Styles */
+.refer-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: var(--white);
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(128,0,32,0.07);
+}
+
+.refer-title {
+  font-size: 2rem;
+  color: var(--burgundy);
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+}
+
+.refer-how {
+  background: var(--light-bg);
+  border: 2px solid var(--burgundy);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  color: var(--black);
+}
+
+.refer-how strong {
+  color: var(--burgundy);
+  font-size: 1.1rem;
+}
+
+.referral-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: var(--light-bg);
+  border-radius: 8px;
+}
+
+.referral-link-input {
+  width: 100%;
+  max-width: 400px;
+  padding: 0.7rem;
+  border: 2px solid var(--burgundy);
+  border-radius: 5px;
+  font-size: 1rem;
+  text-align: center;
+  background: var(--white);
+  color: var(--burgundy);
+}
+
+.referral-msg {
+  display: none;
+  color: var(--burgundy);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.refer-social {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.refer-social-btn {
+  width: 48px;
+  height: 48px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px rgba(128,0,32,0.1);
+}
+
+.refer-social-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 16px rgba(128,0,32,0.2);
+}
+
+.refer-social-btn svg {
+  width: 100%;
+  height: 100%;
+}
+
+.refer-testimonial {
+  background: var(--burgundy);
+  color: var(--white);
+  padding: 1.5rem;
+  border-radius: 8px;
+  text-align: center;
+  font-style: italic;
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+}
+
+.refer-faq {
+  margin-bottom: 2rem;
+}
+
+.refer-faq h3 {
+  color: var(--burgundy);
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.refer-faq dt {
+  color: var(--burgundy);
+  font-weight: 600;
+  margin-top: 1rem;
+  margin-bottom: 0.3rem;
+}
+
+.refer-faq dd {
+  margin-left: 1rem;
+  margin-bottom: 0.5rem;
+  color: var(--black);
+}
+
+.refer-terms {
+  text-align: center;
+  padding: 1rem;
+  background: var(--light-bg);
+  border-radius: 8px;
+  font-size: 0.9rem;
+  color: var(--black);
+}
+
+.refer-terms a {
+  color: var(--burgundy);
+  text-decoration: none;
+}
+
+.refer-terms a:hover {
+  text-decoration: underline;
+}
+/* Footer Styling */
+footer {
+  background: var(--primary); /* Deep burgundy */
+  color: var(--footer-text);
+  padding: 2rem;
+  margin-top: 3rem;
+}
+.footer-content {
+  padding: 2rem 1rem;
+  gap: 2rem;
+  background: var(--burgundy);
+  color: var(--white);
+  border-radius: 12px 12px 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: stretch;
+}
+.footer-col {
+  flex: 1 1 200px;
+  min-width: 180px;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+.footer-col h4 {
+  color: var(--white);
+  font-size: 1.1rem;
+  margin-bottom: 0.7rem;
+}
+.footer-col a {
+  color: var(--white);
+  text-decoration: none;
+  display: block;
+  margin-bottom: 0.3rem;
+  transition: color 0.2s;
+}
+.footer-col a:hover {
+  color: var(--black);
+}
+.footer-btn {
+  display: inline-block;
+  background: var(--accent);
+  color: var(--burgundy);
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem 1.2rem;
+  margin: 0.3rem 0;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px rgba(128,0,32,0.07);
+  text-align: center;
+}
+.footer-btn:hover {
+  background: var(--black);
+  color: var(--white);
+  box-shadow: 0 4px 16px rgba(128,0,32,0.13);
+}
+.footer-bottom {
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.95rem;
+  background: var(--footer-bottom);
+  color: var(--burgundy);
+  border-radius: 0 0 12px 12px;
+  margin-top: 0;
+}
+#backToTop {
+  position: fixed;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  z-index: 1000;
+  transition: transform 0.2s;
+}
+#backToTop svg {
+  box-shadow: 0 2px 8px rgba(128,0,32,0.13);
+  border-radius: 50%;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+#backToTop:hover svg {
+  box-shadow: 0 4px 16px rgba(128,0,32,0.25);
+  transform: scale(1.1);
+}
+/* MOBILE STYLES */
+@media (max-width: 900px) {
+  .header-container, .shop, .hero, .testimonials, .footer-content {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  .carousel-img {
+    height: 200px;
+  }
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.2rem;
+  }
+  .testimonial-list {
+    gap: 1rem;
+  }
+}
+@media (max-width: 600px) {
+  .header-container {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
+  }
+  .logo {
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+  }
+  nav {
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    background: var(--white);
+    border-bottom: 2px solid var(--burgundy);
+    position: absolute;
+    top: 60px;
+    left: 0;
+    z-index: 100;
+    display: none;
+  }
+  #mainNav.open {
+    display: flex;
+  }
+  .menu-toggle {
+    display: block;
+  }
+  .carousel-img {
+    height: 140px;
+  }
+  .product-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .footer-content {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: 12px 12px 0 0;
+  }
+  .footer-col {
+    min-width: 0;
+  }
+  .opt-in input, .opt-in button {
+    width: 100%;
+    max-width: 100%;
+  }
+  .style-gallery img {
+    width: 90px;
+    height: 90px;
+  }
+  .hero {
+    padding: 2rem 0.5rem 1.5rem 0.5rem;
+  }
+  .shop {
+    padding: 0 0.5rem;
+  }
+  .testimonials {
+    padding: 1rem 0.5rem;
+  }
+}
   </style>
 </head>
 <body>
+  <header>
+    <div class="header-container">
+      <div class="logo">
+        <img src="logo.jpg" alt="Her Essence Restored Logo" style="height: 40px; margin-right: 0.5rem;">
+        Her Essence Restored
+      </div>
+      <nav id="mainNav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="products.html">Products</a>
+        
+        <a href="contact.html">Contact</a>
+        <a href="cart.html">Cart</a>
+        <select id="languageSelector" onchange="translatePage()">
+          <option value="en">English</option>
+          <option value="pt">Português</option>
+        </select>
+      </nav>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">☰</button>
+    </div>
+  </header>
+
   <div class="refer-container">
     <div class="refer-title">👯 Refer a Friend &amp; Get R100 Off!</div>
 
@@ -116,32 +827,134 @@
       Questions? <a href="contact.html">Contact us</a>.
     </div>
   </div>
+  <button id="backToTop" aria-label="Back to top" style="display:none;">
+    <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+      <circle cx="16" cy="16" r="15" fill="#800020" stroke="#fff" stroke-width="2"/>
+      <path d="M16 22V10M16 10L10 16M16 10L22 16" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+
   <script>
+    // Translation data
+    const translations = {
+      en: {
+        title: "👯 Refer a Friend & Get R100 Off!",
+        howItWorks: "How it works:",
+        step1: "Share your unique referral link below with friends.",
+        step2: "When your friend makes their first purchase, you both get R100 off.",
+        step3: "The more friends you refer, the more you save!",
+        copyLink: "Copy Link",
+        shareLink: "Share My Link",
+        copied: "Copied!",
+        testimonial: "\"I invited two friends and we all got R100 off our first order! Super easy and fun.\"",
+        testimonialAuthor: "– Thandi, Cape Town",
+        faqTitle: "Referral Program FAQ",
+        faq1Q: "How do I get my reward?",
+        faq1A: "Once your friend completes their first purchase, you'll receive an email with your R100 discount code.",
+        faq2Q: "When will my friend get their discount?",
+        faq2A: "Your friend will get their R100 off instantly on their first order using your link.",
+        faq3Q: "Is there a limit to how many friends I can refer?",
+        faq3A: "Nope! Refer as many friends as you like and keep saving.",
+        termsText: "By participating, you agree to our",
+        termsLink: "Referral Program Terms & Conditions",
+        questionsText: "Questions?",
+        contactLink: "Contact us"
+      },
+      pt: {
+        title: "👯 Indique um Amigo e Ganhe R100 de Desconto!",
+        howItWorks: "Como funciona:",
+        step1: "Compartilhe seu link único de indicação com seus amigos.",
+        step2: "Quando seu amigo fizer a primeira compra, vocês dois ganham R100 de desconto.",
+        step3: "Quanto mais amigos você indicar, mais você economiza!",
+        copyLink: "Copiar Link",
+        shareLink: "Compartilhar Meu Link",
+        copied: "Copiado!",
+        testimonial: "\"Convidei duas amigas e todas nós ganhamos R100 de desconto na primeira compra! Super fácil e divertido.\"",
+        testimonialAuthor: "– Thandi, Cidade do Cabo",
+        faqTitle: "FAQ do Programa de Indicação",
+        faq1Q: "Como recebo minha recompensa?",
+        faq1A: "Assim que seu amigo completar a primeira compra, você receberá um email com seu código de desconto de R100.",
+        faq2Q: "Quando meu amigo receberá o desconto?",
+        faq2A: "Seu amigo receberá R100 de desconto imediatamente na primeira compra usando seu link.",
+        faq3Q: "Há limite para quantos amigos posso indicar?",
+        faq3A: "Não! Indique quantos amigos quiser e continue economizando.",
+        termsText: "Ao participar, você concorda com nossos",
+        termsLink: "Termos e Condições do Programa de Indicação",
+        questionsText: "Dúvidas?",
+        contactLink: "Entre em contato"
+      }
+    };
+
     // Replace 'yourname' with dynamic user info if available
     const referralUrl = window.location.origin + '/?ref=yourname';
     document.getElementById('referral-link').value = referralUrl;
+
+    function translatePage() {
+      const lang = document.getElementById('languageSelector').value;
+      const t = translations[lang];
+      
+      document.querySelector('.refer-title').textContent = t.title;
+      document.querySelector('.refer-how strong').textContent = t.howItWorks;
+      
+      const steps = document.querySelectorAll('.refer-how ol li');
+      steps[0].textContent = t.step1;
+      steps[1].textContent = t.step2;
+      steps[2].textContent = t.step3;
+      
+      document.querySelector('.referral-btn[onclick="copyReferral()"]').textContent = t.copyLink;
+      document.querySelector('.referral-btn[onclick="shareReferral()"]').textContent = t.shareLink;
+      
+      const testimonialText = document.querySelector('.refer-testimonial');
+      testimonialText.innerHTML = t.testimonial + '<br><span style="font-size:0.95rem;color:#a06a7b;">' + t.testimonialAuthor + '</span>';
+      
+      document.querySelector('.refer-faq h3').textContent = t.faqTitle;
+      
+      const faqDts = document.querySelectorAll('.refer-faq dt');
+      const faqDds = document.querySelectorAll('.refer-faq dd');
+      faqDts[0].textContent = t.faq1Q;
+      faqDds[0].textContent = t.faq1A;
+      faqDts[1].textContent = t.faq2Q;
+      faqDds[1].textContent = t.faq2A;
+      faqDts[2].textContent = t.faq3Q;
+      faqDds[2].textContent = t.faq3A;
+      
+      const termsDiv = document.querySelector('.refer-terms');
+      termsDiv.innerHTML = t.termsText + ' <a href="referral-terms.html" target="_blank">' + t.termsLink + '</a>.<br>' + t.questionsText + ' <a href="contact.html">' + t.contactLink + '</a>.';
+      
+      // Update HTML lang attribute
+      document.documentElement.lang = lang;
+    }
 
     function copyReferral() {
       const input = document.getElementById('referral-link');
       input.select();
       input.setSelectionRange(0, 99999); // For mobile devices
       document.execCommand('copy');
-      showReferralMsg('Copied!');
+      const lang = document.getElementById('languageSelector').value;
+      showReferralMsg(translations[lang].copied);
     }
 
     function shareReferral() {
       const url = document.getElementById('referral-link').value;
+      const lang = document.getElementById('languageSelector').value;
+      const shareText = lang === 'pt' ? 
+        'Junte-se a mim na Her Essence Restored e ganhe R100 de desconto!' :
+        'Join me at Her Essence Restored and get R100 off!';
+      
       if (navigator.share) {
         navigator.share({
           title: 'Her Essence Restored Referral',
-          text: 'Join me at Her Essence Restored and get R100 off!',
+          text: shareText,
           url
         }).catch(() => {
           // fallback if user cancels share
         });
       } else {
         copyReferral();
-        showReferralMsg('Link copied! Paste it anywhere to share.');
+        const linkCopiedText = lang === 'pt' ? 
+          'Link copiado! Cole em qualquer lugar para compartilhar.' :
+          'Link copied! Paste it anywhere to share.';
+        showReferralMsg(linkCopiedText);
       }
     }
 
@@ -154,7 +967,11 @@
 
     function shareWhatsApp() {
       const url = encodeURIComponent(document.getElementById('referral-link').value);
-      const text = encodeURIComponent("Join me at Her Essence Restored and get R100 off! " + document.getElementById('referral-link').value);
+      const lang = document.getElementById('languageSelector').value;
+      const shareText = lang === 'pt' ? 
+        'Junte-se a mim na Her Essence Restored e ganhe R100 de desconto! ' :
+        'Join me at Her Essence Restored and get R100 off! ';
+      const text = encodeURIComponent(shareText + document.getElementById('referral-link').value);
       window.open(`https://wa.me/?text=${text}`, '_blank');
     }
 
@@ -165,15 +982,44 @@
 
     function shareTwitter() {
       const url = encodeURIComponent(document.getElementById('referral-link').value);
-      const text = encodeURIComponent("Join me at Her Essence Restored and get R100 off!");
+      const lang = document.getElementById('languageSelector').value;
+      const shareText = lang === 'pt' ? 
+        'Junte-se a mim na Her Essence Restored e ganhe R100 de desconto!' :
+        'Join me at Her Essence Restored and get R100 off!';
+      const text = encodeURIComponent(shareText);
       window.open(`https://twitter.com/intent/tweet?url=${url}&text=${text}`, '_blank');
     }
 
     function shareEmail() {
-      const subject = encodeURIComponent("Get R100 off at Her Essence Restored!");
-      const body = encodeURIComponent("Hi! Join me at Her Essence Restored and get R100 off your first order: " + document.getElementById('referral-link').value);
-      window.open(`mailto:?subject=${subject}&body=${body}`);
+      const lang = document.getElementById('languageSelector').value;
+      const subject = lang === 'pt' ? 
+        'Ganhe R100 de desconto na Her Essence Restored!' :
+        'Get R100 off at Her Essence Restored!';
+      const bodyText = lang === 'pt' ? 
+        'Oi! Junte-se a mim na Her Essence Restored e ganhe R100 de desconto na sua primeira compra: ' :
+        'Hi! Join me at Her Essence Restored and get R100 off your first order: ';
+      
+      const subjectEncoded = encodeURIComponent(subject);
+      const body = encodeURIComponent(bodyText + document.getElementById('referral-link').value);
+      window.open(`mailto:?subject=${subjectEncoded}&body=${body}`);
     }
+
+    // Back to Top button logic
+    const backToTop = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      backToTop.style.display = window.scrollY > 300 ? 'block' : 'none';
+    });
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Hamburger menu toggle
+    document.getElementById('menuToggle').onclick = function() {
+      document.getElementById('mainNav').classList.toggle('open');
+    };
+    document.querySelectorAll('#mainNav a').forEach(a => {
+      a.onclick = () => document.getElementById('mainNav').classList.remove('open');
+    });
   </script>
 </body>
 </html>

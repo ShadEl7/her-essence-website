@@ -2,73 +2,482 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Style Guide – Her Essence Restored</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Style Guide - Her Essence Restored (H.E.R.)</title>
   <style>
-    body { background: #fff8fa; color: #a06a7b; font-family: 'Times New Roman', Times, serif; }
-    .guide-container { max-width: 800px; margin: 2rem auto; background: #fff; border-radius: 12px; box-shadow: 0 2px 12px rgba(160,106,123,0.07); padding: 2rem; }
-    h1 { color: #a06a7b; }
-    h2 { color: #d6aeb7; margin-top: 2rem; }
-    .guide-img { width: 100%; max-width: 320px; border-radius: 12px; margin: 1rem 0; }
-    .toc { background: #fbeff2; border-radius: 8px; padding: 1rem; margin-bottom: 2rem; }
-    .toc ul { list-style: none; padding: 0; margin: 0; }
-    .toc li { margin: 0.5rem 0; }
-    .toc a { color: #a06a7b; text-decoration: underline; }
-    .share-buttons { margin-top: 2rem; }
-    .share-buttons button { background: #a06a7b; color: #fff; border: none; border-radius: 6px; padding: 0.5rem 1rem; margin-right: 0.5rem; cursor: pointer; }
-    .nav { margin-bottom: 1.5rem; }
-    .nav a { color: #a06a7b; text-decoration: none; margin-right: 1rem; font-weight: bold; }
-    @media (max-width: 600px) {
-      .guide-container { padding: 1rem; }
-      .guide-img { max-width: 100%; }
-      h1, h2 { font-size: 1.5rem; }
+    :root {
+      --burgundy: #800020;
+      --black: #111;
+      --white: #fff;
+      --soft-burgundy: #a06a7b;
+      --light-bg: #fff8fa;
+      --primary: #800020;
+      --footer-text: #fff;
+      --accent: #a06a7b;
+      --footer-bottom: #fff8fa;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "STIX Math", "Cambria Math", serif;
+      font-style: italic;
+    }
+
+    body {
+      background: linear-gradient(90deg, var(--white) 0%, var(--burgundy) 100%);
+      color: var(--black);
+      font-size: 1.08rem;
+      line-height: 1.6;
+    }
+
+    header {
+      background: var(--white);
+      border-bottom: 2px solid var(--burgundy);
+      box-shadow: 0 2px 8px rgba(128,0,32,0.04);
+    }
+
+    .header-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--burgundy);
+      display: flex;
+      align-items: center;
+      letter-spacing: 1px;
+      gap: 0.8rem;
+    }
+
+    .logo-img {
+      height: 45px;
+      width: auto;
+      border-radius: 6px;
+      object-fit: contain;
+    }
+
+    nav {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    nav a {
+      color: var(--burgundy);
+      font-weight: 500;
+      text-decoration: none;
+      padding: 0.3rem 0.7rem;
+      border-radius: 4px;
+      transition: background 0.2s, color 0.2s;
+    }
+    nav a:hover {
+      background: var(--burgundy);
+      color: var(--white);
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 2rem;
+      margin-left: 1rem;
+      cursor: pointer;
+      color: var(--burgundy);
+    }
+
+    #languageSelector {
+      margin-left: 1rem;
+      padding: 0.3rem 0.7rem;
+      border: 1px solid var(--burgundy);
+      border-radius: 5px;
+      background: var(--white);
+      color: var(--burgundy);
+      font-size: 1rem;
+    }
+
+    .trending-now-banner {
+      background: var(--soft-burgundy);
+      color: var(--white);
+      text-align: center;
+      font-size: 1.15rem;
+      padding: 0.7rem 0;
+      margin-bottom: 0;
+      letter-spacing: 0.5px;
+    }
+
+    .referral-block {
+      background: var(--light-bg);
+      border: 2px dashed var(--burgundy);
+      color: var(--burgundy);
+      text-align: center;
+      margin-bottom: 1.2rem;
+      padding: 1rem 0.5rem;
+      border-radius: 8px;
+    }
+
+    .referral-btn {
+      background: var(--burgundy);
+      color: var(--white);
+      border: none;
+      border-radius: 5px;
+      padding: 0.5rem 1.2rem;
+      cursor: pointer;
+      font-weight: 500;
+      margin-top: 0.5rem;
+    }
+    .referral-btn:hover {
+      background: var(--black);
+    }
+
+    .hero {
+      padding: 3rem 2rem 2rem 2rem;
+      text-align: center;
+      max-width: 900px;
+      margin: 0 auto;
+      background: var(--white);
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(128,0,32,0.07);
+    }
+
+    .hero h1 {
+      color: var(--burgundy);
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .guide-container { 
+      max-width: 900px; 
+      margin: 2rem auto; 
+      background: var(--white); 
+      border-radius: 12px; 
+      box-shadow: 0 2px 12px rgba(128,0,32,0.07); 
+      padding: 3rem; 
+      margin-bottom: 3rem;
+    }
+    h1 { 
+      color: var(--burgundy); 
+      font-size: 2.2rem;
+      text-align: center;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+    .subtitle {
+      text-align: center;
+      color: var(--accent);
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      font-style: italic;
+    }
+    h2 { 
+      color: var(--burgundy); 
+      margin-top: 3rem; 
+      font-size: 1.8rem;
+      border-bottom: 2px solid var(--soft-burgundy);
+      padding-bottom: 0.5rem;
+    }
+    .style-section {
+      margin-bottom: 3rem;
+      padding: 2rem;
+      background: var(--light-bg);
+      border-radius: 12px;
+      border-left: 4px solid var(--burgundy);
+    }
+    .guide-img { 
+      width: 100%; 
+      max-width: 400px; 
+      border-radius: 12px; 
+      margin: 1.5rem auto; 
+      display: block;
+      box-shadow: 0 4px 16px rgba(128,0,32,0.07);
+      transition: transform 0.3s;
+    }
+    .guide-img:hover {
+      transform: scale(1.02);
+    }
+    .style-description {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: var(--black);
+      text-align: center;
+      margin-top: 1rem;
+    }
+    .toc { 
+      background: var(--soft-burgundy); 
+      color: var(--white);
+      border-radius: 12px; 
+      padding: 2rem; 
+      margin-bottom: 3rem; 
+      text-align: center;
+    }
+    .toc h3 {
+      color: var(--white);
+      margin-bottom: 1rem;
+      font-size: 1.3rem;
+    }
+    .toc ul { 
+      list-style: none; 
+      padding: 0; 
+      margin: 0; 
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+    }
+    .toc li { 
+      margin: 0;
+    }
+    .toc a { 
+      color: var(--white); 
+      text-decoration: none;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      transition: background 0.3s;
+      font-weight: 600;
+    }
+    .toc a:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+    .share-buttons { 
+      margin-top: 3rem; 
+      text-align: center;
+      padding: 2rem;
+      background: var(--light-bg);
+      border-radius: 12px;
+    }
+    .share-buttons span {
+      display: block;
+      margin-bottom: 1rem;
+      color: var(--burgundy);
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+    .share-buttons button { 
+      background: var(--burgundy); 
+      color: var(--white); 
+      border: none; 
+      border-radius: 8px; 
+      padding: 0.7rem 1.5rem; 
+      margin: 0.3rem; 
+      cursor: pointer; 
+      font-weight: 600;
+      transition: all 0.3s;
+      font-size: 1rem;
+    }
+    .share-buttons button:hover {
+      background: var(--black);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(128,0,32,0.2);
+    }
+    
+    #backToTop {
+      position: fixed;
+      right: 1.5rem;
+      bottom: 1.5rem;
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      z-index: 1000;
+      opacity: 1;
+      display: block;
+      transition: transform 0.2s;
+    }
+    #backToTop svg {
+      box-shadow: 0 2px 8px rgba(128,0,32,0.13);
+      border-radius: 50%;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    #backToTop:hover svg {
+      box-shadow: 0 4px 16px rgba(128,0,32,0.25);
+      transform: scale(1.1);
+    }
+    
+    @media (max-width: 768px) {
+      .header-container {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      nav {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .guide-container { 
+        padding: 1.5rem; 
+        margin: 1rem;
+      }
+      .guide-img { 
+        max-width: 100%; 
+      }
+      h1 { 
+        font-size: 2rem; 
+      }
+      h2 { 
+        font-size: 1.5rem; 
+      }
+      .toc ul {
+        flex-direction: column;
+        align-items: center;
+      }
+      .style-section {
+        padding: 1rem;
+      }
+      .menu-toggle {
+        display: block;
+      }
     }
   </style>
 </head>
 <body>
+  <header>
+    <div class="header-container">
+      <div class="logo">
+        <img src="logo.jpg" alt="Her Essence Restored Logo" class="logo-img">
+        Her Essence Restored (H.E.R.)
+      </div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="products.html">Products</a>
+        
+        <a href="contact.html">Contact</a>
+        <a href="cart.html">Cart</a>
+        <select id="languageSelector" onchange="changeLanguage(this.value)">
+          <option value="en">🇺🇸 English</option>
+          <option value="pt">🇧🇷 Português</option>
+        </select>
+        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+      </nav>
+    </div>
+  </header>
+
+  <div class="trending-now-banner" data-en="✨ Style Guide: Discover Your Perfect Look ✨" data-pt="✨ Guia de Estilo: Descubra Seu Look Perfeito ✨">
+    ✨ Style Guide: Discover Your Perfect Look ✨
+  </div>
+
+  <div class="referral-block">
+    <strong data-en="Love Our Style Tips?" data-pt="Adora Nossas Dicas de Estilo?">Love Our Style Tips?</strong> 
+    <span data-en="Share this guide with friends and earn rewards!" data-pt="Compartilhe este guia com amigos e ganhe recompensas!">Share this guide with friends and earn rewards!</span>
+    <br>
+    <button class="referral-btn" onclick="window.location.href='refer.html'" data-en="Refer Friends" data-pt="Indicar Amigos">Refer Friends</button>
+  </div>
+
   <div class="guide-container">
-    <nav class="nav">
-      <a href="index.html">&larr; Home</a>
-    </nav>
-    <h1>Style Guide &amp; Inspiration</h1>
+    <div class="hero">
+      <h1 data-en="Style Guide & Inspiration" data-pt="Guia de Estilo e Inspiração">Style Guide & Inspiration</h1>
+      <p class="subtitle" data-en="Discover how to style your favorite pieces from Her Essence Restored. Get inspired by our curated looks and expert styling tips!" data-pt="Descubra como usar suas peças favoritas da Her Essence Restored. Inspire-se com nossos looks selecionados e dicas de styling de especialistas!">Discover how to style your favorite pieces from Her Essence Restored. Get inspired by our curated looks and expert styling tips!</p>
+    </div>
+    
     <div class="toc">
-      <strong>Jump to:</strong>
+      <h3 data-en="Style Categories" data-pt="Categorias de Estilo">Style Categories</h3>
       <ul>
-        <li><a href="#vintage">Vintage Vibes</a></li>
-        <li><a href="#modern">Modern Chic</a></li>
-        <li><a href="#african">African Prints</a></li>
-        <li><a href="#casual">Casual Comfort</a></li>
-        <li><a href="#evening">Evening Glam</a></li>
+        <li><a href="#vintage" data-en="Vintage Vibes" data-pt="Vibes Vintage">Vintage Vibes</a></li>
+        <li><a href="#modern" data-en="Modern Chic" data-pt="Chique Moderno">Modern Chic</a></li>
+        <li><a href="#african" data-en="African Prints" data-pt="Estampas Africanas">African Prints</a></li>
+        <li><a href="#casual" data-en="Casual Comfort" data-pt="Conforto Casual">Casual Comfort</a></li>
+        <li><a href="#evening" data-en="Evening Glam" data-pt="Glamour Noturno">Evening Glam</a></li>
       </ul>
     </div>
-    <p>Discover how to style your favorite pieces from Her Essence Restored. Get inspired by our curated looks and tips from our stylists!</p>
     
-    <h2 id="vintage">Vintage Vibes</h2>
-    <img src="https://i.imgur.com/look1.jpg" class="guide-img" alt="Woman in a classic vintage dress and wide-brimmed hat">
-    <p>Pair a classic vintage dress with a wide-brimmed hat for timeless elegance. Add pearl earrings and a delicate clutch for a complete retro look.</p>
+    <div class="style-section">
+      <h2 id="vintage" data-en="Vintage Vibes" data-pt="Vibes Vintage">Vintage Vibes</h2>
+      <img src="https://i.imgur.com/look1.jpg" class="guide-img" alt="Woman in a classic vintage dress and wide-brimmed hat">
+      <p class="style-description" data-en="Pair a classic vintage dress with a wide-brimmed hat for timeless elegance. Add pearl earrings and a delicate clutch for a complete retro look that never goes out of style." data-pt="Combine um vestido vintage clássico com um chapéu de aba larga para elegância atemporal. Adicione brincos de pérola e uma bolsa delicada para um look retrô completo que nunca sai de moda.">Pair a classic vintage dress with a wide-brimmed hat for timeless elegance. Add pearl earrings and a delicate clutch for a complete retro look that never goes out of style.</p>
+    </div>
     
-    <h2 id="modern">Modern Chic</h2>
-    <img src="https://i.imgur.com/look2.jpg" class="guide-img" alt="Model in a structured blazer and trendy sneakers">
-    <p>Combine a structured blazer with trendy sneakers for a fresh, modern look. Layer with minimalist jewelry and a crossbody bag for effortless style.</p>
+    <div class="style-section">
+      <h2 id="modern" data-en="Modern Chic" data-pt="Chique Moderno">Modern Chic</h2>
+      <img src="https://i.imgur.com/look2.jpg" class="guide-img" alt="Model in a structured blazer and trendy sneakers">
+      <p class="style-description" data-en="Combine a structured blazer with trendy sneakers for a fresh, modern look. Layer with minimalist jewelry and a crossbody bag for effortless style that transitions from day to night." data-pt="Combine um blazer estruturado com tênis da moda para um visual fresco e moderno. Complete com joias minimalistas e uma bolsa transversal para um estilo sem esforço que funciona do dia à noite.">Combine a structured blazer with trendy sneakers for a fresh, modern look. Layer with minimalist jewelry and a crossbody bag for effortless style that transitions from day to night.</p>
+    </div>
     
-    <h2 id="african">African Prints</h2>
-    <img src="https://i.imgur.com/look3.jpg" class="guide-img" alt="Model wearing bold African print dress and handcrafted accessories">
-    <p>Make a statement with bold African prints and handcrafted accessories. Mix patterns and textures for a vibrant, unique ensemble.</p>
+    <div class="style-section">
+      <h2 id="african" data-en="African Prints" data-pt="Estampas Africanas">African Prints</h2>
+      <img src="https://i.imgur.com/look3.jpg" class="guide-img" alt="Model wearing bold African print dress and handcrafted accessories">
+      <p class="style-description" data-en="Make a statement with bold African prints and handcrafted accessories. Mix patterns and textures for a vibrant, unique ensemble that celebrates cultural heritage and personal style." data-pt="Faça uma declaração com estampas africanas ousadas e acessórios artesanais. Misture padrões e texturas para um conjunto vibrante e único que celebra a herança cultural e o estilo pessoal.">Make a statement with bold African prints and handcrafted accessories. Mix patterns and textures for a vibrant, unique ensemble that celebrates cultural heritage and personal style.</p>
+    </div>
     
-    <h2 id="casual">Casual Comfort</h2>
-    <img src="https://i.imgur.com/4QfKuz1.jpg" class="guide-img" alt="Person in relaxed jeans and cozy sweater">
-    <p>Opt for relaxed jeans and a cozy sweater for everyday comfort. Finish the look with slip-on shoes and a tote bag for errands or coffee dates.</p>
+    <div class="style-section">
+      <h2 id="casual" data-en="Casual Comfort" data-pt="Conforto Casual">Casual Comfort</h2>
+      <img src="https://i.imgur.com/4QfKuz1.jpg" class="guide-img" alt="Person in relaxed jeans and cozy sweater">
+      <p class="style-description" data-en="Opt for relaxed jeans and a cozy sweater for everyday comfort. Finish the look with slip-on shoes and a tote bag for errands, coffee dates, or weekend adventures." data-pt="Opte por jeans relaxados e um suéter aconchegante para o conforto do dia a dia. Complete o visual com sapatos slip-on e uma bolsa tote para recados, encontros no café ou aventuras de fim de semana.">Opt for relaxed jeans and a cozy sweater for everyday comfort. Finish the look with slip-on shoes and a tote bag for errands, coffee dates, or weekend adventures.</p>
+    </div>
     
-    <h2 id="evening">Evening Glam</h2>
-    <img src="https://i.imgur.com/8QfKuz2.jpg" class="guide-img" alt="Woman in elegant evening gown with statement jewelry">
-    <p>Shine at night with an elegant evening gown and statement jewelry. Choose metallic heels and a clutch for a touch of glamour.</p>
+    <div class="style-section">
+      <h2 id="evening" data-en="Evening Glam" data-pt="Glamour Noturno">Evening Glam</h2>
+      <img src="https://i.imgur.com/8QfKuz2.jpg" class="guide-img" alt="Woman in elegant evening gown with statement jewelry">
+      <p class="style-description" data-en="Shine at night with an elegant evening gown and statement jewelry. Choose metallic heels and a clutch for a touch of glamour that commands attention at any special event." data-pt="Brilhe à noite com um vestido de noite elegante e joias marcantes. Escolha saltos metálicos e uma clutch para um toque de glamour que chama atenção em qualquer evento especial.">Shine at night with an elegant evening gown and statement jewelry. Choose metallic heels and a clutch for a touch of glamour that commands attention at any special event.</p>
+    </div>
     
     <div class="share-buttons">
-      <span>Share this page:</span>
+      <span data-en="Share this style guide:" data-pt="Compartilhe este guia de estilo:">Share this style guide:</span>
       <button onclick="window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(window.location.href),'_blank')">Facebook</button>
       <button onclick="window.open('https://twitter.com/intent/tweet?url='+encodeURIComponent(window.location.href),'_blank')">Twitter</button>
       <button onclick="window.open('mailto:?subject=Check%20out%20this%20Style%20Guide&body='+encodeURIComponent(window.location.href))">Email</button>
+      <button onclick="window.open('https://wa.me/?text='+encodeURIComponent('Check out this amazing style guide: '+window.location.href),'_blank')">WhatsApp</button>
     </div>
   </div>
+
+  <button id="backToTop" aria-label="Back to top" style="display:block; opacity:1;">
+    <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+      <circle cx="16" cy="16" r="15" fill="#800020" stroke="#fff" stroke-width="2"/>
+      <path d="M16 22V10M16 10L10 16M16 10L22 16" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+
+  <script>
+    let currentLanguage = 'en';
+    
+    function toggleMenu() {
+      const nav = document.querySelector('nav');
+      nav.style.display = nav.style.display === 'none' ? 'flex' : 'none';
+    }
+    
+    function changeLanguage(lang) {
+      currentLanguage = lang;
+      const elements = document.querySelectorAll('[data-en][data-pt]');
+      
+      elements.forEach(element => {
+        if (lang === 'pt') {
+          element.textContent = element.getAttribute('data-pt');
+        } else {
+          element.textContent = element.getAttribute('data-en');
+        }
+      });
+      
+      // Update page language attribute
+      document.documentElement.lang = lang;
+    }
+    
+    // Initialize language on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      changeLanguage('en');
+    });
+    
+    // Back to Top button logic
+    const backToTop = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      backToTop.style.display = 'block';
+      backToTop.style.opacity = window.scrollY > 300 ? '1' : '0.5';
+    });
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
 </body>
 </html>

@@ -6,132 +6,758 @@
   <title>Cart - Her Essence Restored (H.E.R.)</title>
   <style>
     :root {
-      --her-blush: #e6bfc7;
-      --her-mauve: #b98a97;
-      --her-dark: #7a2c35;
-      --her-light: #f5e7e3;
-      --her-accent: #c7a08a;
-      --her-white: #fff;
+      --burgundy: #800020;
+      --black: #111;
+      --white: #fff;
+      --soft-burgundy: #a06a7b;
+      --light-bg: #fff8fa;
+      --primary: #800020; /* Deep burgundy */
+      --footer-text: #fff;
+      --accent: #a06a7b;
+      --footer-bottom: #f5e7e0;
     }
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Times New Roman', Times, serif; }
-    body { background: linear-gradient(90deg, var(--her-light) 0%, var(--her-dark) 50%, var(--her-accent) 100%); color: var(--her-dark); padding: 5rem 2rem 2rem 2rem; }
-    header { background: rgba(255,255,255,0.95); border-bottom: 1px solid var(--her-accent); width: 100%; position: fixed; top: 0; left: 0; box-sizing: border-box; z-index: 10; padding: 0.5rem 2rem; }
-    .logo { display: flex; align-items: center; justify-content: space-between; }
-    .logo-left { display: flex; align-items: center; }
-    .logo img { width: 50px; height: 50px; margin-right: 0.5rem; }
-    .logo span { font-size: 1.8rem; font-weight: bold; color: var(--her-dark); }
-    nav { display: flex; align-items: center; margin-left: 2rem; }
-    nav a { margin: 0 1rem; color: var(--her-dark); text-decoration: none; font-weight: 500; }
-    .cart-container { max-width: 1000px; margin: 2rem auto; padding: 1rem; background: rgba(255,255,255,0.98); border-radius: 8px; box-shadow: 0 2px 10px rgba(122,44,53,0.07); }
-    .cart-container h2 { margin-bottom: 1rem; color: var(--her-dark); }
-    .cart-item { border-bottom: 1px solid var(--her-accent); }
-    .cart-item img { width: 100px; height: 120px; object-fit: cover; margin-right: 1rem; }
-    .cart-item h3 { margin: 0; }
-    .cart-item p { margin: 0.5rem 0; }
-    .item-details { flex: 2; display: flex; align-items: center; }
-    .item-info { display: flex; flex-direction: column; }
-    .item-info h4 { margin-bottom: 0.5rem; }
-    .item-info p { font-size: 0.9rem; color: #555; }
-    .item-actions { display: flex; align-items: center; gap: 1rem; }
-    .item-actions select, .item-actions input { padding: 0.3rem; border: 1px solid #ccc; border-radius: 4px; }
-    .item-actions button, .checkout-btn, .newsletter button { background-color: var(--her-dark); color: var(--her-white); }
-    .item-actions button:hover, .checkout-btn:hover, .newsletter button:hover { background-color: var(--her-mauve); }
-    .checkout-btn { background-color: var(--her-dark); }
-    .checkout-btn:hover { background-color: var(--her-mauve); }
-    .cart-total { text-align: right; margin-top: 1rem; font-size: 1.2rem; font-weight: bold; }
-    .checkout-btn { margin-top: 1rem; background-color: var(--her-dark); color: white; padding: 0.8rem 1.5rem; border: none; border-radius: 5px; cursor: pointer; font-size: 1rem; }
-    .checkout-btn:hover { background-color: var(--her-mauve); }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "STIX Math", "Cambria Math", serif;
+      font-style: italic;
+    }
+    body {
+      background: linear-gradient(90deg, var(--white) 0%, var(--burgundy) 100%);
+      color: var(--black);
+      font-size: 1.08rem;
+      line-height: 1.6;
+    }
+    header {
+      background: var(--white);
+      border-bottom: 2px solid var(--burgundy);
+      box-shadow: 0 2px 8px rgba(128,0,32,0.04);
+    }
+    .header-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      flex-wrap: wrap;
+    }
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--burgundy);
+      display: flex;
+      align-items: center;
+      letter-spacing: 1px;
+    }
+    .logo img {
+      width: 50px;
+      height: 50px;
+      object-fit: contain;
+      margin-right: 12px;
+      border-radius: 8px;
+    }
+    nav {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+    nav a {
+      color: var(--burgundy);
+      font-weight: 500;
+      text-decoration: none;
+      padding: 0.3rem 0.7rem;
+      border-radius: 4px;
+      transition: background 0.2s, color 0.2s;
+    }
+    nav a:hover {
+      background: var(--burgundy);
+      color: var(--white);
+    }
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 2rem;
+      margin-left: 1rem;
+      cursor: pointer;
+      color: var(--burgundy);
+    }
+    #languageSelector {
+      margin-left: 1rem;
+      padding: 0.3rem 0.7rem;
+      border: 1px solid var(--burgundy);
+      border-radius: 5px;
+      background: var(--white);
+      color: var(--burgundy);
+      font-size: 1rem;
+    }
+    .trending-now-banner {
+      background: var(--soft-burgundy);
+      color: var(--white);
+      text-align: center;
+      font-size: 1.15rem;
+      padding: 0.7rem 0;
+      margin-bottom: 0;
+      letter-spacing: 0.5px;
+    }
+    .referral-block {
+      background: var(--light-bg);
+      border: 2px dashed var(--burgundy);
+      color: var(--burgundy);
+      text-align: center;
+      margin-bottom: 1.2rem;
+      padding: 1rem 0.5rem;
+      border-radius: 8px;
+    }
+    .referral-btn {
+      background: var(--burgundy);
+      color: var(--white);
+      border: none;
+      border-radius: 5px;
+      padding: 0.5rem 1.2rem;
+      cursor: pointer;
+      font-weight: 500;
+      margin-top: 0.5rem;
+    }
+    .referral-btn:hover {
+      background: var(--black);
+    }
+    .hero {
+      padding: 3rem 2rem 2rem 2rem;
+      text-align: center;
+      max-width: 900px;
+      margin: 0 auto;
+      background: var(--white);
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(128,0,32,0.07);
+    }
+    .hero h1 {
+      color: var(--burgundy);
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+    .hero .cta-btn {
+      background: var(--burgundy);
+      color: var(--white);
+      border: none;
+      border-radius: 5px;
+      padding: 0.8rem 2rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-bottom: 1rem;
+      transition: background 0.2s;
+    }
+    .hero .cta-btn:hover {
+      background: var(--black);
+      color: var(--white);
+    }
+    .countdown-banner {
+      text-align: center;
+      padding: 0.7rem 1rem;
+      font-size: 1.1rem;
+      background: var(--burgundy);
+      color: var(--white);
+      margin-bottom: 1.5rem;
+      border-radius: 8px;
+      max-width: 900px;
+      margin: 1rem auto 1.5rem auto;
+    }
+    .carousel {
+      background: var(--white);
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(128,0,32,0.07);
+      margin-bottom: 2rem;
+    }
+    .carousel-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      max-width: 900px;
+      margin: 2rem auto;
+      overflow: hidden;
+    }
+    .carousel-images {
+      display: flex;
+      transition: transform 0.5s;
+      width: 100%;
+    }
+    .carousel-slide {
+      min-width: 100%;
+      box-sizing: border-box;
+      position: relative;
+    }
+    .carousel-img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(128,0,32,0.07);
+    }
+    .carousel-arrow {
+      background: none;
+      border: none;
+      cursor: pointer;
+      z-index: 2;
+      padding: 0.5rem;
+      border-radius: 50%;
+      transition: background 0.2s;
+    }
+    .carousel-arrow:hover {
+      background: var(--soft-burgundy);
+    }
+    .carousel-dots {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+    .carousel-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--burgundy);
+      opacity: 0.5;
+      cursor: pointer;
+      border: 2px solid var(--white);
+      transition: opacity 0.2s;
+    }
+    .carousel-dot.active {
+      opacity: 1;
+      background: var(--black);
+      border-color: var(--burgundy);
+    }
+    .carousel-overlay-left span,
+    .carousel-overlay-right span {
+      background: rgba(128,0,32,0.7);
+      color: var(--white);
+      padding: 0.3rem 0.7rem;
+      border-radius: 5px;
+      font-size: 1rem;
+      position: absolute;
+      top: 20px;
+    }
+    .carousel-overlay-left span { left: 20px; }
+    .carousel-overlay-right span { right: 20px; }
+    .carousel-caption span {
+      background: rgba(255,255,255,0.92);
+      color: var(--burgundy);
+      padding: 0.3rem 0.7rem;
+      border-radius: 5px;
+      font-size: 1rem;
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .shop {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 2rem;
+    }
+    .shop h2 {
+      color: var(--burgundy);
+      font-size: 1.6rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+    .filters {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+    .filters button {
+      background: var(--burgundy);
+      color: var(--white);
+      border: none;
+      border-radius: 5px;
+      padding: 0.5rem 1.2rem;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .filters button:hover,
+    .filters button.active {
+      background: var(--black);
+      color: var(--white);
+    }
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+    .product {
+      padding: 1.2rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 12px rgba(128,0,32,0.07);
+      background: var(--white);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border: 1px solid var(--soft-burgundy);
+      transition: box-shadow 0.2s;
+    }
+    .product:hover {
+      box-shadow: 0 4px 16px rgba(128,0,32,0.13);
+    }
+    .product h4 {
+      color: var(--burgundy);
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin: 0.7rem 0 0.3rem 0;
+      text-align: center;
+    }
+    .product-description {
+      color: var(--black);
+      font-size: 1rem;
+      text-align: center;
+      margin-bottom: 0.7rem;
+    }
+    .product img {
+      width: 100%;
+      max-width: 220px;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+    .share-buttons {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 0.7rem;
+    }
+    .share-buttons button {
+      background: var(--white);
+      border: 1px solid var(--burgundy);
+      color: var(--burgundy);
+      border-radius: 5px;
+      padding: 0.3rem 0.7rem;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    .share-buttons button:hover {
+      background: var(--burgundy);
+      color: var(--white);
+    }
+    .testimonials {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 2rem;
+      border-radius: 12px;
+      background: var(--white);
+      box-shadow: 0 2px 12px rgba(128,0,32,0.07);
+    }
+    .testimonials h2 {
+      color: var(--burgundy);
+      font-size: 1.4rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 1.2rem;
+    }
+    .testimonial-list {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .testimonial {
+      flex: 1 1 220px;
+      padding: 1rem;
+      border-radius: 8px;
+      background: var(--light-bg);
+      border: 1px solid var(--soft-burgundy);
+      font-size: 1rem;
+      color: var(--black);
+      margin-bottom: 1rem;
+      box-shadow: 0 2px 8px rgba(128,0,32,0.04);
+    }
+    .testimonial .author {
+      color: var(--burgundy);
+      font-weight: 600;
+      margin-top: 0.5rem;
+      font-size: 0.98rem;
+    }
+    .opt-in {
+      max-width: 500px;
+      margin: 2rem auto;
+      padding: 2rem;
+      border-radius: 12px;
+      text-align: center;
+      background: var(--burgundy);
+      color: var(--white);
+      box-shadow: 0 2px 12px rgba(128,0,32,0.07);
+    }
+    .opt-in h3 { color: var(--white); }
+    .opt-in input, .opt-in button {
+      margin: 0.5rem 0;
+      padding: 0.7rem;
+      border-radius: 5px;
+      border: none;
+      width: 90%;
+      max-width: 350px;
+      font-size: 1rem;
+    }
+    .opt-in input {
+      background: var(--white);
+      color: var(--burgundy);
+      border: 1px solid var(--soft-burgundy);
+    }
+    .opt-in button {
+      background: var(--black);
+      color: var(--white);
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .opt-in button:hover {
+      background: var(--white);
+      color: var(--burgundy);
+    }
+    .style-gallery {
+      padding: 2rem 1rem;
+      background: var(--white);
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(128,0,32,0.07);
+    }
+    .style-gallery img {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(128,0,32,0.07);
+    }
     footer {
-      background: var(--her-light);
-      color: var(--her-dark);
-      border-top: 1px solid var(--her-accent);
-      padding-top: 2rem;
+      background: var(--primary); /* Deep burgundy */
+      color: var(--footer-text);
+      padding: 2rem;
       margin-top: 3rem;
     }
     .footer-content {
+      padding: 2rem 1rem;
+      gap: 2rem;
+      background: var(--burgundy);
+      color: var(--white);
+      border-radius: 12px 12px 0 0;
       display: flex;
-      justify-content: space-between;
       flex-wrap: wrap;
-      background: none;
+      justify-content: space-between;
+      align-items: stretch;
     }
     .footer-col {
-      flex: 1;
-      min-width: 200px;
-      margin: 1rem;
+      flex: 1 1 200px;
+      min-width: 180px;
+      margin-bottom: 1rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 1rem;
+      box-sizing: border-box;
     }
     .footer-col h4 {
-      margin-bottom: 1rem;
-      color: var(--her-dark);
+      color: var(--white);
+      font-size: 1.1rem;
+      margin-bottom: 0.7rem;
     }
     .footer-col a {
-      color: var(--her-mauve);
+      color: var(--white);
       text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      margin-bottom: 0.5rem;
+      display: block;
+      margin-bottom: 0.3rem;
+      transition: color 0.2s;
     }
     .footer-col a:hover {
-      color: var(--her-dark);
+      color: var(--black);
     }
-    .newsletter input {
-      padding: 0.5rem;
-      width: 70%;
-      margin-right: 0.5rem;
-      border: 1px solid var(--her-accent);
-      border-radius: 5px;
-      background: var(--her-white);
-      color: var(--her-dark);
-    }
-    .newsletter button {
-      padding: 0.5rem 1rem;
+    .footer-btn {
+      display: inline-block;
+      background: var(--accent);
+      color: var(--burgundy);
       border: none;
-      background: var(--her-mauve);
-      color: var(--her-white);
-      border-radius: 5px;
-      cursor: pointer;
+      border-radius: 6px;
+      padding: 0.5rem 1.2rem;
+      margin: 0.3rem 0;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+      box-shadow: 0 2px 8px rgba(128,0,32,0.07);
+      text-align: center;
     }
-    .newsletter button:hover {
-      background: var(--her-dark);
-      color: var(--her-white);
+    .footer-btn:hover {
+      background: var(--black);
+      color: var(--white);
+      box-shadow: 0 4px 16px rgba(128,0,32,0.13);
     }
     .footer-bottom {
-      color: var(--her-accent);
       text-align: center;
-      margin-top: 1.5rem;
+      padding: 1rem;
       font-size: 0.95rem;
+      background: var(--footer-bottom);
+      color: var(--burgundy);
+      border-radius: 0 0 12px 12px;
+      margin-top: 0;
     }
-    #backToTop { display: none; position: fixed; bottom: 2rem; right: 2rem; z-index: 100; background: linear-gradient(90deg, var(--her-dark) 0%, var(--her-accent) 100%); color: var(--her-white); border: none; border-radius: 50%; width: 48px; height: 48px; font-size: 2rem; cursor: pointer; box-shadow: 0 2px 8px rgba(122,44,53,0.15); transition: background 0.3s, box-shadow 0.3s; }
-    #backToTop:hover { background: linear-gradient(90deg, var(--her-mauve) 0%, var(--her-light) 100%); color: var(--her-dark); }
-    /* Custom button colors for Clear Cart and Undo */
-    #clearCartButton { background: var(--her-mauve); }
-    #undoButton { background: var(--her-accent); color: var(--her-dark); }
+    #backToTop {
+      position: fixed;
+      right: 1.5rem;
+      bottom: 1.5rem;
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      z-index: 1000;
+      transition: transform 0.2s;
+    }
+    #backToTop svg {
+      box-shadow: 0 2px 8px rgba(128,0,32,0.13);
+      border-radius: 50%;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    #backToTop:hover svg {
+      box-shadow: 0 4px 16px rgba(128,0,32,0.25);
+      transform: scale(1.1);
+    }
+    
+    /* Cart Specific Styles */
+    .cart-container {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background: var(--white);
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(128,0,32,0.07);
+    }
+    .cart-container h2 {
+      color: var(--burgundy);
+      font-size: 2rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 2rem;
+      border-bottom: 2px solid var(--soft-burgundy);
+      padding-bottom: 1rem;
+    }
+    .cart-container table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 2rem;
+      background: var(--white);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(128,0,32,0.05);
+    }
+    .cart-container table th {
+      background: var(--burgundy);
+      color: var(--white);
+      padding: 1rem;
+      text-align: left;
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+    .cart-container table td {
+      padding: 1rem;
+      border-bottom: 1px solid var(--soft-burgundy);
+      vertical-align: middle;
+    }
+    .cart-container table tr:last-child td {
+      border-bottom: none;
+    }
+    .cart-container table tr:nth-child(even) {
+      background: var(--light-bg);
+    }
+    .checkout-btn {
+      background: var(--burgundy);
+      color: var(--white);
+      border: none;
+      border-radius: 8px;
+      padding: 0.8rem 2rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      box-shadow: 0 2px 8px rgba(128,0,32,0.1);
+    }
+    .checkout-btn:hover {
+      background: var(--black);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(128,0,32,0.2);
+    }
+    .cart-total-section {
+      text-align: right;
+      margin: 2rem 0;
+      padding: 1.5rem;
+      background: var(--light-bg);
+      border-radius: 8px;
+      border: 2px solid var(--soft-burgundy);
+    }
+    .cart-total-section strong {
+      font-size: 1.4rem;
+      color: var(--burgundy);
+    }
+    .cart-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+    
+    /* Mobile Menu Toggle */
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 2rem;
+      color: var(--burgundy);
+      cursor: pointer;
+    }
+    /* MOBILE STYLES */
+    @media (max-width: 900px) {
+      .header-container, .shop, .hero, .testimonials, .footer-content {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+      .carousel-img {
+        height: 200px;
+      }
+      .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.2rem;
+      }
+      .testimonial-list {
+        gap: 1rem;
+      }
+    }
+    @media (max-width: 600px) {
+      .header-container {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1rem;
+      }
+      .logo {
+        margin-bottom: 0;
+        font-size: 1.2rem;
+      }
+      .logo img {
+        width: 40px;
+        height: 40px;
+        margin-right: 8px;
+      }
+      nav {
+        flex-direction: column;
+        gap: 1rem;
+        width: 100%;
+        background: var(--white);
+        border-bottom: 2px solid var(--burgundy);
+        position: absolute;
+        top: 80px;
+        left: 0;
+        z-index: 100;
+        display: none;
+        padding: 1rem;
+        box-shadow: 0 4px 8px rgba(128,0,32,0.1);
+      }
+      #mainNav.open {
+        display: flex;
+      }
+      .menu-toggle {
+        display: block;
+      }
+      .cart-container {
+        margin: 1rem;
+        padding: 1rem;
+      }
+      .cart-container h2 {
+        font-size: 1.6rem;
+      }
+      .cart-container table {
+        font-size: 0.9rem;
+      }
+      .cart-container table th,
+      .cart-container table td {
+        padding: 0.5rem;
+      }
+      .cart-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+      .checkout-btn {
+        width: 100%;
+        max-width: 300px;
+        margin: 0.5rem 0;
+      }
+      .carousel-img {
+        height: 140px;
+      }
+      .product-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+      .footer-content {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+        border-radius: 12px 12px 0 0;
+      }
+      .footer-col {
+        min-width: 0;
+      }
+      .opt-in input, .opt-in button {
+        width: 100%;
+        max-width: 100%;
+      }
+      .style-gallery img {
+        width: 90px;
+        height: 90px;
+      }
+      .hero {
+        padding: 2rem 0.5rem 1.5rem 0.5rem;
+      }
+      .shop {
+        padding: 0 0.5rem;
+      }
+      .testimonials {
+        padding: 1rem 0.5rem;
+      }
+    }
   </style>
 </head>
 <body>
 
   <!-- Header -->
   <header>
-    <div class="logo">
-      <div class="logo-left">
+    <div class="header-container">
+      <div class="logo">
         <img src="logo.jpg" alt="H.E.R. Logo">
         <span>Her Essence Restored (H.E.R.)</span>
       </div>
-      <nav>
+      <nav id="mainNav">
         <a href="index.html">Home</a>
-        <a href="products.html">Products</a>
         <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
+        <a href="products.html">Products</a>
         
+        <a href="contact.html">Contact</a>
+        <a href="cart.html">Cart</a>
       </nav>
+      <button class="menu-toggle" onclick="toggleMobileMenu()">☰</button>
     </div>
   </header>
 
   <!-- Cart Section -->
   <section class="cart-container">
     <h2>Your Shopping Cart</h2>
-    <div id="cartItems"></div>
-
+    
     <table>
       <thead>
         <tr>
@@ -145,69 +771,87 @@
       </thead>
       <tbody id="cartTableBody"></tbody>
     </table>
-    <div style="text-align:right;margin-top:1rem;">
+    
+    <div class="cart-total-section">
       <strong>Total: <span id="cartTotal">0.00</span></strong>
     </div>
-    <button id="checkoutButton" class="checkout-btn">Proceed to Checkout</button>
-    <button id="clearCartButton" class="checkout-btn" style="margin-left:1rem;">Clear Cart</button>
-    <button id="undoButton" class="checkout-btn" style="margin-left:1rem;">Undo</button>
+    
+    <div class="cart-buttons">
+      <button id="checkoutButton" class="checkout-btn">Proceed to Checkout</button>
+      <button id="clearCartButton" class="checkout-btn">Clear Cart</button>
+      <button id="undoButton" class="checkout-btn">Undo</button>
+    </div>
   </section>
+
+  <!-- Back to Top Button -->
+  <button id="backToTop" aria-label="Back to top" style="display:none;">
+    <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+      <circle cx="16" cy="16" r="15" fill="#800020" stroke="#fff" stroke-width="2"/>
+      <path d="M16 22V10M16 10L10 16M16 10L22 16" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
 
   <!-- Footer -->
   <footer>
-    <div class="footer-content">
-      <div class="footer-col">
-        <h4>About Us</h4>
-        <p>Her Essence Restored (H.E.R.) brings timeless elegance to modern fashion. Discover curated styles from across the decades.</p>
-      </div>
-      <div class="footer-col">
-  <h4>Follow Us</h4>
-  <a href="https://www.instagram.com/her_essence_restored?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank">
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7.75 2h8.5A5.25 5.25 0 0121.5 7.25v8.5A5.25 5.25 0 0116.25 21H7.75A5.25 5.25 0 012.5 15.75v-8.5A5.25 5.25 0 017.75 2z" />
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16.5 7.5h.008v.008H16.5V7.5zM12 8.75a3.25 3.25 0 100 6.5 3.25 3.25 0 000-6.5z" />
-    </svg>
-    Instagram
-  </a>
-  <a href="https://www.facebook.com" target="_blank">
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3.5l.5-4H14V7a1 1 0 011-1h3V2z" />
-    </svg>
-    Facebook
-  </a>
-  <a href="https://www.pinterest.com" target="_blank">
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.29 20.251c.7-1.2.94-2.1 1.4-3.8.3 1.2 2.1 2.2 3.8 2.2 3.3 0 5.5-2.4 5.5-5.4 0-2.9-2.4-5.2-5.4-5.2-3.8 0-5.7 2.7-5.7 5.6 0 1.4.7 3.1 1.8 3.6.2.1.3 0 .4-.1.1-.1.3-.4.3-.5.1-.2.1-.3 0-.5-.2-.4-.4-.9-.4-1.5 0-2.1 1.6-4.1 4.3-4.1 2.3 0 3.9 1.5 3.9 3.7 0 2.4-1.3 4.2-3.2 4.2-.9 0-1.6-.7-1.4-1.6.3-1.2.8-2.5.8-3.4 0-.8-.4-1.5-1.3-1.5-1 0-1.8 1-1.8 2.4 0 .9.3 1.5.3 1.5l-1.2 5.1c-.2.8-.3 1.7-.3 2.5" />
-    </svg>
-    Pinterest
-  </a>
-  <a href="https://www.tiktok.com" target="_blank">
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19a4 4 0 100-8 4 4 0 000 8zM16 3v5.5a4.5 4.5 0 01-4.5 4.5H9" />
-    </svg>
-    TikTok
-  </a>
-  <a href="returns.html">Returns Policy</a>
+  <div class="footer-content" role="contentinfo" style="display:flex; flex-wrap:wrap; gap:2rem; justify-content:center; align-items:flex-start; padding:2rem 2rem 1rem 2rem; box-sizing:border-box;">
+    <!-- Social Media Links -->
+    <div class="footer-col" style="min-width:180px; flex:1;">
+      <h4 style="margin-bottom:0.7rem;">Follow Us</h4>
+      <nav aria-label="Social media">
+        <div style="display:flex; flex-direction:column; gap:0.5rem;">
+          <a href="https://www.instagram.com/her_essence_restored" target="_blank" aria-label="Instagram" style="display:flex;align-items:center;gap:0.5rem;">
+            <img src="https://cdn-icons-png.flaticon.com/24/2111/2111463.png" alt="" style="height:20px;"> Instagram
+          </a>
+          <a href="https://www.facebook.com" target="_blank" aria-label="Facebook" style="display:flex;align-items:center;gap:0.5rem;">
+            <img src="https://cdn-icons-png.flaticon.com/24/733/733547.png" alt="" style="height:20px;"> Facebook
+          </a>
+          <a href="https://www.pinterest.com" target="_blank" aria-label="Pinterest" style="display:flex;align-items:center;gap:0.5rem;">
+            <img src="https://cdn-icons-png.flaticon.com/24/733/733558.png" alt="" style="height:20px;"> Pinterest
+          </a>
+          <a href="https://www.tiktok.com" target="_blank" aria-label="TikTok" style="display:flex;align-items:center;gap:0.5rem;">
+            <img src="https://cdn-icons-png.flaticon.com/24/3046/3046122.png" alt="" style="height:20px;"> TikTok
+          </a>
+        </div>
+      </nav>
+    </div>
+    <!-- Quick Links -->
+    <div class="footer-col" style="min-width:180px; flex:1;">
+      <h4 style="margin-bottom:0.7rem;">Quick Links</h4>
+      <nav aria-label="Quick links">
+        <div style="display:flex; flex-direction:column; gap:0.5rem;">
+          <a href="refer.html">Refer a Friend</a>
+          <a href="style-guide.html">Style Guide</a>
+          <a href="returns.html">Return Policy</a>
+          <a href="Privacy & Data Policy.html">Privacy & Data Policy</a>
+        </div>
+      </nav>
+    </div>
+    <!-- Newsletter Signup -->
+    <div class="footer-col newsletter" style="min-width:220px; flex:1;">
+      <h4 style="margin-bottom:0.7rem;">Newsletter</h4>
+      <form aria-label="Newsletter signup" style="display:flex; flex-direction:column; gap:0.7rem;">
+        <p style="margin-bottom:0;">Sign up for exclusive updates:</p>
+        <input type="email" placeholder="Your email" aria-label="Your email" required style="padding:0.5rem; border-radius:5px; border:none; color:var(--burgundy); background:var(--white);">
+        <button type="submit" style="background:var(--black); color:var(--white); border:none; border-radius:5px; padding:0.5rem 1.2rem; cursor:pointer; font-weight:500;">Subscribe</button>
+      </form>
+    </div>
+  </div>
+  
+</footer>
+<div class="footer-bottom">
+  &copy; 2025 Her Essence Restored (H.E.R.). All rights reserved.
 </div>
-      <div class="footer-col newsletter">
-        <h4>Newsletter</h4>
-        <p>Sign up for exclusive updates:</p>
-        <input type="email" placeholder="Your email" />
-        <button>Subscribe</button>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      &copy; 2025 Her Essence Restored (H.E.R.). All rights reserved.
-    </div>
-  </footer>
-
-  <!-- Back to Top Button -->
-  <button id="backToTop" title="Back to Top">&#8679;</button>
 
   <!-- JavaScript -->
   <script>
 /* --- Cart Page Logic --- */
 let lastCartBackup = null;
+
+// Mobile menu toggle
+function toggleMobileMenu() {
+  const nav = document.getElementById("mainNav");
+  nav.classList.toggle("open");
+}
 
 function getCart() {
   return JSON.parse(localStorage.getItem("cart")) || [];

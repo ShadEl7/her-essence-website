@@ -6,53 +6,325 @@
   <title>Her Essence Restored (H.E.R.) - Products</title>
   <style>
     :root {
-      --burgundy: #7a3f4b;         /* Deep burgundy */
-      --rose-pink: #d6b3c6;        /* Soft rose pink from logo */
-      --cream: #fff6fa;            /* Light pink/white from logo */
-      --white: #ffffff;            /* Pure white */
-      --black: #222222;            /* Black for text */
-      --accent-pink: #d6b3c6;      /* Use rose pink as accent */
-      --beige: #f3e3e8;            /* Soft beige-pink for backgrounds */
+      --primary: #6e232d;         /* Deep burgundy (keep for accents) */
+      --background: #fff;         /* White background as in logo */
+      --accent: #d6aab4;          /* Soft blush pink from the wings */
+      --mauve: #b98a98;           /* Muted mauve for subtle backgrounds */
+      --text: #222;               /* Black for main text (matches logo text) */
+      --footer-text: #fff;        /* White for footer text */
+      --footer-link: #d6aab4;     /* Blush pink for links */
+      --footer-bottom: #f5e7e0;   /* Light beige for footer bottom */
+      --burgundy: #800020;
+      --black: #111;
+      --white: #fff;
+      --soft-burgundy: #a06a7b;
+      --light-bg: #fff8fa;
     }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Times New Roman', Times, serif; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "STIX Math", "Cambria Math", serif;
+      font-style: italic;
+    }
 
-    body { background-color: var(--cream); color: var(--burgundy); }
+    body {
+      background: linear-gradient(90deg, var(--white) 0%, var(--burgundy) 100%);
+      color: var(--black);
+      font-size: 1.08rem;
+      line-height: 1.6;
+    }
 
     header {
-      background: linear-gradient(90deg, var(--cream) 0%, var(--burgundy) 50%, var(--beige) 100%);
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid var(--beige);
+      background: var(--white);
+      border-bottom: 2px solid var(--burgundy);
+      box-shadow: 0 2px 8px rgba(128,0,32,0.04);
     }
 
-    .logo { font-size: 1.8rem; font-weight: bold; color: var(--burgundy); }
+    .header-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--burgundy);
+      display: flex;
+      align-items: center;
+      letter-spacing: 1px;
+    }
+
+    nav {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
 
     nav a {
-      margin: 0 1rem;
-      color: var(--white);
-      text-decoration: none;
+      color: var(--burgundy);
       font-weight: 500;
-      font-size: 1rem; /* Reduced from 1.1rem */
-      padding: 0.4rem 1rem;
-      border-radius: 6px;
-      transition: 
-        color 0.2s, 
-        background 0.2s, 
-        box-shadow 0.2s;
+      text-decoration: none;
+      padding: 0.3rem 0.7rem;
+      border-radius: 4px;
+      transition: background 0.2s, color 0.2s;
     }
-    nav a:hover, nav a:focus {
+    nav a:hover {
+      background: var(--burgundy);
       color: var(--white);
-      background: var(--accent-pink);
-      box-shadow: 0 2px 8px rgba(214,179,198,0.15);
-      outline: none;
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 2rem;
+      margin-left: 1rem;
+      cursor: pointer;
+      color: var(--burgundy);
+    }
+
+    #languageSelector {
+      margin-left: 1rem;
+      padding: 0.3rem 0.7rem;
+      border: 1px solid var(--burgundy);
+      border-radius: 5px;
+      background: var(--white);
+      color: var(--burgundy);
+      font-size: 1rem;
+    }
+
+    .trending-now-banner {
+      background: var(--soft-burgundy);
+      color: var(--white);
+      text-align: center;
+      font-size: 1.15rem;
+      padding: 0.7rem 0;
+      margin-bottom: 0;
+      letter-spacing: 0.5px;
+    }
+
+    .referral-block {
+      background: var(--light-bg);
+      border: 2px dashed var(--burgundy);
+      color: var(--burgundy);
+      text-align: center;
+      margin-bottom: 1.2rem;
+      padding: 1rem 0.5rem;
+      border-radius: 8px;
+    }
+
+    .referral-btn {
+      background: var(--burgundy);
+      color: var(--white);
+      border: none;
+      border-radius: 5px;
+      padding: 0.5rem 1.2rem;
+      cursor: pointer;
+      font-weight: 500;
+      margin-top: 0.5rem;
+    }
+    .referral-btn:hover {
+      background: var(--black);
+    }
+
+    .hero {
+      padding: 3rem 2rem 2rem 2rem;
+      text-align: center;
+      max-width: 900px;
+      margin: 0 auto;
+      background: var(--white);
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(128,0,32,0.07);
+    }
+
+    .hero h1 {
+      color: var(--burgundy);
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero .cta-btn {
+      background: var(--burgundy);
+      color: var(--white);
+      border: none;
+      border-radius: 5px;
+      padding: 0.8rem 2rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-bottom: 1rem;
+      transition: background 0.2s;
+    }
+    .hero .cta-btn:hover {
+      background: var(--black);
+      color: var(--white);
+    }
+
+    .countdown-banner {
+      text-align: center;
+      padding: 0.7rem 1rem;
+      font-size: 1.1rem;
+      background: var(--burgundy);
+      color: var(--white);
+      margin-bottom: 1.5rem;
+      border-radius: 8px;
+      max-width: 900px;
+      margin: 1rem auto 1.5rem auto;
+    }
+
+    .carousel {
+      background: var(--white);
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(128,0,32,0.07);
+      margin-bottom: 2rem;
+    }
+
+    .carousel-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      max-width: 900px;
+      margin: 2rem auto;
+      overflow: hidden;
+    }
+
+    .carousel-images {
+      display: flex;
+      transition: transform 0.5s;
+      width: 100%;
+    }
+
+    .carousel-slide {
+      min-width: 100%;
+      box-sizing: border-box;
+      position: relative;
+    }
+
+    .carousel-img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(128,0,32,0.07);
+    }
+
+    .carousel-arrow {
+      background: none;
+      border: none;
+      cursor: pointer;
+      z-index: 2;
+      padding: 0.5rem;
+      border-radius: 50%;
+      transition: background 0.2s;
+    }
+    .carousel-arrow:hover {
+      background: var(--soft-burgundy);
+    }
+
+    .carousel-dots {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    .carousel-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--burgundy);
+      opacity: 0.5;
+      cursor: pointer;
+      border: 2px solid var(--white);
+      transition: opacity 0.2s;
+    }
+    .carousel-dot.active {
+      opacity: 1;
+      background: var(--black);
+      border-color: var(--burgundy);
+    }
+
+    .carousel-overlay-left span,
+    .carousel-overlay-right span {
+      background: rgba(128,0,32,0.7);
+      color: var(--white);
+      padding: 0.3rem 0.7rem;
+      border-radius: 5px;
+      font-size: 1rem;
+      position: absolute;
+      top: 20px;
+    }
+    .carousel-overlay-left span { left: 20px; }
+    .carousel-overlay-right span { right: 20px; }
+
+    .carousel-caption span {
+      background: rgba(255,255,255,0.92);
+      color: var(--burgundy);
+      padding: 0.3rem 0.7rem;
+      border-radius: 5px;
+      font-size: 1rem;
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .shop {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 2rem;
+    }
+
+    .shop h2 {
+      color: var(--burgundy);
+      font-size: 1.6rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .filters {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .filters button {
+      background: var(--burgundy);
+      color: var(--white);
+      border: none;
+      border-radius: 5px;
+      padding: 0.5rem 1.2rem;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .filters button:hover,
+    .filters button.active {
+      background: var(--black);
+      color: var(--white);
     }
 
     .product-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 2rem;
       padding: 2rem;
       max-width: 1200px;
@@ -61,268 +333,737 @@
 
     .product-card {
       background: var(--white);
-      padding: 1rem;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(110,35,43,0.08);
-      border: 1px solid var(--beige);
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(128,0,32,0.1);
+      overflow: hidden;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
     }
-
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(128,0,32,0.2);
+      border-color: var(--soft-burgundy);
+    }
     .product-card img {
       width: 100%;
-      height: 350px;
+      height: 250px;
       object-fit: cover;
-      border-radius: 10px;
-      background: var(--cream);
     }
-
     .product-info {
-      padding: 1rem 0;
+      padding: 1.5rem;
     }
-
     .product-info h3 {
+      color: var(--burgundy);
       font-size: 1.2rem;
+      font-weight: 600;
       margin-bottom: 0.5rem;
-      color: var(--burgundy);
     }
-
-    .price {
-      color: var(--accent-pink);
+    .product-info .price {
+      color: var(--black);
       font-size: 1.1rem;
-      font-weight: bold;
+      font-weight: 700;
+      margin-bottom: 1rem;
     }
-
-    select, input[type="number"] {
-      padding: 0.4rem;
-      margin-top: 0.5rem;
-      width: 100%;
-      border-radius: 5px;
-      border: 1px solid var(--accent-pink);
-      background: var(--cream);
+    .product-info label {
+      display: block;
       color: var(--burgundy);
+      font-weight: 500;
+      margin-top: 0.8rem;
+      margin-bottom: 0.3rem;
+    }
+    .product-info select, .product-info input {
+      width: 100%;
+      padding: 0.5rem;
+      border: 2px solid var(--light-bg);
+      border-radius: 5px;
+      margin-bottom: 0.8rem;
+      transition: border-color 0.2s;
+    }
+    .product-info select:focus, .product-info input:focus {
+      outline: none;
+      border-color: var(--burgundy);
+    }
+    .product-info button {
+      background: linear-gradient(135deg, var(--burgundy), var(--soft-burgundy));
+      color: var(--white);
+      border: none;
+      border-radius: 8px;
+      padding: 0.8rem 1.5rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      width: 100%;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .product-info button:hover:not(:disabled) {
+      background: linear-gradient(135deg, var(--black), var(--burgundy));
+      transform: translateY(-2px);
+    }
+    .product-info button:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+      transform: none;
     }
 
-    button {
-      margin-top: 0.8rem;
-      background-color: var(--burgundy);
-      color: var(--white);
-      padding: 0.6rem;
-      border: none;
-      width: 100%;
-      border-radius: 5px;
-      cursor: pointer;
+    .product {
+      padding: 1.2rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 12px rgba(128,0,32,0.07);
+      background: var(--white);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border: 1px solid var(--soft-burgundy);
+      transition: box-shadow 0.2s;
+    }
+    .product:hover {
+      box-shadow: 0 4px 16px rgba(128,0,32,0.13);
+    }
+
+    .product h4 {
+      color: var(--burgundy);
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin: 0.7rem 0 0.3rem 0;
+      text-align: center;
+    }
+
+    .product-description {
+      color: var(--black);
       font-size: 1rem;
+      text-align: center;
+      margin-bottom: 0.7rem;
+    }
+
+    .product img {
+      width: 100%;
+      max-width: 220px;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+
+    .share-buttons {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 0.7rem;
+    }
+    .share-buttons button {
+      background: var(--white);
+      border: 1px solid var(--burgundy);
+      color: var(--burgundy);
+      border-radius: 5px;
+      padding: 0.3rem 0.7rem;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    .share-buttons button:hover {
+      background: var(--burgundy);
+      color: var(--white);
+    }
+
+    .testimonials {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 2rem;
+      border-radius: 12px;
+      background: var(--white);
+      box-shadow: 0 2px 12px rgba(128,0,32,0.07);
+    }
+
+    .testimonials h2 {
+      color: var(--burgundy);
+      font-size: 1.4rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 1.2rem;
+    }
+
+    .testimonial-list {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .testimonial {
+      flex: 1 1 220px;
+      padding: 1rem;
+      border-radius: 8px;
+      background: var(--light-bg);
+      border: 1px solid var(--soft-burgundy);
+      font-size: 1rem;
+      color: var(--black);
+      margin-bottom: 1rem;
+      box-shadow: 0 2px 8px rgba(128,0,32,0.04);
+    }
+    .testimonial .author {
+      color: var(--burgundy);
+      font-weight: 600;
+      margin-top: 0.5rem;
+      font-size: 0.98rem;
+    }
+
+    .opt-in {
+      max-width: 500px;
+      margin: 2rem auto;
+      padding: 2rem;
+      border-radius: 12px;
+      text-align: center;
+      background: var(--burgundy);
+      color: var(--white);
+      box-shadow: 0 2px 12px rgba(128,0,32,0.07);
+    }
+    .opt-in h3 { color: var(--white); }
+    .opt-in input, .opt-in button {
+      margin: 0.5rem 0;
+      padding: 0.7rem;
+      border-radius: 5px;
+      border: none;
+      width: 90%;
+      max-width: 350px;
+      font-size: 1rem;
+    }
+    .opt-in input {
+      background: var(--white);
+      color: var(--burgundy);
+      border: 1px solid var(--soft-burgundy);
+    }
+    .opt-in button {
+      background: var(--black);
+      color: var(--white);
+      font-weight: 600;
+      cursor: pointer;
       transition: background 0.2s;
     }
-    button:hover {
-      background: var(--rose-pink);
+    .opt-in button:hover {
+      background: var(--white);
       color: var(--burgundy);
     }
 
+    .style-gallery {
+      padding: 2rem 1rem;
+      background: var(--white);
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(128,0,32,0.07);
+    }
+    .style-gallery img {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(128,0,32,0.07);
+    }
+
+    /* Footer Styling */
     footer {
-      background: linear-gradient(90deg, var(--burgundy) 0%, var(--beige) 100%);
-      color: var(--white);
+      background: var(--primary); /* Deep burgundy */
+      color: var(--footer-text);
       padding: 2rem;
       margin-top: 3rem;
     }
-
     .footer-content {
+      padding: 2rem 1rem;
+      gap: 2rem;
+      background: var(--burgundy);
+      color: var(--white);
+      border-radius: 12px 12px 0 0;
       display: flex;
-      justify-content: space-between;
       flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: stretch;
     }
-
     .footer-col {
-      flex: 1;
-      min-width: 200px;
-      margin: 1rem;
+      flex: 1 1 200px;
+      min-width: 180px;
+      margin-bottom: 1rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 1rem;
+      box-sizing: border-box;
     }
-
-    .footer-col h4 { margin-bottom: 1rem; color: var(--accent-pink); }
-
+    .footer-col h4 {
+      color: var(--white);
+      font-size: 1.1rem;
+      margin-bottom: 0.7rem;
+    }
     .footer-col a {
-      display: block;
-      margin: 0.3rem 0;
-      color: var(--beige);
+      color: var(--white);
       text-decoration: none;
+      display: block;
+      margin-bottom: 0.3rem;
       transition: color 0.2s;
     }
-    .footer-col a:hover { color: var(--accent-pink); }
-
-    .newsletter input {
-      padding: 0.5rem;
-      width: 70%;
-      margin-right: 0.5rem;
-      border: none;
-      border-radius: 5px;
-      background: var(--cream);
-      color: var(--burgundy);
+    .footer-col a:hover {
+      color: var(--black);
     }
-
-    .newsletter button {
-      padding: 0.5rem 1rem;
-      border: none;
-      background: var(--accent-pink);
+    .footer-btn {
+      display: inline-block;
+      background: var(--accent);
       color: var(--burgundy);
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background 0.2s;
+      border: none;
+      border-radius: 6px;
+      padding: 0.5rem 1.2rem;
+      margin: 0.3rem 0;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+      box-shadow: 0 2px 8px rgba(128,0,32,0.07);
+      text-align: center;
     }
-    .newsletter button:hover {
-      background: var(--burgundy);
+    .footer-btn:hover {
+      background: var(--black);
       color: var(--white);
+      box-shadow: 0 4px 16px rgba(128,0,32,0.13);
     }
-
     .footer-bottom {
       text-align: center;
-      margin-top: 2rem;
-      font-size: 0.9rem;
-      color: var(--beige);
-    }
-
-    .pagination {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 0.5rem;
-      margin: 2rem 0;
-    }
-
-    .pagination button {
-      background: var(--cream);
-      border: 2px solid var(--accent-pink);
+      padding: 1rem;
+      font-size: 0.95rem;
+      background: var(--footer-bottom);
       color: var(--burgundy);
-      padding: 0.6rem 1.2rem;
-      margin: 0 0.1rem;
-      border-radius: 50px;
+      border-radius: 0 0 12px 12px;
+      margin-top: 0;
+    }
+
+    /* Improved Button Styles */
+    .cta-button {
+      background: linear-gradient(135deg, var(--burgundy), var(--soft-burgundy));
+      color: var(--white);
+      border: none;
+      border-radius: 8px;
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+      font-weight: 600;
       cursor: pointer;
-      font-size: 1.05rem;
-      font-weight: 500;
-      box-shadow: 0 2px 8px rgba(214,179,198,0.10);
-      transition: 
-        background 0.2s, 
-        color 0.2s, 
-        border-color 0.2s, 
-        transform 0.15s;
-      outline: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(128,0,32,0.2);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
       position: relative;
+      overflow: hidden;
     }
-
-    .pagination button:not(:disabled):hover,
-    .pagination button.active {
-      background: var(--accent-pink);
-      color: var(--burgundy);
-      border-color: var(--burgundy);
-      transform: translateY(-2px) scale(1.07);
-      z-index: 1;
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(128,0,32,0.3);
+      background: linear-gradient(135deg, var(--black), var(--burgundy));
     }
-
-    .pagination button:disabled {
-      background: var(--beige);
-      color: var(--white);
-      border-color: var(--beige);
-      cursor: not-allowed;
-      opacity: 0.7;
-    }
-
-    .pagination button.page-ellipsis {
-      background: transparent;
-      border: none;
-      color: var(--burgundy);
-      cursor: default;
-      font-size: 1.2rem;
-      padding: 0 0.5rem;
-      box-shadow: none;
-      pointer-events: none;
-    }
-
-    /* Back to Top Button - perfectly center arrow */
-    #backToTop {
-      position: fixed;
-      bottom: 32px;
-      right: 32px;
-      z-index: 100;
-      background: var(--burgundy);
-      color: var(--white);
-      border: none;
-      border-radius: 50%;
-      width: 48px;
-      height: 48px;
-      font-size: 2rem;
-      cursor: pointer;
-      box-shadow: 0 2px 8px rgba(110,35,43,0.18);
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s, background 0.2s, color 0.2s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0;
-    }
-    #backToTop:hover {
-      background: var(--accent-pink);
-      color: var(--burgundy);
-    }
-    #backToTop.show {
-      opacity: 1;
-      pointer-events: auto;
+    .cta-button:active {
+      transform: translateY(0);
     }
 
     /* Modal Styles */
-.modal {
-  display: none; 
-  position: fixed; 
-  z-index: 2000; 
-  left: 0; top: 0; width: 100%; height: 100%;
-  overflow: auto; 
-  background: rgba(0,0,0,0.35);
-}
-.modal-content {
-  background: var(--white);
-  margin: 5% auto; padding: 2rem 2rem 1.5rem 2rem;
-  border-radius: 12px; max-width: 400px; position: relative;
-  box-shadow: 0 4px 24px rgba(110,35,43,0.12);
-  color: var(--burgundy);
-}
-.modal-content h3 { margin-bottom: 1rem; color: var(--accent-pink);}
-.modal-content label { display:block; margin:0.7rem 0 0.2rem;}
-.modal-content input, .modal-content textarea {
-  width: 100%; padding: 0.5rem; border-radius: 5px; border: 1px solid var(--accent-pink);
-  background: var(--cream); color: var(--burgundy); margin-bottom: 0.5rem;
-}
-.modal-content button[type="submit"] {
-  background: var(--burgundy); color: var(--white); border: none; border-radius: 5px;
-  padding: 0.6rem 1.2rem; cursor: pointer; font-size: 1rem; width: 100%;
-  margin-top: 0.5rem;
-}
-.modal-content button[type="submit"]:hover {
-  background: var(--accent-pink); color: var(--burgundy);
-}
-.close {
-  position: absolute; top: 12px; right: 18px; font-size: 2rem; color: var(--accent-pink);
-  cursor: pointer; font-weight: bold;
-}
-.close:hover { color: var(--burgundy); }
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(5px);
+      overflow-y: auto;
+      padding: 2rem 1rem;
+      box-sizing: border-box;
+    }
+    .modal-content {
+      background: var(--white);
+      margin: 0 auto;
+      padding: 0;
+      border-radius: 20px;
+      width: 100%;
+      max-width: 550px;
+      position: relative;
+      box-shadow: 0 15px 40px rgba(128,0,32,0.4);
+      animation: modalSlideIn 0.4s ease;
+      max-height: 90vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    @keyframes modalSlideIn {
+      from { 
+        opacity: 0; 
+        transform: translateY(-30px) scale(0.95); 
+      }
+      to { 
+        opacity: 1; 
+        transform: translateY(0) scale(1); 
+      }
+    }
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 2rem 2rem 1rem 2rem;
+      border-bottom: 3px solid var(--light-bg);
+      background: linear-gradient(135deg, var(--light-bg), var(--white));
+      border-radius: 20px 20px 0 0;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .modal-header h2 {
+      color: var(--burgundy);
+      font-size: 1.6rem;
+      margin: 0;
+      font-weight: 700;
+    }
+    .modal-body {
+      padding: 2rem;
+      overflow-y: auto;
+      flex: 1;
+      max-height: calc(90vh - 120px);
+    }
+    .close-btn {
+      background: var(--burgundy);
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--white);
+      padding: 0.8rem;
+      border-radius: 50%;
+      transition: all 0.3s ease;
+      width: 45px;
+      height: 45px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 10px rgba(128,0,32,0.3);
+    }
+    .close-btn:hover {
+      background: var(--black);
+      transform: rotate(90deg) scale(1.1);
+      box-shadow: 0 4px 15px rgba(128,0,32,0.5);
+    }
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    .form-group:last-child {
+      margin-bottom: 0;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 0.7rem;
+      color: var(--burgundy);
+      font-weight: 600;
+      font-size: 1.05rem;
+    }
+    .form-group input, .form-group textarea, .form-group select {
+      width: 100%;
+      padding: 1rem;
+      border: 2px solid var(--light-bg);
+      border-radius: 10px;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      background: var(--white);
+      box-shadow: inset 0 2px 4px rgba(128,0,32,0.05);
+    }
+    .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+      outline: none;
+      border-color: var(--burgundy);
+      box-shadow: 0 0 0 3px rgba(128,0,32,0.1), inset 0 2px 4px rgba(128,0,32,0.05);
+      transform: translateY(-1px);
+    }
+    .form-group textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+    .star-rating {
+      display: flex;
+      gap: 0.7rem;
+      margin: 1rem 0;
+      justify-content: center;
+      padding: 1rem;
+      background: var(--light-bg);
+      border-radius: 10px;
+    }
+    .star {
+      font-size: 2rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      color: #ddd;
+    }
+    .star:hover {
+      transform: scale(1.2);
+    }
+    .success-message {
+      text-align: center;
+      color: var(--burgundy);
+      font-size: 1.2rem;
+      font-weight: 600;
+      padding: 2rem;
+      background: var(--light-bg);
+      border-radius: 10px;
+      border: 2px solid var(--burgundy);
+    }
+    .success-message h3 {
+      color: var(--burgundy);
+      margin-bottom: 1rem;
+      font-size: 1.4rem;
+    }
+
+    /* Pagination Styles */
+    #pagination {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.8rem;
+      margin: 3rem 0;
+      padding: 2rem;
+    }
+    #pagination button {
+      background: linear-gradient(135deg, var(--white), var(--light-bg));
+      color: var(--burgundy);
+      border: 2px solid var(--burgundy);
+      border-radius: 10px;
+      padding: 0.8rem 1.2rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      min-width: 50px;
+      font-size: 1rem;
+      box-shadow: 0 2px 8px rgba(128,0,32,0.1);
+      position: relative;
+      overflow: hidden;
+    }
+    #pagination button:hover:not(:disabled) {
+      background: linear-gradient(135deg, var(--burgundy), var(--soft-burgundy));
+      color: var(--white);
+      transform: translateY(-3px);
+      box-shadow: 0 4px 15px rgba(128,0,32,0.2);
+    }
+    #pagination button.active {
+      background: linear-gradient(135deg, var(--burgundy), var(--soft-burgundy));
+      color: var(--white);
+      box-shadow: 0 4px 15px rgba(128,0,32,0.3);
+    }
+    #pagination button:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+      transform: none;
+      background: #f0f0f0;
+      color: #999;
+      border-color: #ddd;
+    }
+    #pagination button.page-ellipsis {
+      border: none;
+      background: none;
+      color: var(--burgundy);
+      cursor: default;
+      box-shadow: none;
+      font-weight: 700;
+    }
+    #pagination button:not(.page-ellipsis):before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      transition: left 0.5s;
+    }
+    #pagination button:not(.page-ellipsis):hover:before {
+      left: 100%;
+    }
+
+    #backToTop {
+      position: fixed;
+      right: 1.5rem;
+      bottom: 1.5rem;
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      z-index: 1000;
+      transition: transform 0.2s;
+    }
+    #backToTop svg {
+      box-shadow: 0 2px 8px rgba(128,0,32,0.13);
+      border-radius: 50%;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    #backToTop:hover svg {
+      box-shadow: 0 4px 16px rgba(128,0,32,0.25);
+      transform: scale(1.1);
+    }
+
+    /* MOBILE STYLES */
+    @media (max-width: 900px) {
+      .header-container, .shop, .hero, .testimonials, .footer-content {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+      .carousel-img {
+        height: 200px;
+      }
+      .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.2rem;
+        padding: 1rem;
+      }
+      .testimonial-list {
+        gap: 1rem;
+      }
+      #pagination {
+        gap: 0.5rem;
+        padding: 1rem;
+        flex-wrap: wrap;
+      }
+      #pagination button {
+        padding: 0.6rem 1rem;
+        min-width: 40px;
+        font-size: 0.9rem;
+      }
+      .modal {
+        padding: 1rem 0.5rem;
+      }
+      .modal-content {
+        max-width: 95%;
+        max-height: 95vh;
+      }
+      .modal-header {
+        padding: 1.5rem 1.5rem 1rem 1.5rem;
+      }
+      .modal-header h2 {
+        font-size: 1.3rem;
+      }
+      .modal-body {
+        padding: 1.5rem;
+        max-height: calc(95vh - 100px);
+      }
+    }
+    @media (max-width: 600px) {
+      .header-container {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1rem;
+      }
+      .logo {
+        margin-bottom: 0.5rem;
+        font-size: 1.2rem;
+      }
+      nav {
+        flex-direction: column;
+        gap: 1rem;
+        width: 100%;
+        background: var(--white);
+        border-bottom: 2px solid var(--burgundy);
+        position: absolute;
+        top: 60px;
+        left: 0;
+        z-index: 100;
+        display: none;
+      }
+      #mainNav.open {
+        display: flex;
+      }
+      .menu-toggle {
+        display: block;
+      }
+      .carousel-img {
+        height: 140px;
+      }
+      .product-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        padding: 0.5rem;
+      }
+      .footer-content {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+        border-radius: 12px 12px 0 0;
+      }
+      .footer-col {
+        min-width: 0;
+      }
+      .opt-in input, .opt-in button {
+        width: 100%;
+        max-width: 100%;
+      }
+      .style-gallery img {
+        width: 90px;
+        height: 90px;
+      }
+      .hero {
+        padding: 2rem 0.5rem 1.5rem 0.5rem;
+      }
+      .shop {
+        padding: 0 0.5rem;
+      }
+      .testimonials {
+        padding: 1rem 0.5rem;
+      }
+      #pagination {
+        gap: 0.3rem;
+        padding: 0.5rem;
+      }
+      #pagination button {
+        padding: 0.5rem 0.8rem;
+        min-width: 35px;
+        font-size: 0.85rem;
+      }
+      .modal {
+        padding: 0.5rem 0.2rem;
+      }
+      .modal-content {
+        max-width: 98%;
+        max-height: 98vh;
+      }
+      .modal-header {
+        padding: 1rem;
+      }
+      .modal-header h2 {
+        font-size: 1.2rem;
+      }
+      .modal-body {
+        padding: 1rem;
+        max-height: calc(98vh - 80px);
+      }
+      .close-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 1.2rem;
+      }
+      .star-rating {
+        gap: 0.5rem;
+        padding: 0.8rem;
+      }
+      .star {
+        font-size: 1.7rem;
+      }
+    }
   </style>
 </head>
 <body>
 
   <header>
-    <div class="logo">
-      <img src="logo.jpg" alt="Her Essence Restored (H.E.R.) Logo" style="height:48px; vertical-align:middle;">
-    <span>Her Essence Restored (H.E.R.)</span>
+    <div class="header-container">
+      <div class="logo">
+        <img src="logo.jpg" alt="Her Essence Restored (H.E.R.) Logo" style="height:48px; vertical-align:middle;">
+        <span>Her Essence Restored (H.E.R.)</span>
+      </div>
+      <nav id="mainNav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="products.html">Products</a>
+        
+        <a href="contact.html">Contact</a>
+        <a href="cart.html">Cart</a>
+      </nav>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">☰</button>
     </div>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="products.html">Products</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-      <a href="cart.html">Cart</a>
-    </nav>
   </header>
 
   <!-- Product Grid -->
   <section class="product-grid" id="productGrid"></section>
-  <div class="pagination" id="pagination" style="text-align:center; margin-bottom:2rem;"></div>
+  <div id="pagination"></div>
 
   <!-- Customer Reviews & Photos Section -->
   <section id="reviews" style="background: var(--beige); padding: 2.5rem 0; margin: 2rem 0;">
@@ -365,143 +1106,219 @@
         </div>
       </div>
       <div style="text-align:center; margin-top:2rem;">
-        <button id="openReviewModal"
-          style="background: var(--accent-pink); color: var(--burgundy); padding: 0.3rem 0.8rem; border-radius: 5px; font-weight: 500; border: none; cursor: pointer; font-size: 0.95rem; transition: background 0.2s; min-width: unset; width: auto; display: inline-block;">
-          Share Your Review
+        <button id="openReviewModal" class="cta-button">
+          ⭐ Share Your Review
         </button>
       </div>
     </div>
   </section>
 
   <!-- Order Section (place after pagination, before footer) -->
-  <section style="text-align:center; margin: 2rem 0;">
-    <h2>Place a Custom Order</h2>
-    <p>Want something special or have a bulk request? Let us know!</p>
-    <button id="openOrderModal" style="max-width:220px;">Order Now</button>
+  <section style="text-align:center; margin: 3rem 0; padding: 2rem; background: var(--light-bg); border-radius: 15px; max-width: 800px; margin-left: auto; margin-right: auto;">
+    <h2 style="color: var(--burgundy); font-size: 2rem; margin-bottom: 1rem;">Place a Custom Order</h2>
+    <p style="font-size: 1.2rem; margin-bottom: 2rem; color: var(--black);">Want something special or have a bulk request? Let us create the perfect piece for you!</p>
+    <button id="openOrderModal" class="cta-button">
+      🛒 Order Now
+    </button>
   </section>
+
+  <!-- Order Modal -->
+  <div id="orderModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>🛒 Place Custom Order</h2>
+        <button class="close-btn" id="closeOrderModal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="orderForm">
+          <div class="form-group">
+            <label for="orderName">Full Name *</label>
+            <input type="text" id="orderName" name="orderName" required placeholder="Enter your full name">
+          </div>
+          <div class="form-group">
+            <label for="orderEmail">Email Address *</label>
+            <input type="email" id="orderEmail" name="orderEmail" required placeholder="your@email.com">
+          </div>
+          <div class="form-group">
+            <label for="contactMethod">Preferred Contact Method *</label>
+            <select id="contactMethod" name="contactMethod" required>
+              <option value="">Select your preferred contact method...</option>
+              <option value="Email">📧 Email</option>
+              <option value="Phone">📞 Phone Call</option>
+              <option value="WhatsApp">💬 WhatsApp</option>
+            </select>
+          </div>
+          <div class="form-group" id="phoneField" style="display: none;">
+            <label for="orderPhone">Phone Number</label>
+            <input type="tel" id="orderPhone" name="orderPhone" placeholder="+264 XX XXX XXXX">
+          </div>
+          <div class="form-group">
+            <label for="orderType">Order Type *</label>
+            <select id="orderType" name="orderType" required>
+              <option value="">What would you like to order?</option>
+              <option value="Custom Dress">👗 Custom Dress</option>
+              <option value="Custom Wig">💇‍♀️ Custom Wig</option>
+              <option value="Bulk Order">📦 Bulk Order (5+ items)</option>
+              <option value="Alteration">✂️ Alteration/Modification</option>
+              <option value="Other">✨ Other (specify in details)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="orderDetails">Order Details *</label>
+            <textarea id="orderDetails" name="orderDetails" rows="5" placeholder="Please describe your custom order requirements in detail:
+            
+• Size preferences
+• Color choices  
+• Style inspirations
+• Special instructions
+• Any reference images (describe them)
+            
+The more details you provide, the better we can serve you!" required></textarea>
+          </div>
+          <div class="form-group">
+            <label for="orderBudget">Budget Range (NAD)</label>
+            <select id="orderBudget" name="orderBudget">
+              <option value="">Select your budget range...</option>
+              <option value="Under 500">💰 Under 500 NAD</option>
+              <option value="500-1000">💰💰 500-1000 NAD</option>
+              <option value="1000-2000">💰💰💰 1000-2000 NAD</option>
+              <option value="2000-5000">💰💰💰💰 2000-5000 NAD</option>
+              <option value="Over 5000">💰💰💰💰💰 Over 5000 NAD</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="orderTimeline">When do you need this?</label>
+            <select id="orderTimeline" name="orderTimeline">
+              <option value="">Select your timeline...</option>
+              <option value="ASAP">🚀 ASAP (Rush order - additional fees apply)</option>
+              <option value="1-2 weeks">⏰ 1-2 weeks</option>
+              <option value="2-4 weeks">📅 2-4 weeks</option>
+              <option value="1+ months">🗓️ 1+ months</option>
+              <option value="Flexible">😌 Flexible timeline</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <button type="submit" class="cta-button" style="width: 100%; margin-top: 1rem;">
+              Submit Order Request
+            </button>
+          </div>
+        </form>
+        <div id="orderSuccess" class="success-message" style="display: none;">
+          <h3>🎉 Order Request Sent!</h3>
+          <p>Thank you for choosing H.E.R.! We'll contact you within 24 hours to discuss your custom order and provide a detailed quote.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Review Modal -->
+  <div id="reviewModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>⭐ Share Your Review</h2>
+        <button class="close-btn" id="closeReviewModal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="reviewForm">
+          <div class="form-group">
+            <label for="reviewName">Your Name *</label>
+            <input type="text" id="reviewName" name="reviewName" required placeholder="Enter your name">
+          </div>
+          <div class="form-group">
+            <label for="reviewEmail">Email (optional)</label>
+            <input type="email" id="reviewEmail" name="reviewEmail" placeholder="your@email.com (optional)">
+          </div>
+          <div class="form-group">
+            <label>Your Rating *</label>
+            <div class="star-rating" id="starRating">
+              <span class="star" data-value="1">&#9734;</span>
+              <span class="star" data-value="2">&#9734;</span>
+              <span class="star" data-value="3">&#9734;</span>
+              <span class="star" data-value="4">&#9734;</span>
+              <span class="star" data-value="5">&#9734;</span>
+            </div>
+            <p style="text-align: center; color: var(--burgundy); font-size: 0.9rem; margin-top: 0.5rem;">Click on the stars to rate your experience</p>
+            <input type="hidden" id="reviewStars" name="reviewStars" value="0">
+          </div>
+          <div class="form-group">
+            <label for="reviewText">Your Review *</label>
+            <textarea id="reviewText" name="reviewText" rows="5" placeholder="Tell us about your experience with our products! What did you love? How was the quality? Would you recommend us to others?" required></textarea>
+          </div>
+          <div class="form-group">
+            <label for="reviewPhoto">Upload Photo (optional)</label>
+            <input type="file" id="reviewPhoto" name="reviewPhoto" accept="image/*" style="padding: 1rem; border: 2px dashed var(--burgundy); background: var(--light-bg);">
+            <p style="font-size: 0.85rem; color: var(--burgundy); margin-top: 0.5rem;">📸 Share a photo of yourself wearing our products!</p>
+          </div>
+          <div class="form-group">
+            <button type="submit" class="cta-button" style="width: 100%; margin-top: 1rem;">
+              Submit Review
+            </button>
+          </div>
+        </form>
+        <div id="reviewSuccess" class="success-message" style="display: none;">
+          <h3>🎉 Review Submitted!</h3>
+          <p>Thank you for your valuable feedback! Your review has been added and will help other customers make informed decisions.</p>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Footer -->
   <footer>
-    <div class="footer-content">
-      <div class="footer-col">
-        <h4>About Us</h4>
-        <p>Her Essence Restored (H.E.R.) brings timeless elegance to modern fashion. Discover curated styles from across the decades.</p>
-      </div>
-      <div class="footer-col">
-  <h4>Follow Us</h4>
-  <a href="https://www.instagram.com/her_essence_restored?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank">
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7.75 2h8.5A5.25 5.25 0 0121.5 7.25v8.5A5.25 5.25 0 0116.25 21H7.75A5.25 5.25 0 012.5 15.75v-8.5A5.25 5.25 0 017.75 2z" />
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16.5 7.5h.008v.008H16.5V7.5zM12 8.75a3.25 3.25 0 100 6.5 3.25 3.25 0 000-6.5z" />
-    </svg>
-    Instagram
-  </a>
-  <a href="https://www.facebook.com" target="_blank">
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3.5l.5-4H14V7a1 1 0 011-1h3V2z" />
-    </svg>
-    Facebook
-  </a>
-  <a href="https://www.pinterest.com" target="_blank">
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.29 20.251c.7-1.2.94-2.1 1.4-3.8.3 1.2 2.1 2.2 3.8 2.2 3.3 0 5.5-2.4 5.5-5.4 0-2.9-2.4-5.2-5.4-5.2-3.8 0-5.7 2.7-5.7 5.6 0 1.4.7 3.1 1.8 3.6.2.1.3 0 .4-.1.1-.1.3-.4.3-.5.1-.2.1-.3 0-.5-.2-.4-.4-.9-.4-1.5 0-2.1 1.6-4.1 4.3-4.1 2.3 0 3.9 1.5 3.9 3.7 0 2.4-1.3 4.2-3.2 4.2-.9 0-1.6-.7-1.4-1.6.3-1.2.8-2.5.8-3.4 0-.8-.4-1.5-1.3-1.5-1 0-1.8 1-1.8 2.4 0 .9.3 1.5.3 1.5l-1.2 5.1c-.2.8-.3 1.7-.3 2.5" />
-    </svg>
-    Pinterest
-  </a>
-  <a href="https://www.tiktok.com" target="_blank">
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19a4 4 0 100-8 4 4 0 000 8zM16 3v5.5a4.5 4.5 0 01-4.5 4.5H9" />
-    </svg>
-    TikTok
-  </a>
-</div>
-      <div class="footer-col newsletter">
-        <h4>Newsletter</h4>
-        <p>Sign up for exclusive updates:</p>
-        <input type="email" placeholder="Your email" />
-        <button>Subscribe</button>
-      </div>
+  <div class="footer-content" role="contentinfo" style="display:flex; flex-wrap:wrap; gap:2rem; justify-content:center; align-items:flex-start; padding:2rem 2rem 1rem 2rem; box-sizing:border-box;">
+    <!-- Social Media Links -->
+    <div class="footer-col" style="min-width:180px; flex:1;">
+      <h4 style="margin-bottom:0.7rem;">Follow Us</h4>
+      <nav aria-label="Social media">
+        <div style="display:flex; flex-direction:column; gap:0.5rem;">
+          <a href="https://www.instagram.com/her_essence_restored" target="_blank" aria-label="Instagram" style="display:flex;align-items:center;gap:0.5rem;">
+            <img src="https://cdn-icons-png.flaticon.com/24/2111/2111463.png" alt="" style="height:20px;"> Instagram
+          </a>
+          <a href="https://www.facebook.com" target="_blank" aria-label="Facebook" style="display:flex;align-items:center;gap:0.5rem;">
+            <img src="https://cdn-icons-png.flaticon.com/24/733/733547.png" alt="" style="height:20px;"> Facebook
+          </a>
+          <a href="https://www.pinterest.com" target="_blank" aria-label="Pinterest" style="display:flex;align-items:center;gap:0.5rem;">
+            <img src="https://cdn-icons-png.flaticon.com/24/733/733558.png" alt="" style="height:20px;"> Pinterest
+          </a>
+          <a href="https://www.tiktok.com" target="_blank" aria-label="TikTok" style="display:flex;align-items:center;gap:0.5rem;">
+            <img src="https://cdn-icons-png.flaticon.com/24/3046/3046122.png" alt="" style="height:20px;"> TikTok
+          </a>
+        </div>
+      </nav>
     </div>
-    <div class="footer-bottom">
-      &copy; 2025 Her Essence Restored (H.E.R.). All rights reserved.
+    <!-- Quick Links -->
+    <div class="footer-col" style="min-width:180px; flex:1;">
+      <h4 style="margin-bottom:0.7rem;">Quick Links</h4>
+      <nav aria-label="Quick links">
+        <div style="display:flex; flex-direction:column; gap:0.5rem;">
+          <a href="refer.html">Refer a Friend</a>
+          <a href="style-guide.html">Style Guide</a>
+          <a href="returns.html">Return Policy</a>
+          <a href="Privacy & Data Policy.html">Privacy & Data Policy</a>
+        </div>
+      </nav>
     </div>
-  </footer>
-
-  <button id="backToTop" title="Back to Top">&#8679;</button>
-
-  <!-- Order Modal (place at end of body, before scripts) -->
-<div id="orderModal" class="modal">
-  <div class="modal-content">
-    <span class="close" id="closeOrderModal">&times;</span>
-    <h3>Order Form</h3>
-    <form id="orderForm">
-      <label for="orderName">Name:</label>
-      <input type="text" id="orderName" name="orderName" required />
-
-      <label for="orderEmail">Email:</label>
-      <input type="email" id="orderEmail" name="orderEmail" required />
-
-      <label for="contactMethod">Preferred Method of Contact:</label>
-      <select id="contactMethod" name="contactMethod" required>
-        <option value="Email">Email</option>
-        <option value="Phone">Phone</option>
-      </select>
-
-      <div id="phoneField" style="display:none;">
-        <label for="orderPhone">Phone Number:</label>
-        <input type="tel" id="orderPhone" name="orderPhone" pattern="^[0-9+\s()-]{7,}$" placeholder="e.g. +264 81 234 5678" />
-      </div>
-
-      <label for="orderProduct">Preferred Product(s):</label>
-      <input type="text" id="orderProduct" name="orderProduct" placeholder="e.g. Classic Vintage Dress, 2x Braided Wig" required />
-
-      <label for="orderNotes">Order Notes:</label>
-      <textarea id="orderNotes" name="orderNotes" rows="3" placeholder="Any special requests or details?"></textarea>
-
-      <button type="submit" style="margin-top:1rem;">Submit Order</button>
-    </form>
-    <div id="orderSuccess" style="display:none; color:var(--accent-pink); margin-top:1rem;">
-      Thank you! Your order has been received and we will contact you via your preferred method.
+    <!-- Newsletter Signup -->
+    <div class="footer-col newsletter" style="min-width:220px; flex:1;">
+      <h4 style="margin-bottom:0.7rem;">Newsletter</h4>
+      <form aria-label="Newsletter signup" style="display:flex; flex-direction:column; gap:0.7rem;">
+        <p style="margin-bottom:0;">Sign up for exclusive updates:</p>
+        <input type="email" placeholder="Your email" aria-label="Your email" required style="padding:0.5rem; border-radius:5px; border:none; color:var(--burgundy); background:var(--white);">
+        <button type="submit" style="background:var(--black); color:var(--white); border:none; border-radius:5px; padding:0.5rem 1.2rem; cursor:pointer; font-weight:500;">Subscribe</button>
+      </form>
     </div>
   </div>
+  
+</footer>
+<div class="footer-bottom">
+  &copy; 2025 Her Essence Restored (H.E.R.). All rights reserved.
 </div>
-
-  <!-- Review Modal (place before closing </body>) -->
-<div id="reviewModal" class="modal">
-  <div class="modal-content">
-    <span class="close" id="closeReviewModal">&times;</span>
-    <h3>Share Your Review</h3>
-    <form id="reviewForm">
-      <label for="reviewName">Name:</label>
-      <input type="text" id="reviewName" name="reviewName" required />
-
-      <label for="reviewEmail">Email:</label>
-      <input type="email" id="reviewEmail" name="reviewEmail" required />
-
-      <label for="reviewStars">Your Rating:</label>
-      <div id="starRating" style="font-size:1.5rem; margin-bottom:0.7rem;">
-        <span class="star" data-value="1">&#9734;</span>
-        <span class="star" data-value="2">&#9734;</span>
-        <span class="star" data-value="3">&#9734;</span>
-        <span class="star" data-value="4">&#9734;</span>
-        <span class="star" data-value="5">&#9734;</span>
-        <input type="hidden" id="reviewStars" name="reviewStars" value="0" required />
-      </div>
-
-      <label for="reviewText">Your Review:</label>
-      <textarea id="reviewText" name="reviewText" rows="3" required></textarea>
-
-      <label for="reviewPhoto">Photo (optional):</label>
-      <input type="file" id="reviewPhoto" name="reviewPhoto" accept="image/*" />
-
-      <button type="submit" style="margin-top:1rem;">Submit Review</button>
-    </form>
-    <div id="reviewSuccess" style="display:none; color:var(--accent-pink); margin-top:1rem;">
-      Thank you! Your review has been submitted.
-    </div>
-  </div>
-</div>
-
+  <button id="backToTop" aria-label="Back to top" style="display:none;">
+    <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+      <circle cx="16" cy="16" r="15" fill="#800020" stroke="#fff" stroke-width="2"/>
+      <path d="M16 22V10M16 10L10 16M16 10L22 16" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
   <script>
     const products = [
       {
@@ -780,6 +1597,14 @@
   });
   backToTopBtn.addEventListener("click", function() {
     window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+
+  // Mobile menu toggle
+  const menuToggle = document.getElementById('menuToggle');
+  const mainNav = document.getElementById('mainNav');
+  
+  menuToggle.addEventListener('click', function() {
+    mainNav.classList.toggle('open');
   });
 </script>
 

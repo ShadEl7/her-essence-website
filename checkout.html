@@ -159,6 +159,58 @@
       text-align:center;
       box-shadow:0 4px 24px rgba(0,0,0,0.12);
     }
+
+    footer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem;
+      background: #800020;
+      color: #fff;
+      border-radius: 12px;
+      margin-top: 2rem;
+    }
+
+    .footer-content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+      align-items: flex-start;
+      width: 100%;
+      max-width: 1200px;
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-col {
+      min-width: 180px;
+      flex: 1;
+    }
+
+    .footer-col h4 {
+      margin-bottom: 0.7rem;
+      color: var(--accent);
+    }
+
+    .footer-col a {
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-col a:hover {
+      color: var(--accent);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      width: 100%;
+      background: #800020;
+      color: #fff;
+      padding: 0.7rem 0;
+      border-radius: 0 0 12px 12px;
+      border-top: 2px solid #fff8fa;
+      margin-top: 0;
+    }
   </style>
   <script src="https://js.stripe.com/v3/"></script>
 </head>
@@ -189,6 +241,18 @@
 
       <label for="country">Country</label>
       <input type="text" id="country" name="country" required>
+
+      <!-- Consent Notice -->
+      <div style="margin: 1.5rem 0; padding: 1rem; background: #fff8f6; border: 1px solid var(--accent); border-radius: 6px;">
+        <label style="display: flex; align-items: flex-start; gap: 0.5rem; font-weight: normal; cursor: pointer;">
+          <input type="checkbox" id="consentCheckbox" name="consent" required style="margin-top: 0.2rem; width: auto;">
+          <span style="font-size: 0.95rem; line-height: 1.4;">
+            I agree to the processing of my personal data and consent to the 
+            <a href="Privacy & Data Policy.html" target="_blank" style="color: var(--primary); text-decoration: underline;">Privacy & Data Policy</a>. 
+            I understand that my information will be used to process my order and may be used for marketing purposes as outlined in the policy.
+          </span>
+        </label>
+      </div>
     </form>
 
     <!-- Payment Methods Section -->
@@ -334,6 +398,13 @@
         return;
       }
 
+      // Check consent checkbox
+      const consentCheckbox = document.getElementById('consentCheckbox');
+      if (!consentCheckbox.checked) {
+        alert('You must agree to the Privacy & Data Policy to proceed with your order.');
+        return;
+      }
+
       // Get selected payment method
       const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked').value;
 
@@ -432,5 +503,54 @@
       s0.parentNode.insertBefore(s1,s0);
     })();
   </script>
+
+  <footer>
+    <div class="footer-content" role="contentinfo" style="display:flex; flex-wrap:wrap; gap:2rem; justify-content:center; align-items:flex-start; padding:2rem 2rem 1rem 2rem; box-sizing:border-box;">
+      <!-- Social Media Links -->
+      <div class="footer-col" style="min-width:180px; flex:1;">
+        <h4 style="margin-bottom:0.7rem;">Follow Us</h4>
+        <nav aria-label="Social media">
+          <div style="display:flex; flex-direction:column; gap:0.5rem;">
+            <a href="https://www.instagram.com/her_essence_restored" target="_blank" aria-label="Instagram" style="display:flex;align-items:center;gap:0.5rem;">
+              <img src="https://cdn-icons-png.flaticon.com/24/2111/2111463.png" alt="" style="height:20px;"> Instagram
+            </a>
+            <a href="https://www.facebook.com" target="_blank" aria-label="Facebook" style="display:flex;align-items:center;gap:0.5rem;">
+              <img src="https://cdn-icons-png.flaticon.com/24/733/733547.png" alt="" style="height:20px;"> Facebook
+            </a>
+            <a href="https://www.pinterest.com" target="_blank" aria-label="Pinterest" style="display:flex;align-items:center;gap:0.5rem;">
+              <img src="https://cdn-icons-png.flaticon.com/24/733/733558.png" alt="" style="height:20px;"> Pinterest
+            </a>
+            <a href="https://www.tiktok.com" target="_blank" aria-label="TikTok" style="display:flex;align-items:center;gap:0.5rem;">
+              <img src="https://cdn-icons-png.flaticon.com/24/3046/3046122.png" alt="" style="height:20px;"> TikTok
+            </a>
+          </div>
+        </nav>
+      </div>
+      <!-- Quick Links -->
+      <div class="footer-col" style="min-width:180px; flex:1;">
+        <h4 style="margin-bottom:0.7rem;">Quick Links</h4>
+        <nav aria-label="Quick links">
+          <div style="display:flex; flex-direction:column; gap:0.5rem;">
+            <a href="refer.html">Refer a Friend</a>
+            <a href="style-guide.html">Style Guide</a>
+            <a href="returns.html">Return Policy</a>
+            <a href="Privacy & Data Policy.html">Privacy & Data Policy</a>
+          </div>
+        </nav>
+      </div>
+      <!-- Newsletter Signup -->
+      <div class="footer-col newsletter" style="min-width:220px; flex:1;">
+        <h4 style="margin-bottom:0.7rem;">Newsletter</h4>
+        <form aria-label="Newsletter signup" style="display:flex; flex-direction:column; gap:0.7rem;">
+          <p style="margin-bottom:0;">Sign up for exclusive updates:</p>
+          <input type="email" placeholder="Your email" aria-label="Your email" required style="padding:0.5rem; border-radius:5px; border:none; color:var(--burgundy); background:var(--white);">
+          <button type="submit" style="background:var(--black); color:var(--white); border:none; border-radius:5px; padding:0.5rem 1.2rem; cursor:pointer; font-weight:500;">Subscribe</button>
+        </form>
+      </div>
+    </div>
+    <div class="footer-bottom" style="text-align:center; width:100%; background:#800020; color:#fff; padding:0.7rem 0; border-radius:0 0 12px 12px; border-top:2px solid #fff8fa; margin-top:0;">
+      &copy; 2025 Her Essence Restored (H.E.R.). All rights reserved.
+    </div>
+  </footer>
 </body>
 </html>
