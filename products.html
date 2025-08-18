@@ -3,1130 +3,334 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Her Essence Restored (H.E.R.) - Products</title>
+  <title>Her Essence Restored (H.E.R.) — Shop Products</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  
   <style>
-    :root {
-      --primary: #6e232d;         /* Deep burgundy (keep for accents) */
-      --background: #fff;         /* White background as in logo */
-      --accent: #d6aab4;          /* Soft blush pink from the wings */
-      --mauve: #b98a98;           /* Muted mauve for subtle backgrounds */
-      --text: #222;               /* Black for main text (matches logo text) */
-      --footer-text: #fff;        /* White for footer text */
-      --footer-link: #d6aab4;     /* Blush pink for links */
-      --footer-bottom: #f5e7e0;   /* Light beige for footer bottom */
-      --burgundy: #800020;
-      --black: #111;
-      --white: #fff;
-      --soft-burgundy: #a06a7b;
-      --light-bg: #fff8fa;
+    :root{
+      --bg:#0c0c0c; --panel:#111; --muted:#b9b9b9; --text:#f1f1f1; --accent:#ffffff;
+      --card:#161616; --border:#242424; --burgundy:#800020; --soft-burgundy:#a0002a;
+      --white:#ffffff; --light-bg:#f8f8f8;
+      --max:1200px; --gap:1.25rem;
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: "STIX Math", "Cambria Math", serif;
-      font-style: italic;
+    *{box-sizing:border-box}
+      /* Remove grey background from nav for this page only */
+      nav, .nav {
+        background: none !important;
+        box-shadow: none !important;
+        border: none !important;
+      }
+    body{
+      margin:0; font:16px/1.5 'Cinzel', Georgia, serif;
+      color:var(--text); background:linear-gradient(#1a1a1a, #0b0b0b 140vh);
+    }
+    a{color:inherit; text-decoration:none}
+    img{display:block; width:100%; height:100%; object-fit:cover; object-position:center}
+    .container{max-width:var(--max); margin-inline:auto; padding:0 1rem}
+    .btn{
+      display:inline-block; padding:.7rem 1.1rem; background:var(--accent); color:#000; border-radius:4px; font-weight:600;
+      border: none; cursor: pointer; transition: all 0.3s ease;
+    }
+    .btn:hover{background:var(--text); transform: translateY(-2px);}
+    .btn.outline{
+      background:transparent; color:var(--accent); border:1px solid var(--accent);
     }
 
-    body {
-      background: linear-gradient(90deg, var(--white) 0%, var(--burgundy) 100%);
-      color: var(--black);
-      font-size: 1.08rem;
-      line-height: 1.6;
+    /* Top announcement */
+    .announcement{
+      background:#0f0f0f; color:var(--muted); font-size:.85rem; text-align:center; padding:.6rem 1rem;
+      border-bottom:1px solid var(--border);
     }
 
-    header {
-      background: var(--white);
-      border-bottom: 2px solid var(--burgundy);
-      box-shadow: 0 2px 8px rgba(128,0,32,0.04);
+    /* Header */
+    header{background:#000; border-bottom:1px solid var(--border)}
+    .header-container{
+      display:flex; flex-direction:column; align-items:center; padding:1rem 0; position:relative;
+    }
+    .logo{font-family:'Dancing Script', cursive; font-weight:700; letter-spacing:.04em; line-height:1; text-align:center; margin-bottom:1rem}
+    .logo .brand{font-size:2.5rem; display:block; font-weight:bold}
+    .logo small{font-size:.9rem; color:var(--muted); letter-spacing:.2em; font-family:'Cinzel', serif}
+    .nav{display:flex; align-items:center; justify-content:center;}
+    .nav ul{list-style:none; display:flex; gap:1.2rem; margin:0; padding:0; color:var(--muted)}
+    .nav a{padding: 0.5rem 1rem; border-radius: 4px; transition: all 0.3s ease;}
+    .icons{display:flex; gap:1rem; color:var(--muted); position:absolute; right:2rem; top:1rem}
+    .menu-toggle{display: none; background: none; border: none; color: var(--text); font-size: 1.5rem; cursor: pointer;}
+
+    /* Sections */
+    section{padding:3rem 0}
+    .section-title{
+      font-family:'Dancing Script', cursive; font-size:2.2rem; letter-spacing:.18em; 
+      text-transform:capitalize; margin-bottom:1.2rem; font-weight:bold; text-align: center;
     }
 
-    .header-container {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1.2rem 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
-      flex-wrap: wrap;
+    /* Product grid */
+    .product-grid{
+      display:grid; gap:var(--gap); grid-template-columns:repeat(3, 1fr); padding:2rem 0;
     }
 
-    .logo {
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: var(--burgundy);
-      display: flex;
-      align-items: center;
-      letter-spacing: 1px;
-    }
-
-    nav {
-      display: flex;
-      gap: 2rem;
-      align-items: center;
-    }
-
-    nav a {
-      color: var(--burgundy);
-      font-weight: 500;
-      text-decoration: none;
-      padding: 0.3rem 0.7rem;
-      border-radius: 4px;
-      transition: background 0.2s, color 0.2s;
-    }
-    nav a:hover {
-      background: var(--burgundy);
-      color: var(--white);
-    }
-
-    .menu-toggle {
-      display: none;
-      background: none;
-      border: none;
-      font-size: 2rem;
-      margin-left: 1rem;
-      cursor: pointer;
-      color: var(--burgundy);
-    }
-
-    #languageSelector {
-      margin-left: 1rem;
-      padding: 0.3rem 0.7rem;
-      border: 1px solid var(--burgundy);
-      border-radius: 5px;
-      background: var(--white);
-      color: var(--burgundy);
-      font-size: 1rem;
-    }
-
-    .trending-now-banner {
-      background: var(--soft-burgundy);
-      color: var(--white);
-      text-align: center;
-      font-size: 1.15rem;
-      padding: 0.7rem 0;
-      margin-bottom: 0;
-      letter-spacing: 0.5px;
-    }
-
-    .referral-block {
-      background: var(--light-bg);
-      border: 2px dashed var(--burgundy);
-      color: var(--burgundy);
-      text-align: center;
-      margin-bottom: 1.2rem;
-      padding: 1rem 0.5rem;
-      border-radius: 8px;
-    }
-
-    .referral-btn {
-      background: var(--burgundy);
-      color: var(--white);
-      border: none;
-      border-radius: 5px;
-      padding: 0.5rem 1.2rem;
-      cursor: pointer;
-      font-weight: 500;
-      margin-top: 0.5rem;
-    }
-    .referral-btn:hover {
-      background: var(--black);
-    }
-
-    .hero {
-      padding: 3rem 2rem 2rem 2rem;
-      text-align: center;
-      max-width: 900px;
-      margin: 0 auto;
-      background: var(--white);
-      border-radius: 12px;
-      box-shadow: 0 2px 12px rgba(128,0,32,0.07);
-    }
-
-    .hero h1 {
-      color: var(--burgundy);
-      font-size: 2.2rem;
-      margin-bottom: 1rem;
-      font-weight: 700;
-    }
-
-    .hero p {
-      font-size: 1.2rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .hero .cta-btn {
-      background: var(--burgundy);
-      color: var(--white);
-      border: none;
-      border-radius: 5px;
-      padding: 0.8rem 2rem;
-      font-size: 1.1rem;
-      font-weight: 600;
-      cursor: pointer;
-      margin-bottom: 1rem;
-      transition: background 0.2s;
-    }
-    .hero .cta-btn:hover {
-      background: var(--black);
-      color: var(--white);
-    }
-
-    .countdown-banner {
-      text-align: center;
-      padding: 0.7rem 1rem;
-      font-size: 1.1rem;
-      background: var(--burgundy);
-      color: var(--white);
-      margin-bottom: 1.5rem;
-      border-radius: 8px;
-      max-width: 900px;
-      margin: 1rem auto 1.5rem auto;
-    }
-
-    .carousel {
-      background: var(--white);
-      border-radius: 12px;
-      box-shadow: 0 2px 12px rgba(128,0,32,0.07);
-      margin-bottom: 2rem;
-    }
-
-    .carousel-wrapper {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      max-width: 900px;
-      margin: 2rem auto;
-      overflow: hidden;
-    }
-
-    .carousel-images {
-      display: flex;
-      transition: transform 0.5s;
-      width: 100%;
-    }
-
-    .carousel-slide {
-      min-width: 100%;
-      box-sizing: border-box;
-      position: relative;
-    }
-
-    .carousel-img {
-      width: 100%;
-      height: 320px;
-      object-fit: cover;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(128,0,32,0.07);
-    }
-
-    .carousel-arrow {
-      background: none;
-      border: none;
-      cursor: pointer;
-      z-index: 2;
-      padding: 0.5rem;
-      border-radius: 50%;
-      transition: background 0.2s;
-    }
-    .carousel-arrow:hover {
-      background: var(--soft-burgundy);
-    }
-
-    .carousel-dots {
-      display: flex;
-      justify-content: center;
-      gap: 0.5rem;
-      margin-top: 1rem;
-    }
-
-    .carousel-dot {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: var(--burgundy);
-      opacity: 0.5;
-      cursor: pointer;
-      border: 2px solid var(--white);
-      transition: opacity 0.2s;
-    }
-    .carousel-dot.active {
-      opacity: 1;
-      background: var(--black);
-      border-color: var(--burgundy);
-    }
-
-    .carousel-overlay-left span,
-    .carousel-overlay-right span {
-      background: rgba(128,0,32,0.7);
-      color: var(--white);
-      padding: 0.3rem 0.7rem;
-      border-radius: 5px;
-      font-size: 1rem;
-      position: absolute;
-      top: 20px;
-    }
-    .carousel-overlay-left span { left: 20px; }
-    .carousel-overlay-right span { right: 20px; }
-
-    .carousel-caption span {
-      background: rgba(255,255,255,0.92);
-      color: var(--burgundy);
-      padding: 0.3rem 0.7rem;
-      border-radius: 5px;
-      font-size: 1rem;
-      position: absolute;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-
-    .shop {
-      max-width: 1200px;
-      margin: 2rem auto;
-      padding: 0 2rem;
-    }
-
-    .shop h2 {
-      color: var(--burgundy);
-      font-size: 1.6rem;
-      font-weight: 700;
-      text-align: center;
-      margin-bottom: 1.5rem;
-    }
-
-    .filters {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      margin-bottom: 2rem;
-      flex-wrap: wrap;
-    }
-
-    .filters button {
-      background: var(--burgundy);
-      color: var(--white);
-      border: none;
-      border-radius: 5px;
-      padding: 0.5rem 1.2rem;
-      font-size: 1rem;
-      font-weight: 500;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-    .filters button:hover,
-    .filters button.active {
-      background: var(--black);
-      color: var(--white);
-    }
-
-    .product-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2rem;
-      padding: 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
+    /* Product specific styles */
     .product-card {
-      background: var(--white);
-      border-radius: 15px;
-      box-shadow: 0 4px 15px rgba(128,0,32,0.1);
-      overflow: hidden;
-      transition: all 0.3s ease;
-      border: 2px solid transparent;
+      background: var(--card); border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,.1);
+      overflow: hidden; transition: all 0.3s ease; border: 1px solid var(--border);
     }
     .product-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 25px rgba(128,0,32,0.2);
-      border-color: var(--soft-burgundy);
+      transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,.3);
     }
     .product-card img {
-      width: 100%;
-      height: 250px;
-      object-fit: cover;
+      width: 100%; height: 250px; object-fit: cover;
     }
     .product-info {
       padding: 1.5rem;
     }
     .product-info h3 {
-      color: var(--burgundy);
-      font-size: 1.2rem;
-      font-weight: 600;
-      margin-bottom: 0.5rem;
+      color: var(--text); font-size: 1.2rem; font-weight: 600; margin-bottom: 0.5rem;
     }
     .product-info .price {
-      color: var(--black);
-      font-size: 1.1rem;
-      font-weight: 700;
-      margin-bottom: 1rem;
+      color: var(--accent); font-size: 1.1rem; font-weight: 700; margin-bottom: 1rem;
     }
     .product-info label {
-      display: block;
-      color: var(--burgundy);
-      font-weight: 500;
-      margin-top: 0.8rem;
-      margin-bottom: 0.3rem;
+      display: block; color: var(--muted); font-weight: 500; 
+      margin-top: 0.8rem; margin-bottom: 0.3rem;
     }
     .product-info select, .product-info input {
-      width: 100%;
-      padding: 0.5rem;
-      border: 2px solid var(--light-bg);
-      border-radius: 5px;
-      margin-bottom: 0.8rem;
-      transition: border-color 0.2s;
-    }
-    .product-info select:focus, .product-info input:focus {
-      outline: none;
-      border-color: var(--burgundy);
+      width: 100%; padding: 0.5rem; border: 1px solid var(--border); border-radius: 4px;
+      margin-bottom: 0.8rem; background: var(--panel); color: var(--text);
     }
     .product-info button {
-      background: linear-gradient(135deg, var(--burgundy), var(--soft-burgundy));
-      color: var(--white);
-      border: none;
-      border-radius: 8px;
-      padding: 0.8rem 1.5rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s ease;
+      background: var(--accent); color: #000; border: none; border-radius: 4px;
+      padding: 0.8rem 1.5rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease;
       width: 100%;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
     }
     .product-info button:hover:not(:disabled) {
-      background: linear-gradient(135deg, var(--black), var(--burgundy));
-      transform: translateY(-2px);
+      background: var(--text); color: #000;
     }
     .product-info button:disabled {
-      background: #ccc;
-      cursor: not-allowed;
-      transform: none;
+      background: #444; cursor: not-allowed; color: var(--muted);
     }
 
-    .product {
-      padding: 1.2rem;
-      border-radius: 10px;
-      box-shadow: 0 2px 12px rgba(128,0,32,0.07);
-      background: var(--white);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      border: 1px solid var(--soft-burgundy);
-      transition: box-shadow 0.2s;
+    /* Filters */
+    .filters {
+      display: flex; gap: 1rem; justify-content: center; margin-bottom: 2rem; flex-wrap: wrap;
     }
-    .product:hover {
-      box-shadow: 0 4px 16px rgba(128,0,32,0.13);
+    .filters button {
+      background: var(--panel); color: var(--text); border: 1px solid var(--border);
+      border-radius: 4px; padding: 0.5rem 1.2rem; font-size: 1rem; font-weight: 500;
+      cursor: pointer; transition: all 0.2s;
     }
-
-    .product h4 {
-      color: var(--burgundy);
-      font-size: 1.15rem;
-      font-weight: 600;
-      margin: 0.7rem 0 0.3rem 0;
-      text-align: center;
-    }
-
-    .product-description {
-      color: var(--black);
-      font-size: 1rem;
-      text-align: center;
-      margin-bottom: 0.7rem;
-    }
-
-    .product img {
-      width: 100%;
-      max-width: 220px;
-      height: 220px;
-      object-fit: cover;
-      border-radius: 8px;
-      margin-bottom: 1rem;
-    }
-
-    .share-buttons {
-      display: flex;
-      gap: 0.5rem;
-      margin-top: 0.7rem;
-    }
-    .share-buttons button {
-      background: var(--white);
-      border: 1px solid var(--burgundy);
-      color: var(--burgundy);
-      border-radius: 5px;
-      padding: 0.3rem 0.7rem;
-      cursor: pointer;
-      transition: background 0.2s, color 0.2s;
-    }
-    .share-buttons button:hover {
-      background: var(--burgundy);
-      color: var(--white);
-    }
-
-    .testimonials {
-      max-width: 900px;
-      margin: 2rem auto;
-      padding: 2rem;
-      border-radius: 12px;
-      background: var(--white);
-      box-shadow: 0 2px 12px rgba(128,0,32,0.07);
-    }
-
-    .testimonials h2 {
-      color: var(--burgundy);
-      font-size: 1.4rem;
-      font-weight: 700;
-      text-align: center;
-      margin-bottom: 1.2rem;
-    }
-
-    .testimonial-list {
-      display: flex;
-      gap: 2rem;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .testimonial {
-      flex: 1 1 220px;
-      padding: 1rem;
-      border-radius: 8px;
-      background: var(--light-bg);
-      border: 1px solid var(--soft-burgundy);
-      font-size: 1rem;
-      color: var(--black);
-      margin-bottom: 1rem;
-      box-shadow: 0 2px 8px rgba(128,0,32,0.04);
-    }
-    .testimonial .author {
-      color: var(--burgundy);
-      font-weight: 600;
-      margin-top: 0.5rem;
-      font-size: 0.98rem;
-    }
-
-    .opt-in {
-      max-width: 500px;
-      margin: 2rem auto;
-      padding: 2rem;
-      border-radius: 12px;
-      text-align: center;
-      background: var(--burgundy);
-      color: var(--white);
-      box-shadow: 0 2px 12px rgba(128,0,32,0.07);
-    }
-    .opt-in h3 { color: var(--white); }
-    .opt-in input, .opt-in button {
-      margin: 0.5rem 0;
-      padding: 0.7rem;
-      border-radius: 5px;
-      border: none;
-      width: 90%;
-      max-width: 350px;
-      font-size: 1rem;
-    }
-    .opt-in input {
-      background: var(--white);
-      color: var(--burgundy);
-      border: 1px solid var(--soft-burgundy);
-    }
-    .opt-in button {
-      background: var(--black);
-      color: var(--white);
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-    .opt-in button:hover {
-      background: var(--white);
-      color: var(--burgundy);
-    }
-
-    .style-gallery {
-      padding: 2rem 1rem;
-      background: var(--white);
-      border-radius: 12px;
-      box-shadow: 0 2px 12px rgba(128,0,32,0.07);
-    }
-    .style-gallery img {
-      width: 120px;
-      height: 120px;
-      object-fit: cover;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(128,0,32,0.07);
-    }
-
-    /* Footer Styling */
-    footer {
-      background: var(--primary); /* Deep burgundy */
-      color: var(--footer-text);
-      padding: 2rem;
-      margin-top: 3rem;
-    }
-    .footer-content {
-      padding: 2rem 1rem;
-      gap: 2rem;
-      background: var(--burgundy);
-      color: var(--white);
-      border-radius: 12px 12px 0 0;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: stretch;
-    }
-    .footer-col {
-      flex: 1 1 200px;
-      min-width: 180px;
-      margin-bottom: 1rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 1rem;
-      box-sizing: border-box;
-    }
-    .footer-col h4 {
-      color: var(--white);
-      font-size: 1.1rem;
-      margin-bottom: 0.7rem;
-    }
-    .footer-col a {
-      color: var(--white);
-      text-decoration: none;
-      display: block;
-      margin-bottom: 0.3rem;
-      transition: color 0.2s;
-    }
-    .footer-col a:hover {
-      color: var(--black);
-    }
-    .footer-btn {
-      display: inline-block;
-      background: var(--accent);
-      color: var(--burgundy);
-      border: none;
-      border-radius: 6px;
-      padding: 0.5rem 1.2rem;
-      margin: 0.3rem 0;
-      font-weight: 600;
-      text-decoration: none;
-      transition: background 0.2s, color 0.2s, box-shadow 0.2s;
-      box-shadow: 0 2px 8px rgba(128,0,32,0.07);
-      text-align: center;
-    }
-    .footer-btn:hover {
-      background: var(--black);
-      color: var(--white);
-      box-shadow: 0 4px 16px rgba(128,0,32,0.13);
-    }
-    .footer-bottom {
-      text-align: center;
-      padding: 1rem;
-      font-size: 0.95rem;
-      background: var(--footer-bottom);
-      color: var(--burgundy);
-      border-radius: 0 0 12px 12px;
-      margin-top: 0;
-    }
-
-    /* Improved Button Styles */
-    .cta-button {
-      background: linear-gradient(135deg, var(--burgundy), var(--soft-burgundy));
-      color: var(--white);
-      border: none;
-      border-radius: 8px;
-      padding: 1rem 2rem;
-      font-size: 1.1rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 15px rgba(128,0,32,0.2);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      position: relative;
-      overflow: hidden;
-    }
-    .cta-button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(128,0,32,0.3);
-      background: linear-gradient(135deg, var(--black), var(--burgundy));
-    }
-    .cta-button:active {
-      transform: translateY(0);
-    }
-
-    /* Modal Styles */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 1000;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.6);
-      backdrop-filter: blur(5px);
-      overflow-y: auto;
-      padding: 2rem 1rem;
-      box-sizing: border-box;
-    }
-    .modal-content {
-      background: var(--white);
-      margin: 0 auto;
-      padding: 0;
-      border-radius: 20px;
-      width: 100%;
-      max-width: 550px;
-      position: relative;
-      box-shadow: 0 15px 40px rgba(128,0,32,0.4);
-      animation: modalSlideIn 0.4s ease;
-      max-height: 90vh;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-    }
-    @keyframes modalSlideIn {
-      from { 
-        opacity: 0; 
-        transform: translateY(-30px) scale(0.95); 
-      }
-      to { 
-        opacity: 1; 
-        transform: translateY(0) scale(1); 
-      }
-    }
-    .modal-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 2rem 2rem 1rem 2rem;
-      border-bottom: 3px solid var(--light-bg);
-      background: linear-gradient(135deg, var(--light-bg), var(--white));
-      border-radius: 20px 20px 0 0;
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
-    .modal-header h2 {
-      color: var(--burgundy);
-      font-size: 1.6rem;
-      margin: 0;
-      font-weight: 700;
-    }
-    .modal-body {
-      padding: 2rem;
-      overflow-y: auto;
-      flex: 1;
-      max-height: calc(90vh - 120px);
-    }
-    .close-btn {
-      background: var(--burgundy);
-      border: none;
-      font-size: 1.5rem;
-      cursor: pointer;
-      color: var(--white);
-      padding: 0.8rem;
-      border-radius: 50%;
-      transition: all 0.3s ease;
-      width: 45px;
-      height: 45px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 2px 10px rgba(128,0,32,0.3);
-    }
-    .close-btn:hover {
-      background: var(--black);
-      transform: rotate(90deg) scale(1.1);
-      box-shadow: 0 4px 15px rgba(128,0,32,0.5);
-    }
-    .form-group {
-      margin-bottom: 1.5rem;
-    }
-    .form-group:last-child {
-      margin-bottom: 0;
-    }
-    .form-group label {
-      display: block;
-      margin-bottom: 0.7rem;
-      color: var(--burgundy);
-      font-weight: 600;
-      font-size: 1.05rem;
-    }
-    .form-group input, .form-group textarea, .form-group select {
-      width: 100%;
-      padding: 1rem;
-      border: 2px solid var(--light-bg);
-      border-radius: 10px;
-      font-size: 1rem;
-      transition: all 0.3s ease;
-      background: var(--white);
-      box-shadow: inset 0 2px 4px rgba(128,0,32,0.05);
-    }
-    .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
-      outline: none;
-      border-color: var(--burgundy);
-      box-shadow: 0 0 0 3px rgba(128,0,32,0.1), inset 0 2px 4px rgba(128,0,32,0.05);
-      transform: translateY(-1px);
-    }
-    .form-group textarea {
-      resize: vertical;
-      min-height: 100px;
-    }
-    .star-rating {
-      display: flex;
-      gap: 0.7rem;
-      margin: 1rem 0;
-      justify-content: center;
-      padding: 1rem;
-      background: var(--light-bg);
-      border-radius: 10px;
-    }
-    .star {
-      font-size: 2rem;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      color: #ddd;
-    }
-    .star:hover {
-      transform: scale(1.2);
-    }
-    .success-message {
-      text-align: center;
-      color: var(--burgundy);
-      font-size: 1.2rem;
-      font-weight: 600;
-      padding: 2rem;
-      background: var(--light-bg);
-      border-radius: 10px;
-      border: 2px solid var(--burgundy);
-    }
-    .success-message h3 {
-      color: var(--burgundy);
-      margin-bottom: 1rem;
-      font-size: 1.4rem;
+    .filters button:hover, .filters button.active {
+      background: var(--accent); color: #000;
     }
 
     /* Pagination Styles */
     #pagination {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 0.8rem;
-      margin: 3rem 0;
-      padding: 2rem;
+      display: flex; justify-content: center; align-items: center; gap: 0.8rem;
+      margin: 3rem 0; padding: 2rem;
     }
     #pagination button {
-      background: linear-gradient(135deg, var(--white), var(--light-bg));
-      color: var(--burgundy);
-      border: 2px solid var(--burgundy);
-      border-radius: 10px;
-      padding: 0.8rem 1.2rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      min-width: 50px;
-      font-size: 1rem;
-      box-shadow: 0 2px 8px rgba(128,0,32,0.1);
-      position: relative;
-      overflow: hidden;
+      background: var(--panel); color: var(--text); border: 1px solid var(--border);
+      border-radius: 4px; padding: 0.8rem 1.2rem; font-weight: 600; cursor: pointer;
+      transition: all 0.3s ease; min-width: 50px; font-size: 1rem;
     }
     #pagination button:hover:not(:disabled) {
-      background: linear-gradient(135deg, var(--burgundy), var(--soft-burgundy));
-      color: var(--white);
-      transform: translateY(-3px);
-      box-shadow: 0 4px 15px rgba(128,0,32,0.2);
+      background: var(--accent); color: #000; transform: translateY(-3px);
     }
     #pagination button.active {
-      background: linear-gradient(135deg, var(--burgundy), var(--soft-burgundy));
-      color: var(--white);
-      box-shadow: 0 4px 15px rgba(128,0,32,0.3);
+      background: var(--accent); color: #000;
     }
     #pagination button:disabled {
-      opacity: 0.4;
-      cursor: not-allowed;
-      transform: none;
-      background: #f0f0f0;
-      color: #999;
-      border-color: #ddd;
-    }
-    #pagination button.page-ellipsis {
-      border: none;
-      background: none;
-      color: var(--burgundy);
-      cursor: default;
-      box-shadow: none;
-      font-weight: 700;
-    }
-    #pagination button:not(.page-ellipsis):before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-      transition: left 0.5s;
-    }
-    #pagination button:not(.page-ellipsis):hover:before {
-      left: 100%;
+      opacity: 0.4; cursor: not-allowed; transform: none;
     }
 
-    #backToTop {
-      position: fixed;
-      right: 1.5rem;
-      bottom: 1.5rem;
-      background: none;
-      border: none;
-      padding: 0;
-      cursor: pointer;
-      z-index: 1000;
-      transition: transform 0.2s;
+    /* Modal Styles */
+    .modal {
+      display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.8); backdrop-filter: blur(5px); overflow-y: auto;
+      padding: 2rem 1rem; box-sizing: border-box;
     }
-    #backToTop svg {
-      box-shadow: 0 2px 8px rgba(128,0,32,0.13);
-      border-radius: 50%;
-      transition: box-shadow 0.2s, transform 0.2s;
+    .modal-content {
+      background: var(--card); margin: 0 auto; padding: 0; border-radius: 8px;
+      width: 100%; max-width: 550px; position: relative; box-shadow: 0 15px 40px rgba(0,0,0,.6);
+      animation: modalSlideIn 0.4s ease; max-height: 90vh; overflow: hidden;
+      display: flex; flex-direction: column; border: 1px solid var(--border);
     }
-    #backToTop:hover svg {
-      box-shadow: 0 4px 16px rgba(128,0,32,0.25);
-      transform: scale(1.1);
+    @keyframes modalSlideIn {
+      from { opacity: 0; transform: translateY(-30px) scale(0.95); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    .modal-header {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 2rem 2rem 1rem 2rem; border-bottom: 1px solid var(--border); background: var(--panel);
+    }
+    .modal-header h2 {
+      color: var(--text); font-family: 'Dancing Script', cursive; font-size: 1.6rem;
+      margin: 0; font-weight: 700;
+    }
+    .modal-body {
+      padding: 2rem; overflow-y: auto; flex: 1; max-height: calc(90vh - 120px); background: var(--card);
+    }
+    .close-btn {
+      background: var(--accent); border: none; font-size: 1.5rem; cursor: pointer; color: #000;
+      padding: 0.8rem; border-radius: 50%; transition: all 0.3s ease; width: 45px; height: 45px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .close-btn:hover {
+      background: var(--text); transform: rotate(90deg) scale(1.1);
     }
 
-    /* MOBILE STYLES */
-    @media (max-width: 900px) {
-      .header-container, .shop, .hero, .testimonials, .footer-content {
-        padding-left: 1rem;
-        padding-right: 1rem;
-      }
-      .carousel-img {
-        height: 200px;
-      }
-      .product-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.2rem;
-        padding: 1rem;
-      }
-      .testimonial-list {
-        gap: 1rem;
-      }
-      #pagination {
-        gap: 0.5rem;
-        padding: 1rem;
-        flex-wrap: wrap;
-      }
-      #pagination button {
-        padding: 0.6rem 1rem;
-        min-width: 40px;
-        font-size: 0.9rem;
-      }
-      .modal {
-        padding: 1rem 0.5rem;
-      }
-      .modal-content {
-        max-width: 95%;
-        max-height: 95vh;
-      }
-      .modal-header {
-        padding: 1.5rem 1.5rem 1rem 1.5rem;
-      }
-      .modal-header h2 {
-        font-size: 1.3rem;
-      }
-      .modal-body {
-        padding: 1.5rem;
-        max-height: calc(95vh - 100px);
-      }
+    .form-group {
+      margin-bottom: 1.5rem;
     }
-    @media (max-width: 600px) {
-      .header-container {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 1rem;
+    .form-group label {
+      display: block; margin-bottom: 0.7rem; color: var(--text); font-weight: 600; font-size: 1.05rem;
+    }
+    .form-group input, .form-group textarea, .form-group select {
+      width: 100%; padding: 1rem; border: 1px solid var(--border); border-radius: 4px;
+      font-size: 1rem; transition: all 0.3s ease; background: var(--panel); color: var(--text);
+    }
+    .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+      outline: none; border-color: var(--accent);
+    }
+
+    .cta-button {
+      background: var(--accent); color: #000; border: none; border-radius: 4px;
+      padding: 1rem 2rem; font-size: 1.1rem; font-weight: 600; cursor: pointer;
+      transition: all 0.3s ease; width: 100%;
+    }
+    .cta-button:hover {
+      background: var(--text);
+    }
+
+    /* Footer */
+    footer{padding:2.5rem 0; color:var(--muted); border-top:1px solid var(--border); background:#0a0a0a}
+    .footer-content{
+      max-width:var(--max); margin:0 auto; padding:0 2rem; display:flex; flex-wrap:wrap; gap:2rem;
+    }
+    .footer-col{
+      flex:1; min-width:200px;
+    }
+    .footer-col h4{
+      color:var(--text); font-size:1.1rem; margin-bottom:.7rem;
+    }
+    .footer-col a{
+      color:var(--muted); text-decoration:none; display:block; margin-bottom:.3rem; transition:color .2s;
+    }
+    .footer-col a:hover{
+      color:var(--accent);
+    }
+    .footer-col:nth-child(1), .footer-col:nth-child(2) {
+      text-align: left;
+    }
+    .footer-col:nth-child(1) div, .footer-col:nth-child(2) div {
+      text-align: left;
+    }
+    .footer-col:nth-child(4) {
+      text-align: center;
+    }
+    .footer-col:nth-child(4) div {
+      justify-content: center;
+    }
+    .footer-bottom{
+      text-align:center; padding:1rem; color:var(--muted); border-top:1px solid var(--border);
+    }
+
+    /* Responsive */
+    @media (max-width: 1000px){
+      .product-grid{grid-template-columns:repeat(2, 1fr)}
+      .header-container{padding: 1rem}
+      .icons{position: static; margin-top: 1rem;}
+      .footer-content{flex-direction:column; gap:1rem}
+    }
+      /* Remove box/highlight from nav links for this page only */
+      nav a, .nav a {
+        background: none !important;
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0.5rem 1rem !important;
+        color: inherit !important;
       }
-      .logo {
-        margin-bottom: 0.5rem;
-        font-size: 1.2rem;
+      nav a:hover, .nav a:hover {
+        background: none !important;
+        color: var(--accent) !important;
+        box-shadow: none !important;
+        border: none !important;
       }
-      nav {
-        flex-direction: column;
-        gap: 1rem;
-        width: 100%;
-        background: var(--white);
-        border-bottom: 2px solid var(--burgundy);
-        position: absolute;
-        top: 60px;
-        left: 0;
-        z-index: 100;
-        display: none;
-      }
-      #mainNav.open {
-        display: flex;
-      }
-      .menu-toggle {
-        display: block;
-      }
-      .carousel-img {
-        height: 140px;
-      }
-      .product-grid {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-        padding: 0.5rem;
-      }
-      .footer-content {
-        flex-direction: column;
-        gap: 1rem;
-        padding: 1rem;
-        border-radius: 12px 12px 0 0;
-      }
-      .footer-col {
-        min-width: 0;
-      }
-      .opt-in input, .opt-in button {
-        width: 100%;
-        max-width: 100%;
-      }
-      .style-gallery img {
-        width: 90px;
-        height: 90px;
-      }
-      .hero {
-        padding: 2rem 0.5rem 1.5rem 0.5rem;
-      }
-      .shop {
-        padding: 0 0.5rem;
-      }
-      .testimonials {
-        padding: 1rem 0.5rem;
-      }
-      #pagination {
-        gap: 0.3rem;
-        padding: 0.5rem;
-      }
-      #pagination button {
-        padding: 0.5rem 0.8rem;
-        min-width: 35px;
-        font-size: 0.85rem;
-      }
-      .modal {
-        padding: 0.5rem 0.2rem;
-      }
-      .modal-content {
-        max-width: 98%;
-        max-height: 98vh;
-      }
-      .modal-header {
-        padding: 1rem;
-      }
-      .modal-header h2 {
-        font-size: 1.2rem;
-      }
-      .modal-body {
-        padding: 1rem;
-        max-height: calc(98vh - 80px);
-      }
-      .close-btn {
-        width: 35px;
-        height: 35px;
-        font-size: 1.2rem;
-      }
-      .star-rating {
-        gap: 0.5rem;
-        padding: 0.8rem;
-      }
-      .star {
-        font-size: 1.7rem;
-      }
+    @media (max-width: 520px){
+      .nav ul{display:none}
+      .product-grid{grid-template-columns:1fr}
+      .menu-toggle{display: block;}
+      .filters{gap: 0.5rem;}
+      .filters button{padding: 0.4rem 0.8rem; font-size: 0.9rem;}
     }
   </style>
 </head>
 <body>
 
+  <!-- Announcement -->
+  <div class="announcement">✦ FREE SHIPPING ON ALL ORDERS OVER R999 ✦</div>
+
+  <!-- Header -->
   <header>
-    <div class="header-container">
+    <div class="container header-container">
       <div class="logo">
-        <img src="logo.jpg" alt="Her Essence Restored (H.E.R.) Logo" style="height:48px; vertical-align:middle;">
-        <span>Her Essence Restored (H.E.R.)</span>
+        <span class="brand">H.E.R</span>
+        <small>Her Essence Restored</small>
       </div>
-      <nav id="mainNav">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="products.html">Products</a>
-        
-        <a href="contact.html">Contact</a>
-        <a href="cart.html">Cart</a>
-      </nav>
+      <div class="nav" id="mainNav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="products.html">Shop</a></li>
+          
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="icons">
+        <a href="#" aria-label="Search">🔍</a>
+        <a href="cart.html" aria-label="Cart">👜</a>
+      </div>
       <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">☰</button>
     </div>
   </header>
 
-  <!-- Product Grid -->
-  <section class="product-grid" id="productGrid"></section>
-  <div id="pagination"></div>
+  <!-- Shop Section -->
+  <section class="container">
+    <h2 class="section-title">Shop Collections</h2>
+    
+    <!-- Filters -->
+    <div class="filters">
+      <button class="active" onclick="filterProducts('all')">All</button>
+      <button onclick="filterProducts('semi-formal')">Semi-formal dresses</button>
+      <button onclick="filterProducts('evening')">Evening wear</button>
+      <button onclick="filterProducts('sportswear')">Sportswear</button>
+      <button onclick="filterProducts('bridal')">Bridal</button>
+    </div>
 
-  <!-- Customer Reviews & Photos Section -->
-  <section id="reviews" style="background: var(--beige); padding: 2.5rem 0; margin: 2rem 0;">
-    <div style="max-width: 1100px; margin: 0 auto;">
-      <h2 style="color: var(--burgundy); text-align: center; margin-bottom: 1.5rem;">Customer Reviews &amp; Photos</h2>
-      <div id="reviewGrid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem;">
-        <!-- Example reviews, you can add more or make dynamic later -->
-        <div style="background: var(--white); border-radius: 10px; box-shadow: 0 2px 8px rgba(110,35,43,0.08); padding: 1.2rem;">
-          <div style="display: flex; align-items: center; gap: 1rem;">
-            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Customer" style="width:56px; height:56px; border-radius:50%; object-fit:cover;">
-            <div>
-              <strong style="color: var(--burgundy);">Maria K.</strong>
-              <div style="color: gold; font-size: 1.1rem;">★★★★★</div>
-            </div>
-          </div>
-          <p style="margin: 1rem 0 0.5rem;">Absolutely love my Classic Vintage Dress! The fit is perfect and the fabric feels luxurious. Will definitely order again.</p>
-          <img src="https://via.placeholder.com/320x180?text=Maria's+Dress" alt="Customer Photo" style="width:100%; border-radius:8px; margin-top:0.5rem;">
-        </div>
-        <div style="background: var(--white); border-radius: 10px; box-shadow: 0 2px 8px rgba(110,35,43,0.08); padding: 1.2rem;">
-          <div style="display: flex; align-items: center; gap: 1rem;">
-            <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Customer" style="width:56px; height:56px; border-radius:50%; object-fit:cover;">
-            <div>
-              <strong style="color: var(--burgundy);">Lydia S.</strong>
-              <div style="color: gold; font-size: 1.1rem;">★★★★★</div>
-            </div>
-          </div>
-          <p style="margin: 1rem 0 0.5rem;">The Braided Wig is stunning and looks so natural. Shipping was fast and customer service was amazing!</p>
-          <img src="https://via.placeholder.com/320x180?text=Lydia's+Wig" alt="Customer Photo" style="width:100%; border-radius:8px; margin-top:0.5rem;">
-        </div>
-        <div style="background: var(--white); border-radius: 10px; box-shadow: 0 2px 8px rgba(110,35,43,0.08); padding: 1.2rem;">
-          <div style="display: flex; align-items: center; gap: 1rem;">
-            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Customer" style="width:56px; height:56px; border-radius:50%; object-fit:cover;">
-            <div>
-              <strong style="color: var(--burgundy);">James T.</strong>
-              <div style="color: gold; font-size: 1.1rem;">★★★★☆</div>
-            </div>
-          </div>
-          <p style="margin: 1rem 0 0.5rem;">Bought the Fedora Hat for my wife—she loved it! Great quality, just wish there were more color options.</p>
-          <img src="https://via.placeholder.com/320x180?text=James+Fedora" alt="Customer Photo" style="width:100%; border-radius:8px; margin-top:0.5rem;">
-        </div>
-      </div>
-      <div style="text-align:center; margin-top:2rem;">
-        <button id="openReviewModal" class="cta-button">
-          ⭐ Share Your Review
-        </button>
-      </div>
+    <!-- Product Grid -->
+    <div class="product-grid" id="productGrid">
+      <!-- Products will be loaded here by JavaScript -->
+    </div>
+    
+    <!-- Pagination -->
+    <div id="pagination">
+      <!-- Pagination buttons will be loaded here by JavaScript -->
     </div>
   </section>
 
-  <!-- Order Section (place after pagination, before footer) -->
-  <section style="text-align:center; margin: 3rem 0; padding: 2rem; background: var(--light-bg); border-radius: 15px; max-width: 800px; margin-left: auto; margin-right: auto;">
-    <h2 style="color: var(--burgundy); font-size: 2rem; margin-bottom: 1rem;">Place a Custom Order</h2>
-    <p style="font-size: 1.2rem; margin-bottom: 2rem; color: var(--black);">Want something special or have a bulk request? Let us create the perfect piece for you!</p>
-    <button id="openOrderModal" class="cta-button">
-      🛒 Order Now
-    </button>
+  <!-- Custom Order Section -->
+  <section class="container">
+    <div style="text-align:center; padding: 2rem; background: var(--card); border-radius: 8px; border: 1px solid var(--border);">
+      <h2 class="section-title">Custom Orders</h2>
+      <p style="margin-bottom: 2rem; color: var(--muted);">Want something special? Let us create the perfect piece for you!</p>
+      <button id="openOrderModal" class="btn">Order Now</button>
+    </div>
   </section>
 
   <!-- Order Modal -->
   <div id="orderModal" class="modal">
     <div class="modal-content">
       <div class="modal-header">
-        <h2>🛒 Place Custom Order</h2>
+        <h2>Custom Order</h2>
         <button class="close-btn" id="closeOrderModal">&times;</button>
       </div>
       <div class="modal-body">
@@ -1140,124 +344,16 @@
             <input type="email" id="orderEmail" name="orderEmail" required placeholder="your@email.com">
           </div>
           <div class="form-group">
-            <label for="contactMethod">Preferred Contact Method *</label>
-            <select id="contactMethod" name="contactMethod" required>
-              <option value="">Select your preferred contact method...</option>
-              <option value="Email">📧 Email</option>
-              <option value="Phone">📞 Phone Call</option>
-              <option value="WhatsApp">💬 WhatsApp</option>
-            </select>
-          </div>
-          <div class="form-group" id="phoneField" style="display: none;">
-            <label for="orderPhone">Phone Number</label>
-            <input type="tel" id="orderPhone" name="orderPhone" placeholder="+264 XX XXX XXXX">
-          </div>
-          <div class="form-group">
-            <label for="orderType">Order Type *</label>
-            <select id="orderType" name="orderType" required>
-              <option value="">What would you like to order?</option>
-              <option value="Custom Dress">👗 Custom Dress</option>
-              <option value="Custom Wig">💇‍♀️ Custom Wig</option>
-              <option value="Bulk Order">📦 Bulk Order (5+ items)</option>
-              <option value="Alteration">✂️ Alteration/Modification</option>
-              <option value="Other">✨ Other (specify in details)</option>
-            </select>
-          </div>
-          <div class="form-group">
             <label for="orderDetails">Order Details *</label>
-            <textarea id="orderDetails" name="orderDetails" rows="5" placeholder="Please describe your custom order requirements in detail:
-            
-• Size preferences
-• Color choices  
-• Style inspirations
-• Special instructions
-• Any reference images (describe them)
-            
-The more details you provide, the better we can serve you!" required></textarea>
+            <textarea id="orderDetails" name="orderDetails" rows="5" placeholder="Describe your custom order requirements..." required></textarea>
           </div>
           <div class="form-group">
-            <label for="orderBudget">Budget Range (NAD)</label>
-            <select id="orderBudget" name="orderBudget">
-              <option value="">Select your budget range...</option>
-              <option value="Under 500">💰 Under 500 NAD</option>
-              <option value="500-1000">💰💰 500-1000 NAD</option>
-              <option value="1000-2000">💰💰💰 1000-2000 NAD</option>
-              <option value="2000-5000">💰💰💰💰 2000-5000 NAD</option>
-              <option value="Over 5000">💰💰💰💰💰 Over 5000 NAD</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="orderTimeline">When do you need this?</label>
-            <select id="orderTimeline" name="orderTimeline">
-              <option value="">Select your timeline...</option>
-              <option value="ASAP">🚀 ASAP (Rush order - additional fees apply)</option>
-              <option value="1-2 weeks">⏰ 1-2 weeks</option>
-              <option value="2-4 weeks">📅 2-4 weeks</option>
-              <option value="1+ months">🗓️ 1+ months</option>
-              <option value="Flexible">😌 Flexible timeline</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <button type="submit" class="cta-button" style="width: 100%; margin-top: 1rem;">
-              Submit Order Request
-            </button>
+            <button type="submit" class="cta-button">Submit Order Request</button>
           </div>
         </form>
-        <div id="orderSuccess" class="success-message" style="display: none;">
-          <h3>🎉 Order Request Sent!</h3>
-          <p>Thank you for choosing H.E.R.! We'll contact you within 24 hours to discuss your custom order and provide a detailed quote.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Review Modal -->
-  <div id="reviewModal" class="modal">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2>⭐ Share Your Review</h2>
-        <button class="close-btn" id="closeReviewModal">&times;</button>
-      </div>
-      <div class="modal-body">
-        <form id="reviewForm">
-          <div class="form-group">
-            <label for="reviewName">Your Name *</label>
-            <input type="text" id="reviewName" name="reviewName" required placeholder="Enter your name">
-          </div>
-          <div class="form-group">
-            <label for="reviewEmail">Email (optional)</label>
-            <input type="email" id="reviewEmail" name="reviewEmail" placeholder="your@email.com (optional)">
-          </div>
-          <div class="form-group">
-            <label>Your Rating *</label>
-            <div class="star-rating" id="starRating">
-              <span class="star" data-value="1">&#9734;</span>
-              <span class="star" data-value="2">&#9734;</span>
-              <span class="star" data-value="3">&#9734;</span>
-              <span class="star" data-value="4">&#9734;</span>
-              <span class="star" data-value="5">&#9734;</span>
-            </div>
-            <p style="text-align: center; color: var(--burgundy); font-size: 0.9rem; margin-top: 0.5rem;">Click on the stars to rate your experience</p>
-            <input type="hidden" id="reviewStars" name="reviewStars" value="0">
-          </div>
-          <div class="form-group">
-            <label for="reviewText">Your Review *</label>
-            <textarea id="reviewText" name="reviewText" rows="5" placeholder="Tell us about your experience with our products! What did you love? How was the quality? Would you recommend us to others?" required></textarea>
-          </div>
-          <div class="form-group">
-            <label for="reviewPhoto">Upload Photo (optional)</label>
-            <input type="file" id="reviewPhoto" name="reviewPhoto" accept="image/*" style="padding: 1rem; border: 2px dashed var(--burgundy); background: var(--light-bg);">
-            <p style="font-size: 0.85rem; color: var(--burgundy); margin-top: 0.5rem;">📸 Share a photo of yourself wearing our products!</p>
-          </div>
-          <div class="form-group">
-            <button type="submit" class="cta-button" style="width: 100%; margin-top: 1rem;">
-              Submit Review
-            </button>
-          </div>
-        </form>
-        <div id="reviewSuccess" class="success-message" style="display: none;">
-          <h3>🎉 Review Submitted!</h3>
-          <p>Thank you for your valuable feedback! Your review has been added and will help other customers make informed decisions.</p>
+        <div id="orderSuccess" style="display: none; text-align: center; color: var(--accent); padding: 2rem;">
+          <h3>Order Request Sent!</h3>
+          <p>We'll contact you within 24 hours.</p>
         </div>
       </div>
     </div>
@@ -1265,215 +361,193 @@ The more details you provide, the better we can serve you!" required></textarea>
 
   <!-- Footer -->
   <footer>
-  <div class="footer-content" role="contentinfo" style="display:flex; flex-wrap:wrap; gap:2rem; justify-content:center; align-items:flex-start; padding:2rem 2rem 1rem 2rem; box-sizing:border-box;">
-    <!-- Social Media Links -->
-    <div class="footer-col" style="min-width:180px; flex:1;">
-      <h4 style="margin-bottom:0.7rem;">Follow Us</h4>
-      <nav aria-label="Social media">
-        <div style="display:flex; flex-direction:column; gap:0.5rem;">
-          <a href="https://www.instagram.com/her_essence_restored" target="_blank" aria-label="Instagram" style="display:flex;align-items:center;gap:0.5rem;">
-            <img src="https://cdn-icons-png.flaticon.com/24/2111/2111463.png" alt="" style="height:20px;"> Instagram
-          </a>
-          <a href="https://www.facebook.com" target="_blank" aria-label="Facebook" style="display:flex;align-items:center;gap:0.5rem;">
-            <img src="https://cdn-icons-png.flaticon.com/24/733/733547.png" alt="" style="height:20px;"> Facebook
-          </a>
-          <a href="https://www.pinterest.com" target="_blank" aria-label="Pinterest" style="display:flex;align-items:center;gap:0.5rem;">
-            <img src="https://cdn-icons-png.flaticon.com/24/733/733558.png" alt="" style="height:20px;"> Pinterest
-          </a>
-          <a href="https://www.tiktok.com" target="_blank" aria-label="TikTok" style="display:flex;align-items:center;gap:0.5rem;">
-            <img src="https://cdn-icons-png.flaticon.com/24/3046/3046122.png" alt="" style="height:20px;"> TikTok
-          </a>
-        </div>
-      </nav>
-    </div>
-    <!-- Quick Links -->
-    <div class="footer-col" style="min-width:180px; flex:1;">
-      <h4 style="margin-bottom:0.7rem;">Quick Links</h4>
-      <nav aria-label="Quick links">
-        <div style="display:flex; flex-direction:column; gap:0.5rem;">
+    <div class="footer-content">
+      <!-- Quick Links -->
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <div>
           <a href="refer.html">Refer a Friend</a>
-          <a href="style-guide.html">Style Guide</a>
+          
           <a href="returns.html">Return Policy</a>
           <a href="Privacy & Data Policy.html">Privacy & Data Policy</a>
         </div>
-      </nav>
+      </div>
+      <!-- Customer Service -->
+      <div class="footer-col">
+        <h4>Customer Service</h4>
+        <div>
+          <a href="contact.html">Contact Us</a>
+          <a href="style-guide.html">Style Guide</a>
+          
+          <a href="order-tracking.html">Track your Order</a>
+          <a href="faq.html">FAQ</a>
+          
+        </div>
+      </div>
+      <!-- Newsletter Signup -->
+      <div class="footer-col">
+        <h4>Newsletter</h4>
+        <form>
+          <p>Sign up for exclusive updates:</p>
+          <input type="email" placeholder="Your email" required style="padding:0.5rem; border-radius:4px; border:1px solid var(--border); background:var(--panel); color:var(--text); margin-bottom:0.5rem; width:100%;">
+          <button type="submit" class="btn" style="width:100%;">Subscribe</button>
+        </form>
+      </div>
+      <!-- Social Media Links -->
+      <div class="footer-col">
+        <h4>Follow Us</h4>
+        <div style="display: flex; gap: 1rem; margin-top: 0.5rem;">
+          <a href="https://www.instagram.com/her_essence_restored" target="_blank" aria-label="Instagram" style="margin-bottom: 0;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+            </svg>
+          </a>
+          <a href="https://www.facebook.com" target="_blank" aria-label="Facebook" style="margin-bottom: 0;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+            </svg>
+          </a>
+          <a href="https://www.tiktok.com" target="_blank" aria-label="TikTok" style="margin-bottom: 0;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
     </div>
-    <!-- Newsletter Signup -->
-    <div class="footer-col newsletter" style="min-width:220px; flex:1;">
-      <h4 style="margin-bottom:0.7rem;">Newsletter</h4>
-      <form aria-label="Newsletter signup" style="display:flex; flex-direction:column; gap:0.7rem;">
-        <p style="margin-bottom:0;">Sign up for exclusive updates:</p>
-        <input type="email" placeholder="Your email" aria-label="Your email" required style="padding:0.5rem; border-radius:5px; border:none; color:var(--burgundy); background:var(--white);">
-        <button type="submit" style="background:var(--black); color:var(--white); border:none; border-radius:5px; padding:0.5rem 1.2rem; cursor:pointer; font-weight:500;">Subscribe</button>
-      </form>
+    <div class="footer-bottom">
+      &copy; 2025 Her Essence Restored (H.E.R.). All rights reserved.
     </div>
-  </div>
-  
-</footer>
-<div class="footer-bottom">
-  &copy; 2025 Her Essence Restored (H.E.R.). All rights reserved.
-</div>
-  <button id="backToTop" aria-label="Back to top" style="display:none;">
-    <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-      <circle cx="16" cy="16" r="15" fill="#800020" stroke="#fff" stroke-width="2"/>
-      <path d="M16 22V10M16 10L10 16M16 10L22 16" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>
-  </button>
+  </footer>
+
   <script>
+    // Product data with proper categories
     const products = [
       {
         id: 1,
         name: "Classic Vintage Dress",
         price: 79.99,
         image: "clothes-3987460_1280.jpg",
-        stock: 10
+        stock: 10,
+        category: "semi-formal"
       },
       {
         id: 2,
         name: "Retro Polka Skirt",
         price: 49.99,
         image: "70ba0b5c322938f55d1f49de5bef73d8.jpg",
-        stock: 0
+        stock: 5,
+        category: "semi-formal"
       },
       {
         id: 3,
         name: "Modern Chic Gown",
         price: 99.99,
         image: "790e1b8dcca81f5b3bf90959d2775fc9.jpg",
-        stock: 5
+        stock: 3,
+        category: "evening"
       },
       {
         id: 4,
-        name: "Dresses",
+        name: "Evening Dress",
         price: 59.99,
         image: "dd4f7fc5d83c7b66c73e846bae040b92.jpg",
-        stock: 8
+        stock: 8,
+        category: "evening"
       },
       {
         id: 5,
-        name: "Dresses",
+        name: "Casual Outfit",
         price: 120.00,
-        image: "../attractive-stylish-blonde-woman-jeans-oversize-jacket-walking-against-wall-street_285396-8031.jpg",
-        stock: 3
+        image: "il_1080xN.5718129227_tfvm.jpg",
+        stock: 3,
+        category: "sportswear"
       },
       {
         id: 6,
-        name: "Active Wear",
+        name: "Bridal Collection",
         price: 150.00,
-        image: "il_1080xN.5718129227_tfvm.jpg",
-        stock: 7
+        image: "IMG-20250815-WA0022.jpg",
+        stock: 7,
+        category: "bridal"
       },
       {
         id: 7,
-        name: "Elegant Dress",
-        price: 200.00,
-        image: "../fab0048557cd7823baa2e090dfecf675.jpg",
-        stock: 2
+        name: "Elegant Evening Gown",
+        price: 89.99,
+        image: "IMG-20250815-WA0027.jpg",
+        stock: 4,
+        category: "evening"
       },
       {
         id: 8,
-        name: "Modest Apparel",
-        price: 120.00,
-        image: "istockphoto-1159237551-1024x1024.jpg",
-        stock: 0
+        name: "Athletic Wear",
+        price: 79.99,
+        image: "clothes-3987460_1280.jpg",
+        stock: 6,
+        category: "sportswear"
       },
       {
         id: 9,
-        name: "Modern Outfit",
-        price: 180.00,
+        name: "Semi-formal Dress",
+        price: 39.99,
         image: "hangers-1850082_1280.jpg",
-        stock: 4
+        stock: 12,
+        category: "semi-formal"
       },
       {
         id: 10,
-        name: "Boho Maxi Dress",
-        price: 89.99,
-        image: "shop-1611902_1280.jpg",
-        stock: 6
-      },
-      {
-        id: 11,
-        name: "Skirts",
+        name: "Wedding Dress",
         price: 69.99,
-        image: "../attractive-stylish-blonde-woman-jeans-oversize-jacket-walking-against-wall-street_285396-8031 (1).jpg",
-        stock: 5
-      },
-      {
-        id: 12,
-        name: "Silk Dress",
-        price: 29.99,
-        image: "clothes-3987460_1280.jpg",
-        stock: 10
-      },
-      {
-        id: 13,
-        name: "Heavenly",
-        price: 54.99,
-        image: "70ba0b5c322938f55d1f49de5bef73d8.jpg",
-        stock: 8
-      },
-      {
-        id: 14,
-        name: "Wedding Gown",
-        price: 99.99,
-        image: "790e1b8dcca81f5b3bf90959d2775fc9.jpg",
-        stock: 3
-      },
-      {
-        id: 15,
-        name: "Beauty",
-        price: 19.99,
-        image: "dd4f7fc5d83c7b66c73e846bae040b92.jpg",
-        stock: 15
-      },
-      {
-        id: 16,
-        name: "Classic Fedora Hat",
-        price: 39.99,
-        image: "istockphoto-1159237551-1024x1024.jpg",
-        stock: 0
-      },
-      {
-        id: 17,
-        name: "Active Wear",
-        price: 59.99,
-        image: "hangers-1850082_1280.jpg",
-        stock: 4
-      },
-      {
-        id: 18,
-        name: "Pleated Skirt",
-        price: 44.99,
-        image: "shop-1611902_1280.jpg",
-        stock: 7
+        image: "IMG-20250815-WA0022.jpg",
+        stock: 8,
+        category: "bridal"
       }
     ];
 
-    // Only keep NAD exchange rate
     const NAD_RATE = 18; // 1 USD = 18 NAD
-
     const productGrid = document.getElementById("productGrid");
     const pagination = document.getElementById("pagination");
 
-    // Pagination settings
-    const totalPages = 3;
+    // Pagination and filtering
     const productsPerPage = 6;
     let currentPage = 1;
+    let currentFilter = 'all';
+    let filteredProducts = [...products];
 
-    function renderProducts(page = currentPage) {
-      currentPage = page;
+    function filterProducts(category) {
+      currentFilter = category;
+      filteredProducts = category === 'all' 
+        ? [...products] 
+        : products.filter(product => product.category === category);
+      
+      currentPage = 1; // Reset to first page
+      renderProducts();
+      
+      // Update active filter button
+      document.querySelectorAll('.filters button').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      event.target.classList.add('active');
+    }
+
+    function renderProducts() {
       productGrid.innerHTML = "";
 
-      // Calculate start/end index for current page
-      const startIdx = (page - 1) * productsPerPage;
-      const endIdx = Math.min(startIdx + productsPerPage, products.length);
+      // Calculate pagination
+      const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
+      const startIdx = (currentPage - 1) * productsPerPage;
+      const endIdx = Math.min(startIdx + productsPerPage, filteredProducts.length);
 
-      products.slice(startIdx, endIdx).forEach(product => {
+      // Render products for current page
+      filteredProducts.slice(startIdx, endIdx).forEach(product => {
         const card = document.createElement("div");
         card.className = "product-card";
-        let price = `${(product.price * NAD_RATE).toFixed(2)} NAD`;
+        const price = `${(product.price * NAD_RATE).toFixed(2)} NAD`;
+        const isOutOfStock = product.stock === 0;
+        
         card.innerHTML = `
-          <img src="${product.image}" alt="${product.name}" />
+          <img src="${product.image}" alt="${product.name}" onerror="this.src='https://via.placeholder.com/300x250?text=Image+Not+Found'">
           <div class="product-info">
             <h3>${product.name}</h3>
             <div class="price">Price: ${price}</div>
@@ -1493,61 +567,85 @@ The more details you provide, the better we can serve you!" required></textarea>
             </select>
             <label>Quantity:</label>
             <input type="number" id="qty-${product.id}" min="1" value="1"/>
-            <button onclick="addToCart(${product.id})" ${product.stock === 0 ? 'disabled style="opacity:0.5;cursor:not-allowed;"' : ''}>
-              ${product.stock === 0 ? 'Out of Stock' : 'Add to Cart'}
-            </button>
           </div>
         `;
+        
+        // Create and configure the button
+        const button = document.createElement("button");
+        button.onclick = () => addToCart(product.id);
+        button.textContent = isOutOfStock ? 'Out of Stock' : 'Add to Cart';
+        if (isOutOfStock) {
+          button.disabled = true;
+        }
+        
+        card.querySelector('.product-info').appendChild(button);
         productGrid.appendChild(card);
       });
 
-      renderPagination();
+      renderPagination(totalPages);
     }
 
-    function renderPagination() {
-      let html = '';
-      html += `<button onclick="goToPage(${currentPage - 1})" ${currentPage === 1 ? 'disabled' : ''} aria-label="Previous Page">&laquo;</button>`;
-
-      for (let i = 1; i <= totalPages; i++) {
-        if (
-          i === 1 ||
-          i === totalPages ||
-          Math.abs(i - currentPage) <= 1
-        ) {
-          html += `<button onclick="goToPage(${i})" class="${i === currentPage ? 'active' : ''}" ${i === currentPage ? 'aria-current="page"' : ''}>${i}</button>`;
-        } else if (
-          (i === currentPage - 2 && currentPage > 3) ||
-          (i === currentPage + 2 && currentPage < totalPages - 2)
-        ) {
-          html += `<button class="page-ellipsis" disabled>…</button>`;
-        }
+    function renderPagination(totalPages) {
+      if (totalPages <= 1) {
+        pagination.innerHTML = '';
+        return;
       }
 
-      html += `<button onclick="goToPage(${currentPage + 1})" ${currentPage === totalPages ? 'disabled' : ''} aria-label="Next Page">&raquo;</button>`;
+      let html = '';
+      const prevDisabled = currentPage === 1 ? ' disabled' : '';
+      html += `<button onclick="goToPage(${currentPage - 1})"${prevDisabled}>&laquo;</button>`;
+
+      for (let i = 1; i <= totalPages; i++) {
+        const activeClass = i === currentPage ? ' active' : '';
+        html += `<button onclick="goToPage(${i})" class="${activeClass}">${i}</button>`;
+      }
+
+      const nextDisabled = currentPage === totalPages ? ' disabled' : '';
+      html += `<button onclick="goToPage(${currentPage + 1})"${nextDisabled}>&raquo;</button>`;
+      
       pagination.innerHTML = html;
     }
 
     function goToPage(page) {
+      const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
       if (page < 1 || page > totalPages) return;
-      renderProducts(page);
+      currentPage = page;
+      renderProducts();
       window.scrollTo({ top: productGrid.offsetTop - 20, behavior: 'smooth' });
     }
 
-    // Initial render
-    renderProducts();
-  </script>
+    function updateCartCount() {
+      // Get cart from both possible storage locations
+      const cartItems = JSON.parse(localStorage.getItem('cart')) || JSON.parse(localStorage.getItem('cartItems')) || [];
+      
+      // Calculate total quantity
+      let totalCount = 0;
+      cartItems.forEach(item => {
+        const quantity = parseInt(item.qty || item.quantity) || 1;
+        totalCount += quantity;
+      });
+      
+      // Update cart count display
+      const cartCountElement = document.querySelector('.cart-count');
+      if (cartCountElement) {
+        if (totalCount > 0) {
+          cartCountElement.textContent = totalCount;
+          cartCountElement.style.display = 'inline-block';
+        } else {
+          cartCountElement.textContent = '0';
+          cartCountElement.style.display = 'inline-block';
+        }
+      }
+    }
 
-  <script>
     function addToCart(productId) {
       const product = products.find(p => p.id === productId);
-      if (product) {
-        // Get selected options
+      if (product && product.stock > 0) {
         const size = document.getElementById(`size-${product.id}`).value;
         const color = document.getElementById(`color-${product.id}`).value;
         const qty = parseInt(document.getElementById(`qty-${product.id}`).value, 10) || 1;
         const priceNAD = (product.price * NAD_RATE).toFixed(2);
 
-        // Prepare cart item with all details
         const cartItem = {
           id: product.id,
           name: product.name,
@@ -1556,264 +654,81 @@ The more details you provide, the better we can serve you!" required></textarea>
           color,
           qty,
           priceNAD: parseFloat(priceNAD),
-          
-          stock: product.stock
+          stock: product.stock,
+          // Also include compatible properties
+          quantity: qty,
+          price: parseFloat(priceNAD)
         };
 
-        // Retrieve existing cart or initialize
         let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-        // Check if same item (id, size, color) exists
         const existingIndex = cart.findIndex(item =>
-          item.id === cartItem.id &&
-          item.size === cartItem.size &&
-          item.color === cartItem.color
+          item.id === cartItem.id && item.size === cartItem.size && item.color === cartItem.color
         );
+        
         if (existingIndex > -1) {
-          // Update quantity
           cart[existingIndex].qty += cartItem.qty;
+          cart[existingIndex].quantity += cartItem.qty; // Update both properties
         } else {
           cart.push(cartItem);
         }
 
         localStorage.setItem("cart", JSON.stringify(cart));
-
-        alert(`${product.name} (${size}, ${color}, Qty: ${qty}) has been added to your cart.`);
-      } else {
-        alert("Product not found.");
+        // Also save to cartItems for compatibility
+        localStorage.setItem("cartItems", JSON.stringify(cart));
+        updateCartCount();
+        alert(`${product.name} (${size}, ${color}, Qty: ${qty}) added to cart!`);
       }
     }
-  </script>
 
-  <script>
-  // Show/hide Back to Top button
-  const backToTopBtn = document.getElementById("backToTop");
-  window.addEventListener("scroll", function() {
-    if (window.scrollY > 300) {
-      backToTopBtn.classList.add("show");
-    } else {
-      backToTopBtn.classList.remove("show");
+    // Modal functionality
+    const orderModal = document.getElementById('orderModal');
+    const openOrderModalBtn = document.getElementById('openOrderModal');
+    const closeOrderModalBtn = document.getElementById('closeOrderModal');
+    const orderForm = document.getElementById('orderForm');
+    const orderSuccess = document.getElementById('orderSuccess');
+
+    openOrderModalBtn.onclick = function() {
+      orderModal.style.display = "block";
+      orderForm.style.display = "block";
+      orderSuccess.style.display = "none";
     }
-  });
-  backToTopBtn.addEventListener("click", function() {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  });
 
-  // Mobile menu toggle
-  const menuToggle = document.getElementById('menuToggle');
-  const mainNav = document.getElementById('mainNav');
-  
-  menuToggle.addEventListener('click', function() {
-    mainNav.classList.toggle('open');
-  });
-</script>
-
-<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
-<script>
-  (function(){
-    emailjs.init("AldNcIkwOxxOsCVGU"); // Replace with your EmailJS public key
-  })();
-</script>
-
-<script>
-  // Show/hide phone field based on contact method
-  const contactMethod = document.getElementById('contactMethod');
-  const phoneField = document.getElementById('phoneField');
-  contactMethod.addEventListener('change', function() {
-    if (this.value === 'Phone') {
-      phoneField.style.display = 'block';
-      document.getElementById('orderPhone').required = true;
-    } else {
-      phoneField.style.display = 'none';
-      document.getElementById('orderPhone').required = false;
-    }
-  });
-
-  // Modal logic with EmailJS integration
-  const orderModal = document.getElementById('orderModal');
-  const openOrderModalBtn = document.getElementById('openOrderModal');
-  const closeOrderModalBtn = document.getElementById('closeOrderModal');
-  const orderForm = document.getElementById('orderForm');
-  const orderSuccess = document.getElementById('orderSuccess');
-
-  openOrderModalBtn.onclick = function() {
-    orderModal.style.display = "block";
-    orderForm.style.display = "block";
-    orderSuccess.style.display = "none";
-  }
-  closeOrderModalBtn.onclick = function() {
-    orderModal.style.display = "none";
-  }
-  window.onclick = function(event) {
-    if (event.target == orderModal) {
+    closeOrderModalBtn.onclick = function() {
       orderModal.style.display = "none";
     }
-  }
+
+    window.onclick = function(event) {
+      if (event.target == orderModal) {
+        orderModal.style.display = "none";
+      }
+    }
+
     orderForm.onsubmit = function(e) {
-  e.preventDefault();
-  emailjs.sendForm("service_3y925xa","template_vaozzff", orderForm)
-    .then(function() {
+      e.preventDefault();
       orderForm.style.display = "none";
       orderSuccess.style.display = "block";
       setTimeout(() => {
         orderModal.style.display = "none";
         orderForm.reset();
-      }, 2000);
-    }, function(error) {
-      alert('Failed to send order: ' + JSON.stringify(error));
+        orderForm.style.display = "block";
+        orderSuccess.style.display = "none";
+      }, 3000);
+    }
+
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const mainNav = document.getElementById('mainNav');
+    
+    menuToggle.addEventListener('click', function() {
+      mainNav.classList.toggle('open');
     });
-}
+
+    // Initialize page
+    updateCartCount();
+    renderProducts();
   </script>
-
-  <script>
-  // Star rating logic
-  const starRating = document.getElementById('starRating');
-  const stars = starRating.querySelectorAll('.star');
-  const reviewStarsInput = document.getElementById('reviewStars');
-  let selectedStars = 0;
-
-  stars.forEach(star => {
-    star.addEventListener('mouseover', function() {
-      highlightStars(this.dataset.value);
-    });
-    star.addEventListener('mouseout', function() {
-      highlightStars(selectedStars);
-    });
-    star.addEventListener('click', function() {
-      selectedStars = this.dataset.value;
-      reviewStarsInput.value = selectedStars;
-      highlightStars(selectedStars);
-    });
-  });
-
-  function highlightStars(count) {
-    stars.forEach(star => {
-      star.innerHTML = star.dataset.value <= count ? '&#9733;' : '&#9734;';
-      star.style.color = star.dataset.value <= count ? 'gold' : '#bbb';
-      star.style.cursor = 'pointer';
-    });
-  }
-  highlightStars(0);
-
-  // Review Modal logic
-  const reviewModal = document.getElementById('reviewModal');
-  const openReviewModalBtn = document.getElementById('openReviewModal');
-  const closeReviewModalBtn = document.getElementById('closeReviewModal');
-  const reviewForm = document.getElementById('reviewForm');
-  const reviewSuccess = document.getElementById('reviewSuccess');
-  const reviewGrid = document.getElementById('reviewGrid');
-
-  // Load reviews from localStorage
-  function loadReviews() {
-    const reviews = JSON.parse(localStorage.getItem('reviews') || '[]');
-    reviewGrid.innerHTML = '';
-    reviews.forEach(review => {
-      const reviewDiv = document.createElement('div');
-      reviewDiv.style.background = 'var(--white)';
-      reviewDiv.style.borderRadius = '10px';
-      reviewDiv.style.boxShadow = '0 2px 8px rgba(110,35,43,0.08)';
-      reviewDiv.style.padding = '1.2rem';
-
-      // Stars
-      let starsHtml = '';
-      for (let i = 1; i <= 5; i++) {
-        starsHtml += `<span style="color:gold; font-size:1.1rem;">${i <= review.stars ? '&#9733;' : '&#9734;'}</span>`;
-      }
-
-      // Photo
-      let photoHtml = '';
-      if (review.photo) {
-        photoHtml = `<img src="${review.photo}" alt="Customer Photo" style="width:100%; border-radius:8px; margin-top:0.5rem;">`;
-      }
-
-      reviewDiv.innerHTML = `
-        <div style="display: flex; align-items: center; gap: 1rem;">
-          <img src="https://randomuser.me/api/portraits/lego/${Math.floor(Math.random()*10)}.jpg" alt="Customer" style="width:56px; height:56px; border-radius:50%; object-fit:cover;">
-          <div>
-            <strong style="color: var(--burgundy);">${review.name}</strong>
-            <div>${starsHtml}</div>
-          </div>
-        </div>
-        <p style="margin: 1rem 0 0.5rem;">${review.text}</p>
-        ${photoHtml}
-      `;
-      reviewGrid.appendChild(reviewDiv);
-    });
-    // Optionally, append your static reviews after dynamic ones
-  }
-  loadReviews();
-
-  openReviewModalBtn.onclick = function() {
-    reviewModal.style.display = "block";
-    reviewForm.style.display = "block";
-    reviewSuccess.style.display = "none";
-  }
-  closeReviewModalBtn.onclick = function() {
-    reviewModal.style.display = "none";
-  }
-  window.addEventListener('click', function(event) {
-    if (event.target == reviewModal) {
-      reviewModal.style.display = "none";
-    }
-  });
-
-  reviewForm.onsubmit = function(e) {
-    e.preventDefault();
-    // Validate stars
-    if (parseInt(reviewStarsInput.value, 10) < 1) {
-      alert('Please select a star rating.');
-      return;
-    }
-    // Get form values
-    const name = document.getElementById('reviewName').value;
-    const email = document.getElementById('reviewEmail').value;
-    const stars = parseInt(reviewStarsInput.value, 10);
-    const text = document.getElementById('reviewText').value;
-    const photoInput = document.getElementById('reviewPhoto');
-    let photoData = "";
-
-    // Handle photo upload (as DataURL)
-    if (photoInput.files && photoInput.files[0]) {
-      const reader = new FileReader();
-      reader.onload = function(evt) {
-        photoData = evt.target.result;
-        saveReview({ name, email, stars, text, photo: photoData });
-      };
-      reader.readAsDataURL(photoInput.files[0]);
-    } else {
-      saveReview({ name, email, stars, text, photo: "" });
-    }
-  };
-
-  function saveReview(review) {
-    // Save to localStorage
-    const reviews = JSON.parse(localStorage.getItem('reviews') || '[]');
-    reviews.unshift(review); // Add new review to the top
-    localStorage.setItem('reviews', JSON.stringify(reviews));
-    loadReviews();
-    reviewForm.style.display = "none";
-    reviewSuccess.style.display = "block";
-    setTimeout(() => {
-      reviewModal.style.display = "none";
-      reviewForm.reset();
-      highlightStars(0);
-      reviewForm.style.display = "block";
-      reviewSuccess.style.display = "none";
-    }, 2000);
-  }
-</script>
-
-  <!-- Live Chat Widget (Tawk.to example, you can use your own provider) -->
-  <script type="text/javascript">
-  var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-  (function(){
-    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-    s1.async=true;
-    s1.src='https://embed.tawk.to/65e5c2e98d261e1b5f6b3b7a/1hoqkqj6b'; // Replace with your Tawk.to property ID
-    s1.charset='UTF-8';
-    s1.setAttribute('crossorigin','*');
-    s0.parentNode.insertBefore(s1,s0);
-  })();
-  </script>
+  
+  <!-- Additional Scripts -->
+  <script src="../assets/js/scripts.js"></script>
 </body>
 </html>

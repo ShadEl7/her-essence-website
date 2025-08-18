@@ -1,190 +1,151 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Returns Policy - Her Essence Restored (H.E.R.)</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Returns Policy - Her Essence Restored (H.E.R.) — Boutique Fashion</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    :root {
-  --burgundy: #800020;
-  --black: #111;
-  --white: #fff;
-  --soft-burgundy: #a06a7b;
-  --light-bg: #fff8fa;
-  --primary: #800020; /* Deep burgundy */
-  --footer-text: #fff;
-  --accent: #a06a7b;
-  --footer-bottom: #800020;
-}
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "STIX Math", "Cambria Math", serif;
-  font-style: italic;
-}
-body {
-  background: linear-gradient(90deg, var(--white) 0%, var(--burgundy) 100%);
-  color: var(--black);
-  font-size: 1.08rem;
-  line-height: 1.6;
-}
-header {
-  background: var(--white);
-  border-bottom: 2px solid var(--burgundy);
-  box-shadow: 0 2px 8px rgba(128,0,32,0.04);
-}
-.header-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1.2rem 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
-  flex-wrap: wrap;
-}
-.logo {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: var(--burgundy);
-  display: flex;
-  align-items: center;
-  letter-spacing: 1px;
-}
-nav {
-  display: flex;
-  gap: 2rem;
-  align-items: center;
-}
-nav a {
-  color: var(--burgundy);
-  font-weight: 500;
-  text-decoration: none;
-  padding: 0.3rem 0.7rem;
-  border-radius: 4px;
-  transition: background 0.2s, color 0.2s;
-}
-nav a:hover {
-  background: var(--burgundy);
-  color: var(--white);
-}
-.menu-toggle {
-  display: none;
-  background: none;
-  border: none;
-  font-size: 2rem;
-  margin-left: 1rem;
-  cursor: pointer;
-  color: var(--burgundy);
-}
-#languageSelector {
-  margin-left: 1rem;
-  padding: 0.3rem 0.7rem;
-  border: 1px solid var(--burgundy);
-  border-radius: 5px;
-  background: var(--white);
-  color: var(--burgundy);
-  font-size: 1rem;
-}
-#backToTop {
-  position: fixed;
-  right: 1.5rem;
-  bottom: 1.5rem;
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  z-index: 1000;
-  transition: transform 0.2s;
-}
-#backToTop svg {
-  box-shadow: 0 2px 8px rgba(128,0,32,0.13);
-  border-radius: 50%;
-  transition: box-shadow 0.2s, transform 0.2s;
-}
-#backToTop:hover svg {
-  box-shadow: 0 4px 16px rgba(128,0,32,0.25);
-  transform: scale(1.1);
-}
-/* MOBILE STYLES */
-@media (max-width: 900px) {
-  .header-container {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-}
-@media (max-width: 600px) {
-  .header-container {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 1rem;
-  }
-  .logo {
-    margin-bottom: 0.5rem;
-    font-size: 1.2rem;
-  }
-  nav {
-    flex-direction: column;
-    gap: 1rem;
-    width: 100%;
-    background: var(--white);
-    border-bottom: 2px solid var(--burgundy);
-    position: absolute;
-    top: 60px;
-    left: 0;
-    z-index: 100;
-    display: none;
-  }
-  #mainNav.open {
-    display: flex;
-  }
-  .menu-toggle {
-    display: block;
-  }
-}
+    :root{
+      --bg:#0c0c0c; --panel:#111; --muted:#b9b9b9; --text:#f1f1f1; --accent:#ffffff;
+      --card:#161616; --border:#242424;
+      --max:1200px; --gap:1.25rem;
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0; font:16px/1.5 'Cinzel', Georgia, serif;
+      color:var(--text); background:linear-gradient(#1a1a1a, #0b0b0b 140vh);
+    }
+    a{color:inherit; text-decoration:none}
+    img{display:block; width:100%; height:100%; object-fit:cover; object-position:center}
+    .container{max-width:var(--max); margin-inline:auto; padding:0 1rem}
+    .btn{
+      display:inline-block; padding:.7rem 1.1rem; background:var(--accent); color:#000; border-radius:4px; font-weight:600;
+    }
+    .btn.outline{
+      background:transparent; color:var(--accent); border:1px solid var(--accent);
+    }
+
+    /* Top announcement */
+    .announcement{
+      background:#0f0f0f; color:var(--muted); font-size:.85rem; text-align:center; padding:.6rem 1rem;
+      border-bottom:1px solid var(--border);
+    }
+
+    /* Header */
+    header{background:#000; border-bottom:1px solid var(--border)}
+    .header-container{
+      display:flex; flex-direction:column; align-items:center; padding:1rem 0; position:relative;
+    }
+    .logo{font-family:'Dancing Script', cursive; font-weight:700; letter-spacing:.04em; line-height:1; text-align:center; margin-bottom:1rem}
+    .logo .brand{font-size:2.5rem; display:block; font-weight:bold}
+    .logo small{font-size:.9rem; color:var(--muted); letter-spacing:.2em; font-family:'Cinzel', serif}
+    .nav{
+      display:flex; align-items:center; justify-content:center;
+    }
+    .nav ul{list-style:none; display:flex; gap:1.2rem; margin:0; padding:0; color:var(--muted)}
+    .icons{display:flex; gap:1rem; color:var(--muted); position:absolute; right:2rem; top:1rem}
+
+    /* Page styles */
+    .page-header{
+      text-align:center; padding:3rem 0; background:#0a0a0a;
+    }
+    .page-title{
+      font-family:'Dancing Script', cursive; font-size:clamp(2.5rem, 6vw, 4rem); 
+      letter-spacing:.06em; margin-bottom:.5rem; font-weight:bold;
+    }
+    .page-subtitle{
+      color:var(--muted); font-size:1.1rem; max-width:600px; margin:0 auto;
+    }
+
+    .content-section{
+      padding:3rem 0;
+    }
+    .content-card{
+      background:var(--card); border:1px solid var(--border); border-radius:10px; 
+      padding:2rem; margin-bottom:2rem;
+    }
+    .section-title{
+      font-family:'Dancing Script', cursive; font-size:2rem; letter-spacing:.1em; 
+      margin-bottom:1.5rem; color:var(--accent); display:flex; align-items:center; gap:.5rem;
+    }
+    .highlight-box{
+      background:var(--panel); border:1px solid var(--border); border-radius:8px; 
+      padding:1.5rem; margin:1rem 0;
+    }
+    .process-step{
+      background:var(--panel); border:1px solid var(--border); border-radius:8px;
+      padding:1.5rem; margin-bottom:1rem; display:flex; align-items:flex-start; gap:1rem;
+    }
+    .step-number{
+      background:var(--accent); color:#000; border-radius:50%; width:30px; height:30px;
+      display:flex; align-items:center; justify-content:center; font-weight:bold; flex-shrink:0;
+    }
+    .contact-highlight{
+      background:linear-gradient(135deg, #1a1a1a, #2a2a2a); border:1px solid var(--border);
+      border-radius:10px; padding:2rem; text-align:center; margin-top:2rem;
+    }
+
+    /* Footer */
+    footer{padding:2.5rem 0; color:var(--muted); border-top:1px solid var(--border); background:#0a0a0a}
+
+    /* Responsive */
+    @media (max-width: 520px){
+      .nav ul{display:none}
+      .page-title{font-size:2.5rem}
+      .icons{position:static; margin-top:1rem}
+    }
   </style>
 </head>
 <body>
+
+  <!-- Announcement -->
+  <div class="announcement">✦ FREE SHIPPING ON ALL ORDERS OVER R999 ✦</div>
+
+  <!-- Header -->
   <header>
-    <div class="header-container">
+    <div class="container header-container">
       <div class="logo">
-        <img src="logo.jpg" alt="H.E.R. Logo" style="height: 40px; margin-right: 10px;">
-        <span>Her Essence Restored (H.E.R.)</span>
+        <span class="brand">H.E.R</span>
+        <small>Her Essence Restored</small>
       </div>
-      <nav id="mainNav">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="products.html">Products</a>
-        
-        <a href="contact.html">Contact</a>
-        <a href="cart.html">Cart</a>
-        <select id="languageSelector" onchange="translatePage()">
-          <option value="en">English</option>
-          <option value="pt">Português</option>
-        </select>
-      </nav>
-      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">☰</button>
+      <div class="nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="products.html">Shop</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="icons">
+        <a href="#" aria-label="Search">🔍</a>
+        <a href="cart.html" aria-label="Cart">👜</a>
+      </div>
     </div>
   </header>
 
-  <div class="returns-container" style="max-width: 900px; margin: 2rem auto; padding: 2rem; background: var(--white); border-radius: 12px; box-shadow: 0 2px 12px rgba(128,0,32,0.07);">
-    <div style="text-align: center; margin-bottom: 2rem;">
-      <h2 style="color: var(--burgundy); font-size: 2.2rem; margin-bottom: 1rem; font-weight: 700;">H.E.R Return & Refund Policy</h2>
-      <p style="font-size: 1.2rem; color: var(--black); line-height: 1.6;">
+  <!-- Page Header -->
+  <div class="page-header">
+    <div class="container">
+      <h1 class="page-title">Return & Refund Policy</h1>
+      <p class="page-subtitle">
         At H.E.R (Her Essence Restored), we want you to feel beautiful, confident, and completely satisfied with your purchase. If something isn't quite right, we're here to help.
       </p>
     </div>
+  </div>
 
-    <div style="display: grid; gap: 2rem; margin-bottom: 2rem;">
-      <div style="background: var(--light-bg); padding: 1.5rem; border-radius: 10px; border-left: 4px solid var(--burgundy);">
-        <h3 style="color: var(--burgundy); font-size: 1.4rem; margin-bottom: 1rem; display: flex; align-items: center;">
-          <span style="margin-right: 0.5rem;">↩️</span> Returns
-        </h3>
-        <p style="margin-bottom: 1rem;">We accept returns within <strong style="color: var(--burgundy);">14 days</strong> of receiving your order.</p>
+  <!-- Content -->
+  <section class="content-section">
+    <div class="container">
+      <div class="content-card">
+        <h2 class="section-title">
+          <span>↩️</span> Returns
+        </h2>
+        <p style="margin-bottom: 1.5rem;">We accept returns within <strong style="color: var(--accent);">14 days</strong> of receiving your order.</p>
         
-        <div style="background: var(--white); padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
-          <p style="font-weight: 600; color: var(--burgundy); margin-bottom: 0.5rem;">To be eligible for a return, items must be:</p>
-          <ul style="margin-left: 1.5rem; line-height: 1.8;">
+        <div class="highlight-box">
+          <p style="font-weight: 600; color: var(--accent); margin-bottom: 1rem;">To be eligible for a return, items must be:</p>
+          <ul style="margin-left: 1.5rem; line-height: 1.8; color: var(--muted);">
             <li>✅ Unworn and unwashed</li>
             <li>✅ In their original condition with all tags attached</li>
             <li>✅ Free of stains, scents, or damage</li>
@@ -192,9 +153,9 @@ nav a:hover {
           </ul>
         </div>
         
-        <div style="background: #fff2f2; padding: 1rem; border-radius: 8px; border: 1px solid #ffcccc;">
-          <p style="font-weight: 600; color: #cc0000; margin-bottom: 0.5rem;">❌ Non-returnable items:</p>
-          <ul style="margin-left: 1.5rem; line-height: 1.8; color: #666;">
+        <div class="highlight-box" style="border-left: 3px solid #cc4444;">
+          <p style="font-weight: 600; color: #cc4444; margin-bottom: 1rem;">❌ Non-returnable items:</p>
+          <ul style="margin-left: 1.5rem; line-height: 1.8; color: var(--muted);">
             <li>Sale or discounted items</li>
             <li>Gift cards</li>
             <li>Custom or made-to-measure sundresses</li>
@@ -203,168 +164,86 @@ nav a:hover {
         </div>
       </div>
 
-      <div style="background: var(--light-bg); padding: 1.5rem; border-radius: 10px; border-left: 4px solid var(--burgundy);">
-        <h3 style="color: var(--burgundy); font-size: 1.4rem; margin-bottom: 1rem; display: flex; align-items: center;">
-          <span style="margin-right: 0.5rem;">💰</span> Refunds
-        </h3>
-        <p style="margin-bottom: 1rem;">
+      <div class="content-card">
+        <h2 class="section-title">
+          <span>💰</span> Refunds
+        </h2>
+        <p style="margin-bottom: 1.5rem;">
           Once we receive and inspect your returned item, we'll notify you of the approval or rejection of your refund.
         </p>
         
-        <div style="background: var(--white); padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
-          <p style="font-weight: 600; color: var(--burgundy); margin-bottom: 0.5rem;">If approved, you can choose between:</p>
-          <ul style="margin-left: 1.5rem; line-height: 1.8;">
+        <div class="highlight-box">
+          <p style="font-weight: 600; color: var(--accent); margin-bottom: 1rem;">If approved, you can choose between:</p>
+          <ul style="margin-left: 1.5rem; line-height: 1.8; color: var(--muted);">
             <li>💳 Full refund to your original payment method</li>
             <li>🔄 Exchange for a different size or style (based on availability)</li>
           </ul>
         </div>
         
-        <p style="background: var(--burgundy); color: var(--white); padding: 0.8rem; border-radius: 8px; text-align: center; font-weight: 600;">
+        <p style="background: var(--accent); color: #000; padding: 1rem; border-radius: 8px; text-align: center; font-weight: 600; margin-top: 1.5rem;">
           Refunds are processed within 7–10 business days after we receive the return.
         </p>
       </div>
 
-      <div style="background: var(--light-bg); padding: 1.5rem; border-radius: 10px; border-left: 4px solid var(--burgundy);">
-        <h3 style="color: var(--burgundy); font-size: 1.4rem; margin-bottom: 1rem; display: flex; align-items: center;">
-          <span style="margin-right: 0.5rem;">📦</span> Return Process
-        </h3>
+      <div class="content-card">
+        <h2 class="section-title">
+          <span>📦</span> Return Process
+        </h2>
         <div style="display: grid; gap: 1rem;">
-          <div style="background: var(--white); padding: 1rem; border-radius: 8px; display: flex; align-items: flex-start; gap: 1rem;">
-            <span style="background: var(--burgundy); color: var(--white); border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0;">1</span>
+          <div class="process-step">
+            <span class="step-number">1</span>
             <div>
-              <strong>Contact Us:</strong> Email us at <a href="mailto:info@heressencerestored.com" style="color: var(--burgundy); text-decoration: none; font-weight: 600;">info@heressencerestored.com</a> with your order number and reason for return.
+              <strong>Contact Us:</strong> Email us at <a href="mailto:info@heressencerestored.com" style="color: var(--accent); text-decoration: none; font-weight: 600;">info@heressencerestored.com</a> with your order number and reason for return.
             </div>
           </div>
-          <div style="background: var(--white); padding: 1rem; border-radius: 8px; display: flex; align-items: flex-start; gap: 1rem;">
-            <span style="background: var(--burgundy); color: var(--white); border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0;">2</span>
+          <div class="process-step">
+            <span class="step-number">2</span>
             <div>
               <strong>Instructions:</strong> We'll send you return instructions and a return form (if required).
             </div>
           </div>
-          <div style="background: var(--white); padding: 1rem; border-radius: 8px; display: flex; align-items: flex-start; gap: 1rem;">
-            <span style="background: var(--burgundy); color: var(--white); border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0;">3</span>
+          <div class="process-step">
+            <span class="step-number">3</span>
             <div>
               <strong>Ship Back:</strong> Send your item to:<br>
-              <div style="background: var(--light-bg); padding: 0.5rem; margin-top: 0.5rem; border-radius: 5px; font-family: monospace;">
+              <div style="background: var(--panel); padding: 1rem; margin-top: 0.5rem; border-radius: 5px; font-family: monospace; border: 1px solid var(--border);">
                 <strong>H.E.R Returns<br>
                 [Your Return Address Here]</strong>
               </div>
             </div>
           </div>
         </div>
-        <p style="font-size: 0.9rem; font-style: italic; color: #666; margin-top: 1rem; text-align: center;">
+        <p style="font-size: 0.9rem; font-style: italic; color: var(--muted); margin-top: 1.5rem; text-align: center;">
           *Note: Customers are responsible for return shipping unless the item arrived damaged or incorrect.*
         </p>
       </div>
 
-      <div style="background: linear-gradient(135deg, var(--burgundy), var(--soft-burgundy)); color: var(--white); padding: 1.5rem; border-radius: 10px; text-align: center;">
-        <h3 style="color: var(--white); font-size: 1.4rem; margin-bottom: 1rem;">💬 Need Help?</h3>
+      <div class="contact-highlight">
+        <h2 class="section-title" style="color: var(--accent); justify-content: center;">
+          <span>💬</span> Need Help?
+        </h2>
         <p style="margin-bottom: 1rem;">
           If you received a damaged or incorrect item, please contact us within <strong>48 hours</strong> of delivery.
         </p>
         <p style="margin-bottom: 1.5rem;">
-          Send a photo and description to <a href="mailto:info@heressencerestored.com" style="color: var(--white); text-decoration: underline; font-weight: 600;">info@heressencerestored.com</a> so we can make it right.
+          Send a photo and description to <a href="mailto:info@heressencerestored.com" style="color: var(--accent); text-decoration: underline; font-weight: 600;">info@heressencerestored.com</a> so we can make it right.
         </p>
         
-        <div style="background: rgba(255,255,255,0.1); padding: 1rem; border-radius: 8px; margin-top: 1rem;">
-          <h4 style="color: var(--white); margin-bottom: 0.5rem;">✨ Our Promise</h4>
+        <div class="highlight-box">
+          <h3 style="color: var(--accent); margin-bottom: 1rem; font-family: 'Dancing Script', cursive; font-size: 1.5rem;">✨ Our Promise</h3>
           <p style="margin: 0;">
             We're committed to making your experience with H.E.R effortless and enjoyable. If you have any questions, we're just an email away.
           </p>
         </div>
       </div>
     </div>
-  </div>
-  
-  <button id="backToTop" aria-label="Back to top" style="display:none;">
-    <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-      <circle cx="16" cy="16" r="15" fill="#800020" stroke="#fff" stroke-width="2"/>
-      <path d="M16 22V10M16 10L10 16M16 10L22 16" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>
-  </button>
-  
-  <script>
-    // Translation functionality
-    const translations = {
-      en: {
-        title: "H.E.R Return & Refund Policy",
-        subtitle: "At H.E.R (Her Essence Restored), we want you to feel beautiful, confident, and completely satisfied with your purchase. If something isn't quite right, we're here to help.",
-        returns: "Returns",
-        refunds: "Refunds", 
-        returnProcess: "Return Process",
-        needHelp: "Need Help?",
-        ourPromise: "Our Promise",
-        returnTimeframe: "We accept returns within 14 days of receiving your order.",
-        eligibleItems: "To be eligible for a return, items must be:",
-        nonReturnableItems: "Non-returnable items:",
-        refundProcess: "Once we receive and inspect your returned item, we'll notify you of the approval or rejection of your refund.",
-        refundOptions: "If approved, you can choose between:",
-        refundTimeframe: "Refunds are processed within 7–10 business days after we receive the return.",
-        contactUs: "Contact Us:",
-        instructions: "Instructions:",
-        shipBack: "Ship Back:",
-        damagedItem: "If you received a damaged or incorrect item, please contact us within 48 hours of delivery.",
-        promiseText: "We're committed to making your experience with H.E.R effortless and enjoyable. If you have any questions, we're just an email away."
-      },
-      pt: {
-        title: "Política de Devolução e Reembolso H.E.R",
-        subtitle: "Na H.E.R (Her Essence Restored), queremos que você se sinta bonita, confiante e completamente satisfeita com sua compra. Se algo não estiver certo, estamos aqui para ajudar.",
-        returns: "Devoluções",
-        refunds: "Reembolsos",
-        returnProcess: "Processo de Devolução",
-        needHelp: "Precisa de Ajuda?",
-        ourPromise: "Nossa Promessa",
-        returnTimeframe: "Aceitamos devoluções em até 14 dias após o recebimento do seu pedido.",
-        eligibleItems: "Para ser elegível para devolução, os itens devem estar:",
-        nonReturnableItems: "Itens não retornáveis:",
-        refundProcess: "Assim que recebermos e inspecionarmos seu item devolvido, notificaremos sobre a aprovação ou rejeição do seu reembolso.",
-        refundOptions: "Se aprovado, você pode escolher entre:",
-        refundTimeframe: "Os reembolsos são processados em 7–10 dias úteis após recebermos a devolução.",
-        contactUs: "Entre em Contato:",
-        instructions: "Instruções:",
-        shipBack: "Envie de Volta:",
-        damagedItem: "Se você recebeu um item danificado ou incorreto, entre em contato conosco em até 48 horas da entrega.",
-        promiseText: "Estamos comprometidos em tornar sua experiência com H.E.R fácil e agradável. Se você tiver alguma dúvida, estamos a apenas um e-mail de distância."
-      }
-    };
+  </section>
 
-    function translatePage() {
-      const lang = document.getElementById('languageSelector').value;
-      const t = translations[lang];
-      
-      if (t) {
-        // Main title and subtitle
-        document.querySelector('.returns-container h2').textContent = t.title;
-        document.querySelector('.returns-container p').textContent = t.subtitle;
-        
-        // Section headers
-        const sections = document.querySelectorAll('.returns-container h3');
-        if (sections[0]) sections[0].innerHTML = '<span style="margin-right: 0.5rem;">↩️</span> ' + t.returns;
-        if (sections[1]) sections[1].innerHTML = '<span style="margin-right: 0.5rem;">💰</span> ' + t.refunds;
-        if (sections[2]) sections[2].innerHTML = '<span style="margin-right: 0.5rem;">📦</span> ' + t.returnProcess;
-        if (sections[3]) sections[3].textContent = '💬 ' + t.needHelp;
-        
-        // Other content can be translated as needed
-        document.querySelector('h4').textContent = '✨ ' + t.ourPromise;
-      }
-    }
-
-    // Back to Top button logic
-    const backToTop = document.getElementById('backToTop');
-    window.addEventListener('scroll', () => {
-      backToTop.style.display = window.scrollY > 300 ? 'block' : 'none';
-    });
-    backToTop.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-
-    // Hamburger menu toggle
-    document.getElementById('menuToggle').onclick = function() {
-      document.getElementById('mainNav').classList.toggle('open');
-    };
-    document.querySelectorAll('#mainNav a').forEach(a => {
-      a.onclick = () => document.getElementById('mainNav').classList.remove('open');
-    });
-  </script>
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div>© H.E.R - Her Essence Restored. All rights reserved.</div>
+    </div>
+  </footer>
 </body>
 </html>

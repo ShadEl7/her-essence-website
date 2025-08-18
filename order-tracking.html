@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Track Your Order - Her Essence Restored (H.E.R.)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0c0c0c; --panel:#111; --muted:#b9b9b9; --text:#f1f1f1; --accent:#ffffff;
+      --card:#161616; --border:#242424; --success:#4caf50; --warning:#ff9800; --info:#2196f3;
+      --max:1200px; --gap:1.25rem;
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0; font:16px/1.5 'Cinzel', Georgia, serif;
+      color:var(--text); background:linear-gradient(#1a1a1a, #0b0b0b 140vh);
+    }
+    a{color:inherit; text-decoration:none}
+    img{display:block; width:100%; height:100%; object-fit:cover; object-position:center}
+    .container{max-width:var(--max); margin-inline:auto; padding:0 1rem}
+    .btn{
+      display:inline-block; padding:.7rem 1.1rem; background:var(--accent); color:#000; border-radius:4px; font-weight:600;
+      border:none; cursor:pointer; transition:all .3s ease;
+    }
+    .btn:hover{
+      background:#f0f0f0; transform:translateY(-1px);
+    }
+    .btn.outline{
+      background:transparent; color:var(--accent); border:1px solid var(--accent);
+    }
+
+    /* Top announcement */
+    .announcement{
+      background:#0f0f0f; color:var(--muted); font-size:.85rem; text-align:center; padding:.6rem 1rem;
+      border-bottom:1px solid var(--border);
+    }
+
+    /* Header */
+    header{background:#000; border-bottom:1px solid var(--border)}
+    .header-container{
+      display:flex; flex-direction:column; align-items:center; padding:1rem 0; position:relative;
+    }
+    .logo{font-family:'Dancing Script', cursive; font-weight:700; letter-spacing:.04em; line-height:1; text-align:center; margin-bottom:1rem}
+    .logo .brand{font-size:2.5rem; display:block; font-weight:bold}
+    .logo small{font-size:.9rem; color:var(--muted); letter-spacing:.2em; font-family:'Cinzel', serif}
+    .nav{
+      display:flex; align-items:center; justify-content:center;
+    }
+    .nav ul{list-style:none; display:flex; gap:1.2rem; margin:0; padding:0; color:var(--muted)}
+    .nav ul li a:hover{color:var(--accent)}
+    .icons{display:flex; gap:1rem; color:var(--muted); position:absolute; right:2rem; top:1rem}
+
+    /* Main Content */
+    .main-content{
+      max-width:800px; margin:2rem auto; padding:2rem;
+    }
+
+    .tracking-section{
+      background:var(--card); border:1px solid var(--border); border-radius:8px; padding:2rem; margin-bottom:2rem;
+    }
+
+    .section-title{
+      font-family:'Dancing Script', cursive; font-size:2.5rem; letter-spacing:.18em; 
+      margin-bottom:1.5rem; font-weight:bold; text-align:center; color:var(--text);
+    }
+
+    .section-subtitle{
+      text-align:center; color:var(--muted); margin-bottom:2rem; font-size:1.1rem;
+    }
+
+    /* Tracking Form */
+    .tracking-form{
+      display:grid; gap:1.5rem; margin-bottom:2rem;
+    }
+
+    .form-group{
+      display:flex; flex-direction:column;
+    }
+
+    .form-group label{
+      display:block; margin-bottom:.5rem; color:var(--text); font-weight:600;
+    }
+
+    .form-group input{
+      width:100%; padding:1rem; border:1px solid var(--border); border-radius:4px; 
+      font-size:1rem; background:var(--panel); color:var(--text);
+    }
+
+    .form-group input:focus{
+      outline:none; border-color:var(--accent); box-shadow:0 0 0 2px rgba(255,255,255,.1);
+    }
+
+    .form-actions{
+      text-align:center; margin-top:1.5rem;
+    }
+
+    /* Order Results */
+    .order-results{
+      display:none; background:var(--panel); border:1px solid var(--border); border-radius:8px; padding:2rem;
+    }
+
+    .order-header{
+      display:flex; justify-content:space-between; align-items:center; margin-bottom:1.5rem;
+      border-bottom:1px solid var(--border); padding-bottom:1rem;
+    }
+
+    .order-number{
+      font-size:1.2rem; font-weight:600; color:var(--text);
+    }
+
+    .order-status{
+      padding:.5rem 1rem; border-radius:20px; font-weight:600; font-size:.9rem;
+    }
+
+    .status-confirmed{background:#4caf50; color:#fff;}
+    .status-processing{background:#ff9800; color:#fff;}
+    .status-shipped{background:#2196f3; color:#fff;}
+    .status-delivered{background:#4caf50; color:#fff;}
+
+    /* Progress Tracker */
+    .progress-tracker{
+      margin:2rem 0;
+    }
+
+    .progress-steps{
+      display:flex; justify-content:space-between; position:relative; margin-bottom:1rem;
+    }
+
+    .progress-step{
+      flex:1; text-align:center; position:relative;
+    }
+
+    .step-circle{
+      width:40px; height:40px; border-radius:50%; background:var(--border); 
+      display:flex; align-items:center; justify-content:center; margin:0 auto 0.5rem;
+      color:var(--muted); font-weight:600;
+    }
+
+    .step-circle.active{
+      background:var(--accent); color:#000;
+    }
+
+    .step-circle.completed{
+      background:var(--success); color:#fff;
+    }
+
+    .step-label{
+      font-size:.9rem; color:var(--muted);
+    }
+
+    .step-label.active{
+      color:var(--text); font-weight:600;
+    }
+
+    .progress-line{
+      position:absolute; top:20px; left:50%; right:-50%; height:2px; background:var(--border);
+      z-index:-1;
+    }
+
+    .progress-line.completed{
+      background:var(--success);
+    }
+
+    /* Order Details */
+    .order-details{
+      margin-top:2rem;
+    }
+
+    .detail-row{
+      display:flex; justify-content:space-between; padding:.75rem 0; border-bottom:1px solid var(--border);
+    }
+
+    .detail-label{
+      color:var(--muted); font-weight:600;
+    }
+
+    .detail-value{
+      color:var(--text);
+    }
+
+    /* Tracking Info */
+    .tracking-info{
+      background:var(--card); border:1px solid var(--border); border-radius:8px; padding:1.5rem; margin-top:1.5rem;
+    }
+
+    .tracking-number{
+      font-family:monospace; background:var(--panel); padding:.5rem; border-radius:4px; 
+      border:1px solid var(--border); display:inline-block; margin-left:.5rem;
+    }
+
+    /* Error Message */
+    .error-message{
+      display:none; background:#f44336; color:#fff; padding:1rem; border-radius:4px; margin-top:1rem;
+    }
+
+    /* Loading Spinner */
+    .loading{
+      display:none; text-align:center; padding:2rem;
+    }
+
+    .spinner{
+      border:4px solid var(--border); border-top:4px solid var(--accent); 
+      border-radius:50%; width:40px; height:40px; animation:spin 1s linear infinite; margin:0 auto 1rem;
+    }
+
+    @keyframes spin{
+      0%{transform:rotate(0deg)}
+      100%{transform:rotate(360deg)}
+    }
+
+    /* Footer */
+    footer{padding:2.5rem 0; color:var(--muted); border-top:1px solid var(--border); background:#0a0a0a}
+    .footer-container{display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:2rem; margin-bottom:2rem}
+    .footer-col h4{color:var(--text); margin-bottom:1rem; font-size:1.1rem}
+    .footer-col a{display:block; color:var(--muted); margin-bottom:.5rem; transition:color .2s}
+    .footer-col a:hover{color:var(--accent)}
+    .social-media{display:flex; gap:1rem; margin-top:1rem}
+    .social-icon{width:24px; height:24px; opacity:.7; transition:opacity .2s}
+    .social-icon:hover{opacity:1}
+    .footer-bottom{text-align:center; padding:1rem; color:var(--muted); border-top:1px solid var(--border)}
+
+    /* Responsive */
+    @media (max-width:768px){
+      .header-container{flex-direction:column; text-align:center}
+      .icons{position:static; margin-top:1rem}
+      .nav ul{flex-wrap:wrap; justify-content:center}
+      .progress-steps{flex-direction:column; gap:1rem}
+      .progress-step{flex:none}
+      .progress-line{display:none}
+      .order-header{flex-direction:column; gap:1rem; text-align:center}
+    }
+  </style>
+</head>
+<body>
+  <!-- Top Announcement -->
+  <div class="announcement">✦ FREE SHIPPING ON ALL ORDERS OVER R999 ✦</div>
+
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <div class="header-container">
+        <div class="logo">
+          <span class="brand">H.E.R</span>
+        <small>Her Essence Restored</small>
+        </div>
+        <nav class="nav">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Shop</a></li>
+            
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+        <div class="icons">
+            <a href="#" aria-label="Search">🔍</a>
+          <a href="cart.html">👜</a>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="main-content">
+      <div class="tracking-section">
+        <h1 class="section-title">Track Your Order</h1>
+        <p class="section-subtitle">Enter your order details below to track your package</p>
+
+        <!-- Tracking Form -->
+        <form class="tracking-form" id="trackingForm">
+          <div class="form-group">
+            <label for="orderNumber">Order Number *</label>
+            <input type="text" id="orderNumber" name="orderNumber" placeholder="e.g., HER-2025-001234" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" name="email" placeholder="Enter the email used for your order" required>
+          </div>
+          <div class="form-actions">
+            <button type="submit" class="btn">Track Order</button>
+          </div>
+        </form>
+
+        <!-- Loading State -->
+        <div class="loading" id="loading">
+          <div class="spinner"></div>
+          <p>Searching for your order...</p>
+        </div>
+
+        <!-- Error Message -->
+        <div class="error-message" id="errorMessage">
+          Order not found. Please check your order number and email address.
+        </div>
+      </div>
+
+      <!-- Order Results -->
+      <div class="order-results" id="orderResults">
+        <div class="order-header">
+          <div class="order-number" id="displayOrderNumber">Order #HER-2025-001234</div>
+          <div class="order-status status-shipped" id="orderStatus">Shipped</div>
+        </div>
+
+        <!-- Progress Tracker -->
+        <div class="progress-tracker">
+          <div class="progress-steps">
+            <div class="progress-step">
+              <div class="step-circle completed">✓</div>
+              <div class="step-label active">Confirmed</div>
+              <div class="progress-line completed"></div>
+            </div>
+            <div class="progress-step">
+              <div class="step-circle completed">✓</div>
+              <div class="step-label active">Processing</div>
+              <div class="progress-line completed"></div>
+            </div>
+            <div class="progress-step">
+              <div class="step-circle active">📦</div>
+              <div class="step-label active">Shipped</div>
+              <div class="progress-line"></div>
+            </div>
+            <div class="progress-step">
+              <div class="step-circle">📍</div>
+              <div class="step-label">Delivered</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Order Details -->
+        <div class="order-details">
+          <div class="detail-row">
+            <span class="detail-label">Order Date:</span>
+            <span class="detail-value" id="orderDate">August 12, 2025</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Total Amount:</span>
+            <span class="detail-value" id="orderTotal">$127.50</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Shipping Address:</span>
+            <span class="detail-value" id="shippingAddress">123 Fashion St, Style City, SC 12345</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Items:</span>
+            <span class="detail-value" id="orderItems">Vintage Denim Jacket (M), Classic White Tee (S)</span>
+          </div>
+        </div>
+
+        <!-- Tracking Information -->
+        <div class="tracking-info" id="trackingInfo">
+          <h3>Shipping Details</h3>
+          <p><strong>Carrier:</strong> <span id="carrier">FedEx</span></p>
+          <p><strong>Tracking Number:</strong> <span class="tracking-number" id="trackingNumber">1234567890123456</span></p>
+          <p><strong>Estimated Delivery:</strong> <span id="estimatedDelivery">August 16, 2025</span></p>
+          <p><strong>Last Update:</strong> <span id="lastUpdate">Package is in transit - August 15, 2025 2:30 PM</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-container">
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <a href="refer.html">Refer a Friend</a>
+          <a href="referral-terms.html">Referral Terms</a>
+          <a href="Privacy & Data Policy.html">Privacy & Data Policy</a>
+        </div>
+        <div class="footer-col">
+          <h4>Customer Service</h4>
+          <a href="returns.html">Returns & Refunds</a>
+          <a href="style-guide.html">Size Guide</a>
+          <a href="faq.html">FAQ</a>
+          <a href="order-tracking.html">Track Your Order</a>
+        </div>
+        <div class="footer-col">
+          <h4>Contact Info</h4>
+          <a href="tel:+264812345678">📞 +264 81 234 5678</a>
+          <a href="mailto:info@heressencerestored.com">✉️ info@heressencerestored.com</a>
+          <a href="https://wa.me/264812345678" target="_blank">💬 WhatsApp</a>
+        </div>
+        <div class="social-media">
+          <a href="https://facebook.com/heressencerestored" target="_blank" aria-label="Facebook">
+            <img src="../path/to/5296499_fb_facebook_facebook logo_icon.svg" alt="Facebook" class="social-icon">
+          </a>
+          <a href="https://instagram.com/heressencerestored" target="_blank" aria-label="Instagram">
+            <img src="../path/to/instagram-icon.svg" alt="Instagram" class="social-icon">
+          </a>
+          <a href="https://twitter.com/heressencerestored" target="_blank" aria-label="Twitter">
+            <img src="../path/to/5296514_bird_tweet_twitter_twitter logo_icon.svg" alt="Twitter" class="social-icon">
+          </a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Her Essence Restored (H.E.R.). All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Order tracking functionality
+    document.getElementById('trackingForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      
+      const orderNumber = document.getElementById('orderNumber').value.trim();
+      const email = document.getElementById('email').value.trim();
+      
+      if (!orderNumber || !email) {
+        showError('Please fill in all required fields.');
+        return;
+      }
+      
+      // Show loading state
+      showLoading(true);
+      hideError();
+      hideResults();
+      
+      try {
+        // Make API call to track order
+        const response = await fetch('/api/track-order', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            orderNumber: orderNumber,
+            email: email
+          })
+        });
+        
+        const data = await response.json();
+        
+        if (data.success && data.order) {
+          // Display order information
+          displayOrderResults(data.order);
+        } else {
+          showError(data.message || 'Order not found. Please check your order number and email address.');
+        }
+        
+      } catch (error) {
+        console.error('Error tracking order:', error);
+        showError('Unable to connect to our servers. Please try again later.');
+      } finally {
+        showLoading(false);
+      }
+    });
+
+    // Helper functions
+    function showLoading(show) {
+      document.getElementById('loading').style.display = show ? 'block' : 'none';
+    }
+
+    function showError(message) {
+      const errorElement = document.getElementById('errorMessage');
+      errorElement.textContent = message;
+      errorElement.style.display = 'block';
+    }
+
+    function hideError() {
+      document.getElementById('errorMessage').style.display = 'none';
+    }
+
+    function hideResults() {
+      document.getElementById('orderResults').style.display = 'none';
+    }
+
+    function displayOrderResults(order) {
+      // Update order information
+      document.getElementById('displayOrderNumber').textContent = `Order #${order.id}`;
+      document.getElementById('orderDate').textContent = formatDate(order.orderDate);
+      document.getElementById('orderTotal').textContent = `$${order.total.toFixed(2)}`;
+      
+      // Update shipping address
+      const address = order.shippingAddress;
+      document.getElementById('shippingAddress').textContent = 
+        `${address.street}, ${address.city}, ${address.state} ${address.zipCode}`;
+      
+      // Update items
+      const itemsText = order.items.map(item => 
+        `${item.name} (${item.size}) x${item.quantity}`
+      ).join(', ');
+      document.getElementById('orderItems').textContent = itemsText;
+      
+      // Update order status
+      const statusElement = document.getElementById('orderStatus');
+      statusElement.textContent = capitalizeFirst(order.status);
+      statusElement.className = `order-status status-${order.status.toLowerCase()}`;
+      
+      // Update tracking information
+      if (order.tracking) {
+        document.getElementById('carrier').textContent = order.tracking.carrier;
+        document.getElementById('trackingNumber').textContent = order.tracking.trackingNumber;
+        document.getElementById('estimatedDelivery').textContent = formatDate(order.tracking.estimatedDelivery);
+        document.getElementById('lastUpdate').textContent = order.tracking.lastUpdate;
+      }
+      
+      // Update progress tracker
+      updateProgress(order.status);
+      
+      // Show results
+      document.getElementById('orderResults').style.display = 'block';
+      
+      // Scroll to results
+      document.getElementById('orderResults').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function formatDate(dateString) {
+      const date = new Date(dateString);
+      return date.toLocaleDateString('en-US', { 
+        year: 'numeric', 
+        month: 'long', 
+        day: 'numeric' 
+      });
+    }
+
+    function capitalizeFirst(str) {
+      return str.charAt(0).toUpperCase() + str.slice(1);
+    }
+
+    // Copy tracking number functionality
+    document.getElementById('trackingNumber').addEventListener('click', function() {
+      navigator.clipboard.writeText(this.textContent).then(() => {
+        // Show feedback
+        const originalText = this.textContent;
+        this.textContent = 'Copied!';
+        setTimeout(() => {
+          this.textContent = originalText;
+        }, 1000);
+      }).catch(() => {
+        // Fallback for older browsers
+        alert('Tracking number: ' + this.textContent);
+      });
+    });
+
+    // Update progress based on status
+    function updateProgress(status) {
+      const steps = document.querySelectorAll('.progress-step');
+      const circles = document.querySelectorAll('.step-circle');
+      const labels = document.querySelectorAll('.step-label');
+      const lines = document.querySelectorAll('.progress-line');
+      
+      // Reset all steps
+      circles.forEach(circle => {
+        circle.classList.remove('active', 'completed');
+        circle.innerHTML = '';
+      });
+      labels.forEach(label => label.classList.remove('active'));
+      lines.forEach(line => line.classList.remove('completed'));
+      
+      // Update based on status
+      switch(status.toLowerCase()) {
+        case 'confirmed':
+          circles[0].classList.add('active');
+          circles[0].innerHTML = '1';
+          labels[0].classList.add('active');
+          break;
+        case 'processing':
+          circles[0].classList.add('completed');
+          circles[0].innerHTML = '✓';
+          circles[1].classList.add('active');
+          circles[1].innerHTML = '⚙️';
+          labels[1].classList.add('active');
+          lines[0].classList.add('completed');
+          break;
+        case 'shipped':
+          circles[0].classList.add('completed');
+          circles[0].innerHTML = '✓';
+          circles[1].classList.add('completed');
+          circles[1].innerHTML = '✓';
+          circles[2].classList.add('active');
+          circles[2].innerHTML = '📦';
+          labels[2].classList.add('active');
+          lines[0].classList.add('completed');
+          lines[1].classList.add('completed');
+          break;
+        case 'delivered':
+          circles.forEach((circle, index) => {
+            circle.classList.add('completed');
+            circle.innerHTML = '✓';
+          });
+          circles[3].innerHTML = '🎉';
+          labels.forEach(label => label.classList.add('active'));
+          lines.forEach(line => line.classList.add('completed'));
+          break;
+        default:
+          // Default to confirmed for unknown statuses
+          circles[0].classList.add('active');
+          circles[0].innerHTML = '1';
+          labels[0].classList.add('active');
+      }
+    }
+
+    // Add form validation
+    document.getElementById('orderNumber').addEventListener('input', function() {
+      // Auto-format order number if it doesn't start with HER-
+      let value = this.value.toUpperCase();
+      if (value && !value.startsWith('HER-')) {
+        this.value = 'HER-' + value.replace(/[^0-9]/g, '');
+      }
+    });
+
+    // Demo functionality - remove in production
+    document.addEventListener('DOMContentLoaded', function() {
+      // Add demo button for testing
+      const demoButton = document.createElement('button');
+      demoButton.textContent = 'Try Demo';
+      demoButton.className = 'btn outline';
+      demoButton.style.marginLeft = '1rem';
+      demoButton.onclick = function() {
+        document.getElementById('orderNumber').value = 'HER-2025-001234';
+        document.getElementById('email').value = 'customer@example.com';
+      };
+      document.querySelector('.form-actions').appendChild(demoButton);
+    });
+  </script>
+</body>
+</html>

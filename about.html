@@ -4,886 +4,340 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>About Us - Her Essence Restored (H.E.R.)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    /* General Styling */
-    :root {
-      --primary: #6e232d;         /* Deep burgundy (keep for accents) */
-      --background: #fff;         /* White background as in logo */
-      --accent: #d6aab4;          /* Soft blush pink from the wings */
-      --mauve: #b98a98;           /* Muted mauve for subtle backgrounds */
-      --text: #222;               /* Black for main text (matches logo text) */
-      --footer-text: #fff;        /* White for footer text */
-      --footer-link: #d6aab4;     /* Blush pink for links */
-      --footer-bottom: #f5e7e0;   /* Light beige for footer bottom */
-      --burgundy: #800020;
-      --black: #111;
-      --white: #fff;
-      --soft-burgundy: #a06a7b;
-      --light-bg: #fff8fa;
+    :root{
+      --bg:#0c0c0c; --panel:#111; --muted:#b9b9b9; --text:#f1f1f1; --accent:#ffffff;
+      --card:#161616; --border:#242424;
+      --max:1200px; --gap:1.25rem;
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: "STIX Math", "Cambria Math", serif;
-      font-style: italic;
+    *{box-sizing:border-box}
+    body{
+      margin:0; font:16px/1.5 'Cinzel', Georgia, serif;
+      color:var(--text); background:linear-gradient(#1a1a1a, #0b0b0b 140vh);
+    }
+    a{color:inherit; text-decoration:none}
+    img{display:block; width:100%; height:100%; object-fit:cover; object-position:center}
+    .container{max-width:var(--max); margin-inline:auto; padding:0 1rem}
+    .btn{
+      display:inline-block; padding:.7rem 1.1rem; background:var(--accent); color:#000; border-radius:4px; font-weight:600;
+    }
+    .btn.outline{
+      background:transparent; color:var(--accent); border:1px solid var(--accent);
     }
 
-    body {
-      background: linear-gradient(90deg, var(--white) 0%, var(--burgundy) 100%);
-      color: var(--black);
-      font-size: 1.08rem;
-      line-height: 1.6;
+    /* Top announcement */
+    .announcement{
+      background:#0f0f0f; color:var(--muted); font-size:.85rem; text-align:center; padding:.6rem 1rem;
+      border-bottom:1px solid var(--border);
     }
 
-    /* Header Styling */
-    header {
-      background: var(--white);
-      border-bottom: 2px solid var(--burgundy);
-      box-shadow: 0 2px 8px rgba(128,0,32,0.04);
-    }
-    .header-container {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1.2rem 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
-      flex-wrap: wrap;
-    }
-    .logo {
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: var(--burgundy);
-      display: flex;
-      align-items: center;
-      letter-spacing: 1px;
-    }
-    nav {
-      display: flex;
-      gap: 2rem;
-      align-items: center;
-    }
-    nav a {
-      color: var(--burgundy);
-      font-weight: 500;
-      text-decoration: none;
-      padding: 0.3rem 0.7rem;
-      border-radius: 4px;
-      transition: background 0.2s, color 0.2s;
-    }
-    nav a:hover {
-      background: var(--burgundy);
-      color: var(--white);
-    }
-    .menu-toggle {
-      display: none;
-      background: none;
-      border: none;
-      font-size: 2rem;
-      margin-left: 1rem;
-      cursor: pointer;
-      color: var(--burgundy);
-    }
-    #languageSelector {
-      margin-left: 1rem;
-      padding: 0.3rem 0.7rem;
-      border: 1px solid var(--burgundy);
-      border-radius: 5px;
-      background: var(--white);
-      color: var(--burgundy);
-      font-size: 1rem;
-    }
-    .trending-now-banner {
-      background: var(--soft-burgundy);
-      color: var(--white);
-      text-align: center;
-      font-size: 1.15rem;
-      padding: 0.7rem 0;
-      margin-bottom: 0;
-      letter-spacing: 0.5px;
-    }
-    .referral-block {
-      background: var(--light-bg);
-      border: 2px dashed var(--burgundy);
-      color: var(--burgundy);
-      text-align: center;
-      margin-bottom: 1.2rem;
-      padding: 1rem 0.5rem;
-      border-radius: 8px;
-    }
-    .referral-btn {
-      background: var(--burgundy);
-      color: var(--white);
-      border: none;
-      border-radius: 5px;
-      padding: 0.5rem 1.2rem;
-      cursor: pointer;
-      font-weight: 500;
-      margin-top: 0.5rem;
-    }
-    .referral-btn:hover {
-      background: var(--black);
-    }
-    .hero {
-      padding: 3rem 2rem 2rem 2rem;
-      text-align: center;
-      max-width: 900px;
-      margin: 0 auto;
-      background: var(--white);
-      border-radius: 12px;
-      box-shadow: 0 2px 12px rgba(128,0,32,0.07);
-    }
-    .hero h1 {
-      color: var(--burgundy);
-      font-size: 2.2rem;
-      margin-bottom: 1rem;
-      font-weight: 700;
-    }
-    .hero p {
-      font-size: 1.2rem;
-      margin-bottom: 1.5rem;
-    }
-    .hero .cta-btn {
-      background: var(--burgundy);
-      color: var(--white);
-      border: none;
-      border-radius: 5px;
-      padding: 0.8rem 2rem;
-      font-size: 1.1rem;
-      font-weight: 600;
-      cursor: pointer;
-      margin-bottom: 1rem;
-      transition: background 0.2s;
-    }
-    .hero .cta-btn:hover {
-      background: var(--black);
-      color: var(--white);
-    }
-    .countdown-banner {
-      text-align: center;
-      padding: 0.7rem 1rem;
-      font-size: 1.1rem;
-      background: var(--burgundy);
-      color: var(--white);
-      margin-bottom: 1.5rem;
-      border-radius: 8px;
-      max-width: 900px;
-      margin: 1rem auto 1.5rem auto;
-    }
-    .carousel {
-      background: var(--white);
-      border-radius: 12px;
-      box-shadow: 0 2px 12px rgba(128,0,32,0.07);
-      margin-bottom: 2rem;
-    }
-    .carousel-wrapper {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      max-width: 900px;
-      margin: 2rem auto;
-      overflow: hidden;
-    }
-    .carousel-images {
-      display: flex;
-      transition: transform 0.5s;
-      width: 100%;
-    }
-    .carousel-slide {
-      min-width: 100%;
-      box-sizing: border-box;
-      position: relative;
-    }
-    .carousel-img {
-      width: 100%;
-      height: 320px;
-      object-fit: cover;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(128,0,32,0.07);
-    }
-    .carousel-arrow {
-      background: none;
-      border: none;
-      cursor: pointer;
-      z-index: 2;
-      padding: 0.5rem;
-      border-radius: 50%;
-      transition: background 0.2s;
-    }
-    .carousel-arrow:hover {
-      background: var(--soft-burgundy);
-    }
-    .carousel-dots {
-      display: flex;
-      justify-content: center;
-      gap: 0.5rem;
-      margin-top: 1rem;
-    }
-    .carousel-dot {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: var(--burgundy);
-      opacity: 0.5;
-      cursor: pointer;
-      border: 2px solid var(--white);
-      transition: opacity 0.2s;
-    }
-    .carousel-dot.active {
-      opacity: 1;
-      background: var(--black);
-      border-color: var(--burgundy);
-    }
-    .carousel-overlay-left span,
-    .carousel-overlay-right span {
-      background: rgba(128,0,32,0.7);
-      color: var(--white);
-      padding: 0.3rem 0.7rem;
-      border-radius: 5px;
-      font-size: 1rem;
-      position: absolute;
-      top: 20px;
-    }
-    .carousel-overlay-left span { left: 20px; }
-    .carousel-overlay-right span { right: 20px; }
-    .carousel-caption span {
-      background: rgba(255,255,255,0.92);
-      color: var(--burgundy);
-      padding: 0.3rem 0.7rem;
-      border-radius: 5px;
-      font-size: 1rem;
-      position: absolute;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-    .shop {
-      max-width: 1200px;
-      margin: 2rem auto;
-      padding: 0 2rem;
-    }
-    .shop h2 {
-      color: var(--burgundy);
-      font-size: 1.6rem;
-      font-weight: 700;
-      text-align: center;
-      margin-bottom: 1.5rem;
-    }
-    .filters {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      margin-bottom: 2rem;
-      flex-wrap: wrap;
-    }
-    .filters button {
-      background: var(--burgundy);
-      color: var(--white);
-      border: none;
-      border-radius: 5px;
-      padding: 0.5rem 1.2rem;
-      font-size: 1rem;
-      font-weight: 500;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-    .filters button:hover,
-    .filters button.active {
-      background: var(--black);
-      color: var(--white);
-    }
-    .product-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2rem;
-    }
-    .product {
-      padding: 1.2rem;
-      border-radius: 10px;
-      box-shadow: 0 2px 12px rgba(128,0,32,0.07);
-      background: var(--white);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      border: 1px solid var(--soft-burgundy);
-      transition: box-shadow 0.2s;
-    }
-    .product:hover {
-      box-shadow: 0 4px 16px rgba(128,0,32,0.13);
-    }
-    .product h4 {
-      color: var(--burgundy);
-      font-size: 1.15rem;
-      font-weight: 600;
-      margin: 0.7rem 0 0.3rem 0;
-      text-align: center;
-    }
-    .product-description {
-      color: var(--black);
-      font-size: 1rem;
-      text-align: center;
-      margin-bottom: 0.7rem;
-    }
-    .product img {
-      width: 100%;
-      max-width: 220px;
-      height: 220px;
-      object-fit: cover;
-      border-radius: 8px;
-      margin-bottom: 1rem;
-    }
-    .share-buttons {
-      display: flex;
-      gap: 0.5rem;
-      margin-top: 0.7rem;
-    }
-    .share-buttons button {
-      background: var(--white);
-      border: 1px solid var(--burgundy);
-      color: var(--burgundy);
-      border-radius: 5px;
-      padding: 0.3rem 0.7rem;
-      cursor: pointer;
-      transition: background 0.2s, color 0.2s;
-    }
-    .share-buttons button:hover {
-      background: var(--burgundy);
-      color: var(--white);
-    }
-    .testimonials {
-      max-width: 900px;
-      margin: 2rem auto;
-      padding: 2rem;
-      border-radius: 12px;
-      background: var(--white);
-      box-shadow: 0 2px 12px rgba(128,0,32,0.07);
-    }
-    .testimonials h2 {
-      color: var(--burgundy);
-      font-size: 1.4rem;
-      font-weight: 700;
-      text-align: center;
-      margin-bottom: 1.2rem;
-    }
-    .testimonial-list {
-      display: flex;
-      gap: 2rem;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    .testimonial {
-      flex: 1 1 220px;
-      padding: 1rem;
-      border-radius: 8px;
-      background: var(--light-bg);
-      border: 1px solid var(--soft-burgundy);
-      font-size: 1rem;
-      color: var(--black);
-      margin-bottom: 1rem;
-      box-shadow: 0 2px 8px rgba(128,0,32,0.04);
-    }
-    .testimonial .author {
-      color: var(--burgundy);
-      font-weight: 600;
-      margin-top: 0.5rem;
-      font-size: 0.98rem;
-    }
-    .opt-in {
-      max-width: 500px;
-      margin: 2rem auto;
-      padding: 2rem;
-      border-radius: 12px;
-      text-align: center;
-      background: var(--burgundy);
-      color: var(--white);
-      box-shadow: 0 2px 12px rgba(128,0,32,0.07);
-    }
-    .opt-in h3 { color: var(--white); }
-    .opt-in input, .opt-in button {
-      margin: 0.5rem 0;
-      padding: 0.7rem;
-      border-radius: 5px;
-      border: none;
-      width: 90%;
-      max-width: 350px;
-      font-size: 1rem;
-    }
-    .opt-in input {
-      background: var(--white);
-      color: var(--burgundy);
-      border: 1px solid var(--soft-burgundy);
-    }
-    .opt-in button {
-      background: var(--black);
-      color: var(--white);
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-    .opt-in button:hover {
-      background: var(--white);
-      color: var(--burgundy);
-    }
-    .style-gallery {
-      padding: 2rem 1rem;
-      background: var(--white);
-      border-radius: 12px;
-      box-shadow: 0 2px 12px rgba(128,0,32,0.07);
-    }
-    .style-gallery img {
-      width: 120px;
-      height: 120px;
-      object-fit: cover;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(128,0,32,0.07);
-    }
-    /* Footer Styling */
-    footer {
-      background: var(--primary); /* Deep burgundy */
-      color: var(--footer-text);
-      padding: 2rem;
-      margin-top: 3rem;
-    }
-    .footer-content {
-      padding: 2rem 1rem;
-      gap: 2rem;
-      background: var(--burgundy);
-      color: var(--white);
-      border-radius: 12px 12px 0 0;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: stretch;
-    }
-    .footer-col {
-      flex: 1 1 200px;
-      min-width: 180px;
-      margin-bottom: 1rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 1rem;
-      box-sizing: border-box;
-    }
-    .footer-col h4 {
-      color: var(--white);
-      font-size: 1.1rem;
-      margin-bottom: 0.7rem;
-    }
-    .footer-col a {
-      color: var(--white);
-      text-decoration: none;
-      display: block;
-      margin-bottom: 0.3rem;
-      transition: color 0.2s;
-    }
-    .footer-col a:hover {
-      color: var(--black);
-    }
-    .footer-btn {
-      display: inline-block;
-      background: var(--accent);
-      color: var(--burgundy);
-      border: none;
-      border-radius: 6px;
-      padding: 0.5rem 1.2rem;
-      margin: 0.3rem 0;
-      font-weight: 600;
-      text-decoration: none;
-      transition: background 0.2s, color 0.2s, box-shadow 0.2s;
-      box-shadow: 0 2px 8px rgba(128,0,32,0.07);
-      text-align: center;
-    }
-    .footer-btn:hover {
-      background: var(--black);
-      color: var(--white);
-      box-shadow: 0 4px 16px rgba(128,0,32,0.13);
-    }
-    .footer-bottom {
-      text-align: center;
-      padding: 1rem;
-      font-size: 0.95rem;
-      background: var(--footer-bottom);
-      color: var(--burgundy);
-      border-radius: 0 0 12px 12px;
-      margin-top: 0;
+    /* Header */
+    header{background:#000; border-bottom:1px solid var(--border)}
+    .header-container{
+      display:flex; flex-direction:column; align-items:center; padding:1rem 0; position:relative;
+    }
+    .logo{font-family:'Dancing Script', cursive; font-weight:700; letter-spacing:.04em; line-height:1; text-align:center; margin-bottom:1rem}
+    .logo .brand{font-size:2.5rem; display:block; font-weight:bold}
+    .logo small{font-size:.9rem; color:var(--muted); letter-spacing:.2em; font-family:'Cinzel', serif}
+    .nav{
+      display:flex; align-items:center; justify-content:center;
+    }
+    .nav ul{list-style:none; display:flex; gap:1.2rem; margin:0; padding:0; color:var(--muted)}
+    .icons{display:flex; gap:1rem; color:var(--muted); position:absolute; right:2rem; top:1rem}
+
+    /* About Section */
+    .about-section{
+      max-width:var(--max); margin:2rem auto; padding:2rem; 
+      background:var(--card); border:1px solid var(--border); border-radius:8px;
+    }
+    .section-title{
+      font-family:'Dancing Script', cursive; font-size:2.5rem; letter-spacing:.18em; 
+      margin-bottom:1.5rem; font-weight:bold; text-align:center; color:var(--text);
+    }
+    .section-subtitle{
+      font-family:'Dancing Script', cursive; font-size:1.8rem; letter-spacing:.12em;
+      margin:2rem 0 1rem 0; color:var(--accent); font-weight:bold;
+    }
+    .content{
+      color:var(--text); line-height:1.7; font-size:1rem;
+    }
+    .content p{
+      margin-bottom:1.5rem;
+    }
+    .content strong{
+      color:var(--accent); font-weight:600;
+    }
+    .content em{
+      color:var(--muted); font-style:italic;
     }
 
-    #backToTop {
-      position: fixed;
-      right: 1.5rem;
-      bottom: 1.5rem;
-      background: none;
-      border: none;
-      padding: 0;
-      cursor: pointer;
-      z-index: 1000;
-      opacity: 1;
-      display: block;
-      transition: transform 0.2s;
+    /* Language selector */
+    .language-selector{
+      position:absolute; right:2rem; bottom:1rem;
     }
-    #backToTop svg {
-      box-shadow: 0 2px 8px rgba(128,0,32,0.13);
-      border-radius: 50%;
-      transition: box-shadow 0.2s, transform 0.2s;
-    }
-    #backToTop:hover svg {
-      box-shadow: 0 4px 16px rgba(128,0,32,0.25);
-      transform: scale(1.1);
+    .language-selector select{
+      background:var(--panel); color:var(--text); border:1px solid var(--border);
+      border-radius:4px; padding:.5rem; font-size:.9rem;
     }
 
-    /* Responsive Design */
-    @media (max-width: 768px) {
-      .about-section {
-        padding: 2rem 1rem;
-      }
-      .footer-content {
-        flex-direction: column;
-        align-items: center;
-      }
-      .footer-col {
-        margin: 1rem 0;
-      }
+    /* Footer */
+    footer{padding:2.5rem 0; color:var(--muted); border-top:1px solid var(--border); background:#0a0a0a}
+    .footer-content{
+      max-width:var(--max); margin:0 auto; padding:0 2rem; display:flex; flex-wrap:wrap; gap:2rem;
     }
-    @media (max-width: 900px) {
-      .header-container, .shop, .hero, .testimonials, .footer-content {
-        padding-left: 1rem;
-        padding-right: 1rem;
-      }
-      .carousel-img {
-        height: 200px;
-      }
-      .product-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.2rem;
-      }
-      .testimonial-list {
-        gap: 1rem;
-      }
+    .footer-col{
+      flex:1; min-width:200px;
     }
-    @media (max-width: 600px) {
-      .header-container {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 1rem;
-      }
-      .logo {
-        margin-bottom: 0.5rem;
-        font-size: 1.2rem;
-      }
-      nav {
-        flex-direction: column;
-        gap: 1rem;
-        width: 100%;
-        background: var(--white);
-        border-bottom: 2px solid var(--burgundy);
-        position: absolute;
-        top: 60px;
-        left: 0;
-        z-index: 100;
-        display: none;
-      }
-      #mainNav.open {
-        display: flex;
-      }
-      .menu-toggle {
-        display: block;
-      }
-      .carousel-img {
-        height: 140px;
-      }
-      .product-grid {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-      }
-      .footer-content {
-        flex-direction: column;
-        gap: 1rem;
-        padding: 1rem;
-        border-radius: 12px 12px 0 0;
-      }
-      .footer-col {
-        min-width: 0;
-      }
-      .opt-in input, .opt-in button {
-        width: 100%;
-        max-width: 100%;
-      }
-      .style-gallery img {
-        width: 90px;
-        height: 90px;
-      }
-      .hero {
-        padding: 2rem 0.5rem 1.5rem 0.5rem;
-      }
-      .shop {
-        padding: 0 0.5rem;
-      }
-      .testimonials {
-        padding: 1rem 0.5rem;
-      }
+    .footer-col h4{
+      color:var(--text); font-size:1.1rem; margin-bottom:.7rem;
+    }
+    .footer-col a{
+      color:var(--muted); text-decoration:none; display:block; margin-bottom:.3rem; transition:color .2s;
+    }
+    .footer-col a:hover{
+      color:var(--accent);
+    }
+    .footer-bottom{
+      text-align:center; padding:1rem; color:var(--muted); border-top:1px solid var(--border);
     }
 
-    /* Section-Specific Styling */
-    #about-section .content {
-      margin-bottom: 3rem;
-      padding: 2rem;
-      background: var(--accent);
-      border-left: 5px solid var(--primary);
-      border-radius: 10px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    /* Responsive */
+    @media (max-width: 1000px){
+      .about-section{margin:2rem 1rem; padding:1.5rem}
+      .footer-content{flex-direction:column; gap:1rem}
     }
-    #about-section .content h1 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      color: var(--primary);
-    }
-    .section-divider {
-      background: var(--accent);
-      opacity: 0.3;
-    }
-    .section-title {
-      text-align: center;
-      font-size: 2.5rem;
-      color: var(--primary);
-      margin-bottom: 0.5rem;
-      letter-spacing: 1px;
-    }
-    .section-subtitle {
-      color: var(--primary);
-      margin-top: 2rem;
-      margin-bottom: 0.5rem;
-      font-size: 1.5rem;
-      letter-spacing: 0.5px;
-    }
-    blockquote {
-      background: #fff8fa;
-      border-left: 5px solid var(--primary);
-      margin: 1.5rem 0;
-      padding: 1rem 1.5rem;
-      font-style: italic;
-      color: #6e232d;
-      border-radius: 8px;
-      font-size: 1.1rem;
+    @media (max-width: 520px){
+      .nav ul{display:none}
+      .section-title{font-size:2rem}
+      .section-subtitle{font-size:1.5rem}
+      .icons{position:static; margin-top:1rem}
     }
   </style>
 </head>
 <body>
 
-<header>
-  <div class="header-container" style="display: flex; align-items: center; justify-content: space-between;">
-    <div style="display: flex; align-items: center; gap: 2rem;">
-      <div class="logo" id="logo-en">
-        <img src="logo.jpg" alt="H.E.R. Logo" style="height: 40px;" />
-        <span>Her Essence Restored (H.E.R.)</span>
+  <!-- Announcement -->
+  <div class="announcement">✦ FREE SHIPPING ON ALL ORDERS OVER R999 ✦</div>
+
+  <!-- Header -->
+  <header>
+    <div class="container header-container">
+      <div class="logo">
+        <span class="brand">H.E.R</span>
+        <small>Her Essence Restored</small>
       </div>
-      <div class="logo" id="logo-pt" style="display:none;">
-        <img src="logo.jpg" alt="H.E.R. Logo" style="height: 40px;" />
-        <span>Her Essence Restored (H.E.R.)</span>
+      <div class="nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="products.html">Shop</a></li>
+          
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="icons">
+        <a href="#" aria-label="Search">🔍</a>
+        <a href="cart.html" aria-label="Cart">👜</a>
+      </div>
+      <div class="language-selector">
+        <select id="language-dropdown" onchange="changeLanguage(this.value)">
+          <option value="en">English</option>
+          <option value="pt">Português</option>
+        </select>
       </div>
     </div>
-    <nav id="nav-en">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="products.html">Products</a>
-      <a href="contact.html">Contact</a>
-      <a href="cart.html">Cart</a>
-    </nav>
-    <nav id="nav-pt" style="display:none;">
-      <a href="index.html">Início</a>
-      <a href="about.html">Sobre</a>
-      <a href="products.html">Produtos</a>
-      
-      <a href="contact.html">Contato</a>
-      <a href="carta.html">Carta</a>
-    </nav>
-    <div class="language-selector">
-      <select id="language-dropdown" onchange="changeLanguage(this.value)">
-        <option value="en">English</option>
-        <option value="pt">Português</option>
-      </select>
+  </header>
+
+  <!-- About Section -->
+  <section class="container about-section">
+    <!-- English Content -->
+    <div class="content" id="content-en">
+      <h1 class="section-title">About Us</h1>
+      <p>
+        At Her Essence Restored, we believe every woman carries the beauty of transformation within her. Born from a journey of personal restoration, our brand is inspired by the metamorphosis of a butterfly—an emblem of renewal, strength, and grace. We create modest fashion for women who are ready to embrace a new chapter, rediscover their femininity, and reflect the beauty of who God created them to be.
+      </p>
+
+      <h2 class="section-subtitle">Our Story</h2>
+      <p>
+        Her Essence Restored began when our founder, Naomi Benzali, stepped out of a season of rebuilding with a desire to dress not only the body, but also the spirit. She noticed a gap: women seeking elegant, modest pieces that honored their values without sacrificing style. What started as sketches and small-batch garments made for friends became a growing community—women choosing clothing that tells a story of faith, dignity, and renewed purpose.
+      </p>
+
+      <h2 class="section-subtitle">Our Philosophy</h2>
+      <p>
+        We design with three pillars in mind:
+      </p>
+      <p>
+        <strong>Graceful Modesty:</strong> Silhouettes that flatter without compromise, celebrating form with intention and respect.
+      </p>
+      <p>
+        <strong>Elevated Simplicity:</strong> Clean lines, thoughtful details, and timeless shapes you can wear beyond a single season.
+      </p>
+      <p>
+        <strong>Restorative Beauty:</strong> Pieces that remind you of who you are—worthy, powerful, and deeply loved.
+      </p>
+      <p>
+        Every collection is guided by the belief that when you look good, you feel good—and when you feel good, you shine from within. This is more than clothing. It's restoration, redefinition, and a return to your true essence.
+      </p>
+
+      <h2 class="section-subtitle">Craft & Quality</h2>
+      <p>
+        Each garment is designed with care—considered fabrics, precise tailoring, and finishes that last. We prototype meticulously, test for movement and comfort, and refine details like lining, hems, and closures so your pieces feel as good as they look. Our color palettes draw from nature and quiet luxury; our textures echo the softness and resilience symbolized by the butterfly.
+      </p>
+
+      <h2 class="section-subtitle">Responsible Sourcing</h2>
+      <p>
+        We partner with ethical suppliers and small workshops that share our standards for fair wages and safe working conditions. Whenever possible, we prioritize durable, responsible materials and limited runs to reduce waste, ensuring your wardrobe is curated—not crowded.
+      </p>
+
+      <h2 class="section-subtitle">Fit for Real Women</h2>
+      <p>
+        Modesty is personal. That's why we offer inclusive sizing, adjustable elements (waist ties, elastic back panels, thoughtful necklines), and layering-friendly designs. Our goal is a confident fit from the first wear—pieces that move with you through work, worship, celebration, and everyday life.
+      </p>
+
+      <h2 class="section-subtitle">Community & Giving</h2>
+      <p>
+        Her Essence Restored is a community before it is a label. We host style workshops, faith-centered conversations, and mentorship moments for young women entering new seasons. A portion of select releases supports initiatives that empower women through education, skill-building, and wellness.
+      </p>
+
+      <h2 class="section-subtitle">Looking Ahead</h2>
+      <p>
+        We're building beyond collections—into experiences, collaborations, and pieces that become heirlooms. As we grow, our promise remains the same: to honor elegance and faith, and to design clothing that helps you see yourself the way God sees you—whole, radiant, restored.
+      </p>
+      <p>
+        <em>With love,<br>
+        H.E.R</em>
+      </p>
     </div>
-  </div>
-</header>
 
-<section class="about-section" id="about-section">
-  <!-- English Content -->
-  <div class="content" id="content-en">
-    <h1 class="section-title">About Us</h1>
-    <div class="section-divider"></div>
-    <p>
-      Born from a deep desire to honor God and restore the beauty of true feminity, Her Essence Restored (H.E.R.) was created to inspire women to embrace modesty, confidence, and purpose.
-      In a world that often distorts the meaning of womanhood, H.E.R exists to bring it back to its essence - soft, strong, and sacred.
-      Each piece is thoughtfully designed to reflect grace and dignity, proving that modesty is not about hiding - it's about revealing who you truly are without compromise.
-      Whether it's a flowing dress, a timeless silhouette, or a soft everyday piece, our clothing is made for the woman who walks in faith, lives with intention, and dresses with meaning.
-      <br><br>
-      <em>This is more than fashion. This is restoration. This is H.E.R.</em>
-    </p>
+    <!-- Portuguese Content -->
+    <div class="content" id="content-pt" style="display:none;">
+      <h1 class="section-title">Sobre Nós</h1>
+      <p>
+        Na Her Essence Restored, acreditamos que toda mulher carrega a beleza da transformação dentro de si. Nascida de uma jornada de restauração pessoal, nossa marca é inspirada na metamorfose de uma borboleta—um símbolo de renovação, força e graça. Criamos moda modesta para mulheres que estão prontas para abraçar um novo capítulo, redescobrir sua feminilidade e refletir a beleza de quem Deus as criou para ser.
+      </p>
 
-    <div class="section-divider"></div>
-    <h2 class="section-subtitle">Inspiration</h2>
-    <p>
-      To bring back feminity, modesty. In the 50's to the 90's, women did not have to show skin to be sexy. Feminity was not about showing skin, it was about being classy, elegant and romantic.
-      But nowadays women do not believe that they can look elegant and classy without showing skin.
-      What happened to our bodies being a temple? A Temple is sacred, and everything that is sacred is not to be shown to the world, but to glorify God.
-    </p>
-    <blockquote>
-      <b>1 Corinthians 6:19-20</b><br>
-      What? know ye not that your body is the temple of the Holy Ghost which is in you, which ye have of God, and ye are not your own? For ye are bought with a price: therefore glorify God in your body, and in your spirit, which are God's.
-    </blockquote>
+      <h2 class="section-subtitle">Nossa História</h2>
+      <p>
+        Her Essence Restored começou quando nossa fundadora, Naomi Benzali, saiu de uma temporada de reconstrução com o desejo de vestir não apenas o corpo, mas também o espírito. Ela notou uma lacuna: mulheres buscando peças elegantes e modestas que honrassem seus valores sem sacrificar o estilo. O que começou como esboços e peças feitas em pequenos lotes para amigas se tornou uma comunidade crescente—mulheres escolhendo roupas que contam uma história de fé, dignidade e propósito renovado.
+      </p>
 
-    <div class="section-divider"></div>
-    <h2 class="section-subtitle">Goal</h2>
-    <p>
-      To sell modest clothing and encourage a Godly dressing influence. To show that Godly is not boring. To take women back to how it used and should be.
-    </p>
+      <h2 class="section-subtitle">Nossa Filosofia</h2>
+      <p>
+        Criamos com três pilares em mente:
+      </p>
+      <p>
+        <strong>Modéstia Graciosa:</strong> Silhuetas que valorizam sem comprometer, celebrando a forma com intenção e respeito.
+      </p>
+      <p>
+        <strong>Simplicidade Elevada:</strong> Linhas limpas, detalhes cuidadosos e formas atemporais que você pode usar além de uma única temporada.
+      </p>
+      <p>
+        <strong>Beleza Restauradora:</strong> Peças que te lembram de quem você é—digna, poderosa e profundamente amada.
+      </p>
+      <p>
+        Cada coleção é guiada pela crença de que quando você se sente bem, você brilha de dentro para fora. Isso é mais do que roupa. É restauração, redefinição e um retorno à sua verdadeira essência.
+      </p>
 
-    <div class="section-divider"></div>
-    <h2 class="section-subtitle">Vision</h2>
-    <p>
-      A page that females will be hooked on. We envision romantic, vintage, cottage and elegant.
-    </p>
+      <h2 class="section-subtitle">Artesanato & Qualidade</h2>
+      <p>
+        Cada peça é criada com cuidado—tecidos considerados, alfaiataria precisa e acabamentos duradouros. Prototipamos meticulosamente, testamos movimento e conforto, e refinamos detalhes como forros, bainhas e fechos para que suas peças sejam tão confortáveis quanto bonitas. Nossas paletas de cores vêm da natureza e do luxo silencioso; nossas texturas ecoam a suavidade e resistência simbolizadas pela borboleta.
+      </p>
 
-    <div class="section-divider"></div>
-    <h2 class="section-subtitle">Original Designs</h2>
-    <p>
-      Every H.E.R. piece is an original design, crafted with care and intention. Our collections blend traditional African elements with modern silhouettes, ensuring each garment is both meaningful and stylish. We use quality fabrics and thoughtful details to create clothing that tells a story—your story.
-    </p>
-  </div>
-  <!-- Portuguese Content -->
-  <div class="content" id="content-pt" style="display:none;">
-    <h1 class="section-title">Sobre Nós</h1>
-    <div class="section-divider"></div>
-    <p>
-      Nascida de um profundo desejo de honrar a Deus e restaurar a beleza da verdadeira feminilidade, a Her Essence Restored (H.E.R.) foi criada para inspirar mulheres a abraçar a modéstia, a confiança e o propósito.
-      Em um mundo que frequentemente distorce o significado da feminilidade, a H.E.R. existe para resgatar sua essência — suave, forte e sagrada.
-      Cada peça é cuidadosamente desenhada para refletir graça e dignidade, provando que modéstia não é esconder — é revelar quem você realmente é, sem comprometer seus valores.
-      Seja um vestido fluido, uma silhueta atemporal ou uma peça confortável para o dia a dia, nossas roupas são feitas para a mulher que caminha em fé, vive com intenção e se veste com significado.
-      <br><br>
-      <em>Isso é mais do que moda. Isso é restauração. Isso é H.E.R.</em>
-    </p>
+      <h2 class="section-subtitle">Fornecimento Responsável</h2>
+      <p>
+        Fazemos parceria com fornecedores éticos e pequenas oficinas que compartilham nossos padrões de salários justos e condições de trabalho seguras. Sempre que possível, priorizamos materiais duráveis e responsáveis e tiragens limitadas para reduzir o desperdício, garantindo que seu guarda-roupa seja curado—não lotado.
+      </p>
 
-    <div class="section-divider"></div>
-    <h2 class="section-subtitle">Inspiração</h2>
-    <p>
-      Trazer de volta a feminilidade e a modéstia. Dos anos 50 aos 90, as mulheres não precisavam mostrar pele para serem sensuais. Feminilidade não era sobre mostrar o corpo, mas sobre ser clássica, elegante e romântica.
-      Hoje, muitas mulheres não acreditam que podem ser elegantes e sofisticadas sem mostrar pele.
-      O que aconteceu com nossos corpos sendo um templo? Um templo é sagrado, e tudo que é sagrado não deve ser exposto ao mundo, mas usado para glorificar a Deus.
-    </p>
-    <blockquote>
-      <b>1 Coríntios 6:19-20</b><br>
-      Ou não sabeis que o vosso corpo é o templo do Espírito Santo, que habita em vós, proveniente de Deus, e que não sois de vós mesmos? Porque fostes comprados por preço; glorificai, pois, a Deus no vosso corpo, e no vosso espírito, os quais pertencem a Deus.
-    </blockquote>
+      <h2 class="section-subtitle">Feito para Mulheres Reais</h2>
+      <p>
+        Modéstia é pessoal. É por isso que oferecemos tamanhos inclusivos, elementos ajustáveis (amarrações na cintura, painéis elásticos nas costas, decotes cuidadosos) e designs amigos de sobreposições. Nosso objetivo é um caimento confiante desde o primeiro uso—peças que se movem com você através do trabalho, adoração, celebração e vida cotidiana.
+      </p>
 
-    <div class="section-divider"></div>
-    <h2 class="section-subtitle">Objetivo</h2>
-    <p>
-      Vender roupas modestas e incentivar uma influência de vestimenta piedosa. Mostrar que ser de Deus não é ser sem graça. Levar a mulher de volta ao que era e deve ser.
-    </p>
+      <h2 class="section-subtitle">Comunidade & Doação</h2>
+      <p>
+        Her Essence Restored é uma comunidade antes de ser uma marca. Hospedamos workshops de estilo, conversas centradas na fé e momentos de mentoria para jovens mulheres entrando em novas temporadas. Uma parte de lançamentos selecionados apoia iniciativas que empoderam mulheres através de educação, desenvolvimento de habilidades e bem-estar.
+      </p>
 
-    <div class="section-divider"></div>
-    <h2 class="section-subtitle">Visão</h2>
-    <p>
-      Uma página que vai encantar as mulheres. Enxergamos o romântico, o vintage, o cottage e o elegante.
-    </p>
-
-    <div class="section-divider"></div>
-    <h2 class="section-subtitle">Designs Originais</h2>
-    <p>
-      Cada peça H.E.R. é um design original, criado com cuidado e intenção. Nossas coleções unem elementos tradicionais africanos com silhuetas modernas, garantindo que cada roupa seja significativa e estilosa. Usamos tecidos de qualidade e detalhes pensados para criar roupas que contam uma história—a sua história.
-    </p>
-  </div>
-</section>
-
-<button id="backToTop" aria-label="Back to top" style="display:block; opacity:1;">
-  <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-    <circle cx="16" cy="16" r="15" fill="#800020" stroke="#fff" stroke-width="2"/>
-    <path d="M16 22V10M16 10L10 16M16 10L22 16" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-  </svg>
-</button>
-<footer>
-  <div class="footer-content" role="contentinfo" style="display:flex; flex-wrap:wrap; gap:2rem; justify-content:center; align-items:flex-start; padding:2rem 2rem 1rem 2rem; box-sizing:border-box;">
-    <!-- Social Media Links -->
-    <div class="footer-col" style="min-width:180px; flex:1;">
-      <h4 style="margin-bottom:0.7rem;">Follow Us</h4>
-      <nav aria-label="Social media">
-        <div style="display:flex; flex-direction:column; gap:0.5rem;">
-          <a href="https://www.instagram.com/her_essence_restored" target="_blank" aria-label="Instagram" style="display:flex;align-items:center;gap:0.5rem;">
-            <img src="https://cdn-icons-png.flaticon.com/24/2111/2111463.png" alt="" style="height:20px;"> Instagram
-          </a>
-          <a href="https://www.facebook.com" target="_blank" aria-label="Facebook" style="display:flex;align-items:center;gap:0.5rem;">
-            <img src="https://cdn-icons-png.flaticon.com/24/733/733547.png" alt="" style="height:20px;"> Facebook
-          </a>
-          <a href="https://www.pinterest.com" target="_blank" aria-label="Pinterest" style="display:flex;align-items:center;gap:0.5rem;">
-            <img src="https://cdn-icons-png.flaticon.com/24/733/733558.png" alt="" style="height:20px;"> Pinterest
-          </a>
-          <a href="https://www.tiktok.com" target="_blank" aria-label="TikTok" style="display:flex;align-items:center;gap:0.5rem;">
-            <img src="https://cdn-icons-png.flaticon.com/24/3046/3046122.png" alt="" style="height:20px;"> TikTok
-          </a>
-        </div>
-      </nav>
+      <h2 class="section-subtitle">Olhando Adiante</h2>
+      <p>
+        Estamos construindo além de coleções—em experiências, colaborações e peças que se tornam heranças. À medida que crescemos, nossa promessa permanece a mesma: honrar elegância e fé, e criar roupas que te ajudem a se ver do jeito que Deus te vê—completa, radiante, restaurada.
+      </p>
+      <p>
+        <em>Com amor,<br>
+        H.E.R</em>
+      </p>
     </div>
-    <!-- Quick Links -->
-    <div class="footer-col" style="min-width:180px; flex:1;">
-      <h4 style="margin-bottom:0.7rem;">Quick Links</h4>
-      <nav aria-label="Quick links">
-        <div style="display:flex; flex-direction:column; gap:0.5rem;">
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <!-- Quick Links -->
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <div>
           <a href="refer.html">Refer a Friend</a>
-          <a href="style-guide.html">Style Guide</a>
+          
           <a href="returns.html">Return Policy</a>
           <a href="Privacy & Data Policy.html">Privacy & Data Policy</a>
         </div>
-      </nav>
+      </div>
+      <!-- Customer Service -->
+      <div class="footer-col">
+        <h4>Customer Service</h4>
+        <div>
+          <a href="contact.html">Contact Us</a>
+          <a href="style-guide.html">Style Guide</a>
+          <a href="order-tracking.html">Track your Order</a>
+          <a href="faq.html">FAQ</a>
+        </div>
+      </div>
+      <!-- Newsletter Signup -->
+      <div class="footer-col">
+        <h4>Newsletter</h4>
+        <form>
+          <p>Sign up for exclusive updates:</p>
+          <input type="email" placeholder="Your email" required style="padding:0.5rem; border-radius:4px; border:1px solid var(--border); background:var(--panel); color:var(--text); margin-bottom:0.5rem; width:100%;">
+          <button type="submit" class="btn" style="width:100%;">Subscribe</button>
+        </form>
+      </div>
+      <!-- Social Media Links -->
+      <div class="footer-col">
+        <h4>Follow Us</h4>
+        <div style="display: flex; gap: 1rem; margin-top: 0.5rem;">
+          <a href="https://www.instagram.com/her_essence_restored" target="_blank" aria-label="Instagram" style="margin-bottom: 0;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+            </svg>
+          </a>
+          <a href="https://www.facebook.com" target="_blank" aria-label="Facebook" style="margin-bottom: 0;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+            </svg>
+          </a>
+          <a href="https://www.tiktok.com" target="_blank" aria-label="TikTok" style="margin-bottom: 0;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
     </div>
-    <!-- Newsletter Signup -->
-    <div class="footer-col newsletter" style="min-width:220px; flex:1;">
-      <h4 style="margin-bottom:0.7rem;">Newsletter</h4>
-      <form aria-label="Newsletter signup" style="display:flex; flex-direction:column; gap:0.7rem;">
-        <p style="margin-bottom:0;">Sign up for exclusive updates:</p>
-        <input type="email" placeholder="Your email" aria-label="Your email" required style="padding:0.5rem; border-radius:5px; border:none; color:var(--burgundy); background:var(--white);">
-        <button type="submit" style="background:var(--black); color:var(--white); border:none; border-radius:5px; padding:0.5rem 1.2rem; cursor:pointer; font-weight:500;">Subscribe</button>
-      </form>
+    <div class="footer-bottom">
+      &copy; 2025 Her Essence Restored (H.E.R.). All rights reserved.
     </div>
-  </div>
-  
-</footer>
-<div class="footer-bottom">
-  &copy; 2025 Her Essence Restored (H.E.R.). All rights reserved.
-</div>
-<script>
-  function changeLanguage(lang) {
-    document.getElementById('logo-en').style.display = lang === 'en' ? 'flex' : 'none';
-    document.getElementById('logo-pt').style.display = lang === 'pt' ? 'flex' : 'none';
-    document.getElementById('nav-en').style.display = lang === 'en' ? 'flex' : 'none';
-    document.getElementById('nav-pt').style.display = lang === 'pt' ? 'flex' : 'none';
-    document.getElementById('content-en').style.display = lang === 'en' ? 'block' : 'none';
-    document.getElementById('content-pt').style.display = lang === 'pt' ? 'block' : 'none';
-  }
-  document.addEventListener('DOMContentLoaded', function() {
-    changeLanguage(document.getElementById('language-dropdown').value);
-  });
-  // Back to Top button logic
-  const backToTop = document.getElementById('backToTop');
-  window.addEventListener('scroll', () => {
-    backToTop.style.display = 'block';
-    backToTop.style.opacity = window.scrollY > 300 ? '1' : '0.5';
-  });
-  backToTop.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-</script>
-<style>
-  .social-link svg {
-    transition: transform 0.2s, color 0.2s;
-  }
-  .social-link:hover svg {
-    transform: scale(1.2);
-    color: var(--primary);
-  }
-</style>
+  </footer>
 
+  <script>
+    function changeLanguage(lang) {
+      document.getElementById('content-en').style.display = lang === 'en' ? 'block' : 'none';
+      document.getElementById('content-pt').style.display = lang === 'pt' ? 'block' : 'none';
+    }
+    
+    document.addEventListener('DOMContentLoaded', function() {
+      changeLanguage(document.getElementById('language-dropdown').value);
+    });
+  </script>
 </body>
 </html>

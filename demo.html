@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demo - Search & Cart Functions - H.E.R</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <style>
+    :root{
+      --bg:#0c0c0c; --panel:#111; --muted:#b9b9b9; --text:#f1f1f1; --accent:#ffffff;
+      --card:#161616; --border:#242424;
+      --max:1200px; --gap:1.25rem;
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0; font:16px/1.5 'Cinzel', Georgia, serif;
+      color:var(--text); background:linear-gradient(#1a1a1a, #0b0b0b 140vh);
+      min-height: 100vh;
+    }
+    a{color:inherit; text-decoration:none}
+    img{display:block; width:100%; height:100%; object-fit:cover; object-position:center}
+    .container{max-width:var(--max); margin-inline:auto; padding:0 1rem}
+    .btn{
+      display:inline-block; padding:.7rem 1.1rem; background:var(--accent); color:#000; border-radius:4px; font-weight:600;
+      border: none; cursor: pointer; transition: all 0.3s ease;
+    }
+    .btn:hover{background:var(--text); transform: translateY(-2px);}
+
+    /* Header */
+    header{background:#000; border-bottom:1px solid var(--border)}
+    .header-container{
+      display:flex; flex-direction:column; align-items:center; padding:1rem 0; position:relative;
+    }
+    .logo{font-family:'Dancing Script', cursive; font-weight:700; letter-spacing:.04em; line-height:1; text-align:center; margin-bottom:1rem}
+    .logo .brand{font-size:2.5rem; display:block; font-weight:bold}
+    .logo small{font-size:.9rem; color:var(--muted); letter-spacing:.2em; font-family:'Cinzel', serif}
+    .nav{display:flex; align-items:center; justify-content:center;}
+    .nav ul{list-style:none; display:flex; gap:1.2rem; margin:0; padding:0; color:var(--muted)}
+    .icons{display:flex; gap:1rem; color:var(--muted); position:absolute; right:2rem; top:1rem}
+
+    /* Demo Section */
+    .demo-section {
+      padding: 3rem 0;
+    }
+
+    .demo-title {
+      font-family: 'Dancing Script', cursive;
+      font-size: 3rem;
+      text-align: center;
+      margin-bottom: 2rem;
+      font-weight: bold;
+    }
+
+    .demo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .demo-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .demo-card h3 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: var(--accent);
+    }
+
+    .product-demo {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .product-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .product-image {
+      height: 200px;
+      background: linear-gradient(45deg, #333, #555);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+    }
+
+    .product-info {
+      padding: 1.5rem;
+    }
+
+    .product-info h4 {
+      margin: 0 0 0.5rem 0;
+      color: var(--text);
+    }
+
+    .product-price {
+      font-weight: bold;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .instructions {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .instructions h3 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: var(--accent);
+    }
+
+    .instructions ul {
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .instructions li {
+      margin-bottom: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container header-container">
+      <div class="logo">
+        <span class="brand">H.E.R</span>
+        <small>Her Essence Restored</small>
+      </div>
+      <nav class="nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="products.html">Shop</a></li>
+          <li><a href="cart.html">Cart</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="icons">
+        <a href="#" class="search-icon" aria-label="Search">🔍</a>
+        <a href="cart.html" class="cart-icon" aria-label="Cart">
+          👜
+          <span class="cart-count" style="display: none;"></span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Demo Section -->
+  <section class="demo-section">
+    <div class="container">
+      <h1 class="demo-title">Search & Cart Demo</h1>
+
+      <div class="instructions">
+        <h3>How to Test the Functions</h3>
+        <ul>
+          <li><strong>Search Function:</strong> Click the 🔍 icon in the header to open the search overlay. Start typing to search for products like "dress", "blouse", or "casual".</li>
+          <li><strong>Cart Function:</strong> Click "Add to Cart" on any product below. The cart icon will show a count badge and you'll see a notification.</li>
+          <li><strong>Cart Management:</strong> Click the 👜 icon to view your cart, update quantities, or remove items.</li>
+          <li><strong>Local Storage:</strong> Your cart items persist between page reloads using localStorage.</li>
+        </ul>
+      </div>
+
+      <div class="demo-grid">
+        <div class="demo-card">
+          <h3>Search Features</h3>
+          <p>✨ Instant search overlay</p>
+          <p>🔍 Search by product name or category</p>
+          <p>📱 Responsive design</p>
+          <p>⌨️ Keyboard navigation (Esc to close)</p>
+          <button class="btn" onclick="search.openSearch()">Try Search</button>
+        </div>
+
+        <div class="demo-card">
+          <h3>Cart Features</h3>
+          <p>🛒 Add/remove products</p>
+          <p>📊 Quantity management</p>
+          <p>💾 Persistent storage</p>
+          <p>🔔 Add-to-cart notifications</p>
+          <a href="cart.html" class="btn">View Cart</a>
+        </div>
+      </div>
+
+      <h2 style="text-align: center; font-family: 'Dancing Script', cursive; font-size: 2.5rem; margin: 3rem 0 2rem 0;">Sample Products</h2>
+
+      <div class="product-demo">
+        <div class="product-card">
+          <div class="product-image">Elegant Evening Dress</div>
+          <div class="product-info">
+            <h4>Elegant Evening Dress</h4>
+            <div class="product-price">R299</div>
+            <button class="btn" onclick="addToCart(1, 'Elegant Evening Dress', 299, 'IMG-20250815-WA0022.jpg')">Add to Cart</button>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-image">Semi-Formal Blouse</div>
+          <div class="product-info">
+            <h4>Semi-Formal Blouse</h4>
+            <div class="product-price">R149</div>
+            <button class="btn" onclick="addToCart(2, 'Semi-Formal Blouse', 149, 'IMG-20250815-WA0027.jpg')">Add to Cart</button>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-image">Casual Summer Dress</div>
+          <div class="product-info">
+            <h4>Casual Summer Dress</h4>
+            <div class="product-price">R89</div>
+            <button class="btn" onclick="addToCart(3, 'Casual Summer Dress', 89, 'IMG-20250815-WA0023.jpg')">Add to Cart</button>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-image">Business Blazer</div>
+          <div class="product-info">
+            <h4>Business Blazer</h4>
+            <div class="product-price">R199</div>
+            <button class="btn" onclick="addToCart(4, 'Business Blazer', 199, 'IMG-20250815-WA0024.jpg')">Add to Cart</button>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-image">Bridal Gown</div>
+          <div class="product-info">
+            <h4>Bridal Gown</h4>
+            <div class="product-price">R599</div>
+            <button class="btn" onclick="addToCart(5, 'Bridal Gown', 599, 'IMG-20250815-WA0025.jpg')">Add to Cart</button>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-image">Sport Leggings</div>
+          <div class="product-info">
+            <h4>Sport Leggings</h4>
+            <div class="product-price">R59</div>
+            <button class="btn" onclick="addToCart(6, 'Sport Leggings', 59, 'IMG-20250815-WA0026.jpg')">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Scripts -->
+  <script src="../assets/js/scripts.js"></script>
+</body>
+</html>

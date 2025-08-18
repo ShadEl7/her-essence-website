@@ -3,1391 +3,315 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Her Essence Restored (H.E.R.)</title>
+  <title>Her Essence Restored (H.E.R.) — Boutique Fashion</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    :root {
-  --burgundy: #800020;
-  --black: #111;
-  --white: #fff;
-  --soft-burgundy: #a06a7b;
-  --light-bg: #fff8fa;
-  --primary: #800020;
-  --footer-text: #fff;
-  --accent: #a06a7b;
-  --footer-bottom: #fff8fa;
-}
+    :root{
+      --bg:#0c0c0c; --panel:#111; --muted:#b9b9b9; --text:#f1f1f1; --accent:#ffffff;
+      --card:#161616; --border:#242424;
+      --max:1200px; --gap:1.25rem;
+    }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "STIX Math", "Cambria Math", serif;
-  font-style: italic;
-}
+    *{box-sizing:border-box}
+    body{
+      margin:0; font:16px/1.5 'Cinzel', Georgia, serif;
+      color:var(--text); background:linear-gradient(#1a1a1a, #0b0b0b 140vh);
+    }
+    a{color:inherit; text-decoration:none}
+    img{display:block; width:100%; height:100%; object-fit:cover; object-position:center}
+    .container{max-width:var(--max); margin-inline:auto; padding:0 1rem}
+    .btn{
+      display:inline-block; padding:.7rem 1.1rem; background:var(--accent); color:#000; border-radius:4px; font-weight:600;
+    }
+    .btn.outline{
+      background:transparent; color:var(--accent); border:1px solid var(--accent);
+    }
 
-body {
-  background: linear-gradient(90deg, var(--white) 0%, var(--burgundy) 100%);
-  color: var(--black);
-  font-size: 1.08rem;
-  line-height: 1.6;
-}
+    /* Top announcement */
+    .announcement{
+      background:#0f0f0f; color:var(--muted); font-size:.85rem; text-align:center; padding:.6rem 1rem;
+      border-bottom:1px solid var(--border);
+    }
 
-header {
-  background: var(--white);
-  border-bottom: 2px solid var(--burgundy);
-  box-shadow: 0 2px 8px rgba(128,0,32,0.04);
-}
+    /* Header */
+    header{background:#000; border-bottom:1px solid var(--border)}
+    .header-container{
+      display:flex; flex-direction:column; align-items:center; padding:1rem 0; position:relative;
+    }
+    .logo{font-family:'Dancing Script', cursive; font-weight:700; letter-spacing:.04em; line-height:1; text-align:center; margin-bottom:1rem}
+    .logo .brand{font-size:2.5rem; display:block; font-weight:bold}
+    .logo small{font-size:.9rem; color:var(--muted); letter-spacing:.2em; font-family:'Cinzel', serif}
+    .nav{
+      display:flex; align-items:center; justify-content:center;
+    }
+    .nav ul{list-style:none; display:flex; gap:1.2rem; margin:0; padding:0; color:var(--muted)}
+    .icons{display:flex; gap:1rem; color:var(--muted); position:absolute; right:2rem; top:1rem}
 
-.header-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1.2rem 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
-  flex-wrap: wrap;
-}
+    /* Hero */
+    .hero{
+      display:grid; grid-template-columns:1fr 1fr 1fr; gap:0;
+      padding:2rem 0; background:#0a0a0a;
+    }
+    .hero .tile{position:relative; aspect-ratio:4/5; overflow:hidden; border-radius:0}
+    .hero .overlay{
+      position:absolute; inset:0; background:linear-gradient(to top, rgba(0,0,0,.55), rgba(0,0,0,.05) 60%);
+    }
+    .hero .copy{
+      position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); text-align:center;
+      width:min(90%, 560px);
+      text-shadow:0 2px 20px rgba(0,0,0,.5);
+    }
+    .eyebrow{font-size:1rem; color:#e9e9e9; letter-spacing:.25em; text-transform:uppercase; font-family:'Cinzel', serif}
+    .display{
+      font-family:'Dancing Script', cursive; font-size:clamp(2rem, 6vw, 4.2rem); letter-spacing:.06em; margin:.2rem 0 .4rem; font-weight:bold;
+    }
+    .subcaps{
+      display:inline-block; margin-bottom:1rem; padding:.35rem .6rem; border:1px solid #fff; color:#fff; border-radius:3px; font-size:.8rem; letter-spacing:.2em;
+    }
 
-.logo {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: var(--burgundy);
-  display: flex;
-  align-items: center;
-  letter-spacing: 1px;
-}
+    /* Sections */
+    section{padding:3rem 0}
+    .section-title{
+      font-family:'Dancing Script', cursive; font-size:2.2rem; letter-spacing:.18em; text-transform:capitalize;
+      margin-bottom:1.2rem; font-weight:bold;
+    }
 
-nav {
-  display: flex;
-  gap: 2rem;
-  align-items: center;
-}
+    /* Categories grid */
+    .grid{
+      display:grid; gap:var(--gap);
+      grid-template-columns:repeat(4, 1fr);
+    }
+    .card{
+      background:var(--card); border:1px solid var(--border); border-radius:8px; overflow:hidden;
+      transition:transform .25s ease, box-shadow .25s ease;
+    }
+    .card:hover{transform:translateY(-4px); box-shadow:0 10px 20px rgba(0,0,0,.35)}
+    .card .thumb{aspect-ratio:4/3}
+    .card .meta{padding:.9rem 1rem; display:flex; justify-content:space-between; align-items:center}
+    .card .meta span{letter-spacing:.18em; text-transform:uppercase; font-size:.82rem; color:#eaeaea}
 
-nav a {
-  color: var(--burgundy);
-  font-weight: 500;
-  text-decoration: none;
-  padding: 0.3rem 0.7rem;
-  border-radius: 4px;
-  transition: background 0.2s, color 0.2s;
-}
-nav a:hover {
-  background: var(--burgundy);
-  color: var(--white);
-}
+    /* About */
+    .about{
+      display:grid; grid-template-columns:1.2fr .8fr; gap:2rem; align-items:center;
+      background:linear-gradient(180deg, #0b0b0b, #0f0f0f);
+      padding:2.2rem; border:1px solid var(--border); border-radius:10px;
+    }
+    .collage{
+      display:grid; grid-template-columns:1.1fr .9fr; gap:.8rem; align-items:stretch;
+    }
+    .collage .big{grid-row:span 2}
+    .about h3{font-family:'Dancing Script', cursive; font-size:2.5rem; margin:.2rem 0 1rem; font-weight:bold}
+    .about p{color:#d6d6d6}
+    .about .actions{margin-top:1.1rem; display:flex; gap:.8rem}
 
-.menu-toggle {
-  display: none;
-  background: none;
-  border: none;
-  font-size: 2rem;
-  margin-left: 1rem;
-  cursor: pointer;
-  color: var(--burgundy);
-}
+    /* Footer */
+    footer{padding:2.5rem 0; color:var(--muted); border-top:1px solid var(--border); background:#0a0a0a}
+    .footer-content{
+      max-width:var(--max); margin:0 auto; padding:0 2rem; display:flex; flex-wrap:wrap; gap:2rem;
+    }
+    .footer-col{
+      flex:1; min-width:200px;
+    }
+    .footer-col h4{
+      color:var(--text); font-size:1.1rem; margin-bottom:.7rem;
+    }
+    .footer-col a{
+      color:var(--muted); text-decoration:none; display:block; margin-bottom:.3rem; transition:color .2s;
+    }
+    .footer-col a:hover{
+      color:var(--accent);
+    }
+    .footer-col:nth-child(1), .footer-col:nth-child(2) {
+      text-align: left;
+    }
+    .footer-col:nth-child(1) div, .footer-col:nth-child(2) div {
+      text-align: left;
+    }
+    .footer-col:nth-child(4) {
+      text-align: center;
+    }
+    .footer-col:nth-child(4) div {
+      justify-content: center;
+    }
+    .footer-bottom{
+      text-align:center; padding:1rem; color:var(--muted); border-top:1px solid var(--border);
+    }
 
-#languageSelector {
-  margin-left: 1rem;
-  padding: 0.3rem 0.7rem;
-  border: 1px solid var(--burgundy);
-  border-radius: 5px;
-  background: var(--white);
-  color: var(--burgundy);
-  font-size: 1rem;
-}
-
-.trending-now-banner {
-  background: var(--soft-burgundy);
-  color: var(--white);
-  text-align: center;
-  font-size: 1.15rem;
-  padding: 0.7rem 0;
-  margin-bottom: 0;
-  letter-spacing: 0.5px;
-}
-
-.referral-block {
-  background: var(--light-bg);
-  border: 2px dashed var(--burgundy);
-  color: var(--burgundy);
-  text-align: center;
-  margin-bottom: 1.2rem;
-  padding: 1rem 0.5rem;
-  border-radius: 8px;
-}
-
-.referral-btn {
-  background: var(--burgundy);
-  color: var(--white);
-  border: none;
-  border-radius: 5px;
-  padding: 0.5rem 1.2rem;
-  cursor: pointer;
-  font-weight: 500;
-  margin-top: 0.5rem;
-}
-.referral-btn:hover {
-  background: var(--black);
-}
-
-.hero {
-  padding: 3rem 2rem 2rem 2rem;
-  text-align: center;
-  max-width: 900px;
-  margin: 0 auto;
-  background: var(--white);
-  border-radius: 12px;
-  box-shadow: 0 2px 12px rgba(128,0,32,0.07);
-}
-.hero h1 {
-  color: var(--burgundy);
-  font-size: 2.2rem;
-  margin-bottom: 1rem;
-  font-weight: 700;
-}
-.hero p {
-  font-size: 1.2rem;
-  margin-bottom: 1.5rem;
-}
-.hero .cta-btn {
-  background: var(--burgundy);
-  color: var(--white);
-  border: none;
-  border-radius: 5px;
-  padding: 0.8rem 2rem;
-  font-size: 1.1rem;
-  font-weight: 600;
-  cursor: pointer;
-  margin-bottom: 1rem;
-  transition: background 0.2s;
-}
-.hero .cta-btn:hover {
-  background: var(--black);
-  color: var(--white);
-}
-
-.countdown-banner {
-  text-align: center;
-  padding: 0.7rem 1rem;
-  font-size: 1.1rem;
-  background: var(--burgundy);
-  color: var(--white);
-  margin-bottom: 1.5rem;
-  border-radius: 8px;
-  max-width: 900px;
-  margin: 1rem auto 1.5rem auto;
-}
-
-.carousel {
-  max-width: 1200px;
-  margin: 2rem auto;
-  padding: 0 1rem;
-  position: relative;
-}
-
-.carousel-container {
-  position: relative;
-  width: 100%;
-  height: 500px;
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 8px 32px rgba(128,0,32,0.15);
-  background: var(--white);
-}
-
-.carousel-track {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
-.carousel-slide {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  transform: translateX(100%);
-  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.carousel-slide.active {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.carousel-slide.prev {
-  transform: translateX(-100%);
-}
-
-.carousel-slide img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.carousel-content {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: linear-gradient(transparent, rgba(128,0,32,0.9));
-  color: white;
-  padding: 2rem;
-  transform: translateY(100%);
-  transition: transform 0.4s ease;
-}
-
-.carousel-slide:hover .carousel-content {
-  transform: translateY(0);
-}
-
-.carousel-content h3 {
-  font-size: 1.8rem;
-  font-weight: 700;
-  margin: 0 0 0.5rem 0;
-  color: white;
-}
-
-.carousel-content p {
-  font-size: 1.1rem;
-  margin: 0;
-  opacity: 0.9;
-}
-
-.carousel-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(255, 255, 255, 0.9);
-  border: 2px solid var(--burgundy);
-  color: var(--burgundy);
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  cursor: pointer;
-  font-size: 1.5rem;
-  font-weight: bold;
-  transition: all 0.3s ease;
-  z-index: 10;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.carousel-btn:hover {
-  background: var(--burgundy);
-  color: white;
-  transform: translateY(-50%) scale(1.1);
-}
-
-.carousel-btn.prev {
-  left: 20px;
-}
-
-.carousel-btn.next {
-  right: 20px;
-}
-
-.carousel-indicators {
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 10px;
-  z-index: 10;
-}
-
-.indicator {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  border: 2px solid white;
-  background: transparent;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.indicator.active {
-  background: white;
-  transform: scale(1.2);
-}
-
-.indicator:hover {
-  background: rgba(255, 255, 255, 0.7);
-}
-
-.shop {
-  max-width: 1200px;
-  margin: 2rem auto;
-  padding: 0 2rem;
-}
-.shop h2 {
-  color: var(--burgundy);
-  font-size: 1.6rem;
-  font-weight: 700;
-  text-align: center;
-  margin-bottom: 1.5rem;
-}
-.filters {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  margin-bottom: 2rem;
-  flex-wrap: wrap;
-}
-.filters button {
-  background: var(--burgundy);
-  color: var(--white);
-  border: none;
-  border-radius: 5px;
-  padding: 0.5rem 1.2rem;
-  font-size: 1rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-.filters button:hover,
-.filters button.active {
-  background: var(--black);
-  color: var(--white);
-}
-
-.product-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-}
-.product {
-  padding: 1.2rem;
-  border-radius: 10px;
-  box-shadow: 0 2px 12px rgba(128,0,32,0.07);
-  background: var(--white);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border: 1px solid var(--soft-burgundy);
-  transition: box-shadow 0.2s;
-}
-.product:hover {
-  box-shadow: 0 4px 16px rgba(128,0,32,0.13);
-}
-.product h4 {
-  color: var(--burgundy);
-  font-size: 1.15rem;
-  font-weight: 600;
-  margin: 0.7rem 0 0.3rem 0;
-  text-align: center;
-}
-.product-description {
-  color: var(--black);
-  font-size: 1rem;
-  text-align: center;
-  margin-bottom: 0.7rem;
-}
-.product img {
-  width: 220px;
-  height: 220px;
-  object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 1rem;
-  background: #f5e6eb; /* fallback bg for missing images */
-  display: block;
-}
-.share-buttons {
-  display: flex;
-  gap: 0.5rem;
-  margin-top: 0.7rem;
-}
-.share-buttons a {
-  background: #fff;
-  border: 1px solid var(--soft-burgundy);
-  color: var(--burgundy);
-  border-radius: 5px;
-  padding: 0.3rem 0.7rem;
-  min-width: 32px;
-  min-height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.2s, color 0.2s;
-}
-.share-buttons a:hover {
-  background: var(--burgundy);
-  color: var(--white);
-}
-.share-buttons a img {
-  width: 24px;
-  height: 24px;
-  display: block;
-}
-
-.testimonials {
-  max-width: 900px;
-  margin: 2rem auto;
-  padding: 2rem;
-  border-radius: 12px;
-  background: var(--white);
-  box-shadow: 0 2px 12px rgba(128,0,32,0.07);
-}
-.testimonials h2 {
-  color: var(--burgundy);
-  font-size: 1.4rem;
-  font-weight: 700;
-  text-align: center;
-  margin-bottom: 1.2rem;
-}
-.testimonial-list {
-  display: flex;
-  gap: 2rem;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-.testimonial {
-  flex: 1 1 220px;
-  padding: 1rem;
-  border-radius: 8px;
-  background: var(--light-bg);
-  border: 1px solid var(--soft-burgundy);
-  font-size: 1rem;
-  color: var(--black);
-  margin-bottom: 1rem;
-  box-shadow: 0 2px 8px rgba(128,0,32,0.04);
-}
-.testimonial .author {
-  color: var(--burgundy);
-  font-weight: 600;
-  margin-top: 0.5rem;
-  font-size: 0.98rem;
-}
-
-.opt-in {
-  max-width: 500px;
-  margin: 2rem auto;
-  padding: 2rem;
-  border-radius: 12px;
-  text-align: center;
-  background: var(--burgundy);
-  color: var(--white);
-  box-shadow: 0 2px 12px rgba(128,0,32,0.07);
-}
-.opt-in h3 { color: var(--white); }
-.opt-in input, .opt-in button {
-  margin: 0.5rem 0;
-  padding: 0.7rem;
-  border-radius: 5px;
-  border: none;
-  width: 90%;
-  max-width: 350px;
-  font-size: 1rem;
-}
-.opt-in input {
-  background: var(--white);
-  color: var(--burgundy);
-  border: 1px solid var(--soft-burgundy);
-}
-.opt-in button {
-  background: var(--black);
-  color: var(--white);
-  font-weight: 600;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-.opt-in button:hover {
-  background: var(--white);
-  color: var(--burgundy);
-}
-
-.style-gallery {
-  padding: 2rem 1rem;
-  background: var(--white);
-  border-radius: 12px;
-  box-shadow: 0 2px 12px rgba(128,0,32,0.07);
-}
-.style-gallery img {
-  width: 120px;
-  height: 120px;
-  object-fit: cover;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(128,0,32,0.07);
-}
-
-/* Footer Styling */
-footer {
-  background: var(--primary); /* Deep burgundy */
-  color: var(--footer-text);
-  padding: 2rem;
-  margin-top: 3rem;
-}
-.footer-content {
-  padding: 2rem 1rem;
-  gap: 2rem;
-  background: var(--burgundy);
-  color: var(--white);
-  border-radius: 12px 12px 0 0;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: stretch;
-}
-.footer-col {
-  flex: 1 1 200px;
-  min-width: 180px;
-  margin-bottom: 1rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 1rem;
-  box-sizing: border-box;
-}
-.footer-col h4 {
-  color: var(--white);
-  font-size: 1.1rem;
-  margin-bottom: 0.7rem;
-}
-.footer-col a {
-  color: var(--white);
-  text-decoration: none;
-  display: block;
-  margin-bottom: 0.3rem;
-  transition: color 0.2s;
-}
-.footer-col a:hover {
-  color: var(--black);
-}
-.footer-btn {
-  display: inline-block;
-  background: var(--accent);
-  color: var(--burgundy);
-  border: none;
-  border-radius: 6px;
-  padding: 0.5rem 1.2rem;
-  margin: 0.3rem 0;
-  font-weight: 600;
-  text-decoration: none;
-  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
-  box-shadow: 0 2px 8px rgba(128,0,32,0.07);
-  text-align: center;
-}
-.footer-btn:hover {
-  background: var(--black);
-  color: var(--white);
-  box-shadow: 0 4px 16px rgba(128,0,32,0.13);
-}
-.footer-bottom {
-  text-align: center;
-  padding: 1rem;
-  font-size: 0.95rem;
-  background: var(--footer-bottom);
-  color: var(--burgundy);
-  border-radius: 0 0 12px 12px;
-  margin-top: 0;
-}
-
-#backToTop {
-  position: fixed;
-  right: 1.5rem;
-  bottom: 1.5rem;
-  background: #fff8fa;
-  border: 2px solid #800020;
-  border-radius: 50%;
-  padding: 0.3rem;
-  cursor: pointer;
-  z-index: 9999;
-  box-shadow: 0 2px 8px rgba(128,0,32,0.13);
-  display: none;
-  transition: opacity 0.2s, transform 0.2s;
-}
-#backToTop svg {
-  display: block;
-}
-#backToTop.show {
-  display: block !important;
-  opacity: 1;
-  transform: scale(1);
-}
-
-/* MOBILE STYLES */
-@media (max-width: 900px) {
-  .header-container, .shop, .hero, .testimonials, .footer-content {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-  .carousel-container {
-    height: 400px;
-  }
-  .carousel-content {
-    padding: 1.5rem;
-  }
-  .carousel-content h3 {
-    font-size: 1.4rem;
-  }
-  .carousel-content p {
-    font-size: 1rem;
-  }
-  .carousel-btn {
-    width: 40px;
-    height: 40px;
-    font-size: 1.2rem;
-  }
-  .carousel-btn.prev {
-    left: 15px;
-  }
-  .carousel-btn.next {
-    right: 15px;
-  }
-  .product-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.2rem;
-  }
-  .testimonial-list {
-    gap: 1rem;
-  }
-}
-
-@media (max-width: 600px) {
-  .header-container {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 1rem;
-  }
-  .logo {
-    margin-bottom: 0.5rem;
-    font-size: 1.2rem;
-  }
-  nav {
-    flex-direction: column;
-    gap: 1rem;
-    width: 100%;
-    background: var(--white);
-    border-bottom: 2px solid var(--burgundy);
-    position: absolute;
-    top: 60px;
-    left: 0;
-    z-index: 100;
-    display: none;
-  }
-  #mainNav.open {
-    display: flex;
-  }
-  .menu-toggle {
-    display: block;
-  }
-  .carousel-container {
-    height: 300px;
-  }
-  .carousel-content {
-    padding: 1rem;
-  }
-  .carousel-content h3 {
-    font-size: 1.2rem;
-  }
-  .carousel-content p {
-    font-size: 0.9rem;
-  }
-  .carousel-btn {
-    width: 35px;
-    height: 35px;
-    font-size: 1rem;
-  }
-  .carousel-btn.prev {
-    left: 10px;
-  }
-  .carousel-btn.next {
-    right: 10px;
-  }
-  .indicator {
-    width: 10px;
-    height: 10px;
-  }
-  .product-grid {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-  .footer-content {
-    flex-direction: column;
-    gap: 1rem;
-    padding: 1rem;
-    border-radius: 12px 12px 0 0;
-  }
-  .footer-col {
-    min-width: 0;
-  }
-  .opt-in input, .opt-in button {
-    width: 100%;
-    max-width: 100%;
-  }
-  .style-gallery img {
-    width: 90px;
-    height: 90px;
-  }
-  .hero {
-    padding: 2rem 0.5rem 1.5rem 0.5rem;
-  }
-  .shop {
-    padding: 0 0.5rem;
-  }
-  .testimonials {
-    padding: 1rem 0.5rem;
-  }
-}
+    /* Responsive */
+    @media (max-width: 1000px){
+      .grid{grid-template-columns:repeat(2, 1fr)}
+      .hero{grid-template-columns:1fr; }
+      .hero .tile{aspect-ratio:16/10}
+      .about{grid-template-columns:1fr}
+      .footer-content{flex-direction:column; gap:1rem}
+    }
+    @media (max-width: 520px){
+      .nav ul{display:none}
+      .display{font-size:2rem}
+      .subcaps{font-size:.72rem}
+    }
   </style>
 </head>
 <body>
 
+  <!-- Announcement -->
+  <div class="announcement">✦ FREE SHIPPING ON ALL ORDERS OVER R999 ✦</div>
+
   <!-- Header -->
   <header>
-    <div class="header-container">
+    <div class="container header-container">
       <div class="logo">
-        <img src="logo.jpg" alt="Her Essence Restored Logo" style="height:40px;vertical-align:middle;margin-right:10px;">
-        Her Essence Restored (H.E.R.)
+        <span class="brand">H.E.R</span>
+        <small>Her Essence Restored</small>
       </div>
-      <button id="menuToggle" class="menu-toggle" aria-label="Open menu">&#9776;</button>
-      <nav id="mainNav">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="products.html">Products</a>
-        <a href="contact.html">Contact</a>
-        <a href="cart.html">Cart</a>
-      </nav>
-      <select id="languageSelector" onchange="changeLanguage(this.value)">
-        <option value="en">English</option>
-        <option value="pt">Português</option>
-        
-      </select>
+      <div class="nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="products.html">Shop</a></li>
+          
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="icons">
+        <a href="#" aria-label="Search">🔍</a>
+        <a href="cart.html" aria-label="Cart">👜</a>
+      </div>
     </div>
   </header>
 
-  <!-- Trending Now Banner and Referral Block will be injected here by JS -->
-
-  <!-- HERO SECTION -->
-  <section class="hero">
-    <h1>Feel Restored in Every Stitch.</h1>
-    <p>Discover the new <b>Vintage Grace Collection</b> — where timeless elegance meets modern modesty.</p>
-    <button class="cta-btn" onclick="window.location.href='#productGrid'">Shop Now</button>
-    <div style="margin-top:1.2rem;color:#a06a7b;font-size:1.1rem;">
-      <em>“Elegance never goes out of fashion.”</em>
+  <!-- Hero with split imagery and centered copy -->
+  <div class="container hero">
+    <div class="tile">
+      <img src="IMG-20250815-WA0022.jpg" alt="">
+      <div class="overlay"></div>
     </div>
-  </section>
-
-  <!-- COUNTDOWN BANNER -->
-  <div class="countdown-banner">
-    <span>Get <b>15% Off</b> Your First Order – Ends In: <span id="countdown"></span></span>
-  </div>
-
-  <!-- Carousel -->
-  <section class="carousel">
-    <div class="carousel-container">
-      <div class="carousel-track">
-        <div class="carousel-slide active">
-          <img src="clothes-3987460_1280.jpg" alt="Spring Collection 2025" loading="eager">
-          <div class="carousel-content">
-            <h3>Spring Collection 2025</h3>
-            <p>Fresh Styles for the New Season</p>
-          </div>
-        </div>
-        <div class="carousel-slide">
-          <img src="790e1b8dcca81f5b3bf90959d2775fc9.jpg" alt="Wedding Gowns Collection" loading="lazy">
-          <div class="carousel-content">
-            <h3>Wedding Dreams</h3>
-            <p>Your Special Day Perfected</p>
-          </div>
-        </div>
-        <div class="carousel-slide">
-          <img src="70ba0b5c322938f55d1f49de5bef73d8.jpg" alt="Elegant Evening Wear" loading="lazy">
-          <div class="carousel-content">
-            <h3>Evening Elegance</h3>
-            <p>Grace for Every Occasion</p>
-          </div>
-        </div>
-        <div class="carousel-slide">
-          <img src="il_1080xN.5718129227_tfvm.jpg" alt="ActiveWear Collection" loading="lazy">
-          <div class="carousel-content">
-            <h3>Active Lifestyle</h3>
-            <p>Move with Confidence</p>
-          </div>
-        </div>
-      </div>
-      <button class="carousel-btn prev" aria-label="Previous slide">‹</button>
-      <button class="carousel-btn next" aria-label="Next slide">›</button>
-      <div class="carousel-indicators">
-        <button class="indicator active" data-slide="0"></button>
-        <button class="indicator" data-slide="1"></button>
-        <button class="indicator" data-slide="2"></button>
-        <button class="indicator" data-slide="3"></button>
+    <div class="tile">
+      <img src="IMG-20250815-WA0025.jpg" alt="">
+      <div class="overlay"></div>
+      <div class="copy">
+        <div class="eyebrow">New Collection</div>
+        <div class="display">H.E.R STYLE</div>
+        <div class="subcaps">AUTHENTIC ELEGANCE</div><br/>
+        <a class="btn" href="products.html">Shop Now</a>
       </div>
     </div>
-  </section>  
-
-  <!-- Shop Section (Featured Collection) -->
-  <section class="shop" aria-labelledby="shopCollectionsHeading">
-  <header>
-    <h2 id="shopCollectionsHeading">Shop Our Collections</h2>
-    <div class="filters" style="justify-content:center; margin-top:1rem;">
-      <button type="button" class="active" onclick="filterProducts('all')">All</button>
-      <button type="button" onclick="filterProducts('dresses')">Dresses</button>
-      <button type="button" onclick="filterProducts('wedding gowns')">Wedding Gowns</button>
-      <button type="button" onclick="filterProducts('activewear')">ActiveWear</button>
-      
-    </div>
-  </header>
-  <div class="product-grid" id="productGrid">
-    <!-- Product Card 1 -->
-    <article class="product" data-category="wedding gowns" tabindex="0" aria-label="Wedding Gowns">
-      <img src="790e1b8dcca81f5b3bf90959d2775fc9.jpg" alt="Wedding Gowns">
-      <h4>Wedding Gowns</h4>
-      <p class="product-description">Crafted with luxurious fabrics, intricate detailing, and perfect tailoring to make every bride feel radiant.</p>
-      <div class="share-buttons" aria-label="Share product">
-        <a href="https://www.facebook.com/sharer/sharer.php?u=https://heressencerestored.com/products/vintage-hat" target="_blank" title="Share on Facebook" aria-label="Share on Facebook">
-          <img src="https://cdn-icons-png.flaticon.com/24/733/733547.png" alt="Facebook" />
-        </a>
-        <a href="https://www.instagram.com/her_essence_restored" target="_blank" title="Share on Instagram" aria-label="Share on Instagram">
-          <img src="https://cdn-icons-png.flaticon.com/24/2111/2111463.png" alt="Instagram" />
-        </a>
-        <a href="https://www.tiktok.com/@her_essence_restored" target="_blank" title="Share on TikTok" aria-label="Share on TikTok">
-          <img src="https://cdn-icons-png.flaticon.com/24/3046/3046122.png" alt="TikTok" />
-        </a>
-      </div>
-    </article>
-    <!-- Product Card 2 -->
-    <article class="product" data-category="dresses" tabindex="0" aria-label="Modern Dress">
-      <img src="70ba0b5c322938f55d1f49de5bef73d8.jpg" alt="Modern Dress">
-      <h4>Dresses</h4>
-      <p class="product-description">Elegant modern dress with a modest silhouette and premium fabric.</p>
-      <div class="share-buttons" aria-label="Share product">
-        <a href="https://www.facebook.com/sharer/sharer.php?u=https://heressencerestored.com/products/modern-dress" target="_blank" title="Share on Facebook" aria-label="Share on Facebook">
-          <img src="https://cdn-icons-png.flaticon.com/24/733/733547.png" alt="Facebook" />
-        </a>
-        <a href="https://www.instagram.com/her_essence_restored" target="_blank" title="Share on Instagram" aria-label="Share on Instagram">
-          <img src="https://cdn-icons-png.flaticon.com/24/2111/2111463.png" alt="Instagram" />
-        </a>
-        <a href="https://www.tiktok.com/@her_essence_restored" target="_blank" title="Share on TikTok" aria-label="Share on TikTok">
-          <img src="https://cdn-icons-png.flaticon.com/24/3046/3046122.png" alt="TikTok" />
-        </a>
-      </div>
-    </article>
-    <!-- Product Card 3 -->
-    <article class="product" data-category="activewear" tabindex="0" aria-label="Active Wear">
-      <img src="il_1080xN.5718129227_tfvm.jpg" alt="Active Wear">
-      <h4>ActiveWear</h4>
-      <p class="product-description">Whether in the gym, on a run, or in daily life.</p>
-      <div class="share-buttons" aria-label="Share product">
-        <a href="https://www.facebook.com/sharer/sharer.php?u=https://heressencerestored.com/products/african-print-skirt" target="_blank" title="Share on Facebook" aria-label="Share on Facebook">
-          <img src="https://cdn-icons-png.flaticon.com/24/733/733547.png" alt="Facebook" />
-        </a>
-        <a href="https://www.instagram.com/her_essence_restored" target="_blank" title="Share on Instagram" aria-label="Share on Instagram">
-          <img src="https://cdn-icons-png.flaticon.com/24/2111/2111463.png" alt="Instagram" />
-        </a>
-        <a href="https://www.tiktok.com/@her_essence_restored" target="_blank" title="Share on TikTok" aria-label="Share on TikTok">
-          <img src="https://cdn-icons-png.flaticon.com/24/3046/3046122.png" alt="TikTok" />
-        </a>
-      </div>
-    </article>
-    
-    <!-- Add more products as needed -->
-  </div>
-</section>
-
-  <!-- TESTIMONIALS -->
-  <section class="testimonials">
-    <h2>What Our Customers Say</h2>
-    <div class="testimonial-list">
-      <div class="testimonial">
-       
-       
-        “I felt so elegant and confident in my new dress. The quality is amazing!”
-        <div class="author">– Zanele M.</div>
-      </div>
-      <div class="testimonial">
-        “The Vintage Grace Collection is a dream come true for modest fashion lovers.”
-        <div class="author">– Thandi N.</div>
-      </div>
-      <div class="testimonial">
-        “Fast shipping and beautiful packaging. I’ll definitely shop again!”
-        <div class="author">– Lerato P.</div>
-      </div>
-    </div>
-  </section>
-
- 
-  <!-- EMAIL/SMS OPT-IN -->
-  <section class="opt-in">
-    <h3>Get 15% Off Your First Order</h3>
-    <form id="optInForm">
-      <input type="email" placeholder="Your email" required>
-
-      <input type="tel" placeholder="Your phone (optional)">
-      <button type="submit">Sign Up</button>
-    </form>
-    <div id="optInMsg" style="margin-top:1rem;color:#fff8fa;font-size:1rem;"></div>
-  </section>
-
-  <!-- Customer Spotlight Section -->
-  <section class="style-gallery" style="max-width:900px;margin:2rem auto;">
-    <h2 style="text-align:center;color:#a06a7b;margin-bottom:1rem;">Customer Spotlight</h2>
-    <div style="display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;">
-      <img src="790e1b8dcca81f5b3bf90959d2775fc9.jpg" alt="Customer 1" style="width:160px;height:160px;object-fit:cover;border-radius:12px;">
-      <img src="70ba0b5c322938f55d1f49de5bef73d8.jpg" alt="Customer 2" style="width:160px;height:160px;object-fit:cover;border-radius:12px;">
-      <img src="il_1080xN.5718129227_tfvm.jpg" alt="Customer 3" style="width:160px;height:160px;object-fit:cover;border-radius:12px;">
-    </div>
-    <p style="text-align:center;margin-top:1rem;color:#555;">Tag us on Instagram <b>@her_essence_restored</b> to be featured!</p>
-  </section>
-
-  <!-- Welcome Popup -->
-  <div id="welcomePopup" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(160,106,123,0.15);z-index:2000;justify-content:center;align-items:center;">
-    <div style="background:#fff8fa;padding:2rem 1.5rem;border-radius:12px;box-shadow:0 2px 12px rgba(160,106,123,0.15);max-width:350px;text-align:center;">
-      <h3 style="color:#a06a7b;">Welcome to Her Essence Restored!</h3>
-      <p style="margin:1rem 0;">Enjoy R100 off your first order. Explore our collections and get inspired!</p>
-      <button onclick="closeWelcomePopup()" style="background:#a06a7b;color:#fff8fa;border:none;border-radius:5px;padding:0.5rem 1.2rem;cursor:pointer;">Close</button>
+    <div class="tile">
+      <img src="IMG-20250815-WA0023.jpg" alt="">
+      <div class="overlay"></div>
     </div>
   </div>
+
+  <!-- Categories -->
+  <section class="container">
+    <h2 class="section-title">Shop Collections</h2>
+    <div class="grid">
+      <a class="card" href="products.html">
+        <div class="thumb"><img src="IMG-20250815-WA0027.jpg" alt=""></div>
+        <div class="meta"><span>Semi-formal Dresses →</span></div>
+      </a>
+      <a class="card" href="products.html">
+        <div class="thumb"><img src="hangers-1850082_1280.jpg" alt=""></div>
+        <div class="meta"><span>Evening Wear →</span></div>
+      </a>
+      <a class="card" href="products.html">
+        <div class="thumb"><img src="il_1080xN.5718129227_tfvm.jpg" alt=""></div>
+        <div class="meta"><span>Sportwear →</span></div>
+      </a>
+      <a class="card" href="products.html">
+        <div class="thumb"><img src="IMG-20250815-WA0022.jpg" alt=""></div>
+        <div class="meta"><span>Bridal →</span></div>
+      </a>
+    </div>
+  </section>
+
+  <!-- About block -->
+  <section class="container">
+    <div class="about">
+      <div class="collage">
+        <div class="big"><img src="IMG-20250815-WA0023.jpg" alt=""></div>
+        <div><img src="70ba0b5c322938f55d1f49de5bef73d8.jpg" alt=""></div>
+        <div><img src="790e1b8dcca81f5b3bf90959d2775fc9.jpg" alt=""></div>
+      </div>
+      <div>
+        <h3>ABOUT US</h3>
+        <p>
+          At Her Essence Restored, we believe every woman carries the beauty of transformation within her. Born from a journey of personal restoration, our brand is inspired by the metamorphosis of a butterfly, a symbol of renewal, strength, and grace.<br><br>
+          We create modest fashion for women who are ready to embrace a new chapter, rediscover their femininity, and reflect the beauty of who God created them to be.<br><br>
+          Our pieces are designed to honor both elegance and faith, reminding every woman that when you look good, you feel good and when you feel good, you shine from within.<br><br>
+          This is more than clothing. It's restoration, redefinition, and a return to your true essence.<br><br>
+          with love,<br>
+          H.E.R
+        </p>
+        <div class="actions">
+          <a href="contact.html" class="btn">Contact Us</a>
+          <a href="about.html" class="btn outline">Learn More</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- Footer -->
   <footer>
-  <div class="footer-content" role="contentinfo" style="display:flex; flex-wrap:wrap; gap:2rem; justify-content:center; align-items:flex-start; padding:2rem 2rem 1rem 2rem; box-sizing:border-box;">
-    <!-- Social Media Links -->
-    <div class="footer-col" style="min-width:180px; flex:1;">
-      <h4 style="margin-bottom:0.7rem;">Follow Us</h4>
-      <nav aria-label="Social media">
-        <div style="display:flex; flex-direction:column; gap:0.5rem;">
-          <a href="https://www.instagram.com/her_essence_restored" target="_blank" aria-label="Instagram" style="display:flex;align-items:center;gap:0.5rem;">
-            <img src="https://cdn-icons-png.flaticon.com/24/2111/2111463.png" alt="" style="height:20px;"> Instagram
-          </a>
-          <a href="https://www.facebook.com" target="_blank" aria-label="Facebook" style="display:flex;align-items:center;gap:0.5rem;">
-            <img src="https://cdn-icons-png.flaticon.com/24/733/733547.png" alt="" style="height:20px;"> Facebook
-          </a>
-          <a href="https://www.pinterest.com" target="_blank" aria-label="Pinterest" style="display:flex;align-items:center;gap:0.5rem;">
-            <img src="https://cdn-icons-png.flaticon.com/24/733/733558.png" alt="" style="height:20px;"> Pinterest
-          </a>
-          <a href="https://www.tiktok.com" target="_blank" aria-label="TikTok" style="display:flex;align-items:center;gap:0.5rem;">
-            <img src="https://cdn-icons-png.flaticon.com/24/3046/3046122.png" alt="" style="height:20px;"> TikTok
-          </a>
-        </div>
-      </nav>
-    </div>
-    <!-- Quick Links -->
-    <div class="footer-col" style="min-width:180px; flex:1;">
-      <h4 style="margin-bottom:0.7rem;">Quick Links</h4>
-      <nav aria-label="Quick links">
-        <div style="display:flex; flex-direction:column; gap:0.5rem;">
+    <div class="footer-content">
+      <!-- Quick Links -->
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <div>
           <a href="refer.html">Refer a Friend</a>
-          <a href="style-guide.html">Style Guide</a>
+          
           <a href="returns.html">Return Policy</a>
           <a href="Privacy & Data Policy.html">Privacy & Data Policy</a>
         </div>
-      </nav>
-    </div>
-    <!-- Newsletter Signup -->
-    <div class="footer-col newsletter" style="min-width:220px; flex:1;">
-      <h4 style="margin-bottom:0.7rem;">Newsletter</h4>
-      <form aria-label="Newsletter signup" style="display:flex; flex-direction:column; gap:0.7rem;">
-        <p style="margin-bottom:0;">Sign up for exclusive updates:</p>
-        <input type="email" placeholder="Your email" aria-label="Your email" required style="padding:0.5rem; border-radius:5px; border:none; color:var(--burgundy); background:var(--white);">
-        <button type="submit" style="background:var(--black); color:var(--white); border:none; border-radius:5px; padding:0.5rem 1.2rem; cursor:pointer; font-weight:500;">Subscribe</button>
-      </form>
-    </div>
-  </div>
-  
-</footer>
-<div class="footer-bottom">
-  &copy; 2025 Her Essence Restored (H.E.R.). All rights reserved.
-</div>
-
-  <button id="backToTop" aria-label="Back to top" style="display:block; opacity:1; transform:scale(1);">
-  <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-    <circle cx="16" cy="16" r="15" fill="#800020" stroke="#fff" stroke-width="2"/>
-    <path d="M16 22V10M16 10L10 16M16 10L22 16" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-  </svg>
-</button>
-
-  <!-- SCRIPTS -->
-  <script>
-  // Countdown Timer (15% Off)
-  function startCountdown(durationMinutes = 60) {
-    const end = Date.now() + durationMinutes * 60 * 1000;
-    function update() {
-      const now = Date.now();
-      let diff = Math.max(0, end - now);
-      const mins = Math.floor(diff / 60000);
-      const secs = Math.floor((diff % 60000) / 1000);
-      document.getElementById('countdown').textContent =
-        (mins < 10 ? '0' : '') + mins + ':' + (secs < 10 ? '0' : '') + secs;
-      if (diff > 0) setTimeout(update, 1000);
-      else document.querySelector('.countdown-banner').textContent = "Offer expired. But new styles are always arriving!";
-    }
-    update();
-  }
-  startCountdown(60);
-
-  // Opt-in form
-  document.getElementById('optInForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    document.getElementById('optInMsg').textContent = "Thank you for signing up! Your 15% off code is: WELCOME15";
-    this.reset();
-  });
-
-  // Back to Top button logic (show/hide on scroll)
-  const backToTop = document.getElementById('backToTop');
-  function toggleBackToTop() {
-    if (window.scrollY > 200) {
-      backToTop.classList.add('show');
-    } else {
-      backToTop.classList.remove('show');
-    }
-  }
-  window.addEventListener('scroll', toggleBackToTop);
-  backToTop.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-  toggleBackToTop(); // Initial check
-
-  // New Perfect Carousel Implementation
-  document.addEventListener('DOMContentLoaded', function() {
-    const carousel = {
-      track: document.querySelector('.carousel-track'),
-      slides: document.querySelectorAll('.carousel-slide'),
-      prevBtn: document.querySelector('.carousel-btn.prev'),
-      nextBtn: document.querySelector('.carousel-btn.next'),
-      indicators: document.querySelectorAll('.indicator'),
-      currentSlide: 0,
-      isAnimating: false,
-      autoSlideInterval: null,
-      autoSlideDelay: 5000,
-
-      init() {
-        this.bindEvents();
-        this.startAutoSlide();
-        this.updateIndicators();
-      },
-
-      bindEvents() {
-        this.prevBtn.addEventListener('click', () => this.prevSlide());
-        this.nextBtn.addEventListener('click', () => this.nextSlide());
-        
-        this.indicators.forEach((indicator, index) => {
-          indicator.addEventListener('click', () => this.goToSlide(index));
-        });
-
-        // Touch/swipe support
-        let startX = 0;
-        let endX = 0;
-        
-        this.track.addEventListener('touchstart', (e) => {
-          startX = e.touches[0].clientX;
-          this.stopAutoSlide();
-        });
-        
-        this.track.addEventListener('touchend', (e) => {
-          endX = e.changedTouches[0].clientX;
-          const diff = startX - endX;
+      </div>
+      <!-- Customer Service -->
+      <div class="footer-col">
+        <h4>Customer Service</h4>
+        <div>
+          <a href="contact.html">Contact Us</a>
+          <a href="style-guide.html">Style Guide</a>
           
-          if (Math.abs(diff) > 50) {
-            if (diff > 0) {
-              this.nextSlide();
-            } else {
-              this.prevSlide();
-            }
-          }
-          this.startAutoSlide();
-        });
-
-        // Pause on hover
-        this.track.addEventListener('mouseenter', () => this.stopAutoSlide());
-        this.track.addEventListener('mouseleave', () => this.startAutoSlide());
-
-        // Keyboard navigation
-        document.addEventListener('keydown', (e) => {
-          if (e.key === 'ArrowLeft') this.prevSlide();
-          if (e.key === 'ArrowRight') this.nextSlide();
-        });
-      },
-
-      goToSlide(index) {
-        if (this.isAnimating || index === this.currentSlide) return;
-        
-        this.isAnimating = true;
-        
-        // Remove all classes first
-        this.slides.forEach(slide => {
-          slide.classList.remove('active', 'prev');
-        });
-        
-        // Set current slide as previous if moving forward, or set new slide position
-        if (index > this.currentSlide) {
-          this.slides[this.currentSlide].classList.add('prev');
-        }
-        
-        this.currentSlide = index;
-        this.slides[this.currentSlide].classList.add('active');
-        this.updateIndicators();
-        
-        setTimeout(() => {
-          this.isAnimating = false;
-        }, 600);
-      },
-
-      nextSlide() {
-        const nextIndex = (this.currentSlide + 1) % this.slides.length;
-        this.goToSlide(nextIndex);
-      },
-
-      prevSlide() {
-        const prevIndex = (this.currentSlide - 1 + this.slides.length) % this.slides.length;
-        this.goToSlide(prevIndex);
-      },
-
-      updateIndicators() {
-        this.indicators.forEach((indicator, index) => {
-          indicator.classList.toggle('active', index === this.currentSlide);
-        });
-      },
-
-      startAutoSlide() {
-        this.stopAutoSlide();
-        this.autoSlideInterval = setInterval(() => {
-          this.nextSlide();
-        }, this.autoSlideDelay);
-      },
-
-      stopAutoSlide() {
-        if (this.autoSlideInterval) {
-          clearInterval(this.autoSlideInterval);
-          this.autoSlideInterval = null;
-        }
-      }
-    };
-
-    // Initialize carousel
-    carousel.init();
-
-    // Trending Now Banner and Referral Block
-    function renderTrendingNow(targetSelector, options = {}) {
-      const {
-        text = '“What South Africa Is Wearing This Week”',
-        icon = '💃',
-        bgColor = '#a06a7b',
-        textColor = '#fff8fa',
-        fontSize = '1.2rem',
-        customClass = ''
-      } = options;
-
-      const trending = document.createElement('div');
-      trending.className = `trending-now-banner ${customClass}`;
-      trending.style.background = bgColor;
-      trending.style.color = textColor;
-      trending.style.fontSize = fontSize;
-      trending.innerHTML = `${icon} <strong>Trending Now:</strong> ${text}`;
-      document.querySelector(targetSelector).after(trending);
-    }
-    function renderReferralBlock(targetSelector, options = {}) {
-      const {
-        title = 'Invite Friends & Get R100 Off Together!',
-        icon = '👯',
-        description = '',
-        buttonText = 'Invite Now',
-        onClick = null,
-        bgColor = '#fff8fa',
-        borderColor = '#a06a7b',
-        textColor = '#a06a7b',
-        customClass = ''
-      } = options;
-
-      const referral = document.createElement('div');
-      referral.className = `referral-block ${customClass}`;
-      referral.style.background = bgColor;
-      referral.style.border = `2px dashed ${borderColor}`;
-      referral.style.color = textColor;
-
-      referral.innerHTML = `
-        ${icon} <strong>${title}</strong>
-        ${description ? `<div style="margin-top:0.5rem;">${description}</div>` : ''}
-        <div style="margin-top: 0.5rem;">
-          <button id="inviteFriendsBtn" class="referral-btn">${buttonText}</button>
+          <a href="order-tracking.html">Track your Order</a>
+          <a href="faq.html">FAQ</a>
+          
         </div>
-      `;
-      document.querySelector(targetSelector).after(referral);
+      </div>
+      <!-- Newsletter Signup -->
+      <div class="footer-col">
+        <h4>Newsletter</h4>
+        <form>
+          <p>Sign up for exclusive updates:</p>
+          <input type="email" placeholder="Your email" required style="padding:0.5rem; border-radius:4px; border:1px solid var(--border); background:var(--panel); color:var(--text); margin-bottom:0.5rem; width:100%;">
+          <button type="submit" class="btn" style="width:100%;">Subscribe</button>
+        </form>
+      </div>
+      <!-- Social Media Links -->
+      <div class="footer-col">
+        <h4>Follow Us</h4>
+        <div style="display: flex; gap: 1rem; margin-top: 0.5rem;">
+          <a href="https://www.instagram.com/her_essence_restored" target="_blank" aria-label="Instagram" style="margin-bottom: 0;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.40z"/>
+            </svg>
+          </a>
+          <a href="https://www.facebook.com" target="_blank" aria-label="Facebook" style="margin-bottom: 0;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+            </svg>
+          </a>
+          <a href="https://www.tiktok.com" target="_blank" aria-label="TikTok" style="margin-bottom: 0;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2025 Her Essence Restored (H.E.R.). All rights reserved.
+    </div>
+  </footer>
 
-      document.getElementById('inviteFriendsBtn').onclick = function() {
-        if (typeof onClick === 'function') {
-          onClick();
-        } else if (navigator.share) {
-          navigator.share({
-            title: 'Her Essence Restored',
-            text: 'Join me at Her Essence Restored and get R100 off!',
-            url: window.location.href
-          }).catch(() => {});
-        } else {
-          alert('Share this link with your friends to get R100 off:\n' + window.location.href);
-        }
-      };
-    }
-
-    renderTrendingNow('header', {
-      text: '“What Namibia Is Wearing This Week”',
-      icon: '💃',
-      bgColor: '#a06a7b',
-      textColor: '#fff8fa',
-      fontSize: '1.2rem'
-    });
-    renderReferralBlock('.trending-now-banner', {
-      title: 'Invite Friends & Get R100 Off Together!',
-      icon: '👯',
-      description: 'Share your unique link and both you and your friend get R100 off your next order.',
-      buttonText: 'Invite Now',
-      onClick: function(platform, title = 'Her Essence Restored', text = 'Join me at Her Essence Restored and get R100 off!', url = window.location.href) {
-        if (!platform && navigator.share) {
-          navigator.share({ title, text, url });
-          return;
-        }
-        let shareUrl = '';
-        if (platform === 'facebook') {
-          shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
-        } else if (platform === 'twitter') {
-          shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
-        } else {
-          // WhatsApp
-          shareUrl = `https://wa.me/?text=${encodeURIComponent(text + ' ' + url)}`;
-        }
-        window.open(shareUrl, '_blank');
-      }
-    });
-
-    // Welcome popup
-    if (!localStorage.getItem('herEssenceWelcome')) {
-      document.getElementById('welcomePopup').style.display = 'flex';
-    }
-  });
-
-  function closeWelcomePopup() {
-    document.getElementById('welcomePopup').style.display = 'none';
-    localStorage.setItem('herEssenceWelcome', '1');
-  }
-
-  // Language selector
-  const translations = {
-    en: {
-      home: "Home",
-      products: "Products",
-      about: "About",
-      contact: "Contact",
-      shopCollections: "Shop Our Collections",
-      all: "All",
-      dresses: "Dresses",
-      weddingGowns: "Wedding Gowns",
-      activewear: "ActiveWear",
-      aboutUs: "About Us",
-      followUs: "Follow Us",
-      newsletter: "Newsletter",
-      signUp: "Sign up for exclusive updates:",
-      subscribe: "Subscribe",
-      footer: "&copy; 2025 Her Essence Restored (H.E.R.). All rights reserved."
-    },
-    pt: {
-      home: "Início",
-      products: "Produtos",
-      about: "Sobre",
-      contact: "Contato",
-      shopCollections: "Compre Nossas Coleções",
-      all: "Todos",
-      dresses: "Vestidos",
-      weddingGowns: "Vestidos de Noiva",
-      activewear: "Roupas Esportivas",
-      aboutUs: "Sobre Nós",
-      followUs: "Siga-nos",
-      newsletter: "Boletim Informativo",
-      signUp: "Inscreva-se para atualizações exclusivas:",
-      subscribe: "Inscrever-se",
-      footer: "&copy; 2025 Her Essence Restored (H.E.R.). Todos os direitos reservados."
-    },
-    af: {
-      home: "Tuis",
-      products: "Produkte",
-      about: "Oor",
-      contact: "Kontak",
-      shopCollections: "Koop Ons Versamelings",
-      all: "Alle",
-      dresses: "Rokke",
-      weddingGowns: "Troukledrag",
-      activewear: "Sportklere",
-      aboutUs: "Oor Ons",
-      followUs: "Volg Ons",
-      newsletter: "Nuusbrief",
-      signUp: "Teken in vir eksklusiewe opdaterings:",
-      subscribe: "Inskryf",
-      footer: "&copy; 2025 Her Essence Restored (H.E.R.). Alle regte voorbehou."
-    }
-  };
-  function changeLanguage(language) {
-    localStorage.setItem('selectedLanguage', language);
-    document.querySelector('nav a[href="index.html"]').textContent = translations[language].home;
-    document.querySelector('nav a[href="products.html"]').textContent = translations[language].products;
-    document.querySelector('nav a[href="about.html"]').textContent = translations[language].about;
-    document.querySelector('nav a[href="contact.html"]').textContent = translations[language].contact;
-    document.querySelector('.shop h2').textContent = translations[language].shopCollections;
-    document.querySelector('.filters button:nth-child(1)').textContent = translations[language].all;
-    document.querySelector('.filters button:nth-child(2)').textContent = translations[language].dresses;
-    document.querySelector('.filters button:nth-child(3)').textContent = translations[language].weddingGowns;
-    document.querySelector('.filters button:nth-child(4)').textContent = translations[language].activewear;
-    // Update all footer headings
-    document.querySelectorAll('.footer-col h4')[0].textContent = translations[language].followUs;
-    document.querySelectorAll('.footer-col h4')[1].textContent = "Quick Links";
-    document.querySelector('.footer-col.newsletter h4').textContent = translations[language].newsletter;
-    document.querySelector('.footer-bottom').innerHTML = translations[language].footer;
-    document.querySelector('.footer-col.newsletter p').textContent = translations[language].signUp;
-    document.querySelector('.footer-col.newsletter button').textContent = translations[language].subscribe;
-  }
-  document.addEventListener('DOMContentLoaded', function() {
-    const savedLang = localStorage.getItem('selectedLanguage') || 'en';
-    document.getElementById('languageSelector').value = savedLang;
-    changeLanguage(savedLang);
-  });
-
-  // Hamburger menu toggle
-  document.getElementById('menuToggle').onclick = function() {
-    document.getElementById('mainNav').classList.toggle('open');
-  };
-  // Close menu on nav link click (mobile)
-  document.querySelectorAll('#mainNav a').forEach(a => {
-    a.onclick = () => document.getElementById('mainNav').classList.remove('open');
-  });
-
-  // Product filtering function
-  function filterProducts(category) {
-    const products = document.querySelectorAll('.product');
-    const filterButtons = document.querySelectorAll('.filters button');
-    
-    // Update active button
-    filterButtons.forEach(btn => btn.classList.remove('active'));
-    event.target.classList.add('active');
-    
-    // Filter products
-    products.forEach(product => {
-      const productCategory = product.getAttribute('data-category');
-      if (category === 'all' || productCategory === category) {
-        product.style.display = 'flex';
-      } else {
-        product.style.display = 'none';
-      }
-    });
-  }
-
-  // Make filterProducts globally available
-  window.filterProducts = filterProducts;
-</script>
-  <!-- Tawk.to Live Chat Widget -->
-  <script type="text/javascript">
-  var Tawk_API=Tawk_API||{},Tawk_LoadStart=new Date();
-  (function(){
-  var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-  s1.async=true;
-  s1.src='https://embed.tawk.to/your_property_id/1hxxxxxxx';
-  s1.charset='UTF-8';
-  s1.setAttribute('crossorigin','*');
-  s0.parentNode.insertBefore(s1,s0);
-  })();
-  </script>
+  <!-- Scripts -->
+  <script src="../assets/js/scripts.js"></script>
 </body>
 </html>
