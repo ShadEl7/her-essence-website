@@ -92,17 +92,105 @@
 
     /* About */
     .about{
-      display:grid; grid-template-columns:1.2fr .8fr; gap:2rem; align-items:center;
+      display:grid; grid-template-columns:1.2fr .8fr; gap:3rem; align-items:center;
       background:linear-gradient(180deg, #0b0b0b, #0f0f0f);
-      padding:2.2rem; border:1px solid var(--border); border-radius:10px;
+      padding:3rem; border:1px solid var(--border); border-radius:15px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
     }
     .collage{
-      display:grid; grid-template-columns:1.1fr .9fr; gap:.8rem; align-items:stretch;
+      position: relative;
+      height: 500px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 1rem;
     }
-    .collage .big{grid-row:span 2}
-    .about h3{font-family:'Dancing Script', cursive; font-size:2.5rem; margin:.2rem 0 1rem; font-weight:bold}
-    .about p{color:#d6d6d6}
-    .about .actions{margin-top:1.1rem; display:flex; gap:.8rem}
+    .collage .img-container{
+      position: relative;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .collage .img-container:hover{
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 25px 50px rgba(0,0,0,0.6);
+    }
+    .collage .img-container::after{
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(45deg, rgba(255,255,255,0.1), transparent 70%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .collage .img-container:hover::after{
+      opacity: 1;
+    }
+    .collage .main-img{
+      grid-column: 1;
+      grid-row: 1 / 3;
+      z-index: 2;
+      transform: translateX(10px);
+    }
+    .collage .top-img{
+      grid-column: 2;
+      grid-row: 1;
+      z-index: 3;
+      transform: translateX(-15px) translateY(20px);
+    }
+    .collage .bottom-img{
+      grid-column: 2;
+      grid-row: 2;
+      z-index: 1;
+      transform: translateX(-15px) translateY(-10px);
+    }
+    .collage .decorative-element{
+      position: absolute;
+      top: -20px;
+      right: -20px;
+      width: 120px;
+      height: 120px;
+      background: linear-gradient(45deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+      border-radius: 50%;
+      z-index: 0;
+      animation: float 6s ease-in-out infinite;
+    }
+    .collage .decorative-element::before{
+      content: '';
+      position: absolute;
+      bottom: -30px;
+      left: -30px;
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.08), transparent);
+      border-radius: 50%;
+      animation: float 8s ease-in-out infinite reverse;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(180deg); }
+    }
+    .about h3{
+      font-family:'Dancing Script', cursive; 
+      font-size:2.8rem; 
+      margin:.2rem 0 1.5rem; 
+      font-weight:bold;
+      background: linear-gradient(45deg, #fff, #e0e0e0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .about p{
+      color:#d6d6d6; 
+      line-height: 1.7;
+      font-size: 1.05rem;
+    }
+    .about .actions{
+      margin-top:2rem; 
+      display:flex; 
+      gap:1rem;
+    }
 
     /* Footer */
     footer{padding:2.5rem 0; color:var(--muted); border-top:1px solid var(--border); background:#0a0a0a}
@@ -142,13 +230,52 @@
       .grid{grid-template-columns:repeat(2, 1fr)}
       .hero{grid-template-columns:1fr; }
       .hero .tile{aspect-ratio:16/10}
-      .about{grid-template-columns:1fr}
+      .about{grid-template-columns:1fr; gap:2rem}
+      .collage{
+        height: 400px;
+        grid-template-columns: 1fr 1fr;
+        margin-bottom: 1rem;
+      }
+      .collage .main-img{
+        transform: translateX(5px);
+      }
+      .collage .top-img{
+        transform: translateX(-10px) translateY(15px);
+      }
+      .collage .bottom-img{
+        transform: translateX(-10px) translateY(-5px);
+      }
       .footer-content{flex-direction:column; gap:1rem}
     }
     @media (max-width: 520px){
       .nav ul{display:none}
       .display{font-size:2rem}
       .subcaps{font-size:.72rem}
+      .collage{
+        height: 300px;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        gap: 0.8rem;
+      }
+      .collage .main-img{
+        grid-column: 1;
+        grid-row: 1 / 3;
+        transform: none;
+      }
+      .collage .top-img{
+        grid-column: 1;
+        grid-row: 3;
+        transform: none;
+      }
+      .collage .bottom-img{
+        display: none;
+      }
+      .about{
+        padding: 2rem;
+      }
+      .about h3{
+        font-size: 2.2rem;
+      }
     }
   </style>
 </head>
@@ -228,9 +355,16 @@
   <section class="container">
     <div class="about">
       <div class="collage">
-        <div class="big"><img src="IMG-20250815-WA0023.jpg" alt=""></div>
-        <div><img src="70ba0b5c322938f55d1f49de5bef73d8.jpg" alt=""></div>
-        <div><img src="790e1b8dcca81f5b3bf90959d2775fc9.jpg" alt=""></div>
+        <div class="decorative-element"></div>
+        <div class="img-container main-img">
+          <img src="IMG-20250815-WA0023.jpg" alt="Fashion showcase">
+        </div>
+        <div class="img-container top-img">
+          <img src="70ba0b5c322938f55d1f49de5bef73d8.jpg" alt="Style collection">
+        </div>
+        <div class="img-container bottom-img">
+          <img src="790e1b8dcca81f5b3bf90959d2775fc9.jpg" alt="Elegant wear">
+        </div>
       </div>
       <div>
         <h3>ABOUT US</h3>
